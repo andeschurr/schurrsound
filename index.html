@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ande Schurr — Emmy-Nominated Production Sound Mixer | Schurr Sound</title>
+<meta name="description" content="Emmy-nominated production sound mixer (Lord of the Flies, BBC/Netflix). Singapore-based, working across Asia-Pacific. Full drama package, travels light.">
+<!--
+  SCHURR SOUND — one-page site
+  Deploy: push to GitHub → Cloudflare Pages (framework preset: none, build output: /)
+  TO DO before launch:
+   1. Replace hero image: add hero.jpg (a real BTS jungle/boom photo beats any illustration)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1e3a2f;
+    --green-deep:#152a21;
+    --gold:#b8a15c;
+    --gold-soft:#d6c493;
+    --cream:#f0ead8;
+    --paper:#fbf9f4;
+    --ink:#26261f;
+    --grey:#8a887e;
+    --line:#e4ddc9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{font-family:'Inter',Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  /* ===== Emmy strip ===== */
+  .strip{background:var(--green-deep);color:var(--gold-soft);text-align:center;padding:10px 16px;font-size:13.5px;letter-spacing:.06em}
+  .strip strong{color:#fff;font-weight:600}
+
+  /* ===== Nav ===== */
+  nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .wordmark{font-weight:600;letter-spacing:.32em;font-size:14px;text-decoration:none;color:var(--green)}
+  .wordmark span{color:var(--gold)}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
+  .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
+
+  /* ===== Hero ===== */
+  header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:96px 0 84px;position:relative;overflow:hidden}
+  .hero-in{max-width:640px}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(38px,5.6vw,58px);line-height:1.08;color:#fff}
+  .hero .sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(19px,2.4vw,23px);color:var(--gold-soft);margin:18px 0 22px}
+  .hero p.lead{font-size:16px;color:#d9d4c2;max-width:56ch}
+  .hero p.lead + p.lead{margin-top:14px}
+  .hero .credit-line{margin-top:18px;font-size:15px;color:var(--gold-soft)}
+  .hero .credit-line em{color:#fff;font-style:italic}
+  .btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:2px;font-size:14px;font-weight:600;letter-spacing:.05em;text-decoration:none}
+  .btn-gold{background:var(--gold);color:var(--green-deep)}
+  .btn-gold:hover{background:var(--gold-soft)}
+  .btn-line{border:1px solid var(--gold);color:var(--cream)}
+  .btn-line:hover{background:rgba(184,161,92,.14)}
+
+  /* signature: the wild track — a hand-drawn waveform in gold */
+  .wildtrack{display:block;margin:34px 0 0;opacity:.9}
+
+  /* ===== Quote ===== */
+  .quote{background:var(--green-deep);color:var(--cream);text-align:center;padding:72px 24px}
+  .quote blockquote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(20px,2.6vw,26px);line-height:1.5;max-width:760px;margin:0 auto}
+  .quote cite{display:block;margin-top:22px;font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+  /* ===== Sections ===== */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+  h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);color:var(--green);margin-top:10px}
+  .sec-head p{color:var(--grey);margin-top:12px;font-size:15px}
+
+  /* Showreel */
+  .reel{position:relative;padding-top:56.25%;background:var(--green-deep);border:1px solid var(--line)}
+  .reel iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* Credits */
+  .credits{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .credit{display:grid;grid-template-columns:86px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .credit:last-child{border-bottom:none}
+  .credit .yr{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;color:var(--gold)}
+  .credit h3{font-size:18px;font-weight:600;color:var(--ink);display:inline}
+  .credit .studio{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--grey);margin-left:10px;font-size:16px}
+  .tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--cream);color:var(--green);padding:3px 10px;border-radius:2px;margin-left:12px;vertical-align:2px}
+  .tag-emmy{background:#f3e6bb;color:#5c4708}
+  .credit .who{font-size:14px;color:var(--ink);margin-top:6px}
+  .credit .where{font-size:13px;color:var(--grey);font-style:italic;margin-top:2px}
+
+  /* Base & mobility */
+  .facts{background:var(--paper)}
+  .facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fact{background:var(--paper);padding:30px 24px}
+  .fact h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .fact p{font-size:14.5px;color:var(--ink)}
+
+  /* Footer */
+  footer{background:var(--green);color:var(--cream);padding:70px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .foot-grid h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  footer a{color:var(--cream);text-decoration:none}
+  footer a:hover{color:var(--gold-soft)}
+  footer .fine{margin-top:48px;padding-top:22px;border-top:1px solid rgba(240,234,216,.18);font-size:12.5px;color:#b8b3a1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:720px){
+    .facts-grid{grid-template-columns:1fr 1fr}
+    .credit{grid-template-columns:1fr}
+    .credit .yr{font-size:18px}
+    .nav-links{gap:16px}
+    header.hero{padding:64px 0 60px}
+  }
+</style>
+</head>
+<body>
+
+<div class="strip">🏆&nbsp; <strong>2026 Emmy Nominee</strong> — Outstanding Sound Mixing · <em>Lord of the Flies</em></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="wordmark" href="/">SCHURR <span>SOUND</span></a>
+    <ul class="nav-links">
+      <li><a href="#reel">Showreel</a></li>
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="/credits">One-pager&nbsp;(PDF)</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <p class="eyebrow">Production Sound Mixer · HOD · Asia-Pacific</p>
+    <h1>When the location pushes back, the sound stays clean.</h1>
+    <p class="sub">Emmy-nominated production sound for international feature films and streaming.</p>
+    <p class="lead">Ande Schurr is a Singapore-based production sound mixer with two decades across feature films, high-end television and documentary — from the Langkawi rainforest to the volcanoes of New Zealand.</p>
+    <p class="lead">Trusted by directors and producers to deliver clean, well-balanced location tracks under pressure, and to be the reliable handoff when international productions come to the region.</p>
+    <p class="credit-line">Recent: <em>Lord of the Flies</em> (Netflix/BBC — 2026 Emmy nomination, Outstanding Sound Mixing) · <em>Monkey Man</em> (Universal Pictures)</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="/credits">Credits one-pager (PDF)</a>
+      <a class="btn btn-line" href="#contact">Contact Ande</a>
+    </div>
+    <!-- signature: the wild track -->
+    <svg class="wildtrack" width="320" height="28" viewBox="0 0 320 28" fill="none" aria-hidden="true">
+      <path d="M0 14 H24 M24 14 v-4 M28 14 v6 M32 14 v-9 M36 14 v11 M40 14 v-6 M44 14 v3 M48 14 v-11 M52 14 v8 M56 14 v-3 M60 14 v5 M64 14 v-8 M68 14 v2 M72 14 v-5 M76 14 v9 M80 14 v-2 M84 14 h60 M144 14 v-7 M148 14 v10 M152 14 v-4 M156 14 v6 M160 14 v-10 M164 14 v3 M168 14 h152"
+        stroke="#b8a15c" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </div>
+</header>
+
+<div class="quote">
+  <blockquote>“Ande was brilliantly diligent on our adaptation of Lord of the Flies. He was meticulous with radio miking and provided a multitude of rainforest wild tracks recorded on location.”</blockquote>
+  <cite>— Marc Munden, Director</cite>
+</div>
+
+<section id="reel">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Showreel</p>
+      <h2>Location sound, real conditions</h2>
+      <p>Selected clips from recent international productions — clean dialogue, strong dynamic range, recorded where it happened.</p>
+    </div>
+    <div class="reel">
+      <!-- Replace VIMEO_SHOWREEL_ID with your Vimeo video ID -->
+      <iframe src="https://player.vimeo.com/video/1185325352" title="Ande Schurr — Showreel" allow="fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="credits" class="credits">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Selected credits</p>
+      <h2>Feature film · high-end TV · documentary</h2>
+    </div>
+
+    <div class="credit">
+      <div class="yr">2026</div>
+      <div>
+        <h3>Lord of the Flies</h3><span class="studio">BBC / Netflix</span><span class="tag">Drama series</span><span class="tag tag-emmy">★ Emmy nomination — Outstanding Sound Mixing</span>
+        <p class="who">Director: Marc Munden · Producers: Joel Wilson, Devrell-Cameron</p>
+        <p class="where">Filmed in Langkawi, Malaysia</p>
+      </div>
+    </div>
+    <div class="credit">
+      <div class="yr">2024</div>
+      <div>
+        <h3>Monkey Man</h3><span class="studio">Universal Pictures</span><span class="tag">Feature film</span>
+        <p class="who">Director: Dev Patel · Producers: Basil Iwanyk, Samarth Sahni, Jomon Thomas</p>
+        <p class="where">Filmed in Indonesia &amp; Mumbai</p>
+      </div>
+    </div>
+    <div class="credit">
+      <div class="yr">2022</div>
+      <div>
+        <h3>Mr Midnight</h3><span class="studio">Netflix</span><span class="tag">TV series</span>
+        <p class="who">Director: Tony Tilse · Producers: Susan Oliver, Sean Masterson</p>
+        <p class="where">Filmed in Singapore &amp; Indonesia</p>
+      </div>
+    </div>
+    <div class="credit">
+      <div class="yr">2020</div>
+      <div>
+        <h3>Somebody Feed Phil — Singapore</h3><span class="studio">Netflix</span><span class="tag">Doc series</span>
+        <p class="who">Director: John Bedolis · EP: Rich Rosenthal</p>
+        <p class="where">Filmed in Singapore</p>
+      </div>
+    </div>
+    <div class="credit">
+      <div class="yr">2019</div>
+      <div>
+        <h3>Vet Gone Wild</h3><span class="studio">Animal Planet</span><span class="tag">Doc series</span>
+        <p class="who">Director: Mike Aho · Producer: Lyle Smith</p>
+        <p class="where">Filmed in Costa Rica, Namibia, Vietnam, Thailand, Australia, Fiji</p>
+      </div>
+    </div>
+    <div class="credit">
+      <div class="yr">2018</div>
+      <div>
+        <h3>Oceans Apart: Art and the Pacific</h3><span class="studio">BBC</span><span class="tag">Doc series</span>
+        <p class="who">Director: Ben Harding · Presenter: Dr James Fox</p>
+        <p class="where">Filmed in New Zealand — White Island, Lake Taupo, Wellington, Rotorua</p>
+      </div>
+    </div>
+    <div class="credit">
+      <div class="yr">2016</div>
+      <div>
+        <h3>Hunt for the Wilderpeople</h3><span class="studio">Piki Films</span><span class="tag">Feature film</span>
+        <p class="who">Director: Taika Waititi · Producers: Carthew Neal, Matt Noonan, Leanne Saunders</p>
+        <p class="where">Filmed in New Zealand — Auckland &amp; Mt Ruapehu</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Base &amp; mobility</p>
+      <h2>Built to travel</h2>
+    </div>
+    <div class="facts-grid">
+      <div class="fact"><h4>Base</h4><p>Singapore-based · NZ citizen with full Australia &amp; NZ work rights · 1–3 hours from every major ASEAN production centre.</p></div>
+      <div class="fact"><h4>Package</h4><p>Full drama package — Sound Devices, 12× Wisycom radios, DPA mics, two booms, timecode, comms. Airline-checkable; on set anywhere in the region within a day.</p></div>
+      <div class="fact"><h4>Cover</h4><p>Insured worldwide, equipment and liability. Paperwork ready the day the deal memo lands.</p></div>
+      <div class="fact"><h4>Dry-hire</h4><p>The package hires out to productions and visiting mixers — Wisycom RF with local support from someone who knows the region's licensing.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:ande@schurrsound.com">ande@schurrsound.com</a><br>
+        <a href="tel:+6590526526">+65 9052 6526</a><br>
+        Singapore · working Asia-Pacific</p>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <p><a href="https://www.linkedin.com/in/andeschurr" rel="me">LinkedIn</a><br>
+        <a href="https://www.instagram.com/andeschurr" rel="me">Instagram</a><br>
+        <a href="https://www.imdb.com" rel="me">IMDb</a></p>
+      </div>
+      <div>
+        <h4>The Wild Track</h4>
+        <p>Quarterly location-sound notes from Asia-Pacific.<br>
+        <a href="#contact">Join the letter →</a></p>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© 2026 Schurr Productions Pte. Ltd.</span>
+      <span>“When the location pushes back, the sound stays clean.”</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
