@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ande Schurr — Emmy-Nominated Production Sound Mixer | Schurr Sound</title>
 <meta name="description" content="Emmy-nominated production sound mixer (Lord of the Flies, BBC/Netflix). Singapore-based, working across Asia-Pacific. Full drama package, travels light.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://schurrsound.com/">
+<meta property="og:title" content="Ande Schurr — Emmy-Nominated Production Sound Mixer">
+<meta property="og:description" content="Lord of the Flies (BBC/Netflix) — 2026 Emmy nomination, Outstanding Sound Mixing. Singapore-based, working across Asia-Pacific.">
+<meta property="og:image" content="https://schurrsound.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ande Schurr — Emmy-Nominated Production Sound Mixer">
+<meta name="twitter:description" content="Lord of the Flies (BBC/Netflix) — 2026 Emmy nomination, Outstanding Sound Mixing. Singapore-based, Asia-Pacific.">
+<meta name="twitter:image" content="https://schurrsound.com/og-image.jpg">
 <!--
   SCHURR SOUND — one-page site
   Deploy: push to GitHub → Cloudflare Pages (framework preset: none, build output: /)
@@ -42,7 +53,34 @@
 
   /* ===== Emmy strip ===== */
   .strip{background:var(--green-deep);color:var(--gold-soft);text-align:center;padding:10px 16px;font-size:13.5px;letter-spacing:.06em}
+  .strip a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(184,161,92,.4)}
+  .strip a:hover{border-bottom-color:var(--gold)}
   .strip strong{color:#fff;font-weight:600}
+
+  /* ===== The Wild Track signup (MailerLite overrides) ===== */
+  .letter{background:var(--green);color:var(--cream)}
+  .letter-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+  .letter-photo{margin:0}
+  .letter-photo img{width:100%;display:block;border:1px solid var(--gold);border-radius:2px;cursor:zoom-in}
+  .letter-photo img:hover{opacity:.92}
+
+  /* ===== Lightbox ===== */
+  .lightbox{position:fixed;inset:0;background:rgba(21,42,33,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:4vh 4vw;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:100%;border:1px solid var(--gold);border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lightbox-close{position:absolute;top:18px;right:26px;background:none;border:none;color:var(--cream);font-size:34px;line-height:1;cursor:pointer;font-family:Georgia,serif}
+  .lightbox-close:hover{color:var(--gold)}
+  .letter-photo figcaption{font-size:12px;letter-spacing:.08em;color:#a9a390;margin-top:10px;font-style:italic}
+  .letter h2{color:#fff;margin-top:10px}
+  .letter-blurb{color:#c9c3ae;margin:14px 0 26px;font-size:15px}
+  .letter .form-wrap{max-width:460px}
+  @media (max-width:760px){ .letter-grid{grid-template-columns:1fr;gap:32px} }
+  .ml-form-embedContainer, .ml-form-embedWrapper, .ml-form-embedBody, .ml-form-embedContent{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important;margin:0!important}
+  .ml-form-embedContainer h4, .ml-form-embedContainer p{color:var(--cream)!important;font-family:'Inter',Helvetica,sans-serif!important}
+  .ml-form-embedContainer input[type=email], .ml-form-embedContainer input[type=text]{background:#fff!important;border:1px solid var(--gold)!important;border-radius:2px!important;padding:13px 16px!important;font-family:'Inter',Helvetica,sans-serif!important;font-size:15px!important;color:var(--ink)!important}
+  .ml-form-embedContainer button{background:var(--gold)!important;color:var(--green-deep)!important;border:none!important;border-radius:2px!important;padding:13px 26px!important;font-family:'Inter',Helvetica,sans-serif!important;font-size:14px!important;font-weight:600!important;letter-spacing:.05em!important;cursor:pointer}
+  .ml-form-embedContainer button:hover{background:var(--gold-soft)!important}
+  .ml-form-successBody p, .ml-form-successBody h4{color:var(--cream)!important}
 
   /* ===== Nav ===== */
   nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
@@ -121,11 +159,20 @@
     .nav-links{gap:16px}
     header.hero{padding:64px 0 60px}
   }
+
+  /* ===== Mobile nav tidy ===== */
+  @media (max-width:760px){
+    .strip{font-size:12px;padding:8px 14px;line-height:1.5}
+    .nav-in{height:auto;flex-wrap:wrap;align-items:center;padding:10px 0;row-gap:4px}
+    .wordmark{font-size:12px;letter-spacing:.24em;white-space:nowrap;margin-right:14px}
+    .nav-links{gap:14px;flex-wrap:wrap;row-gap:4px}
+    .nav-links a{font-size:12.5px;white-space:nowrap}
+  }
 </style>
 </head>
 <body>
 
-<div class="strip">🏆&nbsp; <strong>2026 Emmy Nominee</strong> — Outstanding Sound Mixing · <em>Lord of the Flies</em></div>
+<div class="strip">🏆&nbsp; <a href="https://www.televisionacademy.com/bios/ande-schurr" target="_blank" rel="noopener"><strong>2026 Emmy Nominee</strong> — Outstanding Sound Mixing · <em>Lord of the Flies</em></a></div>
 
 <nav>
   <div class="wrap nav-in">
@@ -172,8 +219,7 @@
       <p>Selected clips from recent international productions — clean dialogue, strong dynamic range, recorded where it happened.</p>
     </div>
     <div class="reel">
-      <!-- Replace VIMEO_SHOWREEL_ID with your Vimeo video ID -->
-      <iframe src="https://player.vimeo.com/video/VIMEO_SHOWREEL_ID" title="Ande Schurr — Showreel" allow="fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe src="https://fast.wistia.net/embed/iframe/vcvusasxo9?videoFoam=true" title="Ande Schurr — Showreel" allow="fullscreen; autoplay" loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -259,6 +305,26 @@
   </div>
 </section>
 
+<section id="letter" class="letter">
+  <div class="wrap">
+    <div class="letter-grid">
+      <figure class="letter-photo">
+        <!-- add bts-mixing.jpg to the repo root (the seaside mixing shot) -->
+        <img src="bts-mixing.jpg" alt="Ande Schurr mixing on location, coastal set, Southeast Asia" loading="lazy" id="btsPhoto" role="button" tabindex="0" aria-label="Enlarge photo">
+        <figcaption>On location — where the notes come from.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">The Wild Track</p>
+        <h2>Location sound notes from Asia-Pacific</h2>
+        <p class="letter-blurb">Quarterly. Ninety seconds. What's shooting in the region, one problem solved on location, and where I'll be. No filler.</p>
+        <div class="form-wrap">
+          <div class="ml-embedded" data-form="yRlnuz"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
@@ -272,12 +338,13 @@
         <h4>Elsewhere</h4>
         <p><a href="https://www.linkedin.com/in/andeschurr" rel="me">LinkedIn</a><br>
         <a href="https://www.instagram.com/andeschurr" rel="me">Instagram</a><br>
-        <a href="https://www.imdb.com" rel="me">IMDb</a></p>
+        <a href="https://www.imdb.com/name/nm3106152/" rel="me">IMDb</a></p>
       </div>
       <div>
-        <h4>The Wild Track</h4>
-        <p>Quarterly location-sound notes from Asia-Pacific.<br>
-        <a href="#contact">Join the letter →</a></p>
+        <h4>Booking</h4>
+        <p><a href="/credits">Credits one-pager (PDF)</a><br>
+        <a href="https://wa.me/6590526526" rel="noopener">WhatsApp Ande</a><br>
+        Full drama package · dry-hire available</p>
       </div>
     </div>
     <div class="fine">
@@ -287,5 +354,32 @@
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">×</button>
+  <img src="bts-mixing.jpg" alt="Ande Schurr mixing on location — enlarged view">
+</div>
+<script>
+(function(){
+  var photo = document.getElementById('btsPhoto');
+  var box = document.getElementById('lightbox');
+  if(!photo || !box) return;
+  function open(){ box.classList.add('open'); box.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ box.classList.remove('open'); box.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  photo.addEventListener('click', open);
+  photo.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2499136');
+</script>
+<!-- End MailerLite Universal -->
 </body>
 </html>
