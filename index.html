@@ -160,6 +160,28 @@
     header.hero{padding:64px 0 60px}
   }
 
+  /* anchored sections clear the sticky nav */
+  section{scroll-margin-top:70px}
+
+  /* ===== Mobile proof strip (hidden on desktop) ===== */
+  .proof{display:none}
+
+  /* ===== Mobile hero compression ===== */
+  @media (max-width:640px){
+    .strip{display:none}                       /* subtitle already carries the Emmy line */
+    .hero p.lead, .hero .credit-line{display:none}
+    header.hero{padding:46px 0 50px}
+    .hero .sub{margin:14px 0 4px}
+    .proof{display:block;margin:20px 0 0;border-left:2px solid var(--gold);padding-left:16px}
+    .proof p{font-size:14.5px;line-height:1.55;color:#d9d4c2;margin:7px 0}
+    .proof p strong{color:#fff;font-weight:600}
+    .proof p em{color:var(--gold-soft);font-style:italic}
+    .proof .meta{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
+    .btns{margin-top:26px;gap:10px}
+    .btn{flex:1 1 0;text-align:center;padding:15px 8px;font-size:13.5px}
+    .wildtrack{width:100%;max-width:300px;margin-top:28px}
+  }
+
   /* ===== Mobile nav tidy ===== */
   @media (max-width:760px){
     .strip{font-size:12px;padding:8px 14px;line-height:1.5}
@@ -194,9 +216,15 @@
     <p class="lead">Ande Schurr is a Singapore-based production sound mixer with two decades across feature films, high-end television and documentary — from the Langkawi rainforest to the volcanoes of New Zealand.</p>
     <p class="lead">Trusted by directors and producers to deliver clean, well-balanced location tracks under pressure, and to be the reliable handoff when international productions come to the region.</p>
     <p class="credit-line">Recent: <em>Lord of the Flies</em> (Netflix/BBC — 2026 Emmy nomination, Outstanding Sound Mixing) · <em>Monkey Man</em> (Universal Pictures)</p>
+    <!-- mobile-only proof strip (replaces the two paragraphs + credit line on small screens) -->
+    <div class="proof" aria-hidden="false">
+      <p><strong>2026 Emmy Nominee</strong> — <em>Lord of the Flies</em> (Netflix/BBC)</p>
+      <p><em>Monkey Man</em> (Universal) · <em>Hunt for the Wilderpeople</em></p>
+      <p class="meta">Singapore base · 20 years · ANZ + ASEAN</p>
+    </div>
     <div class="btns">
-      <a class="btn btn-gold" href="/credits">Credits one-pager (PDF)</a>
-      <a class="btn btn-line" href="#contact">Contact Ande</a>
+      <a class="btn btn-gold" href="#reel">Watch the showreel&nbsp;▸</a>
+      <a class="btn btn-line" href="/credits">One-pager (PDF)</a>
     </div>
     <!-- signature: the wild track -->
     <svg class="wildtrack" width="320" height="28" viewBox="0 0 320 28" fill="none" aria-hidden="true">
