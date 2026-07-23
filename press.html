@@ -26,6 +26,11 @@
   .nav-links{display:flex;gap:28px;list-style:none}
   .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
   .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
+  .nav-sub{border-top:1px solid var(--line)}
+  .nav-sub-in{display:flex;justify-content:flex-end;gap:24px;height:36px;align-items:center}
+  .nav-sub a{text-decoration:none;font-size:12px;letter-spacing:.08em;color:var(--gold);text-transform:uppercase}
+  .nav-sub a.active{color:var(--green);border-bottom:2px solid var(--gold);padding-bottom:3px}
+  @media(max-width:560px){ .nav-sub-in{justify-content:center} .nav-links{gap:16px} }
   header.mini{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:64px 0 56px;text-align:center}
   header.mini h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(34px,4.6vw,48px);color:#fff}
   header.mini p{color:var(--gold-soft);margin-top:10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px}
@@ -64,6 +69,12 @@
       <li><a href="/press">Press</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>
+  </div>
+  <div class="nav-sub">
+    <div class="wrap nav-sub-in">
+      <a href="/credits">One-pager (PDF)</a>
+      <a href="/wild-track">The Wild Track</a>
+    </div>
   </div>
 </nav>
 
