@@ -74,6 +74,9 @@
   .letter h2{color:#fff;margin-top:10px}
   .letter-blurb{color:#c9c3ae;margin:14px 0 26px;font-size:15px}
   .letter .form-wrap{max-width:460px}
+  .letter-archive{margin-top:16px;font-size:13.5px}
+  .letter-archive a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(214,196,147,.4)}
+  .letter-archive a:hover{color:#fff;border-bottom-color:#fff}
   @media (max-width:760px){ .letter-grid{grid-template-columns:1fr;gap:32px} }
   .ml-form-embedContainer, .ml-form-embedWrapper, .ml-form-embedBody, .ml-form-embedContent{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important;margin:0!important}
   .ml-form-embedContainer h4, .ml-form-embedContainer p{color:var(--cream)!important;font-family:'Inter',Helvetica,sans-serif!important}
@@ -91,9 +94,12 @@
   .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
   .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
   .nav-sub{border-top:1px solid var(--line)}
-  .nav-sub-in{display:flex;justify-content:flex-end;gap:24px;height:36px;align-items:center}
-  .nav-sub a{text-decoration:none;font-size:12px;letter-spacing:.08em;color:var(--gold);text-transform:uppercase}
-  .nav-sub a.active{color:var(--green);border-bottom:2px solid var(--gold);padding-bottom:3px}
+  .nav-sub-in{display:flex;justify-content:flex-end;gap:10px;height:44px;align-items:center}
+  .nav-sub a{text-decoration:none;font-size:12px;letter-spacing:.08em;color:var(--grey);text-transform:uppercase;padding:6px 12px;border-radius:4px;transition:background .15s ease,color .15s ease}
+  .nav-sub a:hover{background:rgba(184,161,92,.14);color:var(--green)}
+  .nav-sub a.wt{color:var(--gold);font-weight:600}
+  .nav-sub a.wt:hover{background:rgba(184,161,92,.2);color:var(--green-deep)}
+  .nav-sub a.active{color:var(--green);background:rgba(184,161,92,.14)}
   @media(max-width:560px){ .nav-sub-in{justify-content:center} .nav-links{gap:16px} }
 
   /* ===== Hero ===== */
@@ -214,7 +220,7 @@
   <div class="nav-sub">
     <div class="wrap nav-sub-in">
       <a href="/credits">One-pager (PDF)</a>
-      <a href="/wild-track">The Wild Track</a>
+      <a class="wt" href="/wild-track">The Wild Track</a>
     </div>
   </div>
 </nav>
@@ -359,6 +365,7 @@
         <div class="form-wrap">
           <div class="ml-embedded" data-form="yRlnuz"></div>
         </div>
+        <p class="letter-archive"><a href="/wild-track">Browse past issues&nbsp;→</a></p>
       </div>
     </div>
   </div>

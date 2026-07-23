@@ -30,9 +30,12 @@
   .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
   .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
   .nav-sub{border-top:1px solid var(--line)}
-  .nav-sub-in{display:flex;justify-content:flex-end;gap:24px;height:36px;align-items:center}
-  .nav-sub a{text-decoration:none;font-size:12px;letter-spacing:.08em;color:var(--gold);text-transform:uppercase}
-  .nav-sub a.active{color:var(--green);border-bottom:2px solid var(--gold);padding-bottom:3px}
+  .nav-sub-in{display:flex;justify-content:flex-end;gap:10px;height:44px;align-items:center}
+  .nav-sub a{text-decoration:none;font-size:12px;letter-spacing:.08em;color:var(--grey);text-transform:uppercase;padding:6px 12px;border-radius:4px;transition:background .15s ease,color .15s ease}
+  .nav-sub a:hover{background:rgba(184,161,92,.14);color:var(--green)}
+  .nav-sub a.wt{color:var(--gold);font-weight:600}
+  .nav-sub a.wt:hover{background:rgba(184,161,92,.2);color:var(--green-deep)}
+  .nav-sub a.active{color:var(--green);background:rgba(184,161,92,.14)}
   @media(max-width:560px){ .nav-sub-in{justify-content:center} .nav-links{gap:16px} }
   /* hero */
   header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:72px 0 60px;text-align:center}
@@ -94,7 +97,7 @@
   <div class="nav-sub">
     <div class="wrap nav-sub-in">
       <a href="/credits">One-pager (PDF)</a>
-      <a class="active" href="/wild-track">The Wild Track</a>
+      <a class="wt active" href="/wild-track">The Wild Track</a>
     </div>
   </div>
 </nav>
