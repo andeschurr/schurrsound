@@ -36,6 +36,13 @@
   .nav-sub a.wt:hover{background:rgba(184,161,92,.2);color:var(--green-deep)}
   .nav-sub a.active{color:var(--green);background:rgba(184,161,92,.14)}
   @media(max-width:560px){ .nav-sub-in{justify-content:center} .nav-links{gap:16px} }
+  /* step 1 — check inbox */
+  .step1{background:var(--cream);padding:56px 0;text-align:center;border-bottom:1px solid var(--line)}
+  .step1 .icon{font-size:30px;margin-bottom:14px}
+  .step1 p.eyebrow{color:#8a763a}
+  .step1 h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(24px,3.2vw,32px);color:var(--green);margin-top:8px}
+  .step1 p.body{font-size:15.5px;color:var(--ink);max-width:52ch;margin:14px auto 0}
+  .step1 p.small{font-size:13px;color:var(--grey);margin-top:12px}
   /* confirmed hero */
   header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:100px 0;text-align:center}
   header.hero .mark{font-size:38px;color:var(--gold-soft);margin-bottom:18px}
@@ -78,10 +85,20 @@
   </div>
 </nav>
 
+<section class="step1">
+  <div class="wrap">
+    <div class="icon">✉️</div>
+    <p class="eyebrow">Step 1 of 2</p>
+    <h2>Check your inbox first</h2>
+    <p class="body">We've just sent a confirmation email to the address you entered. Click the link inside it to confirm your subscription — you won't receive The Wild Track until you do.</p>
+    <p class="small">Don't see it? Check spam/junk, or search for an email from Schurr Sound / MailerLite.</p>
+  </div>
+</section>
+
 <header class="hero">
   <div class="wrap">
     <div class="mark">✓</div>
-    <p class="eyebrow">The Wild Track</p>
+    <p class="eyebrow">Step 2 of 2 — once you've clicked confirm</p>
     <h1>You're confirmed — welcome aboard.</h1>
     <p class="lead">Quarterly location-sound notes from Asia-Pacific are on their way to your inbox.</p>
     <div class="btns">
