@@ -198,6 +198,12 @@ function buildMapInner(rows, opts){
     s+='<g class="pin" data-t="'+d.title+'"><circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
+
+  // Watermark: baked into the SVG itself so it travels with any
+  // screenshot or saved image, unlike an on-page caption that's easy
+  // to crop out.
+  s+='<text x="12" y="'+(H-12)+'" text-anchor="start" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="1" fill="#1e3a2f" fill-opacity="0.38">schurrsound.com/wild-track</text>';
+
   return s;
 }
 
