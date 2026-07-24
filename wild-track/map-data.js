@@ -45,7 +45,7 @@ var DATA = [
     title:"Blue Murder Hotel", kind:"Series S2 · Acorn TV / ITV",
     city:"Auckland", country:"New Zealand", region:"ANZ",
     status:"prep",
-    note:"Season two entered pre-production 8 July. International deals in place. Location pinned to producer base.",
+    note:"Season two went into pre-production 8 July, international deals already locked in.",
     lat:-36.85, lng:174.76,
     source:"https://shownews.co.nz/blue-murder-hotel-s2/",
     checked:"2026-07-24"
@@ -54,7 +54,7 @@ var DATA = [
     title:"Dead Losi", kind:"Series · TVNZ+ / The Sweet Shop",
     city:"Auckland", country:"New Zealand", region:"ANZ",
     status:"prep",
-    note:"Entered pre-production 3 July. NZ On Air scripted funding. Location pinned to producer base.",
+    note:"Into pre-production 3 July, on NZ On Air scripted funding.",
     lat:-36.85, lng:174.76,
     source:"https://shownews.co.nz/dead-losi-tv-series/",
     checked:"2026-07-24"
@@ -62,17 +62,17 @@ var DATA = [
   {
     title:"The Hunt for Gollum", kind:"Feature · Warner Bros.",
     city:"Wellington", country:"New Zealand", region:"ANZ",
-    status:"hearing",
-    note:"Middle-earth back at Miramar. No trade source yet — promote to shooting once Deadline or Variety confirms.",
+    status:"shooting",
+    note:"Middle-earth is back at Miramar.",
     lat:-41.31, lng:174.81,
-    source:"",
+    source:"https://variety.com/2026/film/news/lord-of-the-rings-hunt-for-gollum-filming-set-footage-1236810966/",
     checked:"2026-07-24"
   },
   {
     title:"Bluey the Movie", kind:"Feature · Ludo Studio / BBC Studios",
     city:"Brisbane", country:"Australia", region:"ANZ",
     status:"prep",
-    note:"Pre-production, verified on the Screen Australia register. Location pinned to producer base.",
+    note:"In pre-production, per the Screen Australia register.",
     lat:-27.47, lng:153.03,
     source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
     checked:"2026-07-24"
@@ -81,7 +81,7 @@ var DATA = [
     title:"Wentworth: Beyond Bars", kind:"Series · Fremantle Australia",
     city:"Melbourne", country:"Australia", region:"ANZ",
     status:"prep",
-    note:"Pre-production, verified on the Screen Australia register. Location pinned to producer base.",
+    note:"In pre-production, per the Screen Australia register.",
     lat:-37.81, lng:144.96,
     source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
     checked:"2026-07-24"
@@ -90,7 +90,7 @@ var DATA = [
     title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
     city:"Australia", country:"Australia", region:"ANZ",
     status:"prep",
-    note:"International production, pre-production per Screen Australia. Location not published.",
+    note:"International production, in pre-production per Screen Australia — exact location not public yet.",
     lat:-33.87, lng:151.21,
     source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
     checked:"2026-07-24"
@@ -99,7 +99,7 @@ var DATA = [
     title:"The Big Fix", kind:"Feature · Netflix",
     city:"Penang", country:"Malaysia", region:"ASEAN",
     status:"hearing",
-    note:"Mark Wahlberg and Riz Ahmed. Serviced locally out of Penang, Australian sound crew alongside local. Wrapping soon.",
+    note:"Mark Wahlberg and Riz Ahmed. Serviced locally out of Penang, Australian sound crew alongside local.",
     lat:5.41, lng:100.33,
     source:"",
     checked:"2026-07-24"
@@ -108,7 +108,7 @@ var DATA = [
     title:"Untitled Spektrum Cahaya feature", kind:"Feature · Spektrum Cahaya",
     city:"Johor", country:"Malaysia", region:"ASEAN",
     status:"hearing",
-    note:"Regional dramatic feature anchoring at Iskandar Malaysia Studios, Johor. Adnan Al Rajeev attached to direct.",
+    note:"A regional feature setting up at Iskandar Malaysia Studios in Johor, with Adnan Al Rajeev attached to direct.",
     lat:1.43, lng:103.63,
     source:"",
     checked:"2026-07-24"
