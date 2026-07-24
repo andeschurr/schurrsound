@@ -17,7 +17,8 @@
   h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;font-weight:600;
      letter-spacing:.5px;color:var(--green);margin:0 0 4px}
   .sub{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
-  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .sticky-top{position:sticky;top:0;z-index:10;background:var(--bg);padding-top:2px;margin:0 -18px;padding-left:18px;padding-right:18px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding-top:10px}
   .filters button{font:inherit;font-size:12px;letter-spacing:1px;text-transform:uppercase;
     padding:7px 14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);
     border-radius:20px;cursor:pointer;transition:.15s}
@@ -29,9 +30,9 @@
   .clabel{font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;fill:#7f8f7c;
     pointer-events:none;text-anchor:middle}
   .pin{cursor:pointer}
-  .pin circle{stroke:#fffdf8;stroke-width:2.2;transition:.15s}
-  .pin:hover circle,.pin.on circle{stroke:var(--green);stroke-width:3}
-  .pinnum{font-size:10px;font-weight:700;fill:#fff;pointer-events:none;text-anchor:middle}
+  .pin circle{stroke:#fffdf8;stroke-width:2.6;transition:transform .15s ease,stroke-width .15s ease;transform-box:fill-box;transform-origin:center}
+  .pin:hover circle,.pin.on circle{stroke:var(--green);stroke-width:4.5;transform:scale(1.35)}
+  .pinnum{font-size:11px;font-weight:700;fill:#fff;pointer-events:none;text-anchor:middle}
   .base{fill:none;stroke:var(--green);stroke-width:1.6;stroke-dasharray:3 3}
   .baselab{font-size:10px;font-weight:600;letter-spacing:1px;fill:var(--green);text-anchor:middle}
   .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11.5px;color:var(--mute);
@@ -138,13 +139,15 @@ const DATA = [
 ];
 </script>
 
-  <div class="filters" id="filters"></div>
-  <div class="mapcard">
-    <svg id="map" viewBox="0 0 940 560" role="img" aria-label="Asia-Pacific production map"></svg>
-    <div class="legend">
-      <span><i class="dot" style="background:var(--shoot)"></i>Shooting now</span>
-      <span><i class="dot" style="background:var(--prep)"></i>Pre-production</span>
-      <span><i class="dot" style="background:var(--hear)"></i>Also hearing</span>
+  <div class="sticky-top">
+    <div class="filters" id="filters"></div>
+    <div class="mapcard">
+      <svg id="map" viewBox="0 0 940 560" role="img" aria-label="Asia-Pacific production map"></svg>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--shoot)"></i>Shooting now</span>
+        <span><i class="dot" style="background:var(--prep)"></i>Pre-production</span>
+        <span><i class="dot" style="background:var(--hear)"></i>Also hearing</span>
+      </div>
     </div>
   </div>
   <ol id="list"></ol>
@@ -228,7 +231,7 @@ function render(){
 
   rows.forEach(function(d){
     var x=X(d.lng), y=Y(d.lat), n=ns.get(d.title);
-    s+='<g class="pin" data-t="'+d.title+'"><circle cx="'+x+'" cy="'+y+'" r="13" fill="'+COLORS[d.status]+'"/>';
+    s+='<g class="pin" data-t="'+d.title+'"><circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
   svg.innerHTML=s;
@@ -246,11 +249,18 @@ function render(){
   var link=function(t,on){
     document.querySelectorAll('[data-t="'+CSS.escape(t)+'"]').forEach(function(e){e.classList.toggle('on',on);});
   };
+  var selected=null;
+  var select=function(t){
+    if(selected) link(selected,false);
+    selected=t;
+    link(t,true);
+  };
   document.querySelectorAll('.pin,li[data-t]').forEach(function(el){
     var t=el.dataset.t;
     el.onmouseenter=function(){link(t,true);};
-    el.onmouseleave=function(){link(t,false);};
+    el.onmouseleave=function(){if(t!==selected) link(t,false);};
     el.onclick=function(){
+      select(t);
       var target=document.querySelector('li[data-t="'+CSS.escape(t)+'"]');
       if(target) target.scrollIntoView({behavior:'smooth',block:'center'});
     };
