@@ -2,8 +2,12 @@
   "name": "wild-track-tools",
   "version": "1.0.0",
   "private": true,
-  "description": "Regenerates the email's shooting/prep/hearing list for The Wild Track from wild-track/map-data.js",
+  "description": "Regenerates The Wild Track's email list and social-share image from wild-track/map-data.js",
   "scripts": {
-    "generate": "node generate-map-assets.js"
+    "generate": "node generate-map-assets.js",
+    "generate:og": "node generate-og-image.js"
+  },
+  "dependencies": {
+    "sharp": "^0.35.3"
   }
 }
