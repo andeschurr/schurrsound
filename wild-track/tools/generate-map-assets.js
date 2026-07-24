@@ -31,22 +31,24 @@ function buildEmailListHTML() {
   const card = (d) => {
     const color = COLORS[d.status];
     const parts = [d.kind, d.city].filter(Boolean);
-    const note = d.note
-      ? `<div style="font-family:Georgia, serif; font-size:12px; font-style:italic; line-height:17px; color:#8a887e; margin-top:4px;">${d.note}</div>`
-      : '';
     // "hearing" entries never carry a source per the no-public-source rule
-    // in map-data.js, so this naturally omits the link for them too.
-    const source = d.source
-      ? `<div style="margin-top:4px;"><a href="${d.source}" style="font-family:Helvetica, Arial, sans-serif; font-size:11px; color:${color};" target="_blank">Source</a></div>`
+    // in map-data.js, so this naturally omits the link for them too. Tacked
+    // onto the end of the note (or meta line, if there's no note) instead
+    // of its own line, to save vertical space.
+    const sourceLink = d.source
+      ? ` &nbsp;·&nbsp; <a href="${d.source}" style="color:${color};" target="_blank">Source</a>`
+      : '';
+    const metaLine = `<div style="font-family:Helvetica, Arial, sans-serif; font-size:12px; color:#6b6a63; margin-top:2px;">${parts.join(' &nbsp;·&nbsp; ')}${d.note ? '' : sourceLink}</div>`;
+    const note = d.note
+      ? `<div style="font-family:Georgia, serif; font-size:12px; font-style:italic; line-height:17px; color:#8a887e; margin-top:4px;">${d.note}${sourceLink}</div>`
       : '';
     return `        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
         <tr>
           <td width="4" style="background-color:${color}; border-radius:3px 0 0 3px;">&nbsp;</td>
           <td style="background-color:#ffffff; border:1px solid #e4ddc9; border-left:0; border-radius:0 5px 5px 0; padding:9px 12px;">
             <div style="font-family:Georgia, serif; font-size:14px; line-height:19px; color:#1e3a2f;"><strong>${ns.get(d.title)}&nbsp; ${d.title}</strong></div>
-            <div style="font-family:Helvetica, Arial, sans-serif; font-size:12px; color:#6b6a63; margin-top:2px;">${parts.join(' &nbsp;·&nbsp; ')}</div>
+            ${metaLine}
             ${note}
-            ${source}
           </td>
         </tr>
         </table>`;
