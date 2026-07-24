@@ -19,6 +19,7 @@
    lat/lng: right-click any point in Google Maps.
    ══════════════════════════════════════════════════════════════════════════ */
 
+(function(){
 var UPDATED = "24 July 2026";
 
 var DATA = [
@@ -118,7 +119,7 @@ function Y(l){ return (LAT0-l)/(LAT0-LAT1)*H; }
 function buildMapInner(rows, opts){
   opts = opts || {};
   var showLabels = opts.showLabels !== false;
-  var ns = new Map(DATA.map(function(d,i){ return [d.title, i+1]; }));
+  var ns = opts.ns || new Map(DATA.map(function(d,i){ return [d.title, i+1]; }));
   var s = '';
 
   LAND.forEach(function(item){
@@ -153,3 +154,4 @@ if (typeof module !== 'undefined' && module.exports) {
 } else {
   window.WildTrackMap = api;
 }
+})();

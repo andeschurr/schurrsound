@@ -16,10 +16,21 @@ const WILD_TRACK_DIR = path.join(__dirname, '..');
 const PNG_OUT = path.join(WILD_TRACK_DIR, 'wildtrack_map_static.png');
 const EMAIL_FILE = path.join(WILD_TRACK_DIR, 'ep1-email.html');
 
+// Email is a static, one-time snapshot to a wide audience -- unlike the
+// live filterable map, it only ever shows "shooting" + "prep" (never
+// "hearing", which has no public source). Numbered sequentially within
+// that subset so the PNG's pin numbers always match the text list below
+// it -- they intentionally do NOT match the live map's pin numbers.
+const EMAIL_ROWS = [
+  ...DATA.filter(d => d.status === 'shooting'),
+  ...DATA.filter(d => d.status === 'prep'),
+];
+const EMAIL_NS = new Map(EMAIL_ROWS.map((d, i) => [d.title, i + 1]));
+
 // --- 1. Static PNG, rendered from the same buildMapInner() the live map uses ---
 function renderPNG() {
   const scale = 2; // retina
-  const inner = buildMapInner(DATA, { showLabels: true });
+  const inner = buildMapInner(EMAIL_ROWS, { showLabels: true, ns: EMAIL_NS });
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * scale}" height="${H * scale}">
     <rect width="${W}" height="${H}" fill="#efece3"/>
     <style>
@@ -41,14 +52,13 @@ function renderPNG() {
 
 // --- 2. Email HTML list block, grouped shooting / prep (hearing omitted, no public source) ---
 function buildEmailListHTML() {
-  const ns = new Map(DATA.map((d, i) => [d.title, i + 1]));
   const row = (d) => {
     const parts = [d.kind.split('·')[1] ? d.kind.split('·')[1].trim() : d.kind, d.city].filter(Boolean);
-    return `        <strong style="color:#1e3a2f;">${ns.get(d.title)}&nbsp;${d.title}</strong>, ${parts.join(', ')}`;
+    return `        <strong style="color:#1e3a2f;">${EMAIL_NS.get(d.title)}&nbsp;${d.title}</strong>, ${parts.join(', ')}`;
   };
 
-  const shooting = DATA.filter(d => d.status === 'shooting');
-  const prep = DATA.filter(d => d.status === 'prep');
+  const shooting = EMAIL_ROWS.filter(d => d.status === 'shooting');
+  const prep = EMAIL_ROWS.filter(d => d.status === 'prep');
 
   let html = '';
   if (shooting.length) {
