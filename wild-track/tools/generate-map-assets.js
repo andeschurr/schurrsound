@@ -34,6 +34,11 @@ function buildEmailListHTML() {
     const note = d.note
       ? `<div style="font-family:Georgia, serif; font-size:12px; font-style:italic; line-height:17px; color:#8a887e; margin-top:4px;">${d.note}</div>`
       : '';
+    // "hearing" entries never carry a source per the no-public-source rule
+    // in map-data.js, so this naturally omits the link for them too.
+    const source = d.source
+      ? `<div style="margin-top:4px;"><a href="${d.source}" style="font-family:Helvetica, Arial, sans-serif; font-size:11px; color:${color};" target="_blank">Source</a></div>`
+      : '';
     return `        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
         <tr>
           <td width="4" style="background-color:${color}; border-radius:3px 0 0 3px;">&nbsp;</td>
@@ -41,6 +46,7 @@ function buildEmailListHTML() {
             <div style="font-family:Georgia, serif; font-size:14px; line-height:19px; color:#1e3a2f;"><strong>${ns.get(d.title)}&nbsp; ${d.title}</strong></div>
             <div style="font-family:Helvetica, Arial, sans-serif; font-size:12px; color:#6b6a63; margin-top:2px;">${parts.join(' &nbsp;·&nbsp; ')}</div>
             ${note}
+            ${source}
           </td>
         </tr>
         </table>`;
