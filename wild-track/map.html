@@ -132,7 +132,13 @@ function render(){
     el.onclick=function(){
       select(t);
       var target=document.querySelector('li[data-t="'+CSS.escape(t)+'"]');
-      if(target) target.scrollIntoView({behavior:'smooth',block:'center'});
+      var sticky=document.querySelector('.sticky-top');
+      if(target && sticky){
+        target.style.scrollMarginTop=(sticky.offsetHeight+14)+'px';
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      } else if(target){
+        target.scrollIntoView({behavior:'smooth',block:'center'});
+      }
     };
   });
 }

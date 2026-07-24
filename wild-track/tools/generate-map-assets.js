@@ -1,79 +1,57 @@
 #!/usr/bin/env node
 /*
- * Regenerates the static map PNG (for the email) and the "what's
- * shooting" list block inside ep1-email.html, both from the single
- * DATA list in wild-track/map-data.js.
+ * Regenerates the "what's shooting" list block inside ep1-email.html
+ * from the single DATA list in wild-track/map-data.js. Text only --
+ * no map image. The live interactive map (wild-track/map.html) reads
+ * DATA directly and needs no regeneration step.
  *
  * Run before sending each issue:
  *   cd wild-track/tools && node generate-map-assets.js
  */
 const fs = require('fs');
 const path = require('path');
-const sharp = require('sharp');
-const { DATA, COLORS, LABELS, buildMapInner, W, H } = require('../map-data.js');
+const { DATA, COLORS, LABELS } = require('../map-data.js');
 
 const WILD_TRACK_DIR = path.join(__dirname, '..');
-const PNG_OUT = path.join(WILD_TRACK_DIR, 'wildtrack_map_static.png');
 const EMAIL_FILE = path.join(WILD_TRACK_DIR, 'ep1-email.html');
 
-// Email is a static, one-time snapshot to a wide audience -- unlike the
-// live filterable map, it only ever shows "shooting" + "prep" (never
-// "hearing", which has no public source). Numbered sequentially within
-// that subset so the PNG's pin numbers always match the text list below
-// it -- they intentionally do NOT match the live map's pin numbers.
-const EMAIL_ROWS = [
-  ...DATA.filter(d => d.status === 'shooting'),
-  ...DATA.filter(d => d.status === 'prep'),
+const GROUPS = [
+  { status: 'shooting', label: 'Shooting now' },
+  { status: 'prep', label: 'In pre-production' },
+  { status: 'hearing', label: 'Also hearing' },
 ];
-const EMAIL_NS = new Map(EMAIL_ROWS.map((d, i) => [d.title, i + 1]));
 
-// --- 1. Static PNG, rendered from the same buildMapInner() the live map uses ---
-function renderPNG() {
-  const scale = 2; // retina
-  const inner = buildMapInner(EMAIL_ROWS, { showLabels: true, ns: EMAIL_NS });
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * scale}" height="${H * scale}">
-    <rect width="${W}" height="${H}" fill="#efece3"/>
-    <style>
-      .land{fill:#dde5d8;stroke:#b3c2ae;stroke-width:.8}
-      .clabel{font-family:Helvetica,Arial,sans-serif;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;fill:#7f8f7c;text-anchor:middle}
-      .base{fill:none;stroke:#1e3a2f;stroke-width:1.6;stroke-dasharray:3 3}
-      .baselab{font-family:Helvetica,Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;fill:#1e3a2f;text-anchor:middle}
-      .pinnum{font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;fill:#fff;text-anchor:middle}
-    </style>
-    ${inner}
-  </svg>`;
-
-  return sharp(Buffer.from(svg))
-    .resize(W * scale, H * scale)
-    .png()
-    .toFile(PNG_OUT)
-    .then(() => console.log('wrote', path.relative(process.cwd(), PNG_OUT)));
-}
-
-// --- 2. Email HTML list block, grouped shooting / prep (hearing omitted, no public source) ---
 function buildEmailListHTML() {
-  const row = (d) => {
-    const parts = [d.kind.split('·')[1] ? d.kind.split('·')[1].trim() : d.kind, d.city].filter(Boolean);
-    return `        <strong style="color:#1e3a2f;">${EMAIL_NS.get(d.title)}&nbsp;${d.title}</strong>, ${parts.join(', ')}`;
+  // Numbered sequentially in the order the email displays them (grouped
+  // by status), not DATA's raw index -- there's no map pin to stay in
+  // sync with here, so out-of-order numbers would just look like a typo.
+  const displayOrder = GROUPS.flatMap(({ status }) => DATA.filter((d) => d.status === status));
+  const ns = new Map(displayOrder.map((d, i) => [d.title, i + 1]));
+
+  const card = (d) => {
+    const color = COLORS[d.status];
+    const parts = [d.kind, d.city].filter(Boolean);
+    const note = d.note
+      ? `<div style="font-family:Georgia, serif; font-size:12px; font-style:italic; line-height:17px; color:#8a887e; margin-top:4px;">${d.note}</div>`
+      : '';
+    return `        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+        <tr>
+          <td width="4" style="background-color:${color}; border-radius:3px 0 0 3px;">&nbsp;</td>
+          <td style="background-color:#ffffff; border:1px solid #e4ddc9; border-left:0; border-radius:0 5px 5px 0; padding:9px 12px;">
+            <div style="font-family:Georgia, serif; font-size:14px; line-height:19px; color:#1e3a2f;"><strong>${ns.get(d.title)}&nbsp; ${d.title}</strong></div>
+            <div style="font-family:Helvetica, Arial, sans-serif; font-size:12px; color:#6b6a63; margin-top:2px;">${parts.join(' &nbsp;·&nbsp; ')}</div>
+            ${note}
+          </td>
+        </tr>
+        </table>`;
   };
 
-  const shooting = EMAIL_ROWS.filter(d => d.status === 'shooting');
-  const prep = EMAIL_ROWS.filter(d => d.status === 'prep');
-
-  let html = '';
-  if (shooting.length) {
-    html += `      <div style="font-family:Helvetica, Arial, sans-serif; font-size:10.5px; letter-spacing:1.5px; color:#8a763a; text-transform:uppercase; border-bottom:1px solid #cbd6c9; padding-bottom:3px; margin-bottom:4px;">Shooting now</div>\n`;
-    html += `      <div style="font-family:Georgia, serif; font-size:13.5px; line-height:22px; color:#2c2c28;">\n`;
-    html += shooting.map(row).join('<br>\n') + '\n';
-    html += `      </div>\n`;
-  }
-  if (prep.length) {
-    html += `      <div style="font-family:Helvetica, Arial, sans-serif; font-size:10.5px; letter-spacing:1.5px; color:#1d6a5a; text-transform:uppercase; border-bottom:1px solid #cbd6c9; padding-bottom:3px; margin:10px 0 4px;">In preproduction, gearing up</div>\n`;
-    html += `      <div style="font-family:Georgia, serif; font-size:13.5px; line-height:22px; color:#2c2c28;">\n`;
-    html += prep.map(row).join('<br>\n') + '\n';
-    html += `      </div>\n`;
-  }
-  return html;
+  return GROUPS.map(({ status, label }) => {
+    const rows = DATA.filter((d) => d.status === status);
+    if (!rows.length) return '';
+    return `      <div style="font-family:Helvetica, Arial, sans-serif; font-size:10.5px; letter-spacing:1.5px; color:${COLORS[status]}; text-transform:uppercase; border-bottom:1px solid #cbd6c9; padding-bottom:3px; margin:14px 0 8px;">${label}</div>
+${rows.map(card).join('\n')}`;
+  }).filter(Boolean).join('\n');
 }
 
 function updateEmailHTML() {
@@ -85,14 +63,10 @@ function updateEmailHTML() {
   if (startIdx === -1 || endIdx === -1) {
     throw new Error('MAP-DATA markers not found in ' + EMAIL_FILE);
   }
-  const img = `      <img src="https://schurrsound.com/wild-track/wildtrack_map_static.png" alt="Asia-Pacific map with numbered production pins" width="280" style="display:block; width:280px; max-width:100%; height:auto; border:0; border-radius:6px; margin:0 auto 10px;">\n`;
-  const legend = `      <div style="font-family:Helvetica, Arial, sans-serif; font-size:11px; color:#6b6a63; margin-bottom:8px;">&#9679; <span style="color:#8a763a;">shooting now</span> &nbsp;&nbsp; &#9679; <span style="color:#1d6a5a;">in preproduction</span></div>\n`;
-  const body = img + legend + buildEmailListHTML();
-  const next = src.slice(0, startIdx + start.length) + '\n' + body + '      ' + src.slice(endIdx);
+  const body = buildEmailListHTML();
+  const next = src.slice(0, startIdx + start.length) + '\n' + body + '\n      ' + src.slice(endIdx);
   fs.writeFileSync(EMAIL_FILE, next);
   console.log('updated', path.relative(process.cwd(), EMAIL_FILE));
 }
 
-renderPNG()
-  .then(updateEmailHTML)
-  .catch((err) => { console.error(err); process.exit(1); });
+updateEmailHTML();

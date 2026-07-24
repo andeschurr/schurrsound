@@ -1,11 +1,11 @@
 /* ══════════════════════════════════════════════════════════════════════════
    THE WILD TRACK — production map data.
    Single source of truth for both the live interactive map (map.html)
-   and the static PNG + email list (tools/generate-map-assets.js).
+   and the email's shooting/prep/hearing list (tools/generate-map-assets.js).
 
    Edit only the DATA array below, then run:
      cd wild-track/tools && node generate-map-assets.js
-   to regenerate wildtrack_map_static.png and the email's issue list.
+   to regenerate the email's issue list.
 
    status:  "shooting" = cameras rolling now
             "prep"     = pre-production, confirmed, not yet rolling
@@ -116,10 +116,10 @@ var DATA = [
   {
     title:"Fog City", kind:"Feature",
     city:"Melbourne", country:"Australia", region:"ANZ",
-    status:"hearing",
-    note:"Shooting at Docklands Studios. Heard on the rental floor.",
+    status:"shooting",
+    note:"Melbourne standing in for San Francisco. Shooting at Docklands Studios, confirmed by VicScreen.",
     lat:-37.81, lng:144.94,
-    source:"",
+    source:"https://vicscreen.vic.gov.au/news/melbourne-transforms-into-san-francisco-in-new-feature-fog-city",
     checked:"2026-07-24"
   }
 ];
@@ -163,7 +163,7 @@ function Y(l){ return (LAT0-l)/(LAT0-LAT1)*H; }
 function buildMapInner(rows, opts){
   opts = opts || {};
   var showLabels = opts.showLabels !== false;
-  var ns = opts.ns || new Map(DATA.map(function(d,i){ return [d.title, i+1]; }));
+  var ns = new Map(DATA.map(function(d,i){ return [d.title, i+1]; }));
   var s = '';
 
   LAND.forEach(function(item){
