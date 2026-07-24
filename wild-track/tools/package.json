@@ -1,0 +1,12 @@
+{
+  "name": "wild-track-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Regenerates the static map PNG and email list for The Wild Track from wild-track/map-data.js",
+  "scripts": {
+    "generate": "node generate-map-assets.js"
+  },
+  "dependencies": {
+    "sharp": "^0.35.3"
+  }
+}
