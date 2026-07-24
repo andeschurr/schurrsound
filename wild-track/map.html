@@ -40,15 +40,15 @@
   .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:-1px}
   ol{list-style:none;margin:0;padding:0}
   li{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--line);
-     border-radius:8px;padding:12px 15px;margin-bottom:9px;transition:.15s}
+     border-radius:8px;padding:18px 20px;margin-bottom:14px;transition:.15s}
   li.on{box-shadow:0 1px 10px rgba(30,58,47,.13)}
   li[data-status="shooting"]{border-left-color:var(--shoot)}
   li[data-status="prep"]{border-left-color:var(--prep)}
   li[data-status="hearing"]{border-left-color:var(--hear)}
-  .t{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;color:var(--green);font-weight:600}
+  .t{font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;color:var(--green);font-weight:600}
   .n{display:inline-block;min-width:20px;font-size:11px;font-weight:700;color:var(--mute)}
-  .meta{font-size:13px;margin-top:3px}
-  .note{font-size:12.5px;color:var(--mute);margin-top:3px}
+  .meta{font-size:13.5px;margin-top:6px}
+  .note{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.55}
   .tag{display:inline-block;font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;
     padding:2px 7px;border-radius:3px;margin-left:7px;vertical-align:2px;color:#fff}
   a{color:var(--green)}
@@ -132,13 +132,16 @@ function render(){
     el.onclick=function(){
       select(t);
       var target=document.querySelector('li[data-t="'+CSS.escape(t)+'"]');
+      if(!target) return;
+      // Scroll only this window's own viewport -- Element.scrollIntoView()
+      // cascades up through the parent frame when this page is embedded
+      // in the newsletter's iframe, which drags the OUTER page's scroll
+      // too and lets its sticky nav cover the map. window.scrollTo stays
+      // confined to this document.
       var sticky=document.querySelector('.sticky-top');
-      if(target && sticky){
-        target.style.scrollMarginTop=(sticky.offsetHeight+14)+'px';
-        target.scrollIntoView({behavior:'smooth',block:'start'});
-      } else if(target){
-        target.scrollIntoView({behavior:'smooth',block:'center'});
-      }
+      var offset=(sticky?sticky.offsetHeight:0)+14;
+      var y=target.getBoundingClientRect().top+window.pageYOffset-offset;
+      window.scrollTo({top:y,behavior:'smooth'});
     };
   });
 }
