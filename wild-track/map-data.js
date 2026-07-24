@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   THE WILD TRACK — production map data.
+   THE WILD TRACK · production map data.
    Single source of truth for both the live interactive map (map.html)
    and the email's shooting/prep/hearing list (tools/generate-map-assets.js).
 
@@ -99,7 +99,7 @@ var DATA = [
     title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
     city:"Australia", country:"Australia", region:"ANZ",
     status:"prep",
-    note:"International production, in pre-production per Screen Australia — exact location not public yet.",
+    note:"International production, in pre-production per Screen Australia. Exact location isn't public yet.",
     lat:-33.87, lng:151.21,
     source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
     checked:"2026-07-24"
@@ -166,7 +166,7 @@ var W=940, H=560, LNG0=90, LNG1=182, LAT0=48, LAT1=-50;
 function X(l){ return (l-LNG0)/(LNG1-LNG0)*W; }
 function Y(l){ return (LAT0-l)/(LAT0-LAT1)*H; }
 
-/* Pure SVG-string builder — no DOM, works in browser and Node.
+/* Pure SVG-string builder, no DOM, works in browser and Node.
    rows: filtered/ordered array of DATA entries to plot.
    opts.showLabels: draw country name labels (on by default). */
 function buildMapInner(rows, opts){
