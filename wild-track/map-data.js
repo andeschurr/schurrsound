@@ -47,7 +47,7 @@ var DATA = [
     status:"prep",
     note:"Season two went into pre-production 8 July, international deals already locked in.",
     lat:-36.85, lng:174.76,
-    source:"https://shownews.co.nz/blue-murder-hotel-s2/",
+    source:"https://www.instagram.com/p/DXJaQtEGdzY/",
     checked:"2026-07-24"
   },
   {
@@ -120,6 +120,15 @@ var DATA = [
     note:"Melbourne standing in for San Francisco. Shooting at Docklands Studios, confirmed by VicScreen.",
     lat:-37.81, lng:144.94,
     source:"https://vicscreen.vic.gov.au/news/melbourne-transforms-into-san-francisco-in-new-feature-fog-city",
+    checked:"2026-07-24"
+  },
+  {
+    title:"Crazy Rich Asians", kind:"Series · Max / Warner Bros. Television",
+    city:"Singapore", country:"Singapore", region:"ASEAN",
+    status:"prep",
+    note:"The series continuation, reuniting Jon M. Chu and Adele Lim from the original film. Principal photography begins 11 January 2027, split between New York and Singapore.",
+    lat:1.35, lng:103.82,
+    source:"https://www.productionlist.com/crazy-rich-asians-series-heading-to-max-with-jon-m-chu-and-adele-lim-filming-in-new-york-and-singapore",
     checked:"2026-07-24"
   }
 ];
