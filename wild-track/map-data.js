@@ -34,19 +34,82 @@ var DATA = [
   },
   {
     title:"Queenstown", kind:"Series · Netflix",
-    city:"Queenstown, NZ", country:"New Zealand", region:"ANZ",
+    city:"Queenstown", country:"New Zealand", region:"ANZ",
     status:"shooting",
-    note:"Eight episodes, running to Christmas. First Netflix series commissioned out of ANZ to be set and filmed in New Zealand. Around 450 cast and crew jobs. Glendyn Ivin and Roseanne Liang directing.",
+    note:"Eight episodes running to Christmas. First Netflix series commissioned out of ANZ to be set and filmed in New Zealand. Around 450 cast and crew jobs. Glendyn Ivin and Roseanne Liang directing.",
     lat:-45.03, lng:168.66,
     source:"https://deadline.com/2026/07/netflix-queenstown-rufus-sewell-frances-oconnor-show-cast-1236984382/",
     checked:"2026-07-24"
   },
   {
-    title:"The Big Fix", kind:"Feature · Netflix / Chernin",
-    city:"Malaysia + Australia", country:"Malaysia", region:"ASEAN",
+    title:"Blue Murder Hotel", kind:"Series S2 · Acorn TV / ITV",
+    city:"Auckland", country:"New Zealand", region:"ANZ",
+    status:"prep",
+    note:"Season two entered pre-production 8 July. International deals in place. Location pinned to producer base.",
+    lat:-36.85, lng:174.76,
+    source:"https://shownews.co.nz/blue-murder-hotel-s2/",
+    checked:"2026-07-24"
+  },
+  {
+    title:"Dead Losi", kind:"Series · TVNZ+ / The Sweet Shop",
+    city:"Auckland", country:"New Zealand", region:"ANZ",
+    status:"prep",
+    note:"Entered pre-production 3 July. NZ On Air scripted funding. Location pinned to producer base.",
+    lat:-36.85, lng:174.76,
+    source:"https://shownews.co.nz/dead-losi-tv-series/",
+    checked:"2026-07-24"
+  },
+  {
+    title:"The Hunt for Gollum", kind:"Feature · Warner Bros.",
+    city:"Wellington", country:"New Zealand", region:"ANZ",
     status:"hearing",
-    note:"Wahlberg and Riz Ahmed. Australian sound crew alongside local. Wrapping soon.",
-    lat:3.6, lng:101.9,
+    note:"Middle-earth back at Miramar. No trade source yet — promote to shooting once Deadline or Variety confirms.",
+    lat:-41.31, lng:174.81,
+    source:"",
+    checked:"2026-07-24"
+  },
+  {
+    title:"Bluey the Movie", kind:"Feature · Ludo Studio / BBC Studios",
+    city:"Brisbane", country:"Australia", region:"ANZ",
+    status:"prep",
+    note:"Pre-production, verified on the Screen Australia register. Location pinned to producer base.",
+    lat:-27.47, lng:153.03,
+    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
+    checked:"2026-07-24"
+  },
+  {
+    title:"Wentworth: Beyond Bars", kind:"Series · Fremantle Australia",
+    city:"Melbourne", country:"Australia", region:"ANZ",
+    status:"prep",
+    note:"Pre-production, verified on the Screen Australia register. Location pinned to producer base.",
+    lat:-37.81, lng:144.96,
+    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
+    checked:"2026-07-24"
+  },
+  {
+    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
+    city:"Australia", country:"Australia", region:"ANZ",
+    status:"prep",
+    note:"International production, pre-production per Screen Australia. Location not published.",
+    lat:-33.87, lng:151.21,
+    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
+    checked:"2026-07-24"
+  },
+  {
+    title:"The Big Fix", kind:"Feature · Netflix",
+    city:"Penang", country:"Malaysia", region:"ASEAN",
+    status:"hearing",
+    note:"Mark Wahlberg and Riz Ahmed. Serviced locally out of Penang, Australian sound crew alongside local. Wrapping soon.",
+    lat:5.41, lng:100.33,
+    source:"",
+    checked:"2026-07-24"
+  },
+  {
+    title:"Untitled Spektrum Cahaya feature", kind:"Feature · Spektrum Cahaya",
+    city:"Johor", country:"Malaysia", region:"ASEAN",
+    status:"hearing",
+    note:"Regional dramatic feature anchoring at Iskandar Malaysia Studios, Johor. Adnan Al Rajeev attached to direct.",
+    lat:1.43, lng:103.63,
     source:"",
     checked:"2026-07-24"
   },
@@ -58,26 +121,7 @@ var DATA = [
     lat:-37.81, lng:144.94,
     source:"",
     checked:"2026-07-24"
-  },
-  {
-    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
-    city:"Australia", country:"Australia", region:"ANZ",
-    status:"prep",
-    note:"International production, pre-production per Screen Australia. Location not yet published.",
-    lat:-33.87, lng:151.21,
-    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
-    checked:"2026-07-24"
   }
-
-  /* ── HOLDING PEN — verify before promoting ──────────────────────────────
-     Maui and Elvis   ANZ, In Production at IF Magazine. Need city + status.
-     A Remarkable Place to Die S2   NZ South Island, reported from Oct. Need source.
-     First Doctor / Granny          Netflix Seoul. Unverified.
-     ── CUT, do not reinstate ──────────────────────────────────────────────
-     Gundam   Wrapped late July.        John Rambo  Wrapped, in post.
-     Khadam   Released this month.      NZ Spy      Wrapped.
-     Planet of the Apes   Aggregator dev-listing only, unchanged since Feb 2025.
-     ──────────────────────────────────────────────────────────────────── */
 ];
 
 /* simplified coastlines: [label, [[lng,lat],...], showLabel] */
