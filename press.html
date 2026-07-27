@@ -4,7 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Press &middot; Ande Schurr | Schurr Sound</title>
-<meta name="description" content="Video interviews, features and podcasts on the sound of Lord of the Flies (Netflix/BBC) and recent international work by Ande Schurr, Emmy-nominated production sound mixer.">
+<meta name="description" content="Video interviews, podcasts and features on the sound of Lord of the Flies (Netflix/BBC) and recent international work by Ande Schurr, Emmy-nominated production sound mixer.">
+<link rel="canonical" href="https://schurrsound.com/press">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Schurr Sound">
+<meta property="og:title" content="Press &middot; Ande Schurr, Emmy-nominated production sound mixer">
+<meta property="og:description" content="Video interviews, podcasts and features on the sound of Lord of the Flies (Netflix/BBC).">
+<meta property="og:url" content="https://schurrsound.com/press">
+<meta property="og:image" content="https://schurrsound.com/assets/og-press.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -25,37 +33,85 @@
   .nav-links{display:flex;gap:28px;list-style:none}
   .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
   .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
-  .nav-sub{border-top:1px solid var(--line)}
-  .nav-sub-in{display:flex;justify-content:flex-end;gap:10px;height:44px;align-items:center}
-  .nav-sub a{text-decoration:none;font-size:12px;letter-spacing:.08em;color:var(--grey);text-transform:uppercase;padding:6px 12px;border-radius:4px;transition:background .15s ease,color .15s ease}
-  .nav-sub a:hover{background:rgba(184,161,92,.14);color:var(--green)}
-  .nav-sub a.wt{color:var(--gold);font-weight:600}
-  .nav-sub a.wt:hover{background:rgba(184,161,92,.2);color:var(--green-deep)}
-  .nav-sub a.active{color:var(--green);background:rgba(184,161,92,.14)}
-  @media(max-width:560px){ .nav-sub-in{justify-content:center} .nav-links{gap:16px} }
+  .nav-links a.active{color:var(--green);border-bottom:2px solid var(--gold)}
+  .nav-sub{border-top:1px solid var(--line);background:#fdfcf7}
+  .nav-sub-in{display:flex;justify-content:space-between;align-items:center;gap:14px;height:48px;flex-wrap:wrap}
+  .nav-dl{display:flex;gap:4px;align-items:center}
+  .nav-sub a{text-decoration:none;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;padding:7px 12px;border-radius:4px;transition:background .15s ease,color .15s ease,border-color .15s ease}
+  .nav-sub a.dl{color:var(--grey);display:inline-flex;align-items:center;gap:7px}
+  .nav-sub a.dl .arw{color:var(--gold);font-size:12.5px;line-height:1}
+  .nav-sub a.dl:hover{background:rgba(184,161,92,.16);color:var(--green)}
+  .nav-sub a.dl:hover .arw{color:var(--green)}
+  .nav-sub a.wt{color:var(--green);font-weight:600;background:rgba(184,161,92,.18);border:1px solid rgba(184,161,92,.5);display:inline-flex;align-items:center;gap:7px}
+  .nav-sub a.wt .arw{color:var(--gold);font-size:12.5px;line-height:1}
+  .nav-sub a.wt:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
+  .nav-sub a.wt:hover .arw{color:var(--gold-soft)}
+  @media(max-width:620px){ .nav-sub-in{height:auto;padding:8px 0;justify-content:center;row-gap:8px} .nav-dl{justify-content:center;flex-wrap:wrap} .nav-links{gap:16px} }
   header.mini{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:64px 0 56px;text-align:center}
   header.mini h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(34px,4.6vw,48px);color:#fff}
   header.mini p{color:var(--gold-soft);margin-top:10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px}
-  section{padding:64px 0 84px}
-  .feature{background:#fff;border:1px solid var(--line);padding:28px;margin-bottom:22px}
-  .feature .src{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
-  .feature h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:26px;line-height:1.22;color:var(--green);margin-top:8px}
-  .feature p{font-size:14px;color:var(--grey);margin-top:8px}
-  .vid{position:relative;width:100%;padding-top:56.25%;margin-top:18px;background:#000}
+  section{padding:56px 0 84px}
+  .sect-h{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:24px;color:var(--green);margin:0 0 4px}
+  .sect-p{font-size:14px;color:var(--grey);margin-bottom:18px}
+  .block{margin-bottom:52px}
+  .qband{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0 40px}
+  .qhero{max-width:760px;margin:0 auto;text-align:center}
+  .qhero .mark{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;line-height:.6;color:var(--gold);display:block;margin-bottom:10px}
+  .qhero q{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(22px,3vw,31px);line-height:1.34;color:var(--green);quotes:none}
+  .qhero .attr{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-top:18px}
+  .qrow{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px;margin:34px auto 0;padding-top:30px;border-top:1px solid var(--line)}
+  .qrow .q2{text-align:center;padding:0 10px}
+  .qrow q{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;line-height:1.4;color:var(--green);quotes:none}
+  .qrow .attr{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-top:11px}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .mcard{background:#fff;border:1px solid var(--line);padding:0 22px 20px;display:flex;flex-direction:column}
+  .mcard > .facade:first-child{margin:0 -22px 16px;width:calc(100% + 44px)}
+  .mcard.pod{padding-top:22px}
+  .mcard .inq{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--green);border-left:3px solid var(--gold);padding-left:11px;margin:2px 0 4px}
+  .mcard .inq .attr{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-top:6px}
+  .mcard .src{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .mcard h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:20px;line-height:1.25;color:var(--green);margin:6px 0 8px}
+  .mcard p{font-size:13.5px;color:var(--grey);margin-bottom:12px}
+  .mcard .more{margin-top:auto;padding-top:12px}
+  .mcard .more a{font-size:12.5px;font-weight:600;letter-spacing:.05em;color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold)}
+
+  .facade{position:relative;width:100%;padding:0;border:0;background:#000;cursor:pointer;display:block;overflow:hidden;aspect-ratio:16/9}
+  .facade img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
+  .facade .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(30,58,47,.82);border:2px solid rgba(240,234,216,.9);transition:background .15s ease}
+  .facade .play:after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #f0ead8}
+  .facade:hover .play{background:var(--gold)}
+  .vid{position:relative;width:100%;aspect-ratio:16/9;background:#000}
   .vid iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-  @media(max-width:720px){ .feature{padding:20px} .feature h3{font-size:21px} }
-  .press-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
-  .press-card{background:#fff;border:1px solid var(--line);padding:28px 28px 24px;display:flex;flex-direction:column;gap:10px}
-  .press-card .src{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
-  .press-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:22px;line-height:1.25;color:var(--green)}
-  .press-card p{font-size:14px;color:var(--grey)}
-  .press-card .go{margin-top:auto;padding-top:12px}
-  .press-card .go a{font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold)}
-  .press-card .go a:hover{color:var(--gold)}
-  footer{background:var(--green);color:var(--cream);padding:36px 0;text-align:center;font-size:13.5px}
-  footer a{color:var(--gold-soft)}
+
+  .pod .src{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .pod h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px;line-height:1.25;color:var(--green);margin:6px 0 6px}
+  .pod p{font-size:13.5px;color:var(--grey);margin-bottom:12px}
+  .pod iframe{width:100%;border:0;display:block}
+
+  .rowlist{border-top:1px solid var(--line)}
+  .ritem{display:flex;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+  .ritem .meta{flex:0 0 190px}
+  .ritem .meta .src{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block}
+  .ritem .meta .date{font-size:11.5px;color:var(--grey)}
+  .ritem .body{flex:1}
+  .ritem h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:20px;line-height:1.25;color:var(--green)}
+  .ritem p{font-size:13.5px;color:var(--grey);margin-top:5px}
+  .ritem .inq{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--green);border-left:3px solid var(--gold);padding-left:11px;margin-top:9px}
+  .ritem .inq .attr{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-top:6px}
+  .ritem .go{margin-top:9px}
+  .ritem .go a{font-size:12.5px;font-weight:600;letter-spacing:.05em;color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold)}
+  @media(max-width:720px){
+    .qrow{grid-template-columns:1fr;gap:26px}
+    .duo{grid-template-columns:1fr}
+    .ritem{flex-direction:column;gap:6px}
+    .ritem .meta{flex:none}
+    .qband{padding:32px 0 30px}
+  }
   @media (max-width:720px){
-    .press-grid{grid-template-columns:1fr}
+    .mcard{padding:0 18px 18px}
+    .mcard > .facade:first-child{margin:0 -18px 14px;width:calc(100% + 36px)}
+    .mcard.pod{padding-top:18px}
     .strip{font-size:12px;padding:8px 14px;line-height:1.5}
     .nav-in{height:auto;flex-wrap:wrap;align-items:center;padding:10px 4px;row-gap:6px}
     nav .wrap{padding:0 20px}
@@ -67,7 +123,7 @@
 </head>
 <body>
 
-<div class="strip">🏆&nbsp; <a href="https://www.televisionacademy.com/bios/ande-schurr" target="_blank" rel="noopener"><strong>2026 Emmy Nominee</strong>: Outstanding Sound Mixing · <em>Lord of the Flies</em></a></div>
+<div class="strip">&#127942;&nbsp; <a href="https://www.televisionacademy.com/bios/ande-schurr" target="_blank" rel="noopener"><strong>2026 Emmy Nominee</strong>: Outstanding Sound Mixing &middot; <em>Lord of the Flies</em></a></div>
 
 <nav>
   <div class="wrap nav-in">
@@ -75,14 +131,17 @@
     <ul class="nav-links">
       <li><a href="/#reel">Showreel</a></li>
       <li><a href="/#credits">Credits</a></li>
-      <li><a href="/press">Press</a></li>
+      <li><a class="active" href="/press">Press</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>
   </div>
   <div class="nav-sub">
     <div class="wrap nav-sub-in">
-      <a href="/credits">One-pager (PDF)</a>
-      <a class="wt" href="/wild-track">The Wild Track</a>
+      <div class="nav-dl">
+        <a class="dl" href="/credits" title="Selected credits, package and contact on one page (PDF)"><span class="arw">&darr;</span> Credits one-pager</a>
+        <a class="dl" href="/assets/Ande_Schurr_Press_Kit.pdf" title="Bios, credits, quotes and press coverage, for media (PDF)"><span class="arw">&darr;</span> Press kit</a>
+      </div>
+      <a class="wt" href="/wild-track" title="Quarterly location sound notes from Asia-Pacific. Free.">The Wild Track <span class="arw">&rarr;</span></a>
     </div>
   </div>
 </nav>
@@ -95,69 +154,138 @@
   </div>
 </header>
 
+<div class="qband">
+  <div class="wrap">
+    <div class="qhero">
+      <span class="mark">&ldquo;</span>
+      <q>This is production sound at its most exposed, and at its most essential.</q>
+      <span class="attr">Rob Licuria &middot; Awards Heaven</span>
+    </div>
+    <div class="qrow">
+      <div class="q2">
+        <q>Quietly assembled one of the more interesting filmographies in location sound.</q>
+        <span class="attr">People of Post</span>
+      </div>
+      <div class="q2">
+        <q>The result is a soundscape that feels suffocatingly alive.</q>
+        <span class="attr">Meet Me at Crafty</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section>
   <div class="wrap">
 
-    <div class="feature">
-      <div class="src">ProAudioTV &middot; The PAT Wrap &middot; Video Interview</div>
-      <h3>Tools of the Trade: the kit that went into the Langkawi rainforest</h3>
-      <p>Mike Heard on the case, the radio plan and four months of monsoon. The first episode of ProAudioTV&rsquo;s new series on the technical crew behind the camera. July 2026.</p>
-      <div class="vid">
-        <iframe src="https://www.youtube-nocookie.com/embed/HXuCawhVZl4" title="The PAT Wrap, Tools of the Trade, with Ande Schurr" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="block">
+      <h2 class="sect-h">Watch</h2>
+      <p class="sect-p">Two conversations on camera. Press play to load.</p>
+      <div class="duo">
+
+        <div class="mcard">
+          <button class="facade" data-yt="JPpjyQWBYpk" aria-label="Play the Awards Heaven interview with Ande Schurr">
+            <img src="https://i.ytimg.com/vi/JPpjyQWBYpk/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play"></span>
+          </button>
+          <div class="src">Awards Heaven</div>
+          <h3>Capturing the deafening sound of survival</h3>
+          <p>Rob Licuria on how the series found its voice on set, from crashing waves to the boys&rsquo; unfiltered performances. May 2026.</p>
+          <div class="more"><a href="https://awardsheaven.substack.com/p/ande-schurr-on-capturing-the-deafening" target="_blank" rel="noopener">Read the write-up &rarr;</a></div>
+        </div>
+
+        <div class="mcard">
+          <button class="facade" data-yt="HXuCawhVZl4" aria-label="Play The PAT Wrap, Tools of the Trade, with Ande Schurr">
+            <img src="https://i.ytimg.com/vi/HXuCawhVZl4/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play"></span>
+          </button>
+          <div class="src">ProAudioTV &middot; The PAT Wrap</div>
+          <h3>Tools of the Trade: the kit that went into the rainforest</h3>
+          <p>Mike Heard on the case, the radio plan and four months of monsoon. First episode of a new series on the technical crew. July 2026.</p>
+          <div class="inq">I don&rsquo;t want to give the actors limits. That&rsquo;s not my job.<span class="attr">Ande Schurr, The PAT Wrap</span></div>
+          <div class="more"><a href="https://youtu.be/HXuCawhVZl4" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></div>
+        </div>
+
       </div>
     </div>
 
-    <div class="press-grid">
+    <div class="block">
+      <h2 class="sect-h">Listen</h2>
+      <p class="sect-p">Two long-form conversations, playable here.</p>
+      <div class="duo">
 
-      <div class="press-card">
-        <div class="src">Awards Heaven · Video Interview</div>
-        <h3>Capturing the deafening sound of survival in “Lord of the Flies”</h3>
-        <p>From crashing waves to the boys’ unfiltered performances: how the series found its voice on set. May 2026.</p>
-        <div class="go"><a href="https://awardsheaven.substack.com/p/ande-schurr-on-capturing-the-deafening" target="_blank" rel="noopener">Watch the interview →</a></div>
+        <div class="mcard pod">
+          <div class="src">AMPS &middot; Podcast</div>
+          <h3>Ep70: Lord of the Flies</h3>
+          <p>Martyn Harries of the Association of Motion Picture Sound on the rainforest, its wildlife, and the riotous scenes with the young cast. June 2026.</p>
+          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" title="AMPS Podcast Ep70, Lord of the Flies, with Ande Schurr" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-663870646/ep70-lord-of-the-flies-ande&amp;color=%23b8a15c&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+        </div>
+
+        <div class="mcard pod">
+          <div class="src">Field &amp; Foley &middot; Podcast</div>
+          <h3>Recording Lord of the Flies, Monkey Man and more</h3>
+          <p>Bonus episode on the sonic challenges of filming on a tropical island. May 2026.</p>
+          <iframe height="200" scrolling="no" frameborder="no" allow="clipboard-write" loading="lazy" title="Field and Foley, recording Lord of the Flies and Monkey Man" src="https://player.captivate.fm/episode/f0fe3c61-8555-45df-9d45-2538cdaee77e"></iframe>
+        </div>
+
       </div>
-
-      <div class="press-card">
-        <div class="src">People of Post · Feature</div>
-        <h3>Ande Schurr on the Sound of “Lord of the Flies”</h3>
-        <p>Recording 36 first-time child actors across the remote islands of Langkawi for 17 weeks during monsoon season.</p>
-        <div class="go"><a href="https://peopleofpost.com/sound/ande-schurr-lord-of-the-flies-sound-mixer/" target="_blank" rel="noopener">Read the feature →</a></div>
-      </div>
-
-      <div class="press-card">
-        <div class="src">Post Magazine · Interview</div>
-        <h3>Lord of the Flies: Production sound mixer Ande Schurr</h3>
-        <p>On location sound for the Netflix/BBC adaptation of the William Golding novel. May 2026.</p>
-        <div class="go"><a href="https://www.postmagazine.com/Press-Center/Daily-News/2026/-I-Lord-of-the-Flies-I-Production-sound-mixer-An.aspx" target="_blank" rel="noopener">Read the interview →</a></div>
-      </div>
-
-      <div class="press-card">
-        <div class="src">Meet Me at Crafty · Feature</div>
-        <h3>Ande Schurr’s Jungle Symphony for “Lord of the Flies”</h3>
-        <p>The brutal logistics and hidden microphones that helped turn the series into a visceral sound environment.</p>
-        <div class="go"><a href="https://atcrafty.substack.com/p/netflix-lord-of-the-flies-sound-mixing-ande-schurr-interview" target="_blank" rel="noopener">Read the feature →</a></div>
-      </div>
-
-      <div class="press-card">
-        <div class="src">Field &amp; Foley · Podcast</div>
-        <h3>The incredible process of recording Lord of the Flies, Monkey Man and more</h3>
-        <p>Bonus episode on the sonic challenges of filming on a tropical island. May 2026.</p>
-        <div class="go"><a href="https://field-and-foley.captivate.fm/episode/bonus-5-the-incredible-process-of-recording-lord-of-the-flies-monkey-man-and-more-with-ande-schurr" target="_blank" rel="noopener">Listen to the episode →</a></div>
-      </div>
-
-      <div class="press-card">
-        <div class="src">AMPS · Podcast</div>
-        <h3>AMPS Podcast with production sound mixer Ande Schurr</h3>
-        <p>Martyn Harries of AMPS on the extreme conditions of the Malaysian rainforest, its wildlife, and the riotous scenes with the young cast. June 2026.</p>
-        <div class="go"><a href="https://soundcloud.com/user-663870646/ep70-lord-of-the-flies-ande" target="_blank" rel="noopener">Listen to the episode →</a></div>
-      </div>
-
     </div>
+
+    <div class="block" style="margin-bottom:0">
+      <h2 class="sect-h">Read</h2>
+      <p class="sect-p">Features and interviews, hosted by the publications that wrote them.</p>
+      <div class="rowlist">
+
+        <div class="ritem">
+          <div class="meta"><span class="src">People of Post</span><span class="date">Feature</span></div>
+          <div class="body">
+            <h3>Ande Schurr on the Sound of &ldquo;Lord of the Flies&rdquo;</h3>
+            <p>Recording 36 first-time child actors across the remote islands of Langkawi for 17 weeks during monsoon season.</p>
+            <div class="go"><a href="https://peopleofpost.com/sound/ande-schurr-lord-of-the-flies-sound-mixer/" target="_blank" rel="noopener">Read the feature &rarr;</a></div>
+          </div>
+        </div>
+
+        <div class="ritem">
+          <div class="meta"><span class="src">Post Magazine</span><span class="date">Interview &middot; May 2026</span></div>
+          <div class="body">
+            <h3>Lord of the Flies: Production sound mixer Ande Schurr</h3>
+            <p>A long technical interview on radio plans, ambisonic wild tracks and the waterfall sequence.</p>
+            <div class="inq">It&rsquo;s the duration of difficulty that&rsquo;s the test.<span class="attr">Ande Schurr, in conversation with Post</span></div>
+            <div class="go"><a href="https://www.postmagazine.com/Press-Center/Daily-News/2026/-I-Lord-of-the-Flies-I-Production-sound-mixer-An.aspx" target="_blank" rel="noopener">Read the interview &rarr;</a></div>
+          </div>
+        </div>
+
+        <div class="ritem">
+          <div class="meta"><span class="src">Meet Me at Crafty</span><span class="date">Feature &middot; May 2026</span></div>
+          <div class="body">
+            <h3>Ande Schurr&rsquo;s Jungle Symphony for &ldquo;Lord of the Flies&rdquo;</h3>
+            <p>The brutal logistics and hidden microphones that helped turn the series into a visceral sound environment.</p>
+            <div class="go"><a href="https://atcrafty.substack.com/p/netflix-lord-of-the-flies-sound-mixing-ande-schurr-interview" target="_blank" rel="noopener">Read the feature &rarr;</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Schurr Productions Pte. Ltd. · <a href="/">schurrsound.com</a> · <a href="/credits">Credits one-pager</a></div>
+  <div class="wrap">
+    <p style="margin-bottom:8px">Press enquiries and assets: <a href="mailto:ande@schurrsound.com">ande@schurrsound.com</a> &middot; +65 9052 6526 &middot; <a href="/assets/Ande_Schurr_Press_Kit.pdf">Download the press kit (PDF)</a></p>
+    &copy; 2026 Schurr Productions Pte. Ltd. &middot; <a href="/">schurrsound.com</a> &middot; <a href="/credits">Credits one-pager</a>
+  </div>
 </footer>
 
+<script>
+document.querySelectorAll('.facade').forEach(function(b){
+  b.addEventListener('click', function(){
+    var id = b.getAttribute('data-yt');
+    var w = document.createElement('div');
+    w.className = 'vid';
+    w.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1" title="Video interview with Ande Schurr" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    b.parentNode.replaceChild(w, b);
+  });
+});
+</script>
 </body>
 </html>
