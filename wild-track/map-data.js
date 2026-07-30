@@ -140,6 +140,24 @@ var DATA = [
     source:"https://www.screenglobalproduction.com/news/2026/07/29/michelle-yeoh-exec-produced-nak-muay-film-thailand",
     checked:"2026-07-30"
   },
+  {
+    title:"Ah Boys To Firemen", kind:"Feature · J Team Productions / mm2 Entertainment",
+    city:"Singapore", country:"Singapore", region:"ASEAN",
+    status:"prep",
+    note:"Jack Neo's franchise pivots from the army to the Civil Defence Force. Open casting call ran from 21 June for main and supporting roles. Their own hashtag is #ABTF2027, so it's tracking to a Chinese New Year 2027 release.",
+    lat:1.3521, lng:103.8198,
+    source:"https://mothership.sg/2026/06/jack-neo-open-casting-call-ah-boys-to-firemen/",
+    checked:"2026-07-30"
+  },
+  {
+    title:"Journey to the West (modern adaptation)", kind:"Feature · Fiction Shore",
+    city:"Singapore + Kuala Lumpur", country:"Singapore", region:"ASEAN",
+    status:"hearing",
+    note:"A stylised modern take on the classic, reportedly splitting stages and locations between Singapore and set builds in KL, with main unit around August and September.",
+    lat:1.3521, lng:103.8198,
+    source:"",
+    checked:"2026-07-30"
+  },
 ];
 
 /* simplified coastlines: [label, [[lng,lat],...], showLabel] */
