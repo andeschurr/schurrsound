@@ -130,7 +130,7 @@ var DATA = [
     lat:-37.81, lng:144.94,
     source:"https://vicscreen.vic.gov.au/news/melbourne-transforms-into-san-francisco-in-new-feature-fog-city",
     checked:"2026-07-24"
-  }
+  },
   {
     title:"Nak Muay", kind:"Feature Film · Disruptive Element Films / Michelle Yeoh",
     city:"Bangkok", country:"Thailand", region:"ASEAN",
