@@ -95,15 +95,16 @@ var DATA = [
     source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
     checked:"2026-07-24"
   },
-  {
+    {
     title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
-    city:"Australia", country:"Australia", region:"ANZ",
-    status:"prep",
-    note:"International production, in pre-production per Screen Australia. Exact location isn't public yet.",
-    lat:-33.87, lng:151.21,
-    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
-    checked:"2026-07-24"
+    city:"Australia", country:"Malaysia", region:"ASEAN",
+    status:"hearing",
+    note:"In pre-production in Malaysia.", 
+    lat:1.43, lng:103.63,
+    source:"https://hollywoodreporter.com",
+    checked:"2026-07-30"
   },
+
   {
     title:"The Big Fix", kind:"Feature · Netflix",
     city:"Penang", country:"Malaysia", region:"ASEAN",
