@@ -76,6 +76,10 @@
 
 <script src="map-data.js?v=2"></script>
 
+  <p style="font-family:Georgia,serif;font-size:15px;line-height:24px;color:var(--ink);max-width:740px;margin:0 0 20px;">
+    Australia, New Zealand and Southeast Asia are a few hours apart, yet nobody seems to track their shoots as one region. So I do. Everything below is either publicly sourced or clearly marked as something I have only heard from my own network. Start here if you want to know what is moving in our patch.
+  </p>
+
   <div class="sticky-top">
     <div class="filters" id="filters"></div>
     <div class="mapcard">
@@ -124,6 +128,7 @@ function render(){
       +'<div><span class="n">'+ns.get(d.title)+'</span><span class="t">'+d.title+'</span>'
       +'<span class="tag" style="background:'+COLORS[d.status]+'">'+LABELS[d.status]+'</span></div>'
       +'<div class="meta">'+d.kind+' &nbsp;·&nbsp; '+d.city+'</div>'
+      +(d.service?'<div class="note"><strong>Serviced by</strong> '+d.service+'</div>':'')
       +(d.note?'<div class="note">'+d.note+'</div>':'')
       +(d.source?'<div class="note"><a href="'+d.source+'" target="_blank" rel="noopener">Source</a></div>':'')
       +'</li>';

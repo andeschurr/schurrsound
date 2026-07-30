@@ -7,6 +7,9 @@
      cd wild-track/tools && node generate-map-assets.js
    to regenerate the email's issue list.
 
+   service: local service / line production company, if publicly known.
+            Company names only. NEVER an individual's name.
+
    status:  "shooting" = cameras rolling now
             "prep"     = pre-production, confirmed, not yet rolling
             "hearing"  = network intel, no public source. NEVER add a link.
@@ -20,12 +23,13 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 (function(){
-var UPDATED = "24 July 2026";
+var UPDATED = "31 July 2026";
 
 var DATA = [
   {
     title:"Crazy Rich Asians (Series)", kind:"Series · Max / Warner Bros. Television",
     city:"Singapore", country:"Singapore", region:"ASEAN",
+    service:"",
     status:"prep",
     note:"The series continuation, reuniting Jon M. Chu and Adele Lim from the original film. Principal photography begins 11 January 2027, split between New York and Singapore.",
     lat:1.35, lng:103.82,
@@ -35,6 +39,7 @@ var DATA = [
   {
     title:"Extraction 3", kind:"Feature · Netflix / AGBO",
     city:"Sydney + NSW South Coast", country:"Australia", region:"ANZ",
+    service:"",
     status:"shooting",
     note:"Chris Hemsworth, Idris Elba, Golshifteh Farahani. Sam Hargrave directing. Location Offset + Made in NSW via Screen NSW.",
     lat:-34.42, lng:150.89,
@@ -44,6 +49,7 @@ var DATA = [
   {
     title:"Queenstown", kind:"Series · Netflix",
     city:"Queenstown", country:"New Zealand", region:"ANZ",
+    service:"",
     status:"shooting",
     note:"Eight episodes running to Christmas. First Netflix series commissioned out of ANZ to be set and filmed in New Zealand. Around 450 cast and crew jobs. Glendyn Ivin and Roseanne Liang directing.",
     lat:-45.03, lng:168.66,
@@ -53,6 +59,7 @@ var DATA = [
   {
     title:"Blue Murder Hotel", kind:"Series S2 · Acorn TV / ITV",
     city:"Auckland", country:"New Zealand", region:"ANZ",
+    service:"",
     status:"prep",
     note:"Season two went into pre-production 8 July, international deals already locked in.",
     lat:-36.85, lng:174.76,
@@ -62,6 +69,7 @@ var DATA = [
   {
     title:"Dead Losi", kind:"Series · TVNZ+ / The Sweet Shop",
     city:"Auckland", country:"New Zealand", region:"ANZ",
+    service:"",
     status:"prep",
     note:"Into pre-production 3 July, on NZ On Air scripted funding.",
     lat:-36.85, lng:174.76,
@@ -71,6 +79,7 @@ var DATA = [
   {
     title:"The Hunt for Gollum", kind:"Feature · Warner Bros.",
     city:"Wellington", country:"New Zealand", region:"ANZ",
+    service:"",
     status:"shooting",
     note:"Middle-earth is back at Miramar.",
     lat:-41.31, lng:174.81,
@@ -80,6 +89,7 @@ var DATA = [
   {
     title:"Bluey the Movie", kind:"Feature · Ludo Studio / BBC Studios",
     city:"Brisbane", country:"Australia", region:"ANZ",
+    service:"",
     status:"prep",
     note:"In pre-production, per the Screen Australia register.",
     lat:-27.47, lng:153.03,
@@ -89,6 +99,7 @@ var DATA = [
   {
     title:"Wentworth: Beyond Bars", kind:"Series · Fremantle Australia",
     city:"Melbourne", country:"Australia", region:"ANZ",
+    service:"",
     status:"prep",
     note:"In pre-production, per the Screen Australia register.",
     lat:-37.81, lng:144.96,
@@ -96,17 +107,20 @@ var DATA = [
     checked:"2026-07-24"
   },
     {
-    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient / Radel",
-    city:"Johor", country:"Malaysia", region:"ASEAN",
-    status:"hearing",
-    note:"In pre-production in Malaysia.", 
-    lat:1.43, lng:103.63,
-    checked:"2026-07-30"
+    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
+    city:"Malaysia", country:"Malaysia", region:"ASEAN",
+    service:"",
+    status:"prep",
+    note:"In pre-production and listed as an international production on the Screen Australia register. Understood to be shooting in Malaysia rather than Australia, though the exact base is not public yet.",
+    lat:3.14, lng:101.69,
+    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
+    checked:"2026-07-31"
   },
 
   {
     title:"The Big Fix", kind:"Feature · Netflix",
     city:"Penang", country:"Malaysia", region:"ASEAN",
+    service:"Biscuit Films Malaysia",
     status:"hearing",
     note:"Mark Wahlberg and Riz Ahmed. Serviced locally out of Penang, Australian sound crew alongside local.",
     lat:5.41, lng:100.33,
@@ -116,6 +130,7 @@ var DATA = [
   {
     title:"Untitled Spektrum Cahaya feature", kind:"Feature · Spektrum Cahaya",
     city:"Johor", country:"Malaysia", region:"ASEAN",
+    service:"",
     status:"hearing",
     note:"A regional feature setting up at Iskandar Malaysia Studios in Johor, with Adnan Al Rajeev attached to direct.",
     lat:1.43, lng:103.63,
@@ -125,6 +140,7 @@ var DATA = [
   {
     title:"Fog City", kind:"Feature",
     city:"Melbourne", country:"Australia", region:"ANZ",
+    service:"",
     status:"shooting",
     note:"Melbourne standing in for San Francisco. Shooting at Docklands Studios, confirmed by VicScreen.",
     lat:-37.81, lng:144.94,
@@ -134,6 +150,7 @@ var DATA = [
   {
     title:"Nak Muay", kind:"Feature Film · Disruptive Element Films / Michelle Yeoh",
     city:"Bangkok", country:"Thailand", region:"ASEAN",
+    service:"",
     status:"shooting",
     note:"Michelle Yeoh exec-produces; Krishnan-directed Muay Thai drama shoots Bangkok & Pranburi from Aug 2, backed by Thai govt + UK Global Screen Fund.",
     lat:13.75, lng:100.50,
@@ -143,6 +160,7 @@ var DATA = [
   {
     title:"Ah Boys To Firemen", kind:"Feature · J Team Productions / mm2 Entertainment",
     city:"Singapore", country:"Singapore", region:"ASEAN",
+    service:"",
     status:"prep",
     note:"Jack Neo's franchise pivots from the army to the Civil Defence Force. Open casting call ran from 21 June for main and supporting roles. Their own hashtag is #ABTF2027, so it's tracking to a Chinese New Year 2027 release.",
     lat:1.3521, lng:103.8198,
@@ -152,6 +170,7 @@ var DATA = [
   {
     title:"Journey to the West (modern adaptation)", kind:"Feature · Fiction Shore",
     city:"Singapore + Kuala Lumpur", country:"Singapore", region:"ASEAN",
+    service:"",
     status:"hearing",
     note:"A stylised modern take on the classic, reportedly splitting stages and locations between Singapore and set builds in KL, with main unit around August and September.",
     lat:1.3521, lng:103.8198,
