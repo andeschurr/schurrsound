@@ -96,12 +96,12 @@ var DATA = [
     checked:"2026-07-24"
   },
     {
-    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
-    city:"Australia", country:"Malaysia", region:"ASEAN",
+    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient / Radel",
+    city:"Johor", country:"Malaysia", region:"ASEAN",
     status:"hearing",
     note:"In pre-production in Malaysia.", 
     lat:1.43, lng:103.63,
-    source:"https://hollywoodreporter.com",
+    source:"https://www.hollywoodreporter.com/movies/movie-news/josh-duhamel-sharlto-copley-join-the-good-samaritan-1236507406/",
     checked:"2026-07-30"
   },
 
