@@ -67,14 +67,14 @@ var DATA = [
     checked:"2026-07-24"
   },
   {
-    title:"Dead Losi", kind:"Series · TVNZ+ / The Sweet Shop",
+    title:"Dead Losi", kind:"Series · TVNZ+",
     city:"Auckland", country:"New Zealand", region:"ANZ",
-    service:"",
+    service:"The Sweetshop",
     status:"prep",
-    note:"Into pre-production 3 July, on NZ On Air scripted funding.",
+    note:"Into pre-production 3 July, on NZ On Air scripted funding. Shooting from 10 September.",
     lat:-36.85, lng:174.76,
     source:"https://shownews.co.nz/dead-losi-tv-series/",
-    checked:"2026-07-24"
+    checked:"2026-07-31"
   },
   {
     title:"The Hunt for Gollum", kind:"Feature · Warner Bros.",
