@@ -101,7 +101,7 @@ var DATA = [
     status:"hearing",
     note:"In pre-production in Malaysia.", 
     lat:1.43, lng:103.63,
-    source:"https://www.hollywoodreporter.com/movies/movie-news/josh-duhamel-sharlto-copley-join-the-good-samaritan-1236507406/",
+    hints:"https://www.hollywoodreporter.com/movies/movie-news/josh-duhamel-sharlto-copley-join-the-good-samaritan-1236507406/",
     checked:"2026-07-30"
   },
 
