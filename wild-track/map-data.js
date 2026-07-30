@@ -101,7 +101,6 @@ var DATA = [
     status:"hearing",
     note:"In pre-production in Malaysia.", 
     lat:1.43, lng:103.63,
-    hints:"https://www.hollywoodreporter.com/movies/movie-news/josh-duhamel-sharlto-copley-join-the-good-samaritan-1236507406/",
     checked:"2026-07-30"
   },
 
@@ -132,6 +131,15 @@ var DATA = [
     source:"https://vicscreen.vic.gov.au/news/melbourne-transforms-into-san-francisco-in-new-feature-fog-city",
     checked:"2026-07-24"
   }
+  {
+    title:"Nak Muay", kind:"Feature Film · Disruptive Element Films / Michelle Yeoh",
+    city:"Bangkok", country:"Thailand", region:"ASEAN",
+    status:"shooting",
+    note:"Michelle Yeoh exec-produces; Krishnan-directed Muay Thai drama shoots Bangkok & Pranburi from Aug 2, backed by Thai govt + UK Global Screen Fund.",
+    lat:13.75, lng:100.50,
+    source:"https://www.screenglobalproduction.com/news/2026/07/29/michelle-yeoh-exec-produced-nak-muay-film-thailand",
+    checked:"2026-07-30"
+  },
 ];
 
 /* simplified coastlines: [label, [[lng,lat],...], showLabel] */
