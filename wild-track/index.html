@@ -41,7 +41,7 @@
   .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
   .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
   .nav-sub{border-top:1px solid var(--line);background:#fdfcf7}
-  .nav-sub-in{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:58px;padding:8px 0;flex-wrap:wrap}
+  .nav-sub-in{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:66px;padding:12px 0;flex-wrap:wrap}
   .nav-dl{display:flex;gap:4px;align-items:center}
   .nav-sub a{text-decoration:none;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;padding:7px 12px;border-radius:4px;transition:background .15s ease,color .15s ease,border-color .15s ease}
   .nav-sub a.dl{color:var(--grey);display:inline-flex;align-items:center;gap:7px}
@@ -74,6 +74,25 @@
   .maplegend{display:flex;gap:20px;font-size:12px;color:var(--grey);margin:8px 0 14px}
   .dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px}
   .muted{color:var(--grey)}
+  /* Map section breaks out of the 720px reading column so the
+     two-column map + list layout has room to work. */
+  /* Uses left/transform rather than margin-left, because the element
+     carries an inline margin shorthand that would override margin-left. */
+  #whats-shooting{width:min(1100px,calc(100vw - 40px));position:relative;left:50%;transform:translateX(-50%)}
+  @media(max-width:760px){ #whats-shooting{width:auto;left:0;transform:none} }
+  /* Prominent jump-to-map card, sits high on the page */
+  .mapjump{display:flex;align-items:center;gap:18px;text-decoration:none;
+    background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);
+    border-radius:8px;padding:18px 22px;margin:0 0 26px;transition:transform .15s ease}
+  .mapjump:hover{transform:translateY(-2px)}
+  .mapjump .mj-ico{flex:0 0 auto}
+  .mapjump .mj-txt{flex:1 1 auto;min-width:0}
+  .mapjump .mj-k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block}
+  .mapjump .mj-h{font-family:'Cormorant Garamond',Georgia,serif;font-size:23px;color:#fff;line-height:1.25;display:block;margin:3px 0 4px}
+  .mapjump .mj-s{font-size:13.5px;color:#c9c3ae;display:block;line-height:1.5}
+  .mapjump .mj-arw{flex:0 0 auto;color:var(--gold);font-size:22px}
+  @media(max-width:560px){ .mapjump{flex-wrap:wrap;gap:12px} .mapjump .mj-ico{display:none} }
+
   .sign .role{font-size:13px;color:var(--grey)}
   .sign a{color:var(--green)}
   /* letter/subscribe (reuses site ML overrides) */
@@ -130,12 +149,33 @@
 </header>
 
 <article class="rd"></br></br>
+  <a class="mapjump" href="#whats-shooting">
+    <span class="mj-ico" aria-hidden="true">
+      <svg width="66" height="52" viewBox="0 0 66 52" fill="none">
+        <rect width="66" height="52" rx="5" fill="#eaf0f4"/>
+        <path d="M10 16 L17 12 L22 18 L18 24 L11 22 Z" fill="#dde5d8" stroke="#b3c2ae" stroke-width=".7"/>
+        <path d="M24 20 L31 17 L34 24 L28 29 L23 26 Z" fill="#dde5d8" stroke="#b3c2ae" stroke-width=".7"/>
+        <path d="M33 32 L48 29 L54 36 L44 43 L34 39 Z" fill="#dde5d8" stroke="#b3c2ae" stroke-width=".7"/>
+        <circle cx="18" cy="18" r="4" fill="#a0642c"/>
+        <circle cx="29" cy="23" r="4" fill="#8a763a"/>
+        <circle cx="46" cy="35" r="4" fill="#8a763a"/>
+        <circle cx="57" cy="41" r="4" fill="#1d6a5a"/>
+      </svg>
+    </span>
+    <span class="mj-txt">
+      <span class="mj-k">Live and updated between issues</span>
+      <span class="mj-h">What&rsquo;s shooting across Asia-Pacific</span>
+      <span class="mj-s">Every production I can verify in ANZ and ASEAN, on one map. Click a pin to see who is shooting where.</span>
+    </span>
+    <span class="mj-arw">&rarr;</span>
+  </a>
+
   <p>Dear friends,</p>
   <p>Nearly twenty years ago I started my first newsletter from a flat on Mt&nbsp;Eden Road, Auckland, New Zealand. I was two years into my career and I wrote back then: <em>“I am here to stay.”</em> Still true. The map just got bigger! I’m now based in Singapore, working across Asia-Pacific, and this letter restarts here.</p>
   <p>Before the notes, a quick word to honour Sam Neill. Every morning on <em>Hunt for the Wilderpeople</em> my first job was wiring Sam, he was my grounding cue for the day ahead with his classic stoic manner. The best people give so much to those around them without seeming to try and Sam was one of the very best.</p>
 
   <div class="sh"><span class="n">3</span>Worth knowing in the region</div>
-  <p><span class="g">Lord of the Flies is out, and Emmy-nominated for sound.</span> Our BBC adaptation, shot almost entirely on location in the Langkawi rainforest, is streaming now across our region: Stan (Australia), TVNZ+ (New Zealand), <a href="https://www.rockentertainment.com/shows/lord-of-the-flies" style="color:var(--green)">Rock Entertainment</a> (ASEAN) and Netflix (US). The show earned <a href="https://www.televisionacademy.com/shows/lord-of-the-flies" style="color:var(--green)"><strong>two 2026 Emmy nominations</strong></a> for sound. I’m one of six named on the Outstanding Sound Mixing nomination and the only one of us who was on the ground. Everything after I delivered the tracks was post, led by supervising sound editor <a href="https://www.imdb.com/name/nm1866364/" style="color:var(--green)">Niv Adiri</a>, who is nominated twice this year, for the mixing and the editing both. On the ground I mixed with my crew, Adyt Santoso on boom and Reza Feryanto on utilities. Without them I’m a head without arms. Four months of monsoon storms, hunting frenzies, and boys who never stood still. How did we keep the dialogue clean? See below.</p>
+  <p><span class="g">Lord of the Flies is out, and Emmy-nominated for sound.</span> Our BBC adaptation, shot almost entirely on location in the Langkawi rainforest, is streaming now across our region: Stan (Australia), TVNZ+ (New Zealand), <a href="https://www.rockentertainment.com/shows/lord-of-the-flies" style="color:var(--green)">Rock Entertainment</a> (ASEAN) and Netflix (US). The show earned <a href="https://www.televisionacademy.com/shows/lord-of-the-flies" style="color:var(--green)"><strong>two 2026 Emmy nominations</strong></a> for sound. I’m one of six named on the Outstanding Sound Mixing nomination and the only one of us who was on the ground. Everything after I delivered the tracks was post, led by supervising sound editor <a href="https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-sound-editing-for-a-limited-or-anthology-series-movie-or-special" style="color:var(--green)">Niv Adiri</a>, who is nominated twice this year, for the mixing and the editing both. On the ground I mixed with my crew, Adyt Santoso on boom and Reza Feryanto on utilities. Without them I’m a head without arms. Four months of monsoon storms, hunting frenzies, and boys who never stood still. How did we keep the dialogue clean? See below.</p>
   <div style="background:var(--cream);border-left:3px solid var(--gold);border-radius:4px;padding:14px 18px;margin:0 0 16px;font-style:italic;">None of it happens without our director <a href="https://www.imdb.com/name/nm0612720/" style="color:var(--green)">Marc Munden</a>, whose vision set the sound bar for the whole shoot, and our line producer <a href="https://www.biscuitfilms.com/" style="color:var(--green)">Magen Appathurai</a>, who made sure I had what I needed to reach it on the ground. I owe them both.</div>
   <p><span class="g">The work is heading our way.</span> Thailand alone took 302 foreign productions in the first half of 2026, worth over 4 billion baht (124 million USD) with more unnamed shoots prepping for the back half of the year (<a href="https://www.nationthailand.com/business/economy/40068179" style="color:var(--green)">Nation Thailand</a>). Across ANZ and ASEAN the ‘floor’ is busy. I keep a running map of what’s shooting or prepping our region. Take a look below.</p>
   <p><span class="g">Jakarta has opened a door.</span> Permits there used to mean four offices and a lot of waiting. Since 26 June it’s one team, and if you’re shooting from overseas they’ll scout locations for you free, halve the fee on any government-owned location, and discount your accommodation, catering and gear hire (<a href="https://www.screendaily.com/screen-network/why-jakarta-is-poised-to-become-a-major-international-filmmaking-hub/5216825.article" style="color:var(--green)">Screen Daily</a>). One thing to know before you budget: the 50% rebate everyone’s quoting is for Indonesian producers only, not foreign shoots. Netflix spent about 50 days in Kota Tua on <em>Tygo: Extraction</em> this year and there are at least three more titles in planning (<a href="https://variety.com/2026/film/news/jakarta-tax-rebate-film-incentives-netflix-apos-2026-1236784812/" style="color:var(--green)">Variety</a>). Jakarta Film Summit is in October.</p>
