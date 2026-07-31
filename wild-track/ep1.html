@@ -187,7 +187,7 @@
   <p style="font-family:Georgia,serif; font-size:15px; line-height:24px; color:#2c2c28; margin:0 0 18px;">
 Australia, New Zealand and Southeast Asia are a few hours apart, yet nobody seems to track their shoots as one region. So I do. Everything below is either publicly sourced or clearly marked as something I have only heard from my own network. Start here if you want to know what is moving in our patch.</p>
   <div style="border:1px solid var(--gold);border-radius:8px;overflow:hidden;margin:4px 0 10px;">
-    <iframe src="/wild-track/map" title="What's shooting · Asia-Pacific production map" loading="lazy" style="width:100%;height:900px;border:0;display:block;background:#efece3;"></iframe>
+    <iframe id="wt-map-frame" src="/wild-track/map" title="What's shooting · Asia-Pacific production map" loading="lazy" style="width:100%;height:560px;border:0;display:block;background:#efece3;transition:height .2s ease;"></iframe>
   </div>
   <p style="margin-top:16px;"><span class="g">Waiting on the snow.</span> Netflix’s first series set and filmed in New Zealand is rolling in Queenstown (Rufus Sewell, Frances O’Connor). I dropped into Netflix’s Sydney office recently and heard the team is already down there, waiting on the snow before the ski scenes roll.</p>
   </div>
@@ -238,6 +238,18 @@ Australia, New Zealand and Southeast Asia are a few hours apart, yet nobody seem
 <script>
 (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
 ml('account','2499136');
+</script>
+
+<script>
+/* The map iframe reports its real content height. Without this the iframe
+   is a fixed height, which leaves dead space on desktop and clips on tablet. */
+(function(){
+  window.addEventListener('message', function(e){
+    if(!e.data || typeof e.data.wildTrackHeight!=='number') return;
+    var f=document.getElementById('wt-map-frame');
+    if(f) f.style.height = Math.max(420, e.data.wildTrackHeight) + 'px';
+  });
+})();
 </script>
 </body>
 </html>

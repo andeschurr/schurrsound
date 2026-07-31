@@ -38,8 +38,8 @@
   .filters button[aria-pressed="true"]{background:var(--green);color:#f0ead8;border-color:var(--green)}
   .mapcard{background:#eaf0f4;border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:18px}
   /* two-column: map left, list right, matched heights */
-  .cols{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:14px;align-items:start}
-  .col-list{max-height:var(--maph,620px);overflow-y:auto;padding-right:6px;
+  .cols{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.85fr);gap:16px;align-items:start}
+  .col-list{max-height:var(--maph,620px);min-height:280px;overflow-y:auto;padding-right:6px;
     scrollbar-width:thin;scrollbar-color:var(--line) transparent}
   .col-list::-webkit-scrollbar{width:7px}
   .col-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
@@ -215,6 +215,8 @@ function render(){
       window.scrollTo({top:y,behavior:'smooth'});
     };
   });
+  syncHeights();
+  setTimeout(function(){syncHeights();postHeight();},30);
 }
 render();
 
@@ -225,9 +227,20 @@ function syncHeights(){
   if(window.innerWidth<=700){ lc.style.removeProperty('--maph'); return; }
   lc.style.setProperty('--maph', mc.offsetHeight+'px');
 }
+/* Report our real content height to the parent page so the iframe can
+   size itself. A fixed iframe height leaves dead space on wide screens
+   and clips content on narrow ones. */
+function postHeight(){
+  if(window.self===window.top) return;
+  var h=Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height)+24;
+  parent.postMessage({wildTrackHeight:h},'*');
+}
 window.addEventListener('resize', syncHeights);
 window.addEventListener('load', syncHeights);
-setTimeout(syncHeights, 60);
+setTimeout(function(){syncHeights();postHeight();}, 60);
+setTimeout(postHeight, 400);
+window.addEventListener('resize', postHeight);
+window.addEventListener('load', postHeight);
 </script>
 </body>
 </html>
