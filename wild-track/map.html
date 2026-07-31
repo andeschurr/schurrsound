@@ -38,7 +38,7 @@
   .filters button[aria-pressed="true"]{background:var(--green);color:#f0ead8;border-color:var(--green)}
   .mapcard{background:#eaf0f4;border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:18px}
   /* two-column: map left, list right, matched heights */
-  .cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:16px;align-items:start}
+  .cols{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:14px;align-items:start}
   .col-list{max-height:var(--maph,620px);overflow-y:auto;padding-right:6px;
     scrollbar-width:thin;scrollbar-color:var(--line) transparent}
   .col-list::-webkit-scrollbar{width:7px}
@@ -50,7 +50,7 @@
   .col-list .t{font-size:17.5px}
   .col-list .meta{font-size:12.5px;margin-top:4px}
   .col-list .note{font-size:12px;margin-top:4px}
-  @media(max-width:820px){
+  @media(max-width:700px){
     .cols{grid-template-columns:1fr}
     .col-list{max-height:none;overflow:visible;padding-right:0}
     .listhead{position:static}
@@ -71,7 +71,7 @@
   ol{list-style:none;margin:0;padding:0}
   li{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--line);
      border-radius:8px;padding:18px 20px;margin-bottom:14px;transition:.15s}
-  li.on{box-shadow:0 1px 10px rgba(30,58,47,.13)}
+  li.on{box-shadow:0 1px 10px rgba(30,58,47,.13);background:#fff;border-color:var(--gold)}
   li[data-status="shooting"]{border-left-color:var(--shoot)}
   li[data-status="prep"]{border-left-color:var(--prep)}
   li[data-status="hearing"]{border-left-color:var(--hear)}
@@ -183,6 +183,25 @@ function render(){
     el.onmouseleave=function(){if(t!==selected) link(t,false);};
     el.onclick=function(){
       select(t);
+      // Stacked layout: clicking a list row should show the pin it refers to,
+      // so scroll the map back into view. Side-by-side needs no scrolling.
+      var stacked = window.innerWidth<=700;
+      if(stacked && el.tagName==='LI'){
+        var mc=document.getElementById('mapcard');
+        if(mc){
+          var my=mc.getBoundingClientRect().top+window.pageYOffset-12;
+          window.scrollTo({top:my,behavior:'smooth'});
+        }
+        return;
+      }
+      if(el.tagName!=='LI'){
+        var lc=document.getElementById('listcol');
+        var target0=document.querySelector('li[data-t="'+CSS.escape(t)+'"]');
+        if(lc && target0 && !stacked){
+          lc.scrollTo({top:target0.offsetTop-lc.querySelector('.listhead').offsetHeight-8,behavior:'smooth'});
+          return;
+        }
+      }
       var target=document.querySelector('li[data-t="'+CSS.escape(t)+'"]');
       if(!target) return;
       // Scroll only this window's own viewport -- Element.scrollIntoView()
@@ -203,7 +222,7 @@ render();
 function syncHeights(){
   var mc=document.getElementById('mapcard'), lc=document.getElementById('listcol');
   if(!mc||!lc) return;
-  if(window.innerWidth<=820){ lc.style.removeProperty('--maph'); return; }
+  if(window.innerWidth<=700){ lc.style.removeProperty('--maph'); return; }
   lc.style.setProperty('--maph', mc.offsetHeight+'px');
 }
 window.addEventListener('resize', syncHeights);
