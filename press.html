@@ -16,113 +16,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{--green:#1e3a2f;--green-deep:#152a21;--gold:#b8a15c;--gold-soft:#d6c493;--cream:#f0ead8;--paper:#fbf9f4;--ink:#26261f;--grey:#8a887e;--line:#e4ddc9}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Inter',Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px}
-  a{color:inherit}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
-  .strip{background:var(--green-deep);color:var(--gold-soft);text-align:center;padding:10px 16px;font-size:13.5px;letter-spacing:.06em}
-  .strip a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(184,161,92,.4)}
-  .strip strong{color:#fff;font-weight:600}
-  nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;margin-bottom:18px}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:58px}
-  .wordmark{font-weight:600;letter-spacing:.32em;font-size:14px;text-decoration:none;color:var(--green)}
-  .wordmark span{color:var(--gold)}
-  .nav-links{display:flex;gap:28px;list-style:none}
-  .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
-  .nav-links a[href="/notes/"]{color:var(--green);font-weight:600}
-  .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
-  .nav-links a.active{color:var(--green);border-bottom:2px solid var(--gold)}
-  .nav-sub{border-top:1px solid var(--line);background:#fdfcf7}
-  .nav-sub-in{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:76px;padding:20px 0;flex-wrap:wrap}
-  .nav-dl{display:flex;gap:4px;align-items:center}
-  .nav-sub a{text-decoration:none;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;padding:7px 12px;border-radius:4px;transition:background .15s ease,color .15s ease,border-color .15s ease}
-  .nav-sub a.dl{color:var(--grey);display:inline-flex;align-items:center;gap:7px}
-  .nav-sub a.dl .arw{color:var(--gold);font-size:12.5px;line-height:1}
-  .nav-sub a.dl:hover{background:rgba(184,161,92,.16);color:var(--green)}
-  .nav-sub a.dl:hover .arw{color:var(--green)}
-  .nav-sub a.wt{color:var(--green);font-weight:600;background:rgba(184,161,92,.18);border:1px solid rgba(184,161,92,.5);display:inline-flex;align-items:center;gap:7px}
-  .nav-sub a.wt .arw{color:var(--gold);font-size:12.5px;line-height:1}
-  .nav-sub a.wt:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
-  .nav-sub a.wt:hover .arw{color:var(--gold-soft)}
-  @media(max-width:620px){ .nav-sub-in{height:auto;padding:10px 0 14px;justify-content:center;row-gap:8px} .nav-dl{justify-content:center;flex-wrap:wrap} .nav-links{gap:16px} }
-  header.mini{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:64px 0 56px;text-align:center}
-  header.mini h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(34px,4.6vw,48px);color:#fff}
-  header.mini p:not(.eyebrow){color:var(--gold-soft);margin-top:10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px}
-  section{padding:56px 0 84px}
-  .sect-h{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:24px;color:var(--green);margin:0 0 4px}
-  .sect-p{font-size:14px;color:var(--grey);margin-bottom:18px}
-  .block{margin-bottom:52px}
-  .qband{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0 40px}
-  .qhero{max-width:760px;margin:0 auto;text-align:center}
-  .qhero .mark{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;line-height:.6;color:var(--gold);display:block;margin-bottom:10px}
-  .qhero q{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(22px,3vw,31px);line-height:1.34;color:var(--green);quotes:none}
-  .qhero .attr{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-top:18px}
-  .qrow{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px;margin:34px auto 0;padding-top:30px;border-top:1px solid var(--line)}
-  .qrow .q2{text-align:center;padding:0 10px}
-  .qrow q{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;line-height:1.4;color:var(--green);quotes:none}
-  .qrow .attr{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-top:11px}
-
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .mcard{background:#fff;border:1px solid var(--line);padding:0 22px 20px;display:flex;flex-direction:column}
-  .mcard > .facade:first-child{margin:0 -22px 16px;width:calc(100% + 44px)}
-  .mcard.pod{padding-top:22px}
-  .mcard .inq{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--green);border-left:3px solid var(--gold);padding-left:11px;margin:2px 0 4px}
-  .mcard .inq .attr{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-top:6px}
-  .mcard .src{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
-  .mcard h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:20px;line-height:1.25;color:var(--green);margin:6px 0 8px}
-  .mcard p{font-size:13.5px;color:var(--grey);margin-bottom:12px}
-  .mcard .more{margin-top:auto;padding-top:12px}
-  .mcard .more a{font-size:12.5px;font-weight:600;letter-spacing:.05em;color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold)}
-
-  .facade{position:relative;width:100%;padding:0;border:0;background:#000;cursor:pointer;display:block;overflow:hidden;aspect-ratio:16/9}
-  .facade img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
-  .facade .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(30,58,47,.82);border:2px solid rgba(240,234,216,.9);transition:background .15s ease}
-  .facade .play:after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #f0ead8}
-  .facade:hover .play{background:var(--gold)}
-  .vid{position:relative;width:100%;aspect-ratio:16/9;background:#000}
-  .vid iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-
-  .pod .src{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
-  .pod h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px;line-height:1.25;color:var(--green);margin:6px 0 6px}
-  .pod p{font-size:13.5px;color:var(--grey);margin-bottom:12px}
-  .pod iframe{width:100%;border:0;display:block}
-
-  .rowlist{border-top:1px solid var(--line)}
-  .ritem{display:flex;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
-  .ritem .meta{flex:0 0 190px}
-  .ritem .meta .src{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block}
-  .ritem .meta .date{font-size:11.5px;color:var(--grey)}
-  .ritem .body{flex:1}
-  .ritem h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:20px;line-height:1.25;color:var(--green)}
-  .ritem p{font-size:13.5px;color:var(--grey);margin-top:5px}
-  .ritem .inq{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--green);border-left:3px solid var(--gold);padding-left:11px;margin-top:9px}
-  .ritem .inq .attr{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-top:6px}
-  .ritem .go{margin-top:9px}
-  .ritem .go a{font-size:12.5px;font-weight:600;letter-spacing:.05em;color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold)}
-  @media(max-width:720px){
-    .qrow{grid-template-columns:1fr;gap:26px}
-    .duo{grid-template-columns:1fr}
-    .ritem{flex-direction:column;gap:6px}
-    .ritem .meta{flex:none}
-    .qband{padding:32px 0 30px}
-  }
-  @media (max-width:720px){
-    .mcard{padding:0 18px 18px}
-    .mcard > .facade:first-child{margin:0 -18px 14px;width:calc(100% + 36px)}
-    .mcard.pod{padding-top:18px}
-    .strip{font-size:12px;padding:8px 14px;line-height:1.5}
-    .nav-in{height:auto;flex-wrap:wrap;align-items:center;padding:10px 4px;row-gap:6px}
-    nav .wrap{padding:0 20px}
-    .wordmark{font-size:12px;letter-spacing:.24em;white-space:nowrap;margin-right:14px}
-    .nav-links{gap:14px;flex-wrap:wrap;row-gap:4px}
-    .nav-links a{font-size:12.5px;white-space:nowrap}
-  }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="press">
 
 <div class="strip">&#127942;&nbsp; <a href="https://www.televisionacademy.com/bios/ande-schurr" target="_blank" rel="noopener"><strong>2026 Emmy Nominee</strong>: Outstanding Sound Mixing &middot; <em>Lord of the Flies</em></a></div>
 
@@ -134,7 +30,7 @@
       <li><a href="/#credits">Credits</a></li>
       <li><a href="/notes/">Field Notes</a></li>
       <li><a href="/whats-shooting">The Map</a></li>
-      <li><a class="active" href="/press">Press</a></li>
+      <li><a href="/press" aria-current="page">Press</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>
   </div>
@@ -149,11 +45,11 @@
   </div>
 </nav>
 
-<header class="mini">
+<header class="phero center">
   <div class="wrap">
     <p class="eyebrow">Press</p>
     <h1>Selected interviews &amp; features</h1>
-    <p>On the sound of Lord of the Flies (Netflix/BBC) and recent international work.</p>
+    <p class="sub">On the sound of Lord of the Flies (Netflix/BBC) and recent international work.</p>
   </div>
 </header>
 
