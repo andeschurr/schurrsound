@@ -359,8 +359,10 @@ body.map .nav-links a.active{color:var(--green);border-bottom:2px solid var(--go
   @media(max-width:620px){ .nav-in{height:auto;flex-wrap:wrap;padding:10px 18px;row-gap:8px} .nav-links{gap:16px;flex-wrap:wrap} .nav-links a{font-size:var(--fs-label)} }
 
 
-body.map .embedded h1, body.map .embedded .sub, body.map .embedded .page-intro, body.map .embedded nav{display:none}
-body.map .embedded .wrap{padding-top:10px}
+/* .embedded is set on <html> by map.html when it detects it is in an iframe,
+   so these must be compound on the root, not descendants of body. */
+html.embedded body.map h1,html.embedded body.map .sub,html.embedded body.map .page-intro,html.embedded body.map nav{display:none}
+html.embedded body.map .wrap{padding-top:10px}
 
 /* body.press: the press page */
 body.press section{padding:var(--sp-5) 0 var(--sp-6)}
