@@ -1,3 +1,11 @@
-/credits  /Ande_Schurr_SoundMixer_EmmyNominee.pdf  302
-/archive  /wild-track/archive  301
-/confirmed  /wild-track/confirmed  301
+# Credits is now a real HTML page at /credits (credits.html).
+# The PDF keeps a clean permanent URL of its own.
+/credits.pdf  /Ande_Schurr_SoundMixer_EmmyNominee.pdf  302
+
+# Legacy short paths
+/archive    /wild-track/archive     301
+/confirmed  /wild-track/confirmed   301
+
+# Convenience aliases for spoken / printed use
+/singapore  /production-sound-mixer-singapore  301
+/notes      /notes/                            301

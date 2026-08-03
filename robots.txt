@@ -4,6 +4,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /wild-track/tools/
 
 # Explicit allows for AI search and assistant crawlers.
 # Listed individually so no upstream managed file can quietly reverse them.
