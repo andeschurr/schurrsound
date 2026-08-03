@@ -46,9 +46,13 @@ img{max-width:100%;height:auto}
 .strip a:hover{border-bottom-color:var(--gold)}
 .strip strong{color:#fff;font-weight:600}
 
-/* nav */
+/* nav
+   One definition for every page. --nav-h is written by assets/site.js from the
+   real measured height and consumed by scroll-margin-top, so in-page anchors
+   can never land underneath the bar. Below 620px the bar stops being sticky:
+   at phone widths it is 170px+ tall and would eat a quarter of the screen. */
 nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;margin-bottom:18px}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;min-height:58px}
 .wordmark{font-weight:600;letter-spacing:.32em;font-size:var(--fs-ui);text-decoration:none;color:var(--green)}
 .wordmark span{color:var(--gold)}
 .nav-links{display:flex;gap:26px;list-style:none}
@@ -67,14 +71,21 @@ nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;
 .nav-sub a.wt .arw{color:var(--gold);font-size:var(--fs-label);line-height:1}
 .nav-sub a.wt:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
 .nav-sub a.wt:hover .arw{color:var(--gold-soft)}
-@media(max-width:620px){.nav-sub-in{height:auto;padding:10px 0 14px;justify-content:center;row-gap:8px}.nav-dl{justify-content:center;flex-wrap:wrap}}
-@media(max-width:760px){
+@media(max-width:900px){
   .strip{font-size:var(--fs-label);padding:8px 14px;line-height:1.5}
-  .nav-in{height:auto;flex-wrap:wrap;align-items:center;padding:10px 4px;row-gap:6px}
   nav .wrap{padding:0 20px}
+  .nav-in{flex-wrap:wrap;padding:10px 0;row-gap:6px}
   .wordmark{font-size:var(--fs-label);letter-spacing:.24em;white-space:nowrap;margin-right:14px}
-  .nav-links{gap:14px;flex-wrap:wrap;row-gap:4px}
+  .nav-links{gap:16px;flex-wrap:wrap;row-gap:6px}
   .nav-links a{font-size:var(--fs-label);white-space:nowrap}
+  .nav-sub-in{min-height:0;padding:12px 0;gap:10px}
+}
+@media(max-width:620px){
+  nav{position:static}
+  .nav-in{justify-content:center;text-align:center}
+  .nav-links{justify-content:center;width:100%;gap:14px}
+  .nav-sub-in{justify-content:center;padding:10px 0 12px;row-gap:8px}
+  .nav-dl{justify-content:center;flex-wrap:wrap}
 }
 
 /* page hero */
@@ -100,7 +111,8 @@ header.phero.center .btns{justify-content:center}
 .btn-green:hover{background:var(--green-deep)}
 
 /* sections */
-section{padding:76px 0;scroll-margin-top:70px}
+section{padding:76px 0}
+[id]{scroll-margin-top:calc(var(--nav-h,140px) + var(--sp-2))}
 section.tight{padding:52px 0}
 .sec-head{text-align:center;max-width:640px;margin:0 auto 44px}
 h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:var(--fs-h2);color:var(--green);margin-top:10px;line-height:var(--lh-head)}
@@ -250,7 +262,7 @@ body.wild-track .dot{display:inline-block;width:11px;height:11px;border-radius:5
    element carries a margin shorthand that would override margin-left. */
 body.wild-track #whats-shooting{width:min(1320px,calc(100vw - 32px));position:relative;left:50%;transform:translateX(-50%)}
 @media(max-width:760px){body.wild-track #whats-shooting{width:auto;left:0;transform:none}}
-body.wild-track .mapcard{background:#e9f0e9;border:1px solid var(--gold);border-radius:8px;padding:18px 20px 14px;margin:26px 0 var(--sp-1);scroll-margin-top:112px}
+body.wild-track .mapcard{background:#e9f0e9;border:1px solid var(--gold);border-radius:8px;padding:18px 20px 14px;margin:26px 0 var(--sp-1)}
 body.wild-track .mapcard .k{font-family:'Inter',Helvetica,sans-serif;font-size:var(--fs-label);letter-spacing:.18em;color:var(--green);text-transform:uppercase;font-weight:600;margin-bottom:6px}
 body.wild-track .mapcard .sub-note{font-size:var(--fs-small);margin-bottom:4px}
 body.wild-track .mapcard p:last-of-type{margin-top:var(--sp-2);margin-bottom:0}
@@ -305,11 +317,11 @@ body.map .col-list li{padding:13px 15px;margin-bottom:9px}
 body.map .col-list .t{font-size:var(--fs-lead)}
 body.map .col-list .meta{font-size:var(--fs-label);margin-top:4px}
 body.map .col-list .note{font-size:var(--fs-label);margin-top:4px}
-  @media(max-width:700px){
-    .cols{grid-template-columns:1fr}
-    .col-list{max-height:none;overflow:visible;padding-right:0}
-    .listhead{position:static}
-  }
+@media(max-width:700px){
+  body.map .cols{grid-template-columns:1fr}
+  body.map .col-list{max-height:none;overflow:visible;padding-right:0}
+  body.map .listhead{position:static}
+}
 body.map svg{width:100%;height:auto;display:block;border-radius:6px}
 body.map .land{fill:#dde5d8;stroke:#b3c2ae;stroke-width:.8;stroke-linejoin:round}
 body.map .clabel{font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;fill:#7f8f7c;
@@ -356,7 +368,11 @@ body.map .nav-links a{text-decoration:none;font-size:var(--fs-nav);color:var(--m
 body.map .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
 body.map .nav-links a[href="/notes/"]{color:var(--green);font-weight:600}
 body.map .nav-links a.active{color:var(--green);border-bottom:2px solid var(--gold)}
-  @media(max-width:620px){ .nav-in{height:auto;flex-wrap:wrap;padding:10px 18px;row-gap:8px} .nav-links{gap:16px;flex-wrap:wrap} .nav-links a{font-size:var(--fs-label)} }
+@media(max-width:620px){
+  body.map .nav-in{height:auto;flex-wrap:wrap;justify-content:center;padding:10px 18px;row-gap:8px}
+  body.map .nav-links{gap:16px;flex-wrap:wrap;justify-content:center}
+  body.map .nav-links a{font-size:var(--fs-label)}
+}
 
 
 /* .embedded is set on <html> by map.html when it detects it is in an iframe,
