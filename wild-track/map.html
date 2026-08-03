@@ -6,7 +6,7 @@
 <title>What's Shooting · Asia-Pacific | The Wild Track</title>
 <meta name="description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources. Updated quarterly with The Wild Track.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://schurrsound.com/wild-track/map">
+<meta property="og:url" content="https://schurrsound.com/whats-shooting">
 <meta property="og:title" content="What's Shooting · Asia-Pacific | The Wild Track">
 <meta property="og:description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources.">
 <meta property="og:image" content="https://schurrsound.com/wild-track/og-wild-track.png">
@@ -85,15 +85,39 @@
   .foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
     font-size:12px;color:var(--mute);line-height:1.6}
   .empty{padding:24px;text-align:center;color:var(--mute);font-size:14px}
+  /* standalone site nav (hidden when embedded in the newsletter iframe) */
+  nav{background:var(--paper);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1280px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:58px}
+  .wordmark{font-weight:600;letter-spacing:.32em;font-size:14px;text-decoration:none;color:var(--green)}
+  .wordmark span{color:var(--gold)}
+  .nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
+  .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
+  .nav-links a[href="/notes/"]{color:var(--green);font-weight:600}
+  .nav-links a.active{color:var(--green);border-bottom:2px solid var(--gold)}
+  @media(max-width:620px){ .nav-in{height:auto;flex-wrap:wrap;padding:10px 18px;row-gap:8px} .nav-links{gap:16px;flex-wrap:wrap} .nav-links a{font-size:12.5px} }
 </style>
-<link rel="canonical" href="https://schurrsound.com/wild-track/map">
+<link rel="canonical" href="https://schurrsound.com/whats-shooting">
 </head>
 <body>
+<nav>
+  <div class="nav-in">
+    <a class="wordmark" href="/">SCHURR <span>SOUND</span></a>
+    <ul class="nav-links">
+      <li><a href="/#reel">Showreel</a></li>
+      <li><a href="/#credits">Credits</a></li>
+      <li><a href="/notes/">Field Notes</a></li>
+      <li><a class="active" href="/whats-shooting">The Map</a></li>
+      <li><a href="/press">Press</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="wrap">
   <h1>What's Shooting · Asia-Pacific</h1>
   <div class="sub">The Wild Track · updated <span id="upd"></span></div>
 
-<script src="map-data.js?v=2"></script>
+<script src="/wild-track/map-data.js?v=2"></script>
 
   <p class="page-intro" style="font-family:Georgia,serif;font-size:15px;line-height:24px;color:var(--ink);max-width:740px;margin:0 0 20px;">
     Australia, New Zealand and Southeast Asia are a few hours apart, yet nobody seems to track their shoots as one region. So I do. Everything below is either publicly sourced or clearly marked as something I have only heard from my own network. Start here if you want to know what is moving in our patch.
@@ -131,7 +155,7 @@
 if(window.self!==window.top){document.documentElement.classList.add('embedded');}
 </script>
 <style>
-  .embedded h1, .embedded .sub, .embedded .page-intro{display:none}
+  .embedded h1, .embedded .sub, .embedded .page-intro, .embedded nav{display:none}
   .embedded .wrap{padding-top:10px}
 </style>
 <script>

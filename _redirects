@@ -9,3 +9,6 @@
 # Convenience aliases for spoken / printed use
 /singapore  /production-sound-mixer-singapore  301
 /notes      /notes/                            301
+
+# Standalone home for the interactive map (served from wild-track/map.html)
+/whats-shooting  /wild-track/map  200
