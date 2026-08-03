@@ -1,3 +1,8 @@
 
 /wild-track/map-data.js
   Cache-Control: public, max-age=300, must-revalidate
+
+# The whole site now depends on one stylesheet, so a stale copy in a visitor's
+# browser breaks every page at once. Keep it on a short leash.
+/assets/site.css
+  Cache-Control: public, max-age=300, must-revalidate
