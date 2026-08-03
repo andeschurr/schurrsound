@@ -100,7 +100,7 @@ the entire palette and that constraint is doing real work.
 
 # PART 3: The phased plan
 
-## Phase 1: Single stylesheet (do now, before the Emmy)
+## Phase 1: Single stylesheet (DONE, 4 August 2026)
 
 **Goal:** one file defines the design. Roughly two hours with Claude Code.
 
@@ -114,7 +114,12 @@ the entire palette and that constraint is doing real work.
 6. Visually diff every page before and after. The intended change is zero
 
 **Acceptance test:** `grep -c "<style>" *.html wild-track/*.html notes/*.html`
-returns 0 across the board.
+returns 0 for every file except `wild-track/ep1-email.html`, which is a
+MailerLite template and must keep its inline styles.
+
+Done 4 August 2026. Body classes in use: `body.home`, `body.press`,
+`body.wild-track` (four issue and archive pages) and `body.map` (the
+interactive map, which needed its own namespace).
 
 ## Phase 2: Single source for nav and footer (September, after the ceremony)
 
