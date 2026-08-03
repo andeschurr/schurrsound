@@ -9,66 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{ --green:#1e3a2f; --green-deep:#152a21; --gold:#b8a15c; --gold-soft:#d6c493; --cream:#f0ead8; --paper:#fbf9f4; --ink:#26261f; --grey:#8a887e; --line:#e4ddc9; }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Inter',Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px}
-  a{color:inherit}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
-  /* strip */
-  .strip{background:var(--green-deep);color:var(--gold-soft);text-align:center;padding:10px 16px;font-size:13.5px;letter-spacing:.06em}
-  .strip a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(184,161,92,.4)}
-  .strip strong{color:#fff;font-weight:600}
-  /* nav */
-  nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;margin-bottom:18px}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:58px}
-  .wordmark{font-weight:600;letter-spacing:.32em;font-size:14px;text-decoration:none;color:var(--green)}
-  .wordmark span{color:var(--gold)}
-  .nav-links{display:flex;gap:28px;list-style:none}
-  .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
-  .nav-links a[href="/notes/"]{color:var(--green);font-weight:600}
-  .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
-  .nav-sub{border-top:1px solid var(--line);background:#fdfcf7}
-  .nav-sub-in{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:76px;padding:20px 0;flex-wrap:wrap}
-  .nav-dl{display:flex;gap:4px;align-items:center}
-  .nav-sub a{text-decoration:none;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;padding:7px 12px;border-radius:4px;transition:background .15s ease,color .15s ease,border-color .15s ease}
-  .nav-sub a.dl{color:var(--grey);display:inline-flex;align-items:center;gap:7px}
-  .nav-sub a.dl .arw{color:var(--gold);font-size:12.5px;line-height:1}
-  .nav-sub a.dl:hover{background:rgba(184,161,92,.16);color:var(--green)}
-  .nav-sub a.dl:hover .arw{color:var(--green)}
-  .nav-sub a.wt{color:var(--green);font-weight:600;background:rgba(184,161,92,.18);border:1px solid rgba(184,161,92,.5);display:inline-flex;align-items:center;gap:7px}
-  .nav-sub a.wt .arw{color:var(--gold);font-size:12.5px;line-height:1}
-  .nav-sub a.wt:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
-  .nav-sub a.wt:hover .arw{color:var(--gold-soft)}
-  @media(max-width:620px){ .nav-sub-in{height:auto;padding:10px 0 14px;justify-content:center;row-gap:8px} .nav-dl{justify-content:center;flex-wrap:wrap} .nav-links{gap:16px} }
-  /* step 1: check inbox */
-  .step1{background:var(--cream);border-bottom:1px solid var(--line)}
-  .step1 .wrap{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 24px;flex-wrap:wrap}
-  .step1 svg{flex:0 0 auto}
-  .step1 p{font-size:14px;color:var(--ink)}
-  .step1 strong{color:var(--green)}
-  /* confirmed hero */
-  header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:100px 0;text-align:center}
-  header.hero .mark{font-size:38px;color:var(--gold-soft);margin-bottom:18px}
-  header.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,4.6vw,46px);line-height:1.15;color:#fff}
-  header.hero p.lead{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(17px,2vw,20px);color:var(--gold-soft);margin:16px auto 0;max-width:52ch}
-  .btns{display:flex;gap:14px;margin-top:34px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;padding:13px 26px;border-radius:2px;font-size:14px;font-weight:600;letter-spacing:.05em;text-decoration:none}
-  .btn-gold{background:var(--gold);color:var(--green-deep)}
-  .btn-gold:hover{background:var(--gold-soft)}
-  .btn-line{border:1px solid var(--gold);color:var(--cream)}
-  .btn-line:hover{background:rgba(184,161,92,.14)}
-  /* footer */
-  footer{background:var(--green);color:var(--cream);padding:56px 0 36px;border-top:1px solid rgba(240,234,216,.18)}
-  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
-  .foot-grid h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-  footer a{color:var(--cream);text-decoration:none}
-  footer a:hover{color:var(--gold-soft)}
-  footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(240,234,216,.18);font-size:12.5px;color:#b8b3a1}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="wild-track">
 
 <div class="strip">🏆&nbsp; <a href="https://www.televisionacademy.com/shows/lord-of-the-flies" target="_blank" rel="noopener"><strong>2026 Emmy Nominee</strong> · Outstanding Sound Mixing · <em>Lord of the Flies</em></a></div>
 
@@ -105,12 +48,12 @@
   </div>
 </section>
 
-<header class="hero">
+<header class="phero center">
   <div class="wrap">
     <div class="mark">✓</div>
     <p class="eyebrow">Step 2: once you've clicked confirm</p>
     <h1>You're confirmed. Welcome aboard.</h1>
-    <p class="lead">Quarterly location-sound notes from Asia-Pacific are on their way to your inbox.</p>
+    <p class="sub">Quarterly location-sound notes from Asia-Pacific are on their way to your inbox.</p>
     <div class="btns">
       <a class="btn btn-gold" href="/wild-track/archive">Browse past issues&nbsp;▸</a>
       <a class="btn btn-line" href="/">Back to schurrsound.com</a>

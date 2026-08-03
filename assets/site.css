@@ -198,3 +198,27 @@ footer .fine{margin-top:44px;padding-top:22px;border-top:1px solid rgba(240,234,
 .crumb{font-size:var(--fs-label);color:var(--grey);padding-top:18px}
 .crumb a{color:var(--green);text-decoration:none}
 .crumb a:hover{color:var(--gold)}
+
+/* ============================================================
+   Page-scoped rules. Everything above is shared.
+   ============================================================ */
+
+/* body.wild-track: newsletter archive, confirmation, issue pages */
+body.wild-track .issues{padding:var(--sp-5) 0 var(--sp-6)}
+body.wild-track .issue{display:flex;gap:22px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+body.wild-track .issue:first-child{padding-top:0}
+body.wild-track .issue .no{font-family:'Cormorant Garamond',Georgia,serif;font-size:var(--fs-display-lg);color:var(--gold);flex:0 0 auto;min-width:60px}
+body.wild-track .issue .issue-body{flex:1}
+body.wild-track .issue h3{font-size:var(--fs-h3);font-weight:600;color:var(--ink);margin:0;font-family:'Inter',Helvetica,sans-serif}
+body.wild-track .issue .date{font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-top:4px}
+body.wild-track .issue .blurb{font-size:var(--fs-small);color:var(--grey);margin-top:var(--sp-1);max-width:56ch}
+body.wild-track .issue .go{flex:0 0 auto}
+body.wild-track .issue .go a{font-size:var(--fs-nav);font-weight:600;letter-spacing:.05em;color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold);white-space:nowrap}
+body.wild-track .issue .go a:hover{color:var(--gold)}
+@media(max-width:560px){body.wild-track .issue{flex-wrap:wrap}body.wild-track .issue .go{margin-top:6px}}
+body.wild-track .step1{background:var(--cream);border-bottom:1px solid var(--line);padding:0}
+body.wild-track .step1 .wrap{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px var(--sp-3);flex-wrap:wrap}
+body.wild-track .step1 svg{flex:0 0 auto}
+body.wild-track .step1 p{font-size:var(--fs-ui);color:var(--ink)}
+body.wild-track .step1 strong{color:var(--green)}
+body.wild-track header.phero .mark{font-size:var(--fs-hero);color:var(--gold-soft);margin-bottom:18px;line-height:1}
