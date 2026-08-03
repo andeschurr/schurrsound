@@ -24,7 +24,7 @@ img{max-width:100%;height:auto}
 .strip strong{color:#fff;font-weight:600}
 
 /* nav */
-nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;margin-bottom:18px}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:58px}
 .wordmark{font-weight:600;letter-spacing:.32em;font-size:14px;text-decoration:none;color:var(--green)}
 .wordmark span{color:var(--gold)}
@@ -133,7 +133,9 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clam
 /* article cards */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 @media(max-width:760px){.cards{grid-template-columns:1fr}}
-.card{background:#fff;border:1px solid var(--line);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column}
+.card{background:#fff;border:1px solid var(--line);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column;transition:background .15s ease,border-color .15s ease}
+.card:not(.soon){border:1.5px solid var(--gold);box-shadow:0 1px 10px rgba(30,58,47,.07)}
+.card:not(.soon):hover{background:var(--cream)}
 .card h3{margin:8px 0 10px;font-size:22px}
 .card p{font-size:15px;color:var(--ink);margin-bottom:16px}
 .card .go{margin-top:auto;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);text-decoration:none;font-weight:600}
@@ -160,6 +162,6 @@ footer a:hover{color:var(--gold-soft)}
 footer .fine{margin-top:44px;padding-top:22px;border-top:1px solid rgba(240,234,216,.18);font-size:12.5px;color:#b8b3a1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 /* breadcrumb */
-.crumb{font-size:12.5px;color:var(--grey);padding:18px 0 0}
+.crumb{font-size:12.5px;color:var(--grey);padding-top:18px}
 .crumb a{color:var(--green);text-decoration:none}
 .crumb a:hover{color:var(--gold)}
