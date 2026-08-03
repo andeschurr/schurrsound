@@ -32,6 +32,7 @@
   .wordmark span{color:var(--gold)}
   .nav-links{display:flex;gap:28px;list-style:none}
   .nav-links a{text-decoration:none;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
+  .nav-links a[href="/notes/"]{color:var(--green);font-weight:600}
   .nav-links a:hover{color:var(--green);border-bottom:2px solid var(--gold)}
   .nav-links a.active{color:var(--green);border-bottom:2px solid var(--gold)}
   .nav-sub{border-top:1px solid var(--line);background:#fdfcf7}
@@ -49,7 +50,7 @@
   @media(max-width:620px){ .nav-sub-in{height:auto;padding:10px 0 14px;justify-content:center;row-gap:8px} .nav-dl{justify-content:center;flex-wrap:wrap} .nav-links{gap:16px} }
   header.mini{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 85%);color:var(--cream);padding:64px 0 56px;text-align:center}
   header.mini h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(34px,4.6vw,48px);color:#fff}
-  header.mini p{color:var(--gold-soft);margin-top:10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px}
+  header.mini p:not(.eyebrow){color:var(--gold-soft);margin-top:10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px}
   section{padding:56px 0 84px}
   .sect-h{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:24px;color:var(--green);margin:0 0 4px}
   .sect-p{font-size:14px;color:var(--grey);margin-bottom:18px}

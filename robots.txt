@@ -1,5 +1,5 @@
 # schurrsound.com
-# Schurr Productions Pte. Ltd. — production sound mixing, Singapore / Asia-Pacific
+# Schurr Productions Pte. Ltd. - production sound mixing, Singapore / Asia-Pacific
 # All crawlers welcome, including AI search and AI assistants.
 
 User-agent: *
