@@ -52,9 +52,13 @@ package is airline-checkable and travels as luggage.
 ## Pages
 
 - [Home](https://schurrsound.com/): overview, showreel, selected credits, contact
+- [Credits](https://schurrsound.com/credits): full credit list with roles, studios and locations
+- [Field Notes](https://schurrsound.com/notes/): practical writing on permits, wireless RF licensing, budgets and problems solved on location
+- [Recording clean dialogue beside a waterfall](https://schurrsound.com/notes/dialogue-beside-a-waterfall): how a full dialogue scene was recorded metres from a waterfall on "Lord of the Flies"
+- [Production sound mixer, Singapore](https://schurrsound.com/production-sound-mixer-singapore): services, rates context and coverage for shoots based in Singapore
 - [Press](https://schurrsound.com/press): press coverage, interviews and quotes
 - [The Wild Track](https://schurrsound.com/wild-track): quarterly notes on location sound in Asia-Pacific
-- [Production map](https://schurrsound.com/wild-track/map): what is shooting and prepping across Australia, New Zealand and Southeast Asia
+- [Production map](https://schurrsound.com/whats-shooting): what is shooting and prepping across Australia, New Zealand and Southeast Asia
 
 ## Elsewhere
 

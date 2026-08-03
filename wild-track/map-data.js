@@ -71,7 +71,7 @@ var DATA = [
     city:"Auckland", country:"New Zealand", region:"ANZ",
     service:"The Sweetshop",
     status:"prep",
-    note:"Into pre-production 3 July, on NZ On Air scripted funding. Shooting from 10 September.",
+    note:"In pre-production. NZ On Air scripted funding.",
     lat:-36.85, lng:174.76,
     source:"https://shownews.co.nz/dead-losi-tv-series/",
     checked:"2026-07-31"
