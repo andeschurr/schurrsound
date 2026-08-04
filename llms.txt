@@ -56,6 +56,9 @@ package is airline-checkable and travels as luggage.
 - [Field Notes](https://schurrsound.com/notes/): practical writing on permits, wireless RF licensing, budgets and problems solved on location
 - [Recording clean dialogue beside a waterfall](https://schurrsound.com/notes/dialogue-beside-a-waterfall): how a full dialogue scene was recorded metres from a waterfall on "Lord of the Flies"
 - [Production sound mixer, Singapore](https://schurrsound.com/production-sound-mixer-singapore): services, rates context and coverage for shoots based in Singapore
+- [About](https://schurrsound.com/about): background, how the department works, company and insurance
+- [Production sound mixer, Australia and New Zealand](https://schurrsound.com/production-sound-mixer-australia): NZ citizenship, Trans-Tasman working rights, no sponsorship needed
+- [Dry hire](https://schurrsound.com/dry-hire): sound equipment hire for visiting mixers and productions across Southeast Asia
 - [Press](https://schurrsound.com/press): press coverage, interviews and quotes
 - [The Wild Track](https://schurrsound.com/wild-track): quarterly notes on location sound in Asia-Pacific
 - [Production map](https://schurrsound.com/whats-shooting): what is shooting and prepping across Australia, New Zealand and Southeast Asia
