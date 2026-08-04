@@ -27,6 +27,9 @@
 
   /* spacing scale */
   --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:40px; --sp-5:64px; --sp-6:80px;
+
+  /* production status, data encoding shared by the map and its homepage preview */
+  --status-shooting:#8a763a; --status-prep:#1d6a5a; --status-hearing:#a0642c;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -294,7 +297,6 @@ body.wild-track .mapjump .mj-arw{flex:0 0 auto;color:var(--gold);font-size:var(-
    ------------------------------------------------------------ */
 body.map{
   --map-bg:#efece3; --map-paper:#fffdf8; --map-ink:#2c2c28; --map-line:#d8d4c8;
-  --status-shooting:#8a763a; --status-prep:#1d6a5a; --status-hearing:#a0642c;
 }
 body.map{margin:0;background:var(--map-bg);color:var(--map-ink);font-family:'Inter',Helvetica,Arial,sans-serif}
 body.map .wrap{max-width:1280px;margin:0 auto;padding:28px 18px 60px}
@@ -501,3 +503,17 @@ body.home .lightbox-close:hover{color:var(--gold)}
   body.home .proof .meta{font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
   body.home .wildtrack{width:100%;max-width:300px;margin-top:28px}
 }
+
+/* homepage production map preview. Static cards, deliberately not the map
+   itself: the map carries its own palette under body.map and embedding it
+   here would reintroduce the class collisions fixed in Phase 1. */
+body.home .mapcards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)}
+body.home .mapcard-mini{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:2px;padding:20px 22px}
+body.home .mapcard-mini .status{font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:var(--sp-1)}
+body.home .mapcard-mini h3{font-size:var(--fs-h3);margin:0 0 6px}
+body.home .mapcard-mini .where{font-size:var(--fs-small);color:var(--grey);margin:0}
+body.home .mapcard-mini .status-shooting{color:var(--status-shooting)}
+body.home .mapcard-mini .status-prep{color:var(--status-prep)}
+body.home .mapcard-mini .status-hearing{color:var(--status-hearing)}
+@media(max-width:900px){body.home .mapcards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){body.home .mapcards{grid-template-columns:1fr}}
