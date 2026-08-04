@@ -177,6 +177,11 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:var(
 .credit .studio{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--grey);margin-left:10px;font-size:var(--fs-body)}
 .tag{display:inline-block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--cream);color:var(--green);padding:3px 10px;border-radius:2px;margin-left:12px;vertical-align:2px}
 .tag-emmy{background:#f3e6bb;color:#5c4708}
+.tag-shooting{background:var(--status-shooting);color:#fff}
+.tag-prep{background:var(--status-prep);color:#fff}
+.tag-hearing{background:var(--status-hearing);color:#fff}
+/* a tag leading a card is a block label, not an inline suffix */
+.card .tag{margin-left:0;align-self:flex-start;margin-bottom:var(--sp-1)}
 .credit .who{font-size:var(--fs-small);color:var(--ink);margin-top:8px}
 .credit .where{font-size:var(--fs-small);color:var(--grey);font-style:italic;margin-top:2px}
 .credit .note{font-size:var(--fs-body);color:var(--ink);margin-top:12px;line-height:var(--lh-body);max-width:70ch}
@@ -184,10 +189,10 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:var(
 
 /* article cards */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-@media(max-width:760px){.cards{grid-template-columns:1fr}}
+@media(max-width:620px){.cards{grid-template-columns:1fr}}
 .card{background:#fff;border:1px solid var(--line);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column;transition:background .15s ease,border-color .15s ease}
-.card:not(.soon){border:2px solid var(--gold);border-left-width:4px;box-shadow:0 2px 14px rgba(30,58,47,.10)}
-.card:not(.soon):hover{background:var(--cream)}
+body.notes .card:not(.soon){border:2px solid var(--gold);border-left-width:4px;box-shadow:0 2px 14px rgba(30,58,47,.10)}
+body.notes .card:not(.soon):hover{background:var(--cream)}
 .card h3{margin:8px 0 10px;font-size:var(--fs-h3)}
 .card p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink);margin-bottom:16px}
 .card .go{margin-top:auto;font-size:var(--fs-label);letter-spacing:.1em;text-transform:uppercase;color:var(--green);text-decoration:none;font-weight:600}
@@ -504,16 +509,3 @@ body.home .lightbox-close:hover{color:var(--gold)}
   body.home .wildtrack{width:100%;max-width:300px;margin-top:28px}
 }
 
-/* homepage production map preview. Static cards, deliberately not the map
-   itself: the map carries its own palette under body.map and embedding it
-   here would reintroduce the class collisions fixed in Phase 1. */
-body.home .mapcards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)}
-body.home .mapcard-mini{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:2px;padding:20px 22px}
-body.home .mapcard-mini .status{font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:var(--sp-1)}
-body.home .mapcard-mini h3{font-size:var(--fs-h3);margin:0 0 6px}
-body.home .mapcard-mini .where{font-size:var(--fs-small);color:var(--grey);margin:0}
-body.home .mapcard-mini .status-shooting{color:var(--status-shooting)}
-body.home .mapcard-mini .status-prep{color:var(--status-prep)}
-body.home .mapcard-mini .status-hearing{color:var(--status-hearing)}
-@media(max-width:900px){body.home .mapcards{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){body.home .mapcards{grid-template-columns:1fr}}
