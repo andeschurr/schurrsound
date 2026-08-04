@@ -128,7 +128,7 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
 
 /* prose */
 .prose p{margin:0 0 var(--sp-2);font-size:var(--fs-body);line-height:var(--lh-body)}
-.prose p.standfirst{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:var(--fs-lead);color:var(--green);line-height:var(--lh-lead);margin-bottom:28px}
+.prose p.standfirst{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;font-size:var(--fs-display-sm);color:var(--green);line-height:var(--lh-lead);margin-bottom:28px}
 .prose ul,.prose ol{margin:0 0 20px 22px}
 .prose li{margin-bottom:9px;font-size:var(--fs-body);line-height:var(--lh-body)}
 .prose strong{font-weight:600}
@@ -153,6 +153,13 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
 .callout p{font-size:var(--fs-body);line-height:var(--lh-body);margin-bottom:10px}
 .callout p:last-child{margin-bottom:0}
 .callout h4{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+/* .bio, sibling of .callout. Marks the third person biography block, which
+   stays third person because that is the form AI systems and press quote. */
+.bio{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);padding:var(--sp-3) var(--sp-3) var(--sp-2);margin:0 0 var(--sp-3);border-radius:2px}
+.bio::before{content:"Biography";display:block;font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:var(--sp-2)}
+.bio p:last-child{margin-bottom:0}
+/* the point where the page changes from third person to first */
+hr.voice-shift{border:none;border-top:2px solid var(--gold);width:60px;margin:var(--sp-5) auto}
 
 /* meta line */
 .meta{font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
