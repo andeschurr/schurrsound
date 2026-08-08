@@ -215,6 +215,8 @@ body.notes .card:not(.soon):hover{background:var(--cream)}
 .quote{background:var(--green-deep);color:var(--cream);text-align:center;padding:64px 24px}
 .quote blockquote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:22px;font-size:var(--fs-display-lg);line-height:var(--lh-lead);max-width:760px;margin:0 auto}
 .quote cite{display:block;margin-top:20px;font-style:normal;font-size:var(--fs-label);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+/* the band can hold more than one testimonial; wrap each in .q */
+.quote .q + .q{margin-top:var(--sp-4);padding-top:var(--sp-4);border-top:1px solid rgba(240,234,216,.18)}
 
 /* cta band */
 .cta{background:var(--green);color:var(--cream);padding:64px 0;text-align:center}
