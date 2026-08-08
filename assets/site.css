@@ -173,6 +173,10 @@ hr.voice-shift{border:none;border-top:2px solid var(--gold);width:60px;margin:va
 .alt .fact{background:#fff}
 .fact h4{font-size:var(--fs-label);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .fact p{font-size:var(--fs-small);color:var(--ink)}
+/* a fact box used as a document download: title line above the description */
+.fact h3{font-size:19px;font-size:var(--fs-h3);margin:0 0 var(--sp-1)}
+.fact h3 a{color:var(--green);text-decoration:none;border-bottom:2px solid var(--gold)}
+.fact h3 a:hover{color:var(--gold)}
 @media(max-width:720px){.facts-grid,.facts-grid.three{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.facts-grid,.facts-grid.three,.facts-grid.two{grid-template-columns:1fr}}
 

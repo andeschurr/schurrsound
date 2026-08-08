@@ -1,6 +1,14 @@
 # Credits is now a real HTML page at /credits (credits.html).
-# The PDF keeps a clean permanent URL of its own.
-/credits.pdf  /Ande_Schurr_SoundMixer_EmmyNominee.pdf  302
+# The PDFs keep clean permanent URLs of their own.
+/credits.pdf  /assets/Ande_Schurr_Credits.pdf  302
+
+# The old one-pager filename, kept alive so printed and emailed links survive.
+/Ande_Schurr_SoundMixer_EmmyNominee.pdf  /assets/Ande_Schurr_Credits.pdf  301
+
+# Regional credits, for pasting into email. /singapore is already the landing
+# page alias, so the PDF gets its own spoken-friendly path.
+/singapore-credits  /assets/Ande_Schurr_Singapore_SEAsia.pdf  302
+/sea-credits        /assets/Ande_Schurr_Singapore_SEAsia.pdf  302
 
 # Legacy short paths
 /archive    /wild-track/archive     301
