@@ -17,8 +17,8 @@
 <meta name="twitter:description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources.">
 <meta name="twitter:image" content="https://schurrsound.com/wild-track/og-wild-track.png">
 <link rel="canonical" href="https://schurrsound.com/whats-shooting">
-<link rel="stylesheet" href="/assets/site.css?v=202608111406">
-<script src="/assets/site.js?v=202608111406" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=202608111419">
+<script src="/assets/site.js?v=202608111419" defer></script>
 </head>
 <body class="map">
 <nav>
@@ -120,17 +120,10 @@ function save(){ try{ localStorage.setItem(LS,JSON.stringify(state)); }catch(e){
     const on=!!state.layers[key];
     b.setAttribute('aria-pressed', String(on));
     const w=b.querySelector('.state'); if(w) w.textContent = on ? 'on' : 'off';
-    // the last remaining layer cannot be switched off, so say so rather than
-    // letting the click silently do nothing
-    const other = key==='productions' ? 'stages' : 'productions';
-    const locked = on && !state.layers[other];
-    b.disabled = false;
-    b.title = locked ? 'At least one layer has to stay on' : '';
   }
   paint();
   b.onclick=function(){
-    const other = key==='productions' ? 'stages' : 'productions';
-    if(state.layers[key] && !state.layers[other]) return;
+    // both layers off is a legitimate state: an empty map you can fill back up
     state.layers[key]=!state.layers[key];
     save(); render();
     [...layerBar.querySelectorAll('button')].forEach(function(x){ if(x.__paint) x.__paint(); });
@@ -154,25 +147,22 @@ regions.forEach(function(r){
 });
 
 /* ── stage-only filters ── */
-const STAGE_FILTERS=[
-  { key:'ALL',    label:'All stages',        test:function(){ return true; } },
-  { key:'WATER',  label:'Has water tank',    test:function(s){ return ST.hasWater(s); } },
-  { key:'BIG',    label:'Stage 20,000 sq ft +', test:function(s){ return ST.largestSqft(s)>=20000; } },
-  { key:'POST',   label:'Post on site',      test:function(s){ return ST.hasPost(s); } },
-  { key:'VISITED',label:'Visited in person', test:function(s){ return ST.isVisited(s); } }
-];
-STAGE_FILTERS.forEach(function(f){
+/* One filter, not five. A water tank is the fact that is genuinely hard to
+   look up; stage sizes and post facilities are on every facility's own site.
+   It toggles on and off rather than being one of a radio set. */
+(function(){
   const b=document.createElement('button');
   b.type='button';
-  b.textContent=f.label;
-  b.setAttribute('aria-pressed', String(f.key===state.stageFilter));
+  b.textContent='Has water tank';
+  b.setAttribute('aria-pressed', String(state.stageFilter==='WATER'));
   b.onclick=function(){
-    state.stageFilter=f.key;
-    [...stageBar.children].forEach(c=>c.setAttribute('aria-pressed',String(c===b)));
+    state.stageFilter = state.stageFilter==='WATER' ? 'ALL' : 'WATER';
+    b.setAttribute('aria-pressed', String(state.stageFilter==='WATER'));
     save(); render();
   };
   stageBar.appendChild(b);
-});
+})();
+function stagePasses(s){ return state.stageFilter!=='WATER' || ST.hasWater(s); }
 
 /* ── card builders ── */
 function esc(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -188,12 +178,15 @@ function stageSummary(s){
 
 function badges(s){
   const out=[];
+  // Visited is a link, not a chip. If I have stood in the place there is either
+  // a write-up or one coming, so the badge is the shortcut to it.
+  const href = (s.article && s.article.slug) ? '/notes/'+esc(s.article.slug) : '/notes/the-stages';
   if(s.visit && s.visit.visited && s.visit.stale){
-    out.push('<span class="badge badge-stale">Visited, data being refreshed</span>');
+    out.push('<a class="badge badge-stale" href="'+href+'">Visited, being refreshed &rarr;</a>');
   } else if(s.visit && s.visit.visited){
     const d=s.visit.date? new Date(s.visit.date+'T00:00:00') : null;
     const when = d && !isNaN(d) ? d.toLocaleDateString('en-GB',{month:'short',year:'numeric'}) : '';
-    out.push('<span class="badge badge-visited">Visited'+(when?' '+esc(when):'')+'</span>');
+    out.push('<a class="badge badge-visited" href="'+href+'">Visited'+(when?' '+esc(when):'')+' &rarr;</a>');
   } else {
     out.push('<span class="badge badge-desk">Desk research</span>');
   }
@@ -243,10 +236,6 @@ function stageCard(s){
   parts.push(listBlock('On-site services', s.onSiteServices));
   parts.push(listBlock('Rental partners', s.rentalPartners));
   if(s.crewDepth) parts.push('<div class="note"><strong>Crew:</strong> '+esc(s.crewDepth)+'</div>');
-  // RULE 6: gaps are not optional
-  if(s.gaps && s.gaps.length){
-    parts.push('<div class="gaps"><strong>Gaps:</strong> '+s.gaps.map(esc).join('. ')+'</div>');
-  }
   // RULE 1: an unverified incentive figure is never rendered, at all
   if(s.incentive && s.incentive.verified===true){
     parts.push('<div class="note"><strong>'+esc(s.incentive.scheme)+':</strong> '+esc(s.incentive.headline)
@@ -272,8 +261,7 @@ function render(){
   stageBar.hidden = !showS;
 
   const rows   = showP ? DATA.filter(d=>state.region==='ALL'||d.region===state.region) : [];
-  const sfil   = (STAGE_FILTERS.find(f=>f.key===state.stageFilter)||STAGE_FILTERS[0]).test;
-  const srows  = showS ? STAGES.filter(s=>(state.region==='ALL'||s.region===state.region) && sfil(s)) : [];
+  const srows  = showS ? STAGES.filter(s=>(state.region==='ALL'||s.region===state.region) && stagePasses(s)) : [];
 
   // one collision pass over BOTH layers, otherwise a studio can sit under a pin
   const positions = spreadPoints(
@@ -305,8 +293,9 @@ function render(){
   const stageHTML = srows.map(stageCard).join('');
 
   const empty = !rows.length && !srows.length;
+  const cleared = !showP && !showS;
   list.innerHTML = empty
-    ? '<div class="empty">Nothing listed for this filter right now.</div>'
+    ? '<div class="empty">' + (cleared ? 'Map cleared. Switch a layer back on above.' : 'Nothing listed for this filter right now.') + '</div>'
     : prodHTML + (showS && srows.length ? '<li class="listhead-sub" aria-hidden="true"></li>' : '') + stageHTML;
 
   wireSelection();

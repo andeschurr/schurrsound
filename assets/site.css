@@ -485,17 +485,15 @@ body.map .badge{
 body.map .badge-visited{ background:var(--stage); border-color:var(--stage); color:#fff; }
 body.map .badge-stale{ background:#fff4e0; border-color:#e0c9a0; color:#8a5a12; }
 body.map .badge-desk{ background:transparent; border-style:dashed; color:var(--stage); }
+a.badge{ text-decoration:none; }
+body.map a.badge-visited:hover{ background:var(--blue-deep); border-color:var(--blue-deep); }
+body.map a.badge-stale:hover{ background:#f4e3c6; }
 body.map .travel{
   margin-top:8px; padding:9px 11px; background:var(--blue-tint);
   border-left:3px solid var(--stage); border-radius:3px;
   font-size:var(--fs-label); line-height:1.5; color:var(--map-ink);
 }
 body.map .travel .prov{ display:block; margin-top:3px; color:var(--grey); font-style:italic; }
-body.map .gaps{
-  margin-top:8px; font-size:var(--fs-label); color:#8a5a12;
-  background:#fff8ef; border-left:3px solid #e0c9a0; padding:8px 11px; border-radius:3px;
-}
-body.map .gaps strong{ color:#6b4708; }
 body.map .srcs{ margin-top:8px; font-size:var(--fs-micro); color:var(--grey); line-height:1.55; }
 body.map .stamp{ margin-top:6px; font-size:var(--fs-micro); color:var(--grey); }
 body.map details.more{ margin-top:8px; }

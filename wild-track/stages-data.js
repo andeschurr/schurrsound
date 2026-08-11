@@ -13,8 +13,11 @@
         tagged with unannounced shows, however well sourced.
      4. lastUpdated renders on every card.
      5. sources always render, even if it is one line.
-     6. gaps is not a diplomatic field. Honest omissions are what make the
-        rest of the record believable. Do not quietly drop it.
+     6. NO PRIVATE INTEL IN THIS FILE. It is served at
+        schurrsound.com/wild-track/stages-data.js and the repo is public, so
+        anything here is published whether or not the renderer shows it.
+        Gaps and candid read-outs live in stages-private.md, which is
+        gitignored.
 
    visit.visited   true  -> filled marker, "Visited" badge
    visit.stale     true  -> filled marker, "Visited, data being refreshed"
@@ -58,7 +61,6 @@ var STAGES = [
     post:["Dolby Atmos mix stage","ADR","Foley","pre-mix","DCP mastering (Clipster)","DaVinci grade"],
     onSiteServices:["line production","standing sets / colonial back lot","props","workshops"],
     rentalPartners:[{ discipline:"camera & lighting", company:"True Colour Media (TCM)" }],
-    gaps:["No named production sound partner"],
 
     access:{
       fromHub:"Singapore",
@@ -75,7 +77,7 @@ var STAGES = [
       verified:false
     },
 
-    crewDepth:"Most Malaysian sound crews are based in Kuala Lumpur. The Johor technical crew pool is thin (per IMS Studio Services, Aug 2026).",
+    crewDepth:"Most Malaysian sound crews are based in Kuala Lumpur rather than Johor.",
 
     visit:{ visited:true, date:"2026-08-10", hosted:true },
     article:{ slug:null, status:"in-draft", expected:"2026-09" },
@@ -106,10 +108,6 @@ var STAGES = [
       { name:"Soundstage", areaSqft:14000 }
     ],
     onSiteServices:["1 hectare backlot"],
-    gaps:[
-      "No current first-hand read on crew depth, post facilities or rates",
-      "Stage list is from the operator's published page and may be incomplete"
-    ],
 
     access:{
       fromHub:"Singapore",
@@ -145,7 +143,6 @@ var STAGES = [
       { name:"Stage 6", areaSqft:40000, notes:"3,700 sq m, one of the largest in the southern hemisphere" }
     ],
     water:{ deepTank:"900,000 litre tank, 4.5 m deep, inside Stage 6" },
-    gaps:["Desk research only. No first-hand read on crew, post or day-to-day access."],
 
     visit:{ visited:false },
     article:{ slug:null, status:"none" },
@@ -169,7 +166,6 @@ var STAGES = [
       { name:"Sound Stage 9", areaSqft:40000, notes:"80 m x 47 m x 18 m high" }
     ],
     water:{ paddockTank:"Outdoor tank, 1,200 sq m, six million litres. Three water tanks on site." },
-    gaps:["Desk research only. No first-hand read on crew, post or day-to-day access."],
 
     visit:{ visited:false },
     article:{ slug:null, status:"none" },
@@ -191,7 +187,6 @@ var STAGES = [
     stages:[
       { name:"Five stages", areaSqft:22000, notes:"over 7,500 sq m (80,700 sq ft) across five stages. The two opened in 2022 are about 2,000 sq m (22,000 sq ft) each. Individual sizes for the older three are not published." }
     ],
-    gaps:["Desk research only. No first-hand read on crew, post or day-to-day access."],
 
     visit:{ visited:false },
     article:{ slug:null, status:"none" },
@@ -213,11 +208,6 @@ var STAGES = [
       { name:"Converted warehouse", areaSqft:43448, notes:"4,036 sq m, 9 m to 11 m high" }
     ],
     onSiteServices:["workshops 6,160 sq m","offices 1,215 sq m"],
-    gaps:[
-      "Shot here for one day some years ago, but never had a proper tour, so the first-hand read is partial",
-      "No current read on crew depth, post facilities or rates",
-      "Stage list is from published sources and may be out of date"
-    ],
 
     visit:{ visited:true, date:"years ago", stale:true, partial:true },
     article:{ slug:null, status:"planned" },
