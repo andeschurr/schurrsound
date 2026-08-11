@@ -87,16 +87,6 @@ var DATA = [
     checked:"2026-07-24"
   },
   {
-    title:"Bluey the Movie", kind:"Feature · Ludo Studio / BBC Studios",
-    city:"Brisbane", country:"Australia", region:"ANZ",
-    service:"",
-    status:"prep",
-    note:"In pre-production, per the Screen Australia register.",
-    lat:-27.47, lng:153.03,
-    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
-    checked:"2026-07-24"
-  },
-  {
     title:"Wentworth: Halfway Home", kind:"Series · Fremantle Australia",
     city:"Melbourne", country:"Australia", region:"ANZ",
     service:"",
@@ -111,12 +101,22 @@ var DATA = [
     city:"Malaysia", country:"Malaysia", region:"ASEAN",
     service:"",
     status:"prep",
-    note:"In pre-production and listed as an international production on the Screen Australia register. Understood to be shooting in Malaysia rather than Australia, though the exact base is not public yet.",
+    note:"Pierre Morel directing, Daisy Ridley starring. Singapore's Wave Films is line producing in Malaysia. The story is set in Indonesia but the shoot is Malaysian.",
     lat:3.14, lng:101.69,
-    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
-    checked:"2026-07-31"
+    source:"https://deadline.com/2026/07/singapore-wave-films-cambodian-broadcasting-dave-ulmer-1237013111/",
+    checked:"2026-08-08"
   },
 
+  {
+    title:"Untitled US production", kind:"Feature or series \u00b7 US production",
+    city:"Iskandar Puteri", country:"Malaysia", region:"ASEAN",
+    service:"",
+    status:"hearing",
+    note:"Shooting now at Iskandar Malaysia Studios in Johor, on standing sets built as period China: temples and a water bridge. Seen on the lot. No public announcement yet, so no title and no source.",
+    lat:1.42, lng:103.63,
+    source:"",
+    checked:"2026-08-08"
+  },
   {
     title:"The Big Fix", kind:"Feature · Netflix",
     city:"Penang", country:"Malaysia", region:"ASEAN",
