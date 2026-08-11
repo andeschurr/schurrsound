@@ -212,34 +212,36 @@ var W=940, H=560, LNG0=90, LNG1=182, LAT0=48, LAT1=-50;
 function X(l){ return (l-LNG0)/(LNG1-LNG0)*W; }
 function Y(l){ return (LAT0-l)/(LAT0-LAT1)*H; }
 
-/* Pin de-overlap.
-   Several productions share a city, so their true coordinates land on the same
-   few pixels and the pins hide each other. Exact GPS is not the point of this
-   map, being able to click each production is, so overlapping pins are pushed
-   apart until every centre is PIN_SEP apart. Pins are r=16, so at 23px apart
-   they still overlap visibly as a cluster while staying separate click targets.
+/* Marker de-overlap, shared by both layers.
+   Several productions share a city, and the Stages layer puts studio markers
+   in the same places, so true coordinates land on the same few pixels and
+   markers hide each other. Exact GPS is not the point of this map, being able
+   to click each item is, so overlapping markers are pushed apart until every
+   centre is SEP apart. They still read as a cluster and still overlap visibly,
+   they just stay separate click targets.
 
    Deterministic: fixed start positions, fixed iteration order, fixed pass
-   count. Computed from the full DATA list rather than the filtered rows, so a
-   pin does not jump when the region filter changes. */
+   count. Feed it every marker from every visible layer at once, otherwise a
+   studio can still land under a production pin. */
 var PIN_SEP = 23;
 
-var PIN_XY = (function(){
-  var pts = DATA.map(function(d, i){
+function spreadPoints(items, sep){
+  sep = sep || PIN_SEP;
+  var pts = items.map(function(it, i){
     // golden-angle nudge so exactly coincident points have a direction to
     // separate along, and always the same one
     var a = i * 2.39996323;
-    return { x: X(d.lng) + Math.cos(a) * 0.01, y: Y(d.lat) + Math.sin(a) * 0.01 };
+    return { x: X(it.lng) + Math.cos(a) * 0.01, y: Y(it.lat) + Math.sin(a) * 0.01 };
   });
 
-  for (var pass = 0; pass < 200; pass++){
+  for (var pass = 0; pass < 240; pass++){
     var settled = true;
     for (var i = 0; i < pts.length; i++){
       for (var j = i + 1; j < pts.length; j++){
         var dx = pts[j].x - pts[i].x, dy = pts[j].y - pts[i].y;
         var dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist >= PIN_SEP) continue;
-        var push = (PIN_SEP - dist) / 2, ux = dx/dist, uy = dy/dist;
+        if (dist >= sep) continue;
+        var push = (sep - dist) / 2, ux = dx/dist, uy = dy/dist;
         pts[i].x -= ux*push; pts[i].y -= uy*push;
         pts[j].x += ux*push; pts[j].y += uy*push;
         settled = false;
@@ -249,15 +251,19 @@ var PIN_XY = (function(){
   }
 
   var out = {};
-  DATA.forEach(function(d, i){
-    // keep every pin fully inside the canvas
-    out[d.title] = {
+  items.forEach(function(it, i){
+    out[it.key] = {
       x: Math.min(W - 18, Math.max(18, pts[i].x)),
       y: Math.min(H - 18, Math.max(18, pts[i].y))
     };
   });
   return out;
-})();
+}
+
+/* Fallback for callers that only draw productions (the OG image generator). */
+var PIN_XY = spreadPoints(DATA.map(function(d){
+  return { key:d.title, lng:d.lng, lat:d.lat };
+}));
 
 /* Pure SVG-string builder, no DOM, works in browser and Node.
    rows: filtered/ordered array of DATA entries to plot.
@@ -288,10 +294,26 @@ function buildMapInner(rows, opts){
   // out below the base marker
   s+='<text class="baselab" x="'+sx+'" y="'+(sy+44)+'">SINGAPORE · BASE</text>';
 
+  var POS = opts.positions || PIN_XY;
+
+  // Stages layer sits under the production pins: studios are context, the
+  // productions are the headline. Rounded squares, never circles, so the two
+  // layers stay apart in greyscale and in print.
+  (opts.stages || []).forEach(function(st){
+    var sp = POS[st.id] || { x:X(st.lng), y:Y(st.lat) };
+    var visited = !!(st.visit && st.visit.visited);
+    var half = 13;
+    s+='<g class="stage'+(visited?' is-visited':' is-desk')+'" data-s="'+st.id+'" tabindex="0" role="button"'
+      +' aria-label="'+(st.name+', '+st.city+'. '+(visited?'Visited in person':'Desk research'))+'">'
+      +'<rect x="'+(sp.x-half).toFixed(1)+'" y="'+(sp.y-half).toFixed(1)+'" width="'+(half*2)+'" height="'+(half*2)+'" rx="5"/>'
+      +'<text class="stagelab" x="'+sp.x.toFixed(1)+'" y="'+(sp.y+4).toFixed(1)+'">'+(st.mapLabel||'')+'</text>'
+      +'</g>';
+  });
+
   rows.forEach(function(d){
-    var p=PIN_XY[d.title] || { x:X(d.lng), y:Y(d.lat) };
+    var p=POS[d.title] || { x:X(d.lng), y:Y(d.lat) };
     var x=p.x, y=p.y, n=ns.get(d.title);
-    s+='<g class="pin" data-t="'+d.title+'"><circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
+    s+='<g class="pin" data-t="'+d.title+'" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'"><circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
 
@@ -303,7 +325,7 @@ function buildMapInner(rows, opts){
   return s;
 }
 
-var api = { UPDATED:UPDATED, PIN_XY:PIN_XY, DATA:DATA, LAND:LAND, COLORS:COLORS, LABELS:LABELS, W:W, H:H, X:X, Y:Y, buildMapInner:buildMapInner };
+var api = { UPDATED:UPDATED, PIN_XY:PIN_XY, spreadPoints:spreadPoints, PIN_SEP:PIN_SEP, DATA:DATA, LAND:LAND, COLORS:COLORS, LABELS:LABELS, W:W, H:H, X:X, Y:Y, buildMapInner:buildMapInner };
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = api;
 } else {
