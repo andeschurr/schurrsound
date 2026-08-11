@@ -23,7 +23,7 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 (function(){
-var UPDATED = "31 July 2026";
+var UPDATED = "8 August 2026";
 
 var DATA = [
   {
@@ -57,7 +57,7 @@ var DATA = [
     checked:"2026-07-24"
   },
   {
-    title:"Blue Murder Hotel", kind:"Series S2 · Acorn TV / ITV",
+    title:"Blue Murder Motel", kind:"Series S2 · Acorn TV / ITV",
     city:"Auckland", country:"New Zealand", region:"ANZ",
     service:"",
     status:"prep",
@@ -70,11 +70,11 @@ var DATA = [
     title:"Dead Losi", kind:"Series · TVNZ+",
     city:"Auckland", country:"New Zealand", region:"ANZ",
     service:"The Sweetshop",
-    status:"prep",
-    note:"In pre-production. NZ On Air scripted funding.",
+    status:"shooting",
+    note:"Shooting in New Zealand. NZ On Air scripted funding.",
     lat:-36.85, lng:174.76,
     source:"https://shownews.co.nz/dead-losi-tv-series/",
-    checked:"2026-07-31"
+    checked:"2026-08-08"
   },
   {
     title:"The Hunt for Gollum", kind:"Feature · Warner Bros.",
@@ -97,14 +97,14 @@ var DATA = [
     checked:"2026-07-24"
   },
   {
-    title:"Wentworth: Beyond Bars", kind:"Series · Fremantle Australia",
+    title:"Wentworth: Halfway Home", kind:"Series · Fremantle Australia",
     city:"Melbourne", country:"Australia", region:"ANZ",
     service:"",
-    status:"prep",
-    note:"In pre-production, per the Screen Australia register.",
+    status:"shooting",
+    note:"Production began 27 July in Melbourne. Fremantle Australia for Binge, with Katrina Milosevic, Nicole da Silva and Kate Box returning.",
     lat:-37.81, lng:144.96,
-    source:"https://www.screenaustralia.gov.au/the-screen-guide/upcoming-productions/",
-    checked:"2026-07-24"
+    source:"https://foxtelgroup.com.au/newsroom/production-begins-on-australian-original-drama-series-wentworth-halfway-home-beloved-characters-confirmed-to-return-this-time-on-the-outside",
+    checked:"2026-08-08"
   },
     {
     title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
