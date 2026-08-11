@@ -475,6 +475,28 @@ body.map .layers button .state{
 }
 
 /* stage rows in the list column */
+/* "show on the map" control. On a phone this is the only thing that moves the
+   view, so opening a disclosure no longer throws you back up to the map. */
+body.map li[data-t],body.map li[data-s]{ position:relative; }
+body.map .rowhead{ padding-right:34px; }
+body.map button.tomap{
+  position:absolute; top:11px; right:11px; width:26px; height:26px; padding:0;
+  border:1px solid var(--map-line); border-radius:50%; background:#fff;
+  color:var(--grey); cursor:pointer; display:inline-flex; align-items:center;
+  justify-content:center; transition:.15s;
+}
+body.map button.tomap svg{ width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.6; }
+body.map button.tomap:hover{ background:var(--green); border-color:var(--green); color:#fff; }
+body.map li.stage-row button.tomap:hover{ background:var(--blue); border-color:var(--blue); }
+body.map button.tomap:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+
+/* the letter or number lights up so you can see which row you landed on */
+body.map li.on .n{
+  background:var(--green); color:#fff; border-radius:4px;
+  padding:1px 5px; margin-left:-5px;
+}
+body.map li.stage-row.on .n{ background:var(--blue); color:#fff; }
+
 body.map li.stage-row{ border-left-color:var(--stage); }
 body.map li.stage-row .n{ color:var(--stage); }
 body.map .badges{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
@@ -511,7 +533,8 @@ body.map .legend .sq{
 }
 body.map .legend .sq-visited{ background:var(--stage); }
 body.map .legend .sq-desk{ background:var(--map-paper); border:2px solid var(--stage); }
-body.map .stage-link{ display:inline-block; margin-top:8px; font-size:var(--fs-label); font-weight:600; }
+body.map .stage-link{ display:inline-block; margin-top:8px; margin-right:14px; font-size:var(--fs-label); font-weight:600; color:var(--blue-deep); text-decoration:none; border-bottom:1px solid var(--blue); }
+body.map .stage-link:hover{ color:var(--blue); border-bottom-color:var(--blue-deep); }
 body.map .dot-shooting{background:var(--status-shooting)}
 body.map .dot-prep{background:var(--status-prep)}
 body.map .dot-hearing{background:var(--status-hearing)}

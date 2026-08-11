@@ -30,6 +30,7 @@ var STAGES = [
   /* ── Deep record. First hand, article in draft. ───────────────────────── */
   {
     id:"ims-johor",
+    website:"https://www.iskandarmalaysiastudios.com/",
     name:"Iskandar Malaysia Studios",
     shortName:"IMS",
     formerName:"Pinewood Iskandar Malaysia Studios",
@@ -93,6 +94,7 @@ var STAGES = [
         up as current. ─────────────────────────────────────────────────── */
   {
     id:"infinite-batam",
+    website:"https://www.infinitestudios.com.sg/batam",
     name:"Infinite Studios Batam",
     shortName:"Infinite Batam",
     country:"Indonesia", region:"ASEAN",
@@ -129,6 +131,7 @@ var STAGES = [
   /* ── Desk research. No first-hand knowledge, and the card says so. ────── */
   {
     id:"docklands-melbourne",
+    website:"https://www.dsmelbourne.com/",
     name:"Docklands Studios Melbourne",
     country:"Australia", region:"ANZ",
     city:"Docklands, Melbourne",
@@ -155,6 +158,7 @@ var STAGES = [
 
   {
     id:"village-roadshow-gold-coast",
+    website:"https://villageroadshowstudios.com.au/",
     name:"Village Roadshow Studios",
     country:"Australia", region:"ANZ",
     city:"Oxenford, Gold Coast",
@@ -178,6 +182,7 @@ var STAGES = [
 
   {
     id:"auckland-film-studios",
+    website:"https://www.aucklandfilmstudios.com/",
     name:"Auckland Film Studios",
     country:"New Zealand", region:"ANZ",
     city:"Henderson, Auckland",
@@ -196,6 +201,7 @@ var STAGES = [
 
   {
     id:"kumeu-film-studios",
+    website:"https://www.kumeufilmstudios.co.nz/",
     name:"Kumeu Film Studios",
     country:"New Zealand", region:"ANZ",
     city:"Kumeu, Auckland",
@@ -212,7 +218,7 @@ var STAGES = [
     visit:{ visited:true, date:"years ago", stale:true, partial:true },
     article:{ slug:null, status:"planned" },
     sources:[
-      "Author worked one shoot day on site, several years ago",
+      "Author worked on site, several years ago",
       "Auckland Unlimited, Kumeu Film Studios",
       "New Zealand Film Commission sound stage list"
     ],

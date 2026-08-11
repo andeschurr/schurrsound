@@ -17,8 +17,8 @@
 <meta name="twitter:description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources.">
 <meta name="twitter:image" content="https://schurrsound.com/wild-track/og-wild-track.png">
 <link rel="canonical" href="https://schurrsound.com/whats-shooting">
-<link rel="stylesheet" href="/assets/site.css?v=202608111419">
-<script src="/assets/site.js?v=202608111419" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=202608111443">
+<script src="/assets/site.js?v=202608111443" defer></script>
 </head>
 <body class="map">
 <nav>
@@ -222,7 +222,7 @@ function listBlock(title,items){
 
 function stageCard(s){
   const parts=[];
-  parts.push('<div><span class="n">'+s.mapLabel+'</span><span class="t">'+esc(s.name)+'</span></div>');
+  parts.push('<div class="rowhead"><span class="n">'+s.mapLabel+'</span><span class="t">'+esc(s.name)+'</span>'+'<button class="tomap" type="button" aria-label="Show '+esc(s.name)+' on the map" title="Show on the map">'+'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/>'+'</svg></button>'+'</div>');
   parts.push('<div class="meta">'+esc(s.city)+' &nbsp;·&nbsp; '+esc(s.country)+(s.formerName?' &nbsp;·&nbsp; formerly '+esc(s.formerName):'')+'</div>');
   parts.push(badges(s));
   parts.push(travel(s));
@@ -240,6 +240,9 @@ function stageCard(s){
   if(s.incentive && s.incentive.verified===true){
     parts.push('<div class="note"><strong>'+esc(s.incentive.scheme)+':</strong> '+esc(s.incentive.headline)
       +(s.incentive.conditions?' '+esc(s.incentive.conditions):'')+'</div>');
+  }
+  if(s.website){
+    parts.push('<a class="stage-link" href="'+s.website+'" target="_blank" rel="noopener">Official site &nearr;</a>');
   }
   if(s.article && s.article.slug){
     parts.push('<a class="stage-link" href="/notes/'+esc(s.article.slug)+'">Read the full write-up &rarr;</a>');
@@ -282,8 +285,9 @@ function render(){
 
   const prodHTML = rows.map(function(d){
     return '<li data-status="'+d.status+'" data-t="'+esc(d.title)+'">'
-      +'<div><span class="n">'+ns.get(d.title)+'</span><span class="t">'+esc(d.title)+'</span>'
-      +'<span class="tag" style="background:'+COLORS[d.status]+'">'+LABELS[d.status]+'</span></div>'
+      +'<div class="rowhead"><span class="n">'+ns.get(d.title)+'</span><span class="t">'+esc(d.title)+'</span>'
+      +'<span class="tag" style="background:'+COLORS[d.status]+'">'+LABELS[d.status]+'</span>'
+      +'<button class="tomap" type="button" aria-label="Show '+esc(d.title)+' on the map" title="Show on the map">'+'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/>'+'</svg></button>'+'</div>'
       +'<div class="meta">'+esc(d.kind)+' &nbsp;·&nbsp; '+esc(d.city)+'</div>'
       +(d.service?'<div class="note"><strong>Serviced by</strong> '+esc(d.service)+'</div>':'')
       +(d.note?'<div class="note">'+esc(d.note)+'</div>':'')
@@ -305,7 +309,9 @@ function render(){
 
 /* ── hover, click and keyboard selection across both layers ── */
 function wireSelection(){
+  const lc=document.getElementById('listcol');
   let selected=null;
+
   function link(sel,on){
     document.querySelectorAll(sel).forEach(function(e){ e.classList.toggle('on',on); });
   }
@@ -314,34 +320,71 @@ function wireSelection(){
     if(el.dataset.s) return '[data-s="'+CSS.escape(el.dataset.s)+'"]';
     return null;
   }
-  function activate(el){
-    const sel=selOf(el); if(!sel) return;
+  function stacked(){ return window.innerWidth<=700; }
+
+  function select(sel){
+    if(selected===sel) return;
     if(selected) link(selected,false);
     selected=sel; link(sel,true);
-    const stacked=window.innerWidth<=700;
-    if(stacked && el.tagName==='LI'){
-      const mc=document.getElementById('mapcard');
-      if(mc) window.scrollTo({top:mc.getBoundingClientRect().top+window.pageYOffset-12,behavior:'smooth'});
-      return;
-    }
-    const target=document.querySelector('li'+sel);
-    if(!target) return;
-    const lc=document.getElementById('listcol');
-    if(el.tagName!=='LI' && lc && !stacked){
-      lc.scrollTo({top:target.offsetTop-lc.querySelector('.listhead').offsetHeight-8,behavior:'smooth'});
-      return;
-    }
-    const sticky=document.querySelector('.sticky-top');
-    const offset=(sticky?sticky.offsetHeight:0)+14;
-    window.scrollTo({top:target.getBoundingClientRect().top+window.pageYOffset-offset,behavior:'smooth'});
   }
-  document.querySelectorAll('.pin,.stage,li[data-t],li[data-s]').forEach(function(el){
+
+  /* Scroll the list column to a row.
+     Measured from the container's own rect rather than offsetTop: .col-list is
+     not a positioned ancestor, so offsetTop was being measured against the page
+     and landed on the wrong row, or past the end of the scroll range so nothing
+     moved at all. */
+  function revealRow(row){
+    if(!row) return;
+    if(stacked()){
+      const head=document.querySelector('nav');
+      const off=(head?head.offsetHeight:0)+14;
+      window.scrollTo({top:row.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+      return;
+    }
+    if(!lc) return;
+    const headEl=lc.querySelector('.listhead');
+    const headH=headEl?headEl.offsetHeight:0;
+    const delta=row.getBoundingClientRect().top - lc.getBoundingClientRect().top;
+    lc.scrollTo({top:Math.max(0, lc.scrollTop + delta - headH - 10),behavior:'smooth'});
+  }
+
+  function revealMap(){
+    const mc=document.getElementById('mapcard');
+    if(!mc) return;
+    window.scrollTo({top:mc.getBoundingClientRect().top+window.pageYOffset-12,behavior:'smooth'});
+  }
+
+  // marker -> highlight and bring its row into view
+  document.querySelectorAll('.pin,.stage').forEach(function(el){
     const sel=selOf(el); if(!sel) return;
     el.onmouseenter=function(){ link(sel,true); };
     el.onmouseleave=function(){ if(sel!==selected) link(sel,false); };
-    el.onclick=function(){ activate(el); };
-    el.onkeydown=function(ev){
-      if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); activate(el); }
+    function go(){ select(sel); revealRow(document.querySelector('li'+sel)); }
+    el.onclick=go;
+    el.onkeydown=function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); go(); } };
+  });
+
+  // list row -> highlight only. It must never scroll the page by itself: on a
+  // phone that fought with opening a <details>, which jumped you to the map.
+  document.querySelectorAll('li[data-t],li[data-s]').forEach(function(el){
+    const sel=selOf(el); if(!sel) return;
+    el.onmouseenter=function(){ link(sel,true); };
+    el.onmouseleave=function(){ if(sel!==selected) link(sel,false); };
+    el.onclick=function(ev){
+      // let links, disclosure arrows and the map button behave normally
+      if(ev.target.closest('a, summary, button, details')) return;
+      select(sel);
+    };
+  });
+
+  // the only control that moves you to the map
+  document.querySelectorAll('button.tomap').forEach(function(btn){
+    btn.onclick=function(ev){
+      ev.preventDefault(); ev.stopPropagation();
+      const row=btn.closest('li');
+      const sel=selOf(row); if(!sel) return;
+      select(sel);
+      revealMap();
     };
   });
 
@@ -350,12 +393,8 @@ function wireSelection(){
     const row=document.querySelector('li[data-s="'+CSS.escape(deepLinkId)+'"]');
     if(row){
       row.querySelectorAll('details.more').forEach(function(d){ d.open=true; });
-      activate(row.previousElementSibling ? row : row);
-      link('[data-s="'+CSS.escape(deepLinkId)+'"]',true);
-      selected='[data-s="'+CSS.escape(deepLinkId)+'"]';
-      setTimeout(function(){
-        row.scrollIntoView({block:'center',behavior:'smooth'});
-      },80);
+      select('[data-s="'+CSS.escape(deepLinkId)+'"]');
+      setTimeout(function(){ revealRow(row); },120);
     }
     deepLinkId=null; // only on first render
   }
