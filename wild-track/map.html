@@ -17,8 +17,8 @@
 <meta name="twitter:description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources.">
 <meta name="twitter:image" content="https://schurrsound.com/wild-track/og-wild-track.png">
 <link rel="canonical" href="https://schurrsound.com/whats-shooting">
-<link rel="stylesheet" href="/assets/site.css">
-<script src="/assets/site.js" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=202608111402">
+<script src="/assets/site.js?v=202608111402" defer></script>
 </head>
 <body class="map">
 <nav>
@@ -46,8 +46,8 @@
 
   <div class="layers" id="layers">
     <span class="lab">Layers</span>
-    <button type="button" data-layer="productions" aria-pressed="true"><i class="swatch"></i>Productions</button>
-    <button type="button" data-layer="stages" aria-pressed="true"><i class="swatch"></i>Stages</button>
+    <button type="button" data-layer="productions" aria-pressed="true"><i class="swatch"></i>Productions <span class="state"></span></button>
+    <button type="button" data-layer="stages" aria-pressed="true"><i class="swatch"></i>Stages <span class="state"></span></button>
   </div>
   <div class="filters" id="filters"></div>
   <div class="filters" id="stagefilters" hidden></div>
@@ -116,15 +116,26 @@ function save(){ try{ localStorage.setItem(LS,JSON.stringify(state)); }catch(e){
 /* ── layer toggle ── */
 [...layerBar.querySelectorAll('button')].forEach(function(b){
   const key=b.dataset.layer;
-  b.setAttribute('aria-pressed', String(!!state.layers[key]));
+  function paint(){
+    const on=!!state.layers[key];
+    b.setAttribute('aria-pressed', String(on));
+    const w=b.querySelector('.state'); if(w) w.textContent = on ? 'on' : 'off';
+    // the last remaining layer cannot be switched off, so say so rather than
+    // letting the click silently do nothing
+    const other = key==='productions' ? 'stages' : 'productions';
+    const locked = on && !state.layers[other];
+    b.disabled = false;
+    b.title = locked ? 'At least one layer has to stay on' : '';
+  }
+  paint();
   b.onclick=function(){
-    // never let both layers go dark, there would be nothing to look at
     const other = key==='productions' ? 'stages' : 'productions';
     if(state.layers[key] && !state.layers[other]) return;
     state.layers[key]=!state.layers[key];
-    b.setAttribute('aria-pressed', String(state.layers[key]));
     save(); render();
+    [...layerBar.querySelectorAll('button')].forEach(function(x){ if(x.__paint) x.__paint(); });
   };
+  b.__paint=paint;
 });
 
 /* ── region filter, applies to both layers ── */

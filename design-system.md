@@ -96,6 +96,17 @@ Line heights: body 1.75, leads 1.6, headings 1.2.
 Already correct. Do not add colours. The existing six tokens plus `--line` are
 the entire palette and that constraint is doing real work.
 
+Two deliberate additions since, both encoding data rather than decorating:
+
+- `--status-shooting`, `--status-prep`, `--status-hearing`: production status on
+  the map and its homepage preview.
+- `--blue`, `--blue-deep`, `--blue-tint`: wayfinding. The map is the only blue
+  thing on the site, in the nav button and on the Stages layer, so "blue means
+  map" is learnable. Added 11 August 2026 at Ande's request.
+
+Anything further needs the same test: is it carrying information, or is it
+decoration? Decoration does not get a token.
+
 ---
 
 # PART 3: The phased plan

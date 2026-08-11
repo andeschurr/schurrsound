@@ -213,11 +213,19 @@ var STAGES = [
       { name:"Converted warehouse", areaSqft:43448, notes:"4,036 sq m, 9 m to 11 m high" }
     ],
     onSiteServices:["workshops 6,160 sq m","offices 1,215 sq m"],
-    gaps:["Desk research only. No first-hand read on crew, post or day-to-day access."],
+    gaps:[
+      "Shot here for one day some years ago, but never had a proper tour, so the first-hand read is partial",
+      "No current read on crew depth, post facilities or rates",
+      "Stage list is from published sources and may be out of date"
+    ],
 
-    visit:{ visited:false },
-    article:{ slug:null, status:"none" },
-    sources:["Auckland Unlimited, Kumeu Film Studios","New Zealand Film Commission sound stage list"],
+    visit:{ visited:true, date:"years ago", stale:true, partial:true },
+    article:{ slug:null, status:"planned" },
+    sources:[
+      "Author worked one shoot day on site, several years ago",
+      "Auckland Unlimited, Kumeu Film Studios",
+      "New Zealand Film Commission sound stage list"
+    ],
     lastUpdated:"2026-08-11"
   }
 
