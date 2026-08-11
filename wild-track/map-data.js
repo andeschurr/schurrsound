@@ -108,11 +108,11 @@ var DATA = [
   },
 
   {
-    title:"Untitled US production", kind:"Feature or series \u00b7 US production",
-    city:"Iskandar Puteri", country:"Malaysia", region:"ASEAN",
+    title:"Untitled US production", kind:"Feature or series",
+    city:"Johor", country:"Malaysia", region:"ASEAN",
     service:"",
     status:"hearing",
-    note:"Shooting now at Iskandar Malaysia Studios in Johor, on standing sets built as period China: temples and a water bridge. Seen on the lot. No public announcement yet, so no title and no source.",
+    note:"A US production is shooting in southern Malaysia. Nothing announced, so no title and no source.",
     lat:1.42, lng:103.63,
     source:"",
     checked:"2026-08-08"
@@ -212,6 +212,53 @@ var W=940, H=560, LNG0=90, LNG1=182, LAT0=48, LAT1=-50;
 function X(l){ return (l-LNG0)/(LNG1-LNG0)*W; }
 function Y(l){ return (LAT0-l)/(LAT0-LAT1)*H; }
 
+/* Pin de-overlap.
+   Several productions share a city, so their true coordinates land on the same
+   few pixels and the pins hide each other. Exact GPS is not the point of this
+   map, being able to click each production is, so overlapping pins are pushed
+   apart until every centre is PIN_SEP apart. Pins are r=16, so at 23px apart
+   they still overlap visibly as a cluster while staying separate click targets.
+
+   Deterministic: fixed start positions, fixed iteration order, fixed pass
+   count. Computed from the full DATA list rather than the filtered rows, so a
+   pin does not jump when the region filter changes. */
+var PIN_SEP = 23;
+
+var PIN_XY = (function(){
+  var pts = DATA.map(function(d, i){
+    // golden-angle nudge so exactly coincident points have a direction to
+    // separate along, and always the same one
+    var a = i * 2.39996323;
+    return { x: X(d.lng) + Math.cos(a) * 0.01, y: Y(d.lat) + Math.sin(a) * 0.01 };
+  });
+
+  for (var pass = 0; pass < 200; pass++){
+    var settled = true;
+    for (var i = 0; i < pts.length; i++){
+      for (var j = i + 1; j < pts.length; j++){
+        var dx = pts[j].x - pts[i].x, dy = pts[j].y - pts[i].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist >= PIN_SEP) continue;
+        var push = (PIN_SEP - dist) / 2, ux = dx/dist, uy = dy/dist;
+        pts[i].x -= ux*push; pts[i].y -= uy*push;
+        pts[j].x += ux*push; pts[j].y += uy*push;
+        settled = false;
+      }
+    }
+    if (settled) break;
+  }
+
+  var out = {};
+  DATA.forEach(function(d, i){
+    // keep every pin fully inside the canvas
+    out[d.title] = {
+      x: Math.min(W - 18, Math.max(18, pts[i].x)),
+      y: Math.min(H - 18, Math.max(18, pts[i].y))
+    };
+  });
+  return out;
+})();
+
 /* Pure SVG-string builder, no DOM, works in browser and Node.
    rows: filtered/ordered array of DATA entries to plot.
    opts.showLabels: draw country name labels (on by default). */
@@ -237,10 +284,13 @@ function buildMapInner(rows, opts){
   var sx=X(103.8), sy=Y(1.35);
   s+='<circle class="base" cx="'+sx+'" cy="'+sy+'" r="10"/>';
   s+='<circle cx="'+sx+'" cy="'+sy+'" r="3.2" fill="#1e3a2f"/>';
-  s+='<text class="baselab" x="'+sx+'" y="'+(sy+26)+'">SINGAPORE · BASE</text>';
+  // dropped clear of the Singapore pin cluster, which the de-overlap pass fans
+  // out below the base marker
+  s+='<text class="baselab" x="'+sx+'" y="'+(sy+44)+'">SINGAPORE · BASE</text>';
 
   rows.forEach(function(d){
-    var x=X(d.lng), y=Y(d.lat), n=ns.get(d.title);
+    var p=PIN_XY[d.title] || { x:X(d.lng), y:Y(d.lat) };
+    var x=p.x, y=p.y, n=ns.get(d.title);
     s+='<g class="pin" data-t="'+d.title+'"><circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
@@ -253,7 +303,7 @@ function buildMapInner(rows, opts){
   return s;
 }
 
-var api = { UPDATED:UPDATED, DATA:DATA, LAND:LAND, COLORS:COLORS, LABELS:LABELS, W:W, H:H, X:X, Y:Y, buildMapInner:buildMapInner };
+var api = { UPDATED:UPDATED, PIN_XY:PIN_XY, DATA:DATA, LAND:LAND, COLORS:COLORS, LABELS:LABELS, W:W, H:H, X:X, Y:Y, buildMapInner:buildMapInner };
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = api;
 } else {
