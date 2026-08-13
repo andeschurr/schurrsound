@@ -143,6 +143,7 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
 .prose strong{font-weight:600}
 .prose a{color:var(--green);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
 .prose a:hover{color:var(--gold)}
+.prose blockquote.pull{font-size:24px;font-size:var(--fs-h2);line-height:1.28;font-style:normal;color:var(--ink);padding-left:26px;margin:38px 0}
 .prose blockquote{border-left:3px solid var(--gold);padding:4px 0 4px 22px;margin:26px 0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;font-size:var(--fs-display-sm);color:var(--green);line-height:var(--lh-lead)}
 .prose h2{
   font-family:'Cormorant Garamond',Georgia,serif;
