@@ -665,6 +665,9 @@ body.home .hero p.lead + p.lead{margin-top:14px}
 body.home .hero .credit-line{margin-top:18px;font-size:var(--fs-body);color:var(--gold-soft)}
 body.home .hero .credit-line em{color:#fff;font-style:italic}
 body.home .wildtrack{display:block;margin:34px 0 0;opacity:.9}
+/* small marker on the headline that jumps to the paragraph explaining it */
+a.explain{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1.5px solid var(--gold);border-radius:50%;color:var(--gold);font-family:'Inter',Helvetica,sans-serif;font-size:var(--fs-ui);font-weight:600;text-decoration:none;vertical-align:middle;transform:translateY(-.18em);transition:background .15s,color .15s}
+a.explain:hover{background:var(--gold);color:var(--green-deep)}
 body.home .proof{display:none}
 body.home .reel{position:relative;padding-top:56.25%;background:var(--green-deep);border:1px solid var(--line)}
 body.home .reel iframe{position:absolute;top:0;right:0;bottom:0;left:0;inset:0;width:100%;height:100%;border:0}
