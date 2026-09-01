@@ -148,13 +148,13 @@ var DATA = [
   },
 
   {
-    title:"Untitled US production", kind:"Feature or series",
+    title:"Hudson & Maria", kind:"Feature \u00b7 Half Crown Media / Burns & Co. Entertainment",
     city:"Johor", country:"Malaysia", region:"ASEAN",
     service:"",
-    status:"hearing",
-    note:"A US production is shooting in southern Malaysia. Nothing announced, so no title and no source.",
+    status:"shooting",
+    note:"The US production that was showing up as a southern Malaysia hearing now has a name. Matt Mikalatos writing and directing an Opium Wars period piece about missionary Hudson Taylor, with William Moseley, Poppy Drayton and Ludi Lin, alongside Tan Kheng Hua and Darren Lim. Production began in early August and is reported as a five-week block finishing mid-September. The announcements say Malaysia but name no city; Johor is our own read.",
     lat:1.42, lng:103.63,
-    source:"",
+    source:"https://www.halfcrownmedia.com/international-cast-join-impactful-feature-film-hudson-maria/",
     checked:"2026-09-01"
   },
   {
