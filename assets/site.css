@@ -216,6 +216,8 @@ hr.voice-shift{border:none;border-top:2px solid var(--gold);width:60px;margin:va
 
 /* article cards */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(min-width:1000px){body.home .alt .cards{grid-template-columns:repeat(4,1fr);gap:18px}}
+body.home .alt .card p{font-size:var(--fs-small)}
 @media(max-width:620px){.cards{grid-template-columns:1fr}}
 .card{position:relative;background:#fff;border:1px solid var(--line);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column;transition:background .15s ease,border-color .15s ease}
 /* the whole card is the click target, via the card's own go link */
