@@ -61,7 +61,7 @@ var DATA = [
     city:"Auckland", country:"New Zealand", region:"ANZ",
     service:"Great Southern Television",
     status:"shooting",
-    note:"Eight new episodes for season two, Michala Banas and Brett Tucker back. Pre-production started 8 July and the block has since gone to camera around greater Auckland.",
+    note:"Season two is in production around greater Auckland, Michala Banas and Brett Tucker back as the retired detectives. Trade reports differ on the episode count, so treat that as unsettled.",
     lat:-36.85, lng:174.76,
     source:"https://tvtonight.com.au/2026/06/renewed-blue-murder-motel.html",
     checked:"2026-09-01"
@@ -71,7 +71,7 @@ var DATA = [
     city:"Auckland", country:"New Zealand", region:"ANZ",
     service:"The Sweetshop",
     status:"shooting",
-    note:"Six half-hours for TVNZ+, NZ On Air scripted funding. Shooting in New Zealand. No fresh public update since August, so the dates may have moved.",
+    note:"Six 44-minute episodes for TVNZ+, an original Samoan crime comedy developed with director Damon Fepulei, on NZ On Air scripted funding. The Screen Guild had it in prep in Auckland in February. No fresh public update since August, so the dates may have moved.",
     lat:-36.85, lng:174.76,
     source:"https://shownews.co.nz/dead-losi-tv-series/",
     checked:"2026-09-01"
@@ -141,7 +141,7 @@ var DATA = [
     city:"Malaysia", country:"Malaysia", region:"ASEAN",
     service:"Wave Films (Singapore)",
     status:"prep",
-    note:"Pierre Morel directing, Daisy Ridley with Josh Duhamel and Sharlto Copley. Story set off Indonesia. Earlier trade reports had it on the Gold Coast; the most recent has Singapore's Wave Films line producing in Malaysia. Treat the territory as unsettled.",
+    note:"Pierre Morel directing, Daisy Ridley with Josh Duhamel and Sharlto Copley. Singapore's Wave Films is line producing in Malaysia. The story is set in Indonesia but the shoot is Malaysian.",
     lat:3.14, lng:101.69,
     source:"https://deadline.com/2026/07/singapore-wave-films-cambodian-broadcasting-dave-ulmer-1237013111/",
     checked:"2026-09-01"
