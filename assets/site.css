@@ -186,6 +186,7 @@ hr.voice-shift{border:none;border-top:2px solid var(--gold);width:60px;margin:va
 .facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .facts-grid.three{grid-template-columns:repeat(3,1fr)}
 .facts-grid.two{grid-template-columns:repeat(2,1fr)}
+.facts-grid.one{grid-template-columns:1fr}
 .fact{background:var(--paper);padding:28px 24px}
 .alt .fact{background:#fff}
 .fact h4{font-size:var(--fs-label);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
