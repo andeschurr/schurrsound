@@ -69,26 +69,32 @@
   });
 })();
 
-/* Home hero: the showreel plays silently behind the copy, as on schurrproductions.tv.
-   Added after the page has loaded, and not at all for visitors who prefer reduced
-   motion or have data saving on. "Watch with sound" goes to the full reel. */
+/* Home hero: the showreel starts silently when it comes into view, looping; Wistia's
+   own button turns the sound on. Visitors who prefer reduced motion or save data get
+   the player without autoplay. Without JavaScript the link opens the reel. */
 (function () {
-  var bg = document.querySelector('.hero-bg[data-reel]');
-  if (!bg) { return; }
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
-  var c = navigator.connection;
-  if (c && c.saveData) { return; }
+  var box = document.querySelector('.hero-reel[data-reel]');
+  if (!box) { return; }
+  var frame = box.querySelector('.reel');
+  var quiet = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+    (navigator.connection && navigator.connection.saveData);
+  var done = false;
   function add() {
+    if (done) { return; }
+    done = true;
     var f = document.createElement('iframe');
-    f.src = 'https://fast.wistia.net/embed/iframe/' + bg.getAttribute('data-reel') +
-      '?autoPlay=true&muted=true&silentAutoPlay=allow&endVideoBehavior=loop&controlsVisibleOnLoad=false' +
-      '&playbar=false&playButton=false&smallPlayButton=false&volumeControl=false&fullscreenButton=false' +
-      '&settingsControl=false&qualityControl=false&copyLinkAndThumbnailEnabled=false&videoFoam=false&fitStrategy=cover';
-    f.title = 'Showreel, playing silently';
-    f.tabIndex = -1;
-    f.setAttribute('allow', 'autoplay');
-    f.setAttribute('aria-hidden', 'true');
-    bg.appendChild(f);
+    f.src = 'https://fast.wistia.net/embed/iframe/' + box.getAttribute('data-reel') + '?videoFoam=true' +
+      (quiet ? '' : '&autoPlay=true&muted=true&silentAutoPlay=allow&endVideoBehavior=loop');
+    f.title = 'Ande Schurr · Showreel';
+    f.setAttribute('allow', 'autoplay; fullscreen');
+    f.setAttribute('allowfullscreen', '');
+    frame.innerHTML = '';
+    frame.appendChild(f);
   }
-  if (document.readyState === 'complete') { add(); } else { window.addEventListener('load', add); }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); add(); }
+    }, { rootMargin: '200px' });
+    io.observe(box);
+  } else { add(); }
 })();
