@@ -56,7 +56,7 @@ def build(out):
     centre(d, 196, "Ande Schurr", cg(132, 600), CREAM)
     centre(d, 337, "2026 EMMY NOMINEE", inter(26, 650), GOLD, tracking=1.5)
     centre(d, 379, "Outstanding Sound Mixing · Lord of the Flies (BBC/Netflix)", inter(25, 450), SOFT, tracking=0.3)
-    centre(d, 462, "When the location pushes back, the sound stays clean.", cg(39, 500, italic=True), CREAM)
+    centre(d, 462, "Clean dialogue on difficult locations.", cg(42, 500, italic=True), CREAM)
     centre(d, 551, "schurrsound.com", inter(26, 650), GOLD, tracking=0.3)
     img.save(out, "JPEG", quality=90, optimize=True, progressive=True)
     print("wrote", out)
