@@ -748,3 +748,14 @@ body.home .lightbox-close:hover{color:var(--gold)}
   @media(max-width:900px){.nav-links>li:not(:last-child){margin-right:16px}}
   @media(max-width:620px){.nav-links>li:not(:last-child){margin-right:14px}}
 }
+
+/* photos of Ande (12 Nov 2026) */
+header.phero .about-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:center}
+.portrait{margin:0}
+.portrait img{display:block;width:100%;height:auto;border:1px solid rgba(184,161,92,.55);border-radius:2px}
+.portrait figcaption{margin-top:10px;font-size:var(--fs-label);color:#c9c3ae;letter-spacing:.02em}
+@media (max-width:760px){header.phero .about-head{grid-template-columns:1fr;gap:28px}.portrait{max-width:240px}}
+.photo{margin:8px 0 var(--sp-3)}
+.photo img{display:block;width:100%;height:auto;border-radius:2px}
+.photo figcaption{margin-top:8px;font-size:var(--fs-label);color:#6f6a58;letter-spacing:.02em}
+.photo.tall{max-width:360px}
