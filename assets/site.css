@@ -768,3 +768,10 @@ header.phero .about-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;
 @media(max-width:380px){.wordmark{letter-spacing:.12em;gap:7px}.wordmark .mark{width:22px;height:22px}}
 @media(max-width:340px){.wordmark .mark{display:none}}
 @media(max-width:365px){.wordmark{letter-spacing:.08em;gap:6px}.nav-cta,nav.js .nav-toggle{padding:8px 9px}}
+
+/* the card front in the footer (12 Nov 2026) */
+.foot-brand{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:48px;padding-bottom:44px;border-bottom:1px solid rgba(240,234,216,.18)}
+.foot-s{display:block;width:58px;height:63px;color:var(--cream)}
+.foot-wm{margin-top:18px;font-weight:600;font-size:var(--fs-body);letter-spacing:.34em;padding-left:.34em;color:var(--cream)}
+.foot-wm span{color:var(--gold)}
+.foot-line{margin-top:10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:var(--fs-display-sm);color:var(--gold-soft)}
