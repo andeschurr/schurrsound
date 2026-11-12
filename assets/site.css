@@ -759,3 +759,12 @@ header.phero .about-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;
 .photo img{display:block;width:100%;height:auto;border-radius:2px}
 .photo figcaption{margin-top:8px;font-size:var(--fs-label);color:#6f6a58;letter-spacing:.02em}
 .photo.tall{max-width:360px}
+
+/* the S mark beside the name (12 Nov 2026) */
+.wordmark{display:inline-flex;align-items:center;gap:12px}
+.wordmark .mark{display:block;width:30px;height:30px;flex:none;border-radius:7px}
+@media(max-width:960px){.wordmark{gap:10px}.wordmark .mark{width:26px;height:26px;border-radius:6px}}
+@media(max-width:400px){.wordmark{gap:8px}.wordmark .mark{width:24px;height:24px;border-radius:5px}}
+@media(max-width:380px){.wordmark{letter-spacing:.12em;gap:7px}.wordmark .mark{width:22px;height:22px}}
+@media(max-width:340px){.wordmark .mark{display:none}}
+@media(max-width:365px){.wordmark{letter-spacing:.08em;gap:6px}.nav-cta,nav.js .nav-toggle{padding:8px 9px}}

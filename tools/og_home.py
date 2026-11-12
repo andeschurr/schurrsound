@@ -48,10 +48,38 @@ def centre(d, y, t, f, fill, tracking=0):
         d.text((x, y), c, font=f, fill=fill)
         x += d.textlength(c, font=f) + tracking
 
+def s_tile(size):
+    """The site icon (cream S on green) turned round: a cream tile with a green S, corners as the favicon."""
+    src = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icon-512.png")).convert("RGB")
+    src = src.resize((size, size), Image.LANCZOS)
+    out = Image.new("RGB", (size, size))
+    px, po = src.load(), out.load()
+    for y in range(size):
+        for x in range(size):
+            r, g, b = px[x, y]
+            t = ((r - BG[0]) + (g - BG[1]) + (b - BG[2])) / ((CREAM[0] - BG[0]) + (CREAM[1] - BG[1]) + (CREAM[2] - BG[2]))
+            t = min(max(t, 0.0), 1.0)
+            po[x, y] = tuple(round(CREAM[i] + t * (BG[i] - CREAM[i])) for i in range(3))
+    mask = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, size - 1, size - 1), radius=round(size * 12 / 64), fill=255)
+    return out, mask
+
+def lockup(img, d, y, f, fill, tracking, size=46, gap=18):
+    """S tile beside the tracked name, the pair centred; y is the name's cap line."""
+    tw = width(d, "SCHURR SOUND", f, tracking)
+    x = (W - (size + gap + tw)) / 2
+    top = f.getbbox("H")[1]; cap = f.getbbox("H")[3] - top
+    tile, mask = s_tile(size)
+    img.paste(tile, (round(x), round(y + cap / 2 - size / 2)), mask)
+    tx = x + size + gap
+    for c in "SCHURR SOUND":
+        d.text((tx, y - top), c, font=f, fill=fill)
+        tx += d.textlength(c, font=f) + tracking
+
 def build(out):
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
-    centre(d, 80, "SCHURR SOUND", inter(26, 650), PALE, tracking=8.5)
+    lockup(img, d, 80, inter(26, 650), PALE, 8.5)
     d.rectangle([430, 129, 770, 132], fill=GOLD)
     centre(d, 196, "Ande Schurr", cg(132, 600), CREAM)
     centre(d, 337, "2026 EMMY NOMINEE", inter(26, 650), GOLD, tracking=1.5)
