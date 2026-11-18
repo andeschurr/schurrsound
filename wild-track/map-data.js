@@ -49,7 +49,7 @@ var DATA = [
     city:"Melbourne", country:"Australia", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Jamie Foxx hostage thriller with Sasha Calle, KiKi Layne and Luke Hemsworth, Nikhil Bhat directing. Cameras rolled in early October across the CBD, Docklands, Port Melbourne and Docklands Studios, with Melbourne doubling for New York. No wrap date published.",
+    note:"Jamie Foxx hostage thriller with Sasha Calle, KiKi Layne and Luke Hemsworth. Cameras rolled in early October across the CBD, Docklands, Port Melbourne and Docklands Studios, with Melbourne doubling for New York. No wrap date published.",
     lat:-37.815, lng:144.94,
     sources:[
       {name:"Premier of Victoria", url:"https://www.premier.vic.gov.au/labor-locks-jamie-foxxs-new-action-film"},
@@ -91,7 +91,7 @@ var DATA = [
     city:"Canterbury (Christchurch)", country:"New Zealand", region:"ANZ",
     service:"Whitebait Media",
     status:"shooting",
-    note:"Eight half-hour sci-fi adventure comedy for children, a Māori and Métis/Cree co-production with at least 30 percent of the dialogue in te reo Māori. Principal photography from 2 November 2026, based in Canterbury, with more scenes in Vancouver.",
+    note:"Sci-fi adventure comedy series for children, a Māori and Métis/Cree co-production with at least 30 percent of the dialogue in te reo Māori. Principal photography from 2 November 2026, based in Canterbury, with more scenes in Vancouver.",
     lat:-43.53, lng:172.64,
     sources:[
       {name:"Whakaata Māori", url:"https://www.whakaatamaori.co.nz/media-releases/maui-elvis-brings-maori-and-metis-cree-indigenous-storytellers-together-in-new-international-co-production"},
@@ -119,7 +119,7 @@ var DATA = [
     city:"Singapore + Malaysia", country:"Singapore", region:"ASEAN",
     service:"",
     status:"prep",
-    note:"HBO ordered eight one-hour episodes in October, with Constance Wu, Henry Golding and Ronny Chieng back and Michelle Yeoh recurring. Adele Lim showrunning. Production starts in 2027; Production List puts the shoot at April to October 2027 across New York, Singapore and Malaysia.",
+    note:"HBO ordered eight episodes in October, with Constance Wu and Henry Golding back and Michelle Yeoh returning. Adele Lim showrunning. Production starts in 2027; Production List puts the shoot at April to October 2027 across New York, Singapore and Malaysia.",
     lat:1.35, lng:103.82,
     sources:[
       {name:"Business Today Malaysia", url:"https://www.businesstoday.com.my/2026/10/09/surprise-crazy-rich-asians-finally-gets-a-tv-adaptation/"},
