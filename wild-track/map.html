@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What's Shooting · Asia-Pacific | The Wild Track</title>
-<meta name="description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources. Updated quarterly with The Wild Track.">
+<meta name="description" content="What is shooting in Australia, New Zealand and Southeast Asia, with two or three public sources on every pin. Kept by production sound mixer Ande Schurr.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://schurrsound.com/whats-shooting">
 <meta property="og:title" content="What's Shooting · Asia-Pacific | The Wild Track">
-<meta property="og:description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources.">
+<meta property="og:description" content="What is shooting in Australia, New Zealand and Southeast Asia, with two or three public sources on every pin.">
 <meta property="og:image" content="https://schurrsound.com/wild-track/og-wild-track.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What's Shooting · Asia-Pacific | The Wild Track">
-<meta name="twitter:description" content="A running map of productions across Asia-Pacific, from Ande Schurr's own network and public sources.">
+<meta name="twitter:description" content="What is shooting in Australia, New Zealand and Southeast Asia, with two or three public sources on every pin.">
 <meta name="twitter:image" content="https://schurrsound.com/wild-track/og-wild-track.png">
 <link rel="canonical" href="https://schurrsound.com/whats-shooting">
 <link rel="stylesheet" href="/assets/site.css?v=202611121810">
@@ -52,11 +52,11 @@
   <h1>What's Shooting · Asia-Pacific</h1>
   <div class="sub">The Wild Track · updated <span id="upd"></span></div>
 
-<script src="/wild-track/map-data.js?v=3"></script>
+<script src="/wild-track/map-data.js?v=4"></script>
 <script src="/wild-track/stages-data.js?v=1"></script>
 
   <p class="page-intro">
-    Australia, New Zealand and Southeast Asia are a few hours apart, yet nobody seems to track their shoots as one region. So I do. Everything below is either publicly sourced or clearly marked as something I have only heard from my own network. Start here if you want to know what is moving in our patch.
+    What is shooting, or about to, across Australia, New Zealand and Southeast Asia. Every pin carries two or three public sources.
   </p>
 
   <div class="layers" id="layers">
@@ -73,7 +73,7 @@
         <div class="legend">
           <span><i class="dot dot-shooting"></i>Shooting now</span>
           <span><i class="dot dot-prep"></i>Pre-production</span>
-          <span><i class="dot dot-hearing"></i>Also hearing</span>
+          <span class="leg-hearing"><i class="dot dot-hearing"></i>Also hearing</span>
           <span class="leg-stage"><i class="sq sq-visited"></i>Stage, visited</span>
           <span class="leg-stage"><i class="sq sq-desk"></i>Stage, desk research</span>
         </div>
@@ -86,8 +86,7 @@
   </div>
 
   <div class="foot">
-    Only productions in pre-production or actively shooting are listed.
-    <em>Also hearing</em> comes from my own network and carries no public source.<br>
+    Only productions in pre-production or shooting. Wrapped titles come off.<br>
     Shooting here and want crew to know? <a href="mailto:ande@schurrsound.com?subject=Production%20tip%20for%20The%20Wild%20Track&amp;body=Production%20name%3A%0AShooting%20start%20month%3A%0A%0A(Your%20email%20is%20just%20so%20I%20can%20verify%20the%20source.%20It%20won't%20be%20published%20or%20shared.)">Reply and I'll add you</a>.
   </div>
   <div class="map-by">Map by Ande Schurr · <a href="https://schurrsound.com">schurrsound.com</a></div>
@@ -273,6 +272,21 @@ function stageCard(s){
   return '<li class="stage-row" data-s="'+esc(s.id)+'" id="stage-'+esc(s.id)+'">'+parts.join('')+'</li>';
 }
 
+/* Sources: two or three public links per pin. Old single-link rows still render. */
+function srcLinks(d){
+  const list = (d.sources && d.sources.length) ? d.sources : (d.source ? [{name:'Source', url:d.source}] : []);
+  if(!list.length) return '';
+  return '<div class="note srcs"><strong>Sources:</strong> '
+    + list.map(function(x){ return '<a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.name)+'</a>'; }).join(' &nbsp;·&nbsp; ')
+    + (d.checked ? ' &nbsp;·&nbsp; checked '+esc(d.checked) : '')
+    + '</div>';
+}
+/* The legend only shows "Also hearing" when a hearing pin exists. */
+(function(){
+  const h=document.querySelector('.leg-hearing');
+  if(h && !DATA.some(function(d){ return d.status==='hearing'; })) h.remove();
+})();
+
 /* ── render ── */
 function render(){
   const showP=state.layers.productions, showS=state.layers.stages;
@@ -306,7 +320,7 @@ function render(){
       +'<div class="meta">'+esc(d.kind)+' &nbsp;·&nbsp; '+esc(d.city)+'</div>'
       +(d.service?'<div class="note"><strong>Serviced by</strong> '+esc(d.service)+'</div>':'')
       +(d.note?'<div class="note">'+esc(d.note)+'</div>':'')
-      +(d.source?'<div class="note"><a href="'+d.source+'" target="_blank" rel="noopener">Source</a></div>':'')
+      +srcLinks(d)
       +'</li>';
   }).join('');
   const stageHTML = srows.map(stageCard).join('');

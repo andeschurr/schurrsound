@@ -1,11 +1,15 @@
 /* ══════════════════════════════════════════════════════════════════════════
    THE WILD TRACK · production map data.
    Single source of truth for both the live interactive map (map.html)
-   and the email's shooting/prep/hearing list (tools/generate-map-assets.js).
+   and the email's shooting/prep list (tools/generate-map-assets.js).
 
-   Edit only the DATA array below, then run:
-     cd wild-track/tools && node generate-map-assets.js
-   to regenerate the email's issue list.
+   Edit only the DATA array below. Regenerate an email list only when a new
+   issue is being prepared (cd wild-track/tools && node generate-map-assets.js);
+   it rewrites ep1-email.html, which is the archived first issue.
+
+   sources: two or three public links per pin, [{name, url}], strongest first.
+            A pin with fewer than two independent public sources stays off
+            the map.
 
    service: local service / line production company, if publicly known.
             Company names only. NEVER an individual's name.
@@ -13,200 +17,117 @@
    status:  "shooting" = cameras rolling now
             "prep"     = pre-production, confirmed, not yet rolling
             "hearing"  = network intel, no public source. NEVER add a link.
+                         (none listed since 19 November 2026)
 
    RULE: never list wrapped, in-post or released titles.
-         Re-check every entry before each issue. Starts get announced;
-         wraps never do.
+         Re-check every entry before each update. Starts get announced;
+         wraps never do, so a pin without a published end date says so.
 
-   Add a row: copy a block, change values, save, regenerate, git push.
    lat/lng: right-click any point in Google Maps.
    ══════════════════════════════════════════════════════════════════════════ */
 
 (function(){
-var UPDATED = "1 September 2026";
+var UPDATED = "19 November 2026";
 
 var DATA = [
   {
-    title:"Crazy Rich Asians (Series)", kind:"Series · Max / Warner Bros. Television",
-    city:"Singapore", country:"Singapore", region:"ASEAN",
-    service:"",
-    status:"prep",
-    note:"The series continuation, reuniting Jon M. Chu and Adele Lim from the original film. Principal photography begins 11 January 2027, split between New York and Singapore.",
-    lat:1.35, lng:103.82,
-    source:"https://www.productionlist.com/crazy-rich-asians-series-heading-to-max-with-jon-m-chu-and-adele-lim-filming-in-new-york-and-singapore",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Extraction 3", kind:"Feature · Netflix / AGBO",
-    city:"Sydney + NSW South Coast", country:"Australia", region:"ANZ",
-    service:"",
+    title:"Feral", kind:"Series · Netflix",
+    city:"Gold Coast + Whitsundays", country:"Australia", region:"ANZ",
+    service:"Hera Pictures",
     status:"shooting",
-    note:"Chris Hemsworth, Idris Elba, Golshifteh Farahani. Sam Hargrave directing. Shooting 23 July to 9 October across Sydney, the NSW South Coast, Europe and Thailand. Location Offset + Made in NSW via Screen NSW.",
-    lat:-34.42, lng:150.89,
-    source:"https://au.variety.com/2026/film/news/chris-hemsworth-extraction-3-begins-production-38851/",
-    checked:"2026-09-01"
+    note:"Seven-part survival drama from Shirley Conran's novel Savages, with Michelle Dockery, Jessica Gunning and Philippa Northeast. Emma Freeman directing. Filming across the Gold Coast, its hinterland and the Whitsunday Islands, October 2026 to February 2027.",
+    lat:-28.00, lng:153.30,
+    sources:[
+      {name:"TV Blackbox", url:"https://tvblackbox.com.au/page/2026/10/23/netflix-takes-feral-to-queensland-with-international-star-cast/"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/netflixs-feral-queensland-michelle-dockery-jessica-gunning-philippa-northeast-41802/"},
+      {name:"What's on Netflix", url:"https://www.whats-on-netflix.com/news/netflix-movies-filming-fall-2026/"}
+    ],
+    checked:"2026-11-19"
   },
   {
-    title:"Queenstown", kind:"Series · Netflix",
-    city:"Queenstown", country:"New Zealand", region:"ANZ",
-    service:"",
-    status:"shooting",
-    note:"Eight episodes, shot under the working title Black Diamond across four ski fields. Around 120 local crew over a five-month schedule. First Netflix series commissioned out of ANZ to be set and filmed in New Zealand. Glendyn Ivin and Roseanne Liang directing.",
-    lat:-45.03, lng:168.66,
-    source:"https://au.variety.com/2026/tv/news/production-begins-on-new-netflix-series-queenstown-38644/",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Blue Murder Motel", kind:"Series S2 · Acorn TV / ITV",
-    city:"Auckland", country:"New Zealand", region:"ANZ",
-    service:"Great Southern Television",
-    status:"shooting",
-    note:"Season two is in production around greater Auckland, Michala Banas and Brett Tucker back as the retired detectives. Trade reports differ on the episode count, so treat that as unsettled.",
-    lat:-36.85, lng:174.76,
-    source:"https://tvtonight.com.au/2026/06/renewed-blue-murder-motel.html",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Dead Losi", kind:"Series · TVNZ+",
-    city:"Auckland", country:"New Zealand", region:"ANZ",
-    service:"The Sweetshop",
-    status:"shooting",
-    note:"Six 44-minute episodes for TVNZ+, an original Samoan crime comedy developed with director Damon Fepulei, on NZ On Air scripted funding. The Screen Guild had it in prep in Auckland in February. No fresh public update since August, so the dates may have moved.",
-    lat:-36.85, lng:174.76,
-    source:"https://shownews.co.nz/dead-losi-tv-series/",
-    checked:"2026-09-01"
-  },
-  {
-    title:"The Hunt for Gollum", kind:"Feature · Warner Bros.",
-    city:"Wellington", country:"New Zealand", region:"ANZ",
-    service:"",
-    status:"shooting",
-    note:"Middle-earth is back at Miramar. Principal photography began early July and runs to late October or early November. Andy Serkis directing and starring, with Kate Winslet, Anya Taylor-Joy and Leo Woodall.",
-    lat:-41.31, lng:174.81,
-    source:"https://variety.com/2026/film/news/lord-of-the-rings-hunt-for-gollum-filming-set-footage-1236810966/",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Wentworth: Halfway Home", kind:"Series · Fremantle Australia",
+    title:"Deadlocked", kind:"Feature · Amazon MGM Studios",
     city:"Melbourne", country:"Australia", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Cameras rolled 27 July in Melbourne, shooting and posting in Victoria for Binge. Katrina Milosevic, Nicole da Silva and Kate Box returning. Premiere flagged for late 2026.",
-    lat:-37.81, lng:144.96,
-    source:"https://vicscreen.vic.gov.au/news/production-begins-on-wentworth-halfway-home",
-    checked:"2026-09-01"
+    note:"Jamie Foxx hostage thriller with Sasha Calle, KiKi Layne and Luke Hemsworth, Nikhil Bhat directing. Cameras rolled in early October across the CBD, Docklands, Port Melbourne and Docklands Studios, with Melbourne doubling for New York. No wrap date published.",
+    lat:-37.815, lng:144.94,
+    sources:[
+      {name:"Premier of Victoria", url:"https://www.premier.vic.gov.au/labor-locks-jamie-foxxs-new-action-film"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/film/news/jamie-foxx-deadlocked-victoria-40945/"},
+      {name:"AAP", url:"https://www.illawarramercury.com.au/story/9373058/jamie-foxx-brings-hollywood-action-to-australia/"}
+    ],
+    checked:"2026-11-19"
   },
   {
-    title:"Crime Casters", kind:"Feature · Haven't You Done Well Productions",
-    city:"Melbourne + regional Victoria", country:"Australia", region:"ANZ",
-    service:"",
-    status:"shooting",
-    note:"Aunty Donna's company steps up to its first feature, a comedy thriller. Max Miller directing, Scott Limbrick writing. Shooting from 17 August in and around Melbourne, backed by Screen Australia and VicScreen.",
-    lat:-37.70, lng:145.20,
-    source:"https://if.com.au/havent-you-done-well-kicks-off-on-first-feature-crime-casters/",
-    checked:"2026-09-01"
-  },
-  {
-    title:"NCIS: Sydney (Season 4)", kind:"Series · Paramount+ / CBS / Endemol Shine Australia",
-    city:"Sydney", country:"Australia", region:"ANZ",
-    service:"Endemol Shine Australia",
-    status:"shooting",
-    note:"Cameras rolled again in May across Sydney Harbour and surrounds. Airing on CBS at midseason in the 2026-27 season, so the block runs deep into the year.",
-    lat:-33.86, lng:151.21,
-    source:"https://www.paramountanz.com.au/news/cameras-roll-on-season-four-of-ncis-sydney/",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Fog City", kind:"Feature",
-    city:"Melbourne", country:"Australia", region:"ANZ",
-    service:"",
-    status:"shooting",
-    note:"Dan Pritzker's Depression-era San Francisco drama, with Melbourne standing in. Docklands Studios plus heritage locations, confirmed by VicScreen. Scheduled to shoot until the first week of September, so this one is about to come off the board.",
-    lat:-37.81, lng:144.94,
-    source:"https://vicscreen.vic.gov.au/news/melbourne-transforms-into-san-francisco-in-new-feature-fog-city",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Priscilla, Queen of the Desert 2", kind:"Feature · Stephan Elliott",
-    city:"Australia, locations unannounced", country:"Australia", region:"ANZ",
+    title:"The Girl Who Was Plugged In", kind:"Feature · Range Media Partners",
+    city:"Australia, city not announced", country:"Australia", region:"ANZ",
     service:"",
     status:"prep",
-    note:"Elliott back to write and direct, with Hugo Weaving and Guy Pearce returning. Pearce says it shoots in 2027 for a 2028 release. Terence Stamp pre-filmed his scenes on a nine-camera array before his death, to be composited over a stand-in.",
+    note:"Jennifer Kent's sci-fi feature from the James Tiptree Jr. story, Sophie Thatcher in dual lead roles. Announced in May for a mid-November 2026 start in Australia. No public update on the city or the start since.",
     lat:-25.00, lng:134.00,
-    source:"https://deadline.com/2026/08/guy-pearce-priscilla-queen-of-the-desert-2-filming-update-1237062780/",
-    checked:"2026-09-01"
+    sources:[
+      {name:"Dread Central", url:"https://www.dreadcentral.com/news/571420/the-girl-who-was-plugged-in-sophia-thatcher-joins-jennifer-kents-sci-fi-thriller/"},
+      {name:"World of Reel", url:"https://www.worldofreel.com/blog/2026/5/6/jennifer-kent-sets-sci-fi-the-girl-who-was-plugged-in-with-sophie-thatcher-eyes-november-2026-shoot"},
+      {name:"Production List", url:"https://www.productionlist.com/production/the-girl-who-was-plugged-in"}
+    ],
+    checked:"2026-11-19"
   },
   {
-    title:"The Good Samaritan", kind:"Feature · Canton / Oakhurst / Sentient",
-    city:"Malaysia", country:"Malaysia", region:"ASEAN",
-    service:"Wave Films (Singapore)",
-    status:"prep",
-    note:"Pierre Morel directing, Daisy Ridley with Josh Duhamel and Sharlto Copley. Singapore's Wave Films is line producing in Malaysia. The story is set in Indonesia but the shoot is Malaysian.",
-    lat:3.14, lng:101.69,
-    source:"https://deadline.com/2026/07/singapore-wave-films-cambodian-broadcasting-dave-ulmer-1237013111/",
-    checked:"2026-09-01"
-  },
-
-  {
-    title:"Hudson & Maria", kind:"Feature \u00b7 Half Crown Media / Burns & Co. Entertainment",
-    city:"Malaysia", country:"Malaysia", region:"ASEAN",
+    title:"Spaceship Earth", kind:"Pilot · Disney+ / 20th Television",
+    city:"Kumeu, Auckland", country:"New Zealand", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Matt Mikalatos writing and directing an Opium Wars period piece about the missionary Hudson Taylor, with William Moseley, Poppy Drayton and Ludi Lin, alongside Tan Kheng Hua and Darren Lim. Production began in Malaysia in early August, reported as a five-week block finishing mid-September.",
-    lat:4.21, lng:101.98,
-    source:"https://www.halfcrownmedia.com/international-cast-join-impactful-feature-film-hudson-maria/",
-    checked:"2026-09-01"
+    note:"Disney+ pilot inspired by the EPCOT ride, with Catherine Laga'aia and Deacon Phillippe, Jason Fuchs showrunning. The Screen Guild reported it filming at Kumeu Film Studios in November and December 2026.",
+    lat:-36.78, lng:174.56,
+    sources:[
+      {name:"NZ Screen Guild", url:"https://www.screenguild.co.nz/news/articles/regional-wrap-auckland-ik2mq"},
+      {name:"Laughing Place", url:"https://www.laughingplace.com/disney-parks/disney-plus-spaceship-earth-catherine-lagaaia-deacon-phillippe/"},
+      {name:"TheWrap", url:"https://www.thewrap.com/creative-content/tv-shows/catherine-lagaaia-deacon-phillippe-cast-spaceship-earth-pilot-disney/"}
+    ],
+    checked:"2026-11-19"
   },
   {
-    title:"The Big Fix", kind:"Feature · Netflix",
-    city:"Penang", country:"Malaysia", region:"ASEAN",
-    service:"Biscuit Films Malaysia",
-    status:"hearing",
-    note:"Mark Wahlberg and Riz Ahmed. Serviced locally out of Penang, Australian sound crew alongside local.",
-    lat:5.41, lng:100.33,
-    source:"",
-    checked:"2026-09-01"
+    title:"Māui & Elvis", kind:"Series · Whakaata Māori / APTN",
+    city:"Canterbury (Christchurch)", country:"New Zealand", region:"ANZ",
+    service:"Whitebait Media",
+    status:"shooting",
+    note:"Eight half-hour sci-fi adventure comedy for children, a Māori and Métis/Cree co-production with at least 30 percent of the dialogue in te reo Māori. Principal photography from 2 November 2026, based in Canterbury, with more scenes in Vancouver.",
+    lat:-43.53, lng:172.64,
+    sources:[
+      {name:"Whakaata Māori", url:"https://www.whakaatamaori.co.nz/media-releases/maui-elvis-brings-maori-and-metis-cree-indigenous-storytellers-together-in-new-international-co-production"},
+      {name:"Production List", url:"https://www.productionlist.com/indigenous-and-m-ori-co-production-maui-elvis-sets-alien-adventure-series-for-new-zealand-and-bc-shoot-in-late-2026"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/sci-fi-comedy-maui-elvis-whakaata-maori-aptn-39927/"}
+    ],
+    checked:"2026-11-19"
   },
   {
-    title:"Untitled Spektrum Cahaya feature", kind:"Feature · Spektrum Cahaya",
-    city:"Johor", country:"Malaysia", region:"ASEAN",
-    service:"",
-    status:"hearing",
-    note:"A regional feature setting up at Iskandar Malaysia Studios in Johor, with Adnan Al Rajeev attached to direct.",
-    lat:1.43, lng:103.63,
-    source:"",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Nak Muay", kind:"Feature Film · Disruptive Element Films / Michelle Yeoh",
-    city:"Bangkok + Pranburi", country:"Thailand", region:"ASEAN",
+    title:"Pendekar (Warrior)", kind:"Feature · Asia Media Alliance Group / Nation Pictures",
+    city:"Iskandar Puteri, Johor", country:"Malaysia", region:"ASEAN",
     service:"",
     status:"shooting",
-    note:"Michelle Yeoh exec-produces; Tinge Krishnan directing a Muay Thai drama shooting Bangkok and Pranburi from 2 August through September, backed by the Thai government and the UK Global Screen Fund.",
-    lat:13.75, lng:100.50,
-    source:"https://deadline.com/2026/07/michelle-yeoh-ep-martial-arts-pnak-muay-thailand-august-1237005843/",
-    checked:"2026-09-01"
+    note:"Iko Uwais Silat action feature, John Radel directing, with Tak Sakaguchi and Alicia Amin. Filming began in early November at Iskandar Malaysia Studios and is due to wrap in late December. Earlier reports had the shoot in Indonesia.",
+    lat:1.4084, lng:103.6370,
+    sources:[
+      {name:"Screen Daily", url:"https://www.screendaily.com/news/pendekar-warrior-starring-the-raids-iko-uwais-begins-malaysia-shoot/5222243.article"},
+      {name:"M.A.A.C.", url:"https://maactioncinema.com/archives/28305"},
+      {name:"ComingSoon", url:"https://www.comingsoon.net/movies/news/2098214-raid-iko-uwais-star-warrior-silat-action-thriller"}
+    ],
+    checked:"2026-11-19"
   },
   {
-    title:"Ah Boys To Firemen", kind:"Feature · J Team Productions / mm2 Entertainment",
-    city:"Singapore", country:"Singapore", region:"ASEAN",
+    title:"Crazy Rich Asians (Series)", kind:"Series · HBO / Warner Bros. Television",
+    city:"Singapore + Malaysia", country:"Singapore", region:"ASEAN",
     service:"",
     status:"prep",
-    note:"Jack Neo's franchise pivots from the army to the Civil Defence Force. Cappu Films took it to Filmart against a mid-2026 production start and a Chinese New Year 2027 release. Around US$3m, with virtual production for the fire work. No public confirmation yet that cameras have rolled.",
-    lat:1.3521, lng:103.8198,
-    source:"https://www.screendaily.com/news/cappu-films-to-spark-off-jack-neos-ah-boys-to-firemen-at-filmart/5214918.article",
-    checked:"2026-09-01"
-  },
-  {
-    title:"Journey to the West (modern adaptation)", kind:"Feature · Fiction Shore",
-    city:"Singapore + Kuala Lumpur", country:"Singapore", region:"ASEAN",
-    service:"",
-    status:"hearing",
-    note:"A stylised modern take on the classic, reportedly splitting stages and locations between Singapore and set builds in KL, with main unit around August and September.",
-    lat:1.3521, lng:103.8198,
-    source:"",
-    checked:"2026-09-01"
-  },
+    note:"HBO ordered eight one-hour episodes in October, with Constance Wu, Henry Golding and Ronny Chieng back and Michelle Yeoh recurring. Adele Lim showrunning. Production starts in 2027; Production List puts the shoot at April to October 2027 across New York, Singapore and Malaysia.",
+    lat:1.35, lng:103.82,
+    sources:[
+      {name:"Business Today Malaysia", url:"https://www.businesstoday.com.my/2026/10/09/surprise-crazy-rich-asians-finally-gets-a-tv-adaptation/"},
+      {name:"The Star", url:"https://www.thestar.com.my/lifestyle/entertainment/2026/10/09/crazy-rich-asians-to-return-as-tv-series-with-michelle-yeoh-constance-wu-henry-golding-reprising-roles"},
+      {name:"Production List", url:"https://www.productionlist.com/hbo-s-crazy-rich-asians-series-from-adele-lim-sets-eight-episode-order-filming-new-york-singapore-and-malaysia-in-2027"}
+    ],
+    checked:"2026-11-19"
+  }
 ];
 
 /* simplified coastlines: [label, [[lng,lat],...], showLabel] */

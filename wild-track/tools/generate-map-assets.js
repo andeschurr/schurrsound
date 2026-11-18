@@ -35,8 +35,9 @@ function buildEmailListHTML() {
     // in map-data.js, so this naturally omits the link for them too. Tacked
     // onto the end of the note (or meta line, if there's no note) instead
     // of its own line, to save vertical space.
-    const sourceLink = d.source
-      ? ` &nbsp;·&nbsp; <a href="${d.source}" style="color:${color};" target="_blank">Source</a>`
+    const srcs = (d.sources && d.sources.length) ? d.sources : (d.source ? [{ name: 'Source', url: d.source }] : []);
+    const sourceLink = srcs.length
+      ? ' &nbsp;·&nbsp; ' + srcs.map((x) => `<a href="${x.url}" style="color:${color};" target="_blank">${x.name}</a>`).join(' &nbsp;·&nbsp; ')
       : '';
     const metaLine = `<div style="font-family:Helvetica, Arial, sans-serif; font-size:12px; color:#6b6a63; margin-top:2px;">${parts.join(' &nbsp;·&nbsp; ')}${d.note ? '' : sourceLink}</div>`;
     const note = d.note
