@@ -148,7 +148,7 @@ page = fill(page, 'ld', ldHTML);
 page = fill(page, 'sum', '<p class="map-sum">' + summary + '</p>');
 page = fill(page, 'list', listHTML);
 page = fill(page, 'faq', faqHTML);
-const desc = plural(n, 'production') + ' shooting or in pre-production across Australia, New Zealand and Southeast Asia, each with two or three public sources. Checked ' + UPDATED + ' by production sound mixer Ande Schurr.';
+const desc = plural(n, 'production') + ' shooting or in pre-production across Australia, New Zealand and Southeast Asia, each with public sources. Checked ' + UPDATED + '.';
 page = page.replace(/(<meta name="description" content=")[^"]*(">)/, (m, a, b) => a + esc(desc) + b);
 
 const logFile = path.join(ROOT, 'wild-track', 'map-log.json');

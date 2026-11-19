@@ -6,3 +6,7 @@
 # browser breaks every page at once. Keep it on a short leash.
 /assets/site.css
   Cache-Control: public, max-age=300, must-revalidate
+
+# Browsers that have seen the site once always come back over HTTPS.
+/*
+  Strict-Transport-Security: max-age=15552000
