@@ -213,7 +213,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/assets/site.css?v=202611191800">
+<link rel="stylesheet" href="/assets/site.css?v=202611191830">
 <script src="/assets/site.js?v=202611121810" defer></script>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -305,6 +305,7 @@
 <section class="hx-strip" aria-labelledby="hx-strip-h">
   <div class="hx-wrap">
     <h2 id="hx-strip-h">Snow, sand, canopy, rock.</h2>
+    <p class="hx-strip-sub">Wet, muddy, sunburnt. A normal week.</p>
   </div>
   <ul class="hx-strip-row">
     <li><figure><img src="/img/home/loc-snow.jpg" width="900" height="1200" loading="lazy" alt="Ande Schurr beside a covered sound cart in a snowy New Zealand forest"><figcaption><em>Hunt for the Wilderpeople</em>, New Zealand. The sound cart, in snow.</figcaption></figure></li>
@@ -336,6 +337,10 @@
       <li><a href="/dry-hire"><span class="t">Dry hire</span><span class="d">Wisycom, DPA and Sound Devices, with local support.</span></a></li>
     </ul>
   </div>
+</section>
+
+<section class="hx-ticker" aria-label="Things I say on set">
+  <div class="hx-ticker-track"><div class="hx-ticker-set"><span>Nobody is turning that generator off.</span><span>A waterfall usually needs to be in the shot. A generator usually does not.</span><span>The rest is spare batteries.</span><span>Guerilla crews, gorilla hours, and a plan about as straight as a banana.</span><span>No haggling and no awkward dance.</span><span>Room tone and wild tracks at every location, every time.</span></div><div class="hx-ticker-set" aria-hidden="true"><span>Nobody is turning that generator off.</span><span>A waterfall usually needs to be in the shot. A generator usually does not.</span><span>The rest is spare batteries.</span><span>Guerilla crews, gorilla hours, and a plan about as straight as a banana.</span><span>No haggling and no awkward dance.</span><span>Room tone and wild tracks at every location, every time.</span></div></div>
 </section>
 
 <section class="hx-band hx-how" aria-labelledby="hx-how-h">
@@ -380,7 +385,7 @@
         <a class="btn hx-btn-dark" href="https://wa.me/6590526526" rel="noopener">WhatsApp +65 9052 6526</a>
         <a class="btn hx-btn-outline" href="mailto:ande@schurrsound.com?subject=Availability%20check&amp;body=Production%3A%20%0ADates%3A%20%0ALocation%3A%20%0AHow%20many%20people%20speak%20on%20camera%3A%20%0A">Email</a>
       </div>
-      <p class="hx-now" data-sgt hidden>It is <span></span> in Singapore.</p>
+      <p class="hx-now" data-sgt hidden>Singapore time, as timecode: <span class="hx-tc"></span></p>
     </div>
     <dl class="hx-facts">
       <div><dt>Base</dt><dd>Singapore, one to three hours from every major ASEAN production centre. New Zealand citizen: a local hire in <a href="/production-sound-mixer-australia">New Zealand and Australia</a>.</dd></div>
@@ -475,14 +480,17 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   }
   var now=document.querySelector('[data-sgt]');
-  if(now && window.Intl){
-    var tick=function(){
-      try{
-        now.querySelector('span').textContent=new Intl.DateTimeFormat('en-GB',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:'Asia/Singapore'}).format(new Date());
-        now.hidden=false;
-      }catch(e){}
+  if(now){
+    /* Singapore time written the way a slate shows it: hours, minutes, seconds, frames (25 fps) */
+    var out=now.querySelector('span'), still=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var two=function(n){return (n<10?'0':'')+n;};
+    var draw=function(){
+      var t=new Date(Date.now()+8*3600*1000);
+      out.textContent=two(t.getUTCHours())+':'+two(t.getUTCMinutes())+':'+two(t.getUTCSeconds())+':'+(still?'00':two(Math.floor(t.getUTCMilliseconds()/40)));
     };
-    tick(); setInterval(tick,30000);
+    draw(); now.hidden=false;
+    if(still){ setInterval(draw,1000); }
+    else{ var loop=function(){ draw(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
   }
 });
 </script>

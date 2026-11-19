@@ -1213,3 +1213,15 @@ body.map .map-join p.map-join-note{font-size:14px;color:#b9c4bb}
 .hx-story .d{display:block;margin-top:8px;font-size:16px;line-height:1.55;color:#4a4a44}
 .hx-story:hover .t{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
 @media(min-width:700px){.prose a.hx-story,.hx-story{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:26px;align-items:center}}
+/* A little life (19 Nov 2026, Ande: "spice and flair and fun... one of us"): his own lines drifting
+   past, Singapore time as timecode, a line under the four places. */
+.hx-ticker{background:var(--green-deep);color:var(--gold-soft);overflow:hidden;padding:clamp(18px,2.6vw,34px) 0;border-top:1px solid rgba(240,234,216,.12);border-bottom:1px solid rgba(240,234,216,.12)}
+.hx-ticker-track{display:flex;width:max-content;animation:hxdrift 70s linear infinite}
+.hx-ticker:hover .hx-ticker-track{animation-play-state:paused}
+.hx-ticker-set{display:flex;flex:none}
+.hx-ticker-set span{flex:none;font-family:var(--hx-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,42px);line-height:1.2;white-space:nowrap;padding:0 clamp(22px,3vw,48px);position:relative}
+.hx-ticker-set span::after{content:"";position:absolute;right:-5px;top:50%;width:9px;height:9px;margin-top:-4px;border-radius:50%;background:var(--gold);opacity:.7}
+@keyframes hxdrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.hx-ticker-track{animation:none;width:auto;flex-wrap:wrap}.hx-ticker-set{flex-wrap:wrap}.hx-ticker-set[aria-hidden]{display:none}.hx-ticker-set span{white-space:normal;padding:6px var(--hx-pad)}.hx-ticker-set span::after{display:none}}
+.hx-tc{font-variant-numeric:tabular-nums;font-weight:600;color:var(--green);letter-spacing:.02em}
+.hx-strip-sub{margin:calc(-1 * clamp(10px,2vw,26px)) 0 clamp(22px,3vw,42px);font-size:clamp(18px,1.6vw,22px);color:#5d5a50}
