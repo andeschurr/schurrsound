@@ -170,7 +170,7 @@ const rfc822 = (iso) => { const t = new Date(iso + 'T05:00:00+08:00'); const u =
   return DAYS[u.getUTCDay()] + ', ' + String(u.getUTCDate()).padStart(2, '0') + ' ' + MONTHS[u.getUTCMonth()].slice(0, 3) + ' ' + u.getUTCFullYear() + ' 05:00:00 +0800'; };
 const longOf = (iso) => { const [y, m, dd] = iso.split('-'); return Number(dd) + ' ' + MONTHS[Number(m) - 1] + ' ' + y; };
 const items = log.filter((x) => x.changed !== false).map((x) => '<item><title>' + esc('The Radar, ' + longOf(x.date)) + '</title>'
-  + '<link>https://schurrsound.com/whats-shooting?week=' + x.date + '</link><guid isPermaLink="false">radar-' + x.date + '</guid>'
+  + '<link>https://schurrsound.com/whats-shooting#week-' + x.date + '</link><guid isPermaLink="false">radar-' + x.date + '</guid>'
   + '<pubDate>' + rfc822(x.date) + '</pubDate><description>' + esc(x.text + ' On the map now: ' + plural(x.productions, 'production') + ', ' + x.shooting + ' shooting and ' + x.prep + ' in pre-production.') + '</description></item>').join('\n');
 fs.writeFileSync(path.join(ROOT, 'wild-track', 'radar.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n'
   + '<title>The Radar: what is shooting in Australia, New Zealand and Southeast Asia</title>\n<link>https://schurrsound.com/whats-shooting</link>\n'

@@ -18,5 +18,8 @@
 /singapore  /production-sound-mixer-singapore  301
 /notes      /notes/                            301
 
-# Standalone home for the interactive map (served from wild-track/map.html)
+# Standalone home for the interactive map (served from wild-track/map.html).
+# The file's own address sends people to that one home, so the map has a
+# single address for search engines and shared links.
+/wild-track/map  /whats-shooting  301
 /whats-shooting  /wild-track/map  200

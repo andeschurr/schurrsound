@@ -84,12 +84,12 @@ nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;
   .nav-cta{padding:9px 14px}
   nav.js .nav-toggle{display:inline-block;background:none;border:1px solid var(--line);border-radius:2px;padding:8px 14px;font:inherit;font-size:var(--fs-nav);font-weight:600;letter-spacing:.04em;color:var(--green);cursor:pointer}
   nav.js .nav-toggle:hover{border-color:var(--gold)}
-  .nav-links{order:9;flex-basis:100%;flex-direction:column;gap:0;margin:0 0 8px;border-top:1px solid var(--line)}
+  .nav-links{order:9;flex-basis:100%;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;margin:0 0 6px;border-top:1px solid var(--line)}
   nav.js .nav-links{display:none}
-  nav.js.open .nav-links{display:flex;max-height:calc(100vh - 64px);overflow-y:auto}
+  nav.js.open .nav-links{display:grid;max-height:calc(100vh - 64px);overflow-y:auto}
   .nav-links .more{display:block}
   .nav-links li{border-bottom:1px solid var(--line)}
-  .nav-links a{padding:12px 2px;font-size:var(--fs-body);border-bottom:none}
+  .nav-links a{padding:9px 2px;font-size:17px;line-height:1.35;border-bottom:none}
   .nav-links a[aria-current="page"]{font-weight:600}
 }
 @media(max-width:400px){.wordmark{letter-spacing:.18em}.nav-in{gap:8px}.nav-cta,nav.js .nav-toggle{padding:8px 11px}}
@@ -788,7 +788,11 @@ header.phero .about-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;
    Laptop: ... About · Series (drop-down) · Production map (gold pill, live dot).
    Phone: Production map as a light gold card (Ande 13:52: not dark green, it read as a
    section; no hover on phones, so the resting state is the highlight), then a SERIES
-   label and the two series. */
+   label and the two series.
+   Phone, compact (Ande 19 Nov 17:32: "less margin padding ... it shouldn't take up more
+   than maybe 50 or 60% of the page" on a 15 Pro Max, and fit a small phone): the plain
+   links sit two across, the map card and the series keep the full width, and every row
+   has less padding. About 430 px tall in all, bar included. */
 nav .nav-links li.series{order:1;position:relative}
 nav .nav-links li.hl{order:2}
 nav .nav-links li.hl a{display:flex;align-items:center;gap:8px;border:1px solid var(--gold);border-radius:999px;padding:5px 14px 5px 11px;color:var(--green);font-weight:600;background:#f7f1de;line-height:1.2}
@@ -809,24 +813,31 @@ nav .series-list a{display:block;padding:9px 16px;border-bottom:0;color:var(--in
 nav .series-list a:hover,nav .series-list a[aria-current="page"]{background:#f6f2e6;color:var(--green)}
 nav .series-list small{display:block;font-weight:400;font-size:12.5px;color:var(--grey);letter-spacing:.01em;margin-top:2px}
 @media(max-width:960px){
-  nav .nav-links li.hl{order:0;border-bottom:0;margin:8px 0 4px}
-  nav .nav-links li.series{order:0;border-bottom:0}
-  nav .nav-links li.hl a{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;border:1px solid #d6c493;border-radius:8px;padding:13px 16px;margin:0;background:#f6eed8;color:var(--green);font-size:var(--fs-body)}
+  nav .nav-links li.series + li.more{order:1}
+  nav .nav-links li.hl{order:2;grid-column:1 / -1;border-bottom:0;margin:6px 0 0}
+  nav .nav-links li.series{order:3;grid-column:1 / -1;border-bottom:0}
+  nav .nav-links li.more{order:4}
+  nav .nav-links li.more:last-child{border-bottom:0}
+  nav .nav-links li.hl a{display:grid;grid-template-columns:auto 1fr;gap:1px 12px;align-items:center;border:1px solid #d6c493;border-radius:8px;padding:8px 14px;margin:0;background:#f6eed8;color:var(--green);font-size:17px}
   nav .nav-links li.hl a:hover,nav .nav-links li.hl a[aria-current="page"]{background:#efe3bf;border-color:#b8a15c;color:var(--green)}
   nav .nav-links li.hl .live{grid-row:1 / span 2}
-  nav .nav-links li.hl small{display:block;grid-column:2;font-weight:400;font-size:13px;color:#7a6629;letter-spacing:.02em;margin-top:1px}
-  nav .series-btn{display:block;width:100%;text-align:left;padding:16px 2px 6px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7a6629;cursor:default;border-bottom:1px solid var(--line)}
+  nav .nav-links li.hl small{display:block;grid-column:2;font-weight:400;font-size:13px;color:#7a6629;letter-spacing:.02em;margin-top:0}
+  nav .series-btn{display:block;width:100%;text-align:left;padding:10px 2px 4px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7a6629;cursor:default;border-bottom:1px solid var(--line)}
   nav .series-btn::after{display:none}
-  nav .series-list{display:block;position:static;min-width:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none}
+  nav .series-list,nav li.series:hover .series-list,nav li.series:focus-within .series-list{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;position:static;min-width:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none}
   nav .series-list::before{display:none}
   nav .series-list li{border-bottom:1px solid var(--line)}
-  nav .series-list a{padding:11px 2px;font-weight:400;font-size:var(--fs-body)}
+  nav .series-list a{padding:8px 2px;font-weight:400;font-size:17px}
+  nav .nav-links .series-list a{white-space:normal}
   nav .series-list a:hover,nav .series-list a[aria-current="page"]{background:none;font-weight:600}
-  nav .series-list small{font-size:13px}
+  nav .series-list small{font-size:12.5px;line-height:1.3;margin-top:0}
+  @media(max-width:350px){nav .series-list small{display:none}}
 }
 nav .nav-links a,nav .series-btn{white-space:nowrap}
 @media(min-width:961px){nav .wrap{max-width:1360px}nav .wordmark{font-size:16px}}
 @media(max-width:960px){nav .wordmark{font-size:14px}nav .nav-cta,nav.js .nav-toggle{font-size:14px}}
+/* The smallest phones (320 px wide): the name, WhatsApp and Menu stay on one row, open or shut. */
+@media(max-width:340px){nav .nav-in{gap:6px}nav .nav-cta,nav.js .nav-toggle{padding:8px 7px;font-size:13px}nav.js .nav-toggle{min-width:52px}}
 @media(min-width:961px) and (max-width:1199px){nav .nav-cta{font-size:13px;padding:9px 13px}}
 @media(min-width:961px) and (max-width:1010px){
   nav .nav-links{gap:11px}
@@ -842,7 +853,7 @@ body.map nav .nav-links li.hl a[aria-current="page"],body.map nav .nav-links li.
 body.map nav .series-list a{color:var(--map-ink)}
 @media(max-width:960px){
   body.map nav .nav-links li.hl,body.map nav .nav-links li.series{border-bottom:0}
-  body.map nav .nav-links li.hl{margin:8px 0 4px}
+  body.map nav .nav-links li.hl{margin:6px 0 0}
   body.map nav .nav-links li.hl a{color:var(--green)}
   body.map nav .series-list li{border-bottom:1px solid var(--map-line)}
 }
@@ -1092,7 +1103,7 @@ body.hx .hx-reel .hero-reel figcaption{font-size:15px;margin-top:14px;letter-spa
   .hx-hero .hx-actions{flex-wrap:nowrap;gap:10px}
   .hx-hero .hx-actions .btn{flex:1 1 0;padding:16px 6px;text-align:center;font-size:15px;white-space:nowrap}
 }
-@media(max-width:960px){body.map .nav-in{padding:0}}
+@media(max-width:960px){body.map .nav-in{padding:0 16px}}
 
 /* ══════════════════════════════════════════════════════════════════════════
    Night map (19 Nov 2026): the map card goes deep green with gold pins, the
@@ -1245,3 +1256,6 @@ html.lb-on{overflow:hidden}
 .lb button:hover{color:var(--gold-soft,#d6c493)}
 .lb button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 @media(max-width:700px){.lb-prev,.lb-next{width:42px;height:58px;margin-top:-29px}.lb-cap{font-size:15px}}
+
+/* The smallest phones (320 px wide): the two home page buttons stay inside the screen. */
+@media(max-width:340px){.hx-hero .hx-actions{gap:8px}.hx-hero .hx-actions .btn{font-size:13.5px;padding:15px 4px}}
