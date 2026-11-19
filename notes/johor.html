@@ -4,23 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shooting in Johor: Iskandar Malaysia Studios | Field Notes | Schurr Sound</title>
-<meta name="robots" content="noindex">
-<meta name="description" content="Iskandar Malaysia Studios in Johor, walked rather than googled: five stages, the big water tanks, Atmos post, how to get there from Singapore, crew and what I could not check.">
+<meta name="description" content="Iskandar Malaysia Studios in Johor from a site visit: five stages, big water tanks, Atmos post on site, how to get there from Singapore, crew and how quiet the stages are.">
 <link rel="canonical" href="https://schurrsound.com/notes/johor">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://schurrsound.com/notes/johor">
 <meta property="og:title" content="Shooting in Johor: Iskandar Malaysia Studios">
-<meta property="og:description" content="Five stages, the big water tanks and an Atmos room, just over the Tuas crossing. What is there, how to get there, and what I could not check.">
-<meta property="og:image" content="https://schurrsound.com/og-image.jpg">
+<meta property="og:description" content="Five stages, two big water tanks and a Dolby Atmos room, 15 minutes past the Tuas crossing. Easy to deal with, and room to spare.">
+<meta property="og:image" content="https://schurrsound.com/og/johor.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shooting in Johor. Field Notes from Schurr Sound.">
+<meta property="og:image:alt" content="The ship set on the back lot at Iskandar Malaysia Studios, Johor.">
 <meta property="article:published_time" content="2026-11-19">
 <meta property="article:author" content="Ande Schurr">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shooting in Johor: Iskandar Malaysia Studios">
 <meta name="twitter:description" content="Five stages, the big water tanks and an Atmos room, just over the Tuas crossing.">
-<meta name="twitter:image" content="https://schurrsound.com/og-image.jpg">
+<meta name="twitter:image" content="https://schurrsound.com/og/johor.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -41,6 +40,21 @@
 }
 </script>
 <script src="/assets/site.js?v=202611121810" defer></script>
+<link rel="stylesheet" href="/assets/leaflet/leaflet.css">
+<script src="/assets/leaflet/leaflet.js" defer></script>
+<style>
+.glance{background:#1e3a2f;color:#f0ead8;border-radius:6px;padding:20px 22px 14px;margin:0 0 34px}
+.glance h2{font-family:Inter,Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#d6c493;font-weight:600;margin:0 0 12px}
+.glance dl{display:grid;grid-template-columns:104px 1fr;gap:8px 14px;margin:0;font-size:15px;line-height:1.5}
+.glance dt{color:#d6c493;font-weight:600}
+.glance dd{margin:0}
+@media(max-width:420px){.glance dl{grid-template-columns:1fr;gap:2px}.glance dd{margin-bottom:8px}}
+.jmap-box{position:relative;z-index:0;height:320px;border:1px solid #e4ddc9;border-radius:4px;background:#efece3}
+.leaflet-tooltip.jmap-tip{background:#fff;border:1px solid #d8d4c8;border-radius:3px;box-shadow:none;color:#26261f;font:600 12px/1.25 Inter,Helvetica,Arial,sans-serif;padding:3px 7px}
+.leaflet-tooltip.jmap-tip.main{background:#1e3a2f;border-color:#1e3a2f;color:#f0ead8}
+.leaflet-tooltip.jmap-tip:before{display:none}
+.leaflet-container a{color:#1d5c4f}
+</style>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -72,62 +86,61 @@
 
 <article>
   <div class="rd" style="padding-top:34px;padding-bottom:20px">
-    <p class="meta-ink">November 2026 &middot; The Stages &middot; 4 minute read</p>
+    <p class="meta-ink">19 November 2026 &middot; The Stages &middot; 4 minute read</p>
     <h1 class="art-title">Shooting in Johor: Iskandar Malaysia Studios</h1>
   </div>
 
   <div class="rd prose" style="padding-bottom:70px">
 
-    <p class="standfirst">Five stages, two big water tanks and a Dolby Atmos room, just over the Tuas crossing. I went up in August with an email sent the day before and no appointment.</p>
+    <p class="standfirst">No appointment, and a phone that rang out. Four of them came out anyway and gave me two hours. Iskandar Malaysia Studios is easy to deal with, and there is room to spare.</p>
 
-    <p>First lesson, in the arrivals hall at the Second Link: my Singapore SIM would not call a Malaysian number. Someone on the checkpoint staff lent me their phone. The studio line rang out, twice. So I just turned up. Four of them came out and gave me two hours.</p>
+    <aside class="glance" aria-label="At a glance">
+      <h2>At a glance</h2>
+      <dl>
+        <dt>Where</dt><dd>Iskandar Puteri, Johor. 15 minutes past the Second Link at Tuas, not the Causeway.</dd>
+        <dt>Getting there</dt><dd>About 2 hours from central Singapore: car or Grab to Tuas Link, the CW7 bus across, then a Grab.</dd>
+        <dt>Stages</dt><dd>Five, about 100,000 sq ft. The biggest is 30,000 with a water tank.</dd>
+        <dt>Water</dt><dd>A 65 m paddock tank, an 18 m deep tank, and a ship on the back lot.</dd>
+        <dt>Post</dt><dd>Dolby Atmos mix stage, ADR, Foley, grade and DCP on site.</dd>
+        <dt>Sound</dt><dd>Really quiet stages. Outside, planes from Singapore.</dd>
+        <dt>Shooting now</dt><dd><em>Pendekar (Warrior)</em>, until late December.</dd>
+        <dt>Call</dt><dd>+607 560 1888</dd>
+      </dl>
+    </aside>
+
+
+    <p>I went up on 10 August. I&rsquo;d emailed the day before and the studio line rang out, so I just turned up at the gate. Nobody minded. They walked me through the stages, the tanks, the back lot and the post rooms, and answered everything I asked, the awkward questions included.</p>
+    <p>What stays with you is the space: five stages, two big water tanks and a back lot full of standing sets, 15 minutes past the Tuas crossing.</p>
 
     <h2>Getting there</h2>
     <p>It is the Second Link at Tuas, not the Causeway. The Causeway is 30 km east, and it is the one your driver will assume.</p>
-    <figure><svg style="display:block;width:100%;height:auto" viewBox="0 0 720 300" role="img" aria-label="Map: the two crossings, the studios, and Changi">
- <defs>
-  <marker id="rt" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#8f2f18"/></marker>
- </defs>
- <g font-family="Inter, Helvetica, Arial">
-  <path d="M0,6 L720,6 L720,104 Q560,116 470,110 Q400,105 330,112 Q250,120 180,112 Q90,102 0,118 Z"
-        fill="#9c8645" opacity="0.10"/>
-  <text x="620" y="30" font-size="11" letter-spacing="1.6" fill="#9c8645">JOHOR, MALAYSIA</text>
-  <rect x="0" y="104" width="720" height="30" fill="#2f5e4a" opacity="0.10"/>
-  <path d="M186,150 Q250,128 340,132 Q450,136 540,134 Q620,132 662,150 Q672,182 646,212 Q560,236 440,232 Q300,228 226,210 Q182,190 186,150 Z"
-        fill="#1E3A2F" opacity="0.09"/>
-  <text x="330" y="196" font-size="11" letter-spacing="1.6" fill="#5d6b63">SINGAPORE</text>
-
-  <line x1="212" y1="146" x2="158" y2="98" stroke="#2f5e4a" stroke-width="5"/>
-  <text x="150" y="146" font-size="12.5" font-weight="600" fill="#2f5e4a">Second Link</text>
-  <text x="150" y="161" font-size="11.5" fill="#5d6b63">Tuas</text>
-
-  <line x1="418" y1="134" x2="418" y2="104" stroke="#5d6b63" stroke-width="5"/>
-  <line x1="436" y1="134" x2="436" y2="104" stroke="#9c8645" stroke-width="4" stroke-dasharray="6,4"/>
-  <text x="404" y="152" font-size="12.5" font-weight="600" fill="#5d6b63">Causeway</text>
-  <text x="404" y="167" font-size="11.5" fill="#5d6b63">Woodlands</text>
-  <text x="452" y="99" font-size="12" font-weight="600" fill="#9c8645">RTS Link</text>
-  
-
-  <circle cx="430" cy="82" r="4.5" fill="#5d6b63"/>
-  <text x="440" y="78" font-size="12" fill="#5d6b63">Johor Bahru</text>
-
-  <circle cx="120" cy="62" r="7" fill="#2f5e4a"/>
-  <text x="132" y="58" font-size="13" font-weight="600" fill="#1E3A2F">Iskandar Malaysia Studios</text>
-  <text x="132" y="73" font-size="11.5" fill="#5d6b63">Medini · about 15 min from the CIQ</text>
-  <line x1="126" y1="90" x2="120" y2="70" stroke="#2f5e4a" stroke-width="1.4"/>
-
-  <circle cx="642" cy="158" r="6" fill="#1E3A2F"/>
-  <text x="600" y="140" font-size="12.5" font-weight="600" fill="#1E3A2F">Changi</text>
-
-  <path d="M636,166 Q560,206 440,206 Q320,204 250,178 Q228,168 212,150"
-        fill="none" stroke="#8f2f18" stroke-width="2" stroke-dasharray="6,5" marker-end="url(#rt)"/>
-  <text x="430" y="224" font-size="11.5" fill="#8f2f18" text-anchor="middle">64 km · about an hour of driving, plus both checkpoints</text>
-
-  <line x1="158" y1="36" x2="418" y2="36" stroke="#8f2f18" stroke-width="1.1" stroke-dasharray="4,3"/>
-  <circle cx="158" cy="36" r="2.6" fill="#8f2f18"/><circle cx="418" cy="36" r="2.6" fill="#8f2f18"/>
-  <text x="288" y="30" font-size="11.5" fill="#8f2f18" text-anchor="middle">the two crossings are about 30 km apart</text>
- </g>
-</svg><figcaption>The studios are about 15 minutes past the Malaysian checkpoint at the Second Link. The RTS Link lands at the Causeway, so it will not help much here.</figcaption></figure>
+    <figure><div id="map-wide" class="jmap-box" role="img" aria-label="Map of Singapore and Johor Bahru with the two crossings and Iskandar Malaysia Studios"></div><figcaption>Singapore and Johor. The studios are on the west side, off the Second Link at Tuas. The Causeway is 30 km east.</figcaption></figure>
+    <figure><div id="map-near" class="jmap-box" role="img" aria-label="Map from the Second Link to Iskandar Malaysia Studios"></div><figcaption>Closer in: the studio gate is about 15 minutes past the Malaysian checkpoint.</figcaption></figure>
+    <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      if(!window.L) return;
+      var tiles='https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+      function draw(id,bounds,pts){
+        var m=L.map(id,{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false,zoomSnap:0.25});
+        L.tileLayer(tiles,{maxZoom:18,attribution:attr}).addTo(m);
+        m.fitBounds(bounds,{padding:[16,16]});
+        pts.forEach(function(p){
+          L.circleMarker([p.lat,p.lng],{radius:p.main?8:6,color:'#fff',weight:2,fillColor:p.main?'#1e3a2f':'#b8a15c',fillOpacity:1})
+            .addTo(m).bindTooltip(p.name,{permanent:true,direction:p.dir||'right',offset:[p.dir==='left'?-8:8,0],className:'jmap-tip'+(p.main?' main':'')});
+        });
+      }
+      var ims={lat:1.4083774,lng:103.6370128,name:'Iskandar Malaysia Studios',main:true};
+      draw('map-wide',[[1.25,103.58],[1.49,104.02]],[
+        Object.assign({},ims,{dir:'right'}),
+        {lat:1.35085,lng:103.633132,name:'Second Link (Tuas)',dir:'right'},
+        {lat:1.452772,lng:103.769153,name:'Causeway (Woodlands)',dir:'right'}]);
+      draw('map-near',[[1.338,103.585],[1.418,103.655]],[
+        Object.assign({},ims,{dir:'left'}),
+        {lat:1.3778028,lng:103.5963803,name:'Malaysian checkpoint',dir:'right'},
+        {lat:1.35085,lng:103.633132,name:'Second Link',dir:'right'}]);
+    });
+    </script>
     <ul>
       <li>Grab cannot drop off or pick up inside the checkpoint, so you cross on the CW7 bus.</li>
       <li>By public transport it took me 3 hours out, first time, with plenty of standing about. Back was 1 hour 47. Under S$20 for the day, four Grabs included.</li>
@@ -136,7 +149,7 @@
       <li>I crossed on a public holiday and queued about five minutes each way. Don&rsquo;t plan on that.</li>
       <li>Not on a Singapore or Malaysian passport? Fill in the Malaysia Digital Arrival Card in the 3 days before you cross. Singapore PR doesn&rsquo;t get you out of it.</li>
     </ul>
-    <figure><img src="/img/notes/johor-crossing.jpg" width="1200" height="671" loading="lazy" alt="Johor waterfront towers through a bus window on the Second Link" style="width:100%;height:auto;display:block"><figcaption>09:12, on the CW7 over the Second Link.</figcaption></figure>
+    <figure><img src="/img/notes/johor-crossing.jpg" width="1440" height="570" loading="lazy" alt="Johor waterfront towers through a bus window on the Second Link" style="width:100%;height:auto;display:block"><figcaption>09:12, on the CW7 over the Second Link.</figcaption></figure>
 
     <h2>What is there</h2>
     <ul>
@@ -147,8 +160,8 @@
       <li>What surprised me most: post on site. A Dolby Atmos mix stage, ADR, Foley, grade and DCP. You can shoot and finish in the same country.</li>
       <li>I expected a landlord with big empty rooms. It&rsquo;s more of a campus: camera and lighting hire (True Color Media, One Cool Hang Wan Rental), Archipelago Special Effects, art and props, a medic, and Camou College, which trains crew.</li>
     </ul>
-    <figure><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><img src="/img/notes/johor-tank.jpg" width="800" height="600" loading="lazy" alt="The paddock tank, empty" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-ship.jpg" width="800" height="600" loading="lazy" alt="The ship set on the back lot" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-street.jpg" width="800" height="600" loading="lazy" alt="The colonial street set" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-hospital.jpg" width="800" height="600" loading="lazy" alt="The hospital set" style="width:100%;height:auto;display:block"></div><figcaption>The paddock tank, empty on the day. The ship. The colonial street. The hospital set.</figcaption></figure>
-    <figure><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><img src="/img/notes/johor-atmos.jpg" width="800" height="600" loading="lazy" alt="Ande Schurr in the Dolby Atmos mix stage" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-foley.jpg" width="800" height="600" loading="lazy" alt="The Foley pits" style="width:100%;height:auto;display:block"></div><figcaption>Post on site: me in the Atmos mix stage, and the Foley pits.</figcaption></figure>
+    <figure><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><img src="/img/notes/johor-tank.jpg" width="960" height="720" loading="lazy" alt="The paddock tank, empty" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-ship.jpg" width="960" height="720" loading="lazy" alt="The ship set on the back lot" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-street.jpg" width="960" height="720" loading="lazy" alt="The colonial street set" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-hospital.jpg" width="960" height="720" loading="lazy" alt="The hospital set" style="width:100%;height:auto;display:block"></div><figcaption>The paddock tank, empty on the day. The ship. The colonial street. The hospital set.</figcaption></figure>
+    <figure><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><img src="/img/notes/johor-atmos.jpg" width="960" height="720" loading="lazy" alt="Ande Schurr in the Dolby Atmos mix stage" style="width:100%;height:auto;display:block"><img src="/img/notes/johor-foley.jpg" width="960" height="720" loading="lazy" alt="The Foley pits" style="width:100%;height:auto;display:block"></div><figcaption>Post on site: me in the Atmos mix stage, and the Foley pits.</figcaption></figure>
 
     <h2>Is anyone shooting there?</h2>
     <p>Yes. <em>Pendekar (Warrior)</em>, with Iko Uwais, started filming at the studios in early November and is due to wrap in late December, <a href="https://www.screendaily.com/news/pendekar-warrior-starring-the-raids-iko-uwais-begins-malaysia-shoot/5222243.article" target="_blank" rel="noopener">Screen Daily</a> reports. The public credit list stops around 2019, so the place looks quieter than it is.</p>
@@ -160,16 +173,9 @@
     <h2>Sound</h2>
     <p>Two hours on a lot isn&rsquo;t an acoustic test. That takes a working day, a recorder and nobody else on the stage. But inside, the stages were really quiet. I didn&rsquo;t hear a thing. Even with the elephant doors open you get that slight pressure of a properly built box, not a shed.</p>
     <p>Outside is another story. I heard planes from Singapore, air force ones too. Plan for them on the back lot and anything you shoot outside.</p>
-    <h2>What I could not check</h2>
-    <ul>
-      <li>The LED wall size. It is not published.</li>
-      <li>Door to door from Changi. That is from map data, not driven.</li>
-      <li>What is standing on the back lot this month. It changes.</li>
-    </ul>
 
     <h2>Who to call</h2>
     <p>Iskandar Malaysia Studios, 1 Persiaran Layar Perak, 79250 Iskandar Puteri, Johor. +607 560 1888.</p>
-    <p>They gave a stranger with a borrowed phone two hours and straight answers, some of them to awkward questions. Not every studio does that.</p>
     <p>Next in The Stages: Infinite Studios, Batam.</p>
 
     <h2>Sources</h2>

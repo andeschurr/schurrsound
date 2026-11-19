@@ -81,7 +81,7 @@ var STAGES = [
     crewDepth:"Most Malaysian sound crews are based in Kuala Lumpur rather than Johor.",
 
     visit:{ visited:true, date:"2026-08-10", hosted:true },
-    article:{ slug:null, status:"in-draft", expected:"2026-09" },
+    article:{ slug:"johor", status:"published", published:"2026-11-19" },
     sources:[
       "Author site visit, 10 August 2026",
       "iskandarmalaysiastudios.com",
