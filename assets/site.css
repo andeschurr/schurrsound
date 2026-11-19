@@ -836,6 +836,12 @@ nav .series-list small{display:block;font-weight:400;font-size:12.5px;color:var(
 nav .nav-links a,nav .series-btn{white-space:nowrap}
 @media(min-width:961px){nav .wrap{max-width:1360px}nav .wordmark{font-size:16px}}
 @media(max-width:960px){nav .wordmark{font-size:14px}nav .nav-cta,nav.js .nav-toggle{font-size:14px}}
+/* Phone menu, open: white instead of paper, with a gold line and a soft shadow under it, so it is
+   clear where the menu ends and the page begins (Ande 19 Nov 18:11: "a slight difference of color
+   and shade"). */
+@media(max-width:960px){
+  nav.js.open,body.map nav.js.open{background:#fff;border-bottom:1px solid var(--gold);box-shadow:0 18px 34px rgba(21,42,33,.2)}
+}
 /* The smallest phones (320 px wide): the name, WhatsApp and Menu stay on one row, open or shut. */
 @media(max-width:340px){nav .nav-in{gap:6px}nav .nav-cta,nav.js .nav-toggle{padding:8px 7px;font-size:13px}nav.js .nav-toggle{min-width:52px}}
 @media(min-width:961px) and (max-width:1199px){nav .nav-cta{font-size:13px;padding:9px 13px}}
