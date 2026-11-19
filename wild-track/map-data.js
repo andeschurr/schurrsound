@@ -264,7 +264,8 @@ function buildMapInner(rows, opts){
   rows.forEach(function(d){
     var p=POS[d.title] || { x:X(d.lng), y:Y(d.lat) };
     var x=p.x, y=p.y, n=ns.get(d.title);
-    s+='<g class="pin" data-t="'+d.title+'" data-st="'+d.status+'" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'">'+(d.status==='shooting'?'<circle class="halo" cx="'+x+'" cy="'+y+'" r="16" fill="none"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
+    var ang=(Math.atan2(x-sx,-(y-sy))*180/Math.PI+360)%360;
+    s+='<g class="pin" data-t="'+d.title+'" data-st="'+d.status+'" style="--d:'+(ang/360*9).toFixed(2)+'s" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'">'+(d.status==='shooting'?'<circle class="halo" cx="'+x+'" cy="'+y+'" r="16" fill="none"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
 

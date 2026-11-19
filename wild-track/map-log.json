@@ -1,7 +1,8 @@
 [
  {
   "date": "2026-11-19",
-  "text": "Map rebuilt: seven productions, each with two or three public sources. Hearsay pins dropped.",
+  "text": "Map rebuilt: seven productions, each with two or three public sources.",
+  "changed": true,
   "productions": 7,
   "shooting": 5,
   "prep": 2

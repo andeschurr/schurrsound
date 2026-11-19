@@ -458,10 +458,17 @@ document.addEventListener('DOMContentLoaded',function(){
     document.querySelectorAll('[data-map-updated]').forEach(function(e){e.textContent=M.UPDATED;});
     var box=document.querySelector('.hx-map');
     if(box){
-      var s='<svg viewBox="30 128 900 430" aria-hidden="true">';
+      /* A radar: range rings and a slow sweep centred on Singapore. Each pin
+         pings as the sweep crosses it (its delay is its bearing from Singapore). */
+      var VB=[30,128,900,430], sx=M.X(103.8), sy=M.Y(1.35), T=9;
+      var s='<span class="hx-radar"><svg viewBox="'+VB.join(' ')+'" aria-hidden="true">';
       M.LAND.forEach(function(it){
         var pts=it[1];
         s+='<path class="land" d="M'+pts.map(function(p){return M.X(p[0]).toFixed(1)+','+M.Y(p[1]).toFixed(1);}).join('L')+'Z"/>';
+      });
+      [60,130,210,300,400,510,630,760].forEach(function(r){ s+='<circle class="ring" cx="'+sx.toFixed(1)+'" cy="'+sy.toFixed(1)+'" r="'+r+'"/>'; });
+      M.LAND.forEach(function(it){
+        var pts=it[1];
         if(it[2] && it[0]){
           var cx=pts.reduce(function(a,p){return a+M.X(p[0]);},0)/pts.length, cy=pts.reduce(function(a,p){return a+M.Y(p[1]);},0)/pts.length;
           if(cy>150){
@@ -473,9 +480,10 @@ document.addEventListener('DOMContentLoaded',function(){
       s+='<text class="cl" x="'+M.X(175.2).toFixed(1)+'" y="'+M.Y(-48.6).toFixed(1)+'">New Zealand</text>';
       M.DATA.forEach(function(d){
         var p=(M.PIN_XY&&M.PIN_XY[d.title])||{x:M.X(d.lng),y:M.Y(d.lat)};
-        s+='<g class="pin '+d.status+'"><circle class="halo" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="8"/><circle class="dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="6.5"/></g>';
+        var ang=(Math.atan2(p.x-sx,-(p.y-sy))*180/Math.PI+360)%360;
+        s+='<g class="pin '+d.status+'" style="--d:'+(ang/360*T).toFixed(2)+'s"><circle class="halo" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="8"/><circle class="dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="6.5"/></g>';
       });
-      s+='</svg><span class="hx-map-key"><i class="k-s"></i>Shooting now<i class="k-p"></i>In prep</span>';
+      s+='</svg><i class="hx-sweep" style="left:'+((sx-VB[0])/VB[2]*100).toFixed(2)+'%;top:'+((sy-VB[1])/VB[3]*100).toFixed(2)+'%"></i></span><span class="hx-map-key"><i class="k-s"></i>Shooting now<i class="k-p"></i>In prep</span>';
       box.innerHTML=s;
     }
   }

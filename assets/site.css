@@ -1153,3 +1153,36 @@ body.map .map-log{margin-top:22px;font-size:15px;color:#55524a}
 .hx-letter{max-width:860px}
 .hx-letter .hx-say{font-family:var(--hx-serif);font-weight:500;font-size:clamp(30px,4.2vw,56px);line-height:1.06;color:var(--green);margin-top:18px;text-wrap:balance}
 .hx-sign span{font-size:15px;color:#6f6a58}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   The radar (19 Nov 2026, Ande: "It's their radar. I want that sense of a
+   radar"). Range rings and a slow sweep centred on Singapore; each pin pings
+   as the sweep crosses it. One turn is 9 s here and in the two scripts that
+   set each pin's delay (index.html and map-data.js).
+   ══════════════════════════════════════════════════════════════════════════ */
+.hx-radar,body.map .radar{display:block;position:relative;overflow:hidden;border-radius:6px}
+.hx-map .ring{fill:none;stroke:rgba(240,234,216,.08);stroke-width:1}
+.hx-sweep,body.map .radar .sweep{position:absolute;width:300%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,rgba(220,189,94,0) 0deg,rgba(220,189,94,0) 296deg,rgba(220,189,94,.05) 326deg,rgba(220,189,94,.25) 360deg);
+  transform:translate(-50%,-50%);animation:hxsweep 9s linear infinite}
+body.map .radar .sweep{left:15%;top:47.6%}
+body.map .radar::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;
+  background:repeating-radial-gradient(circle at 15% 47.6%,transparent 0,transparent calc(8% - 1px),rgba(240,234,216,.07) calc(8% - 1px),rgba(240,234,216,.07) 8%)}
+@keyframes hxsweep{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes hxping{0%{transform:scale(.7);opacity:.95}17%{transform:scale(3.4);opacity:0}100%{transform:scale(3.4);opacity:0}}
+@keyframes hxglow{0%{filter:brightness(1.9)}12%{filter:brightness(1)}100%{filter:brightness(1)}}
+.hx-map .halo{animation:hxping 9s linear infinite;animation-delay:var(--d,0s)}
+.hx-map .pin .dot{animation:hxglow 9s linear infinite;animation-delay:var(--d,0s)}
+body.map .pin circle.halo,body.map .pin:hover circle.halo,body.map .pin.on circle.halo{animation:hxping 9s linear infinite;animation-delay:var(--d,0s)}
+@media(prefers-reduced-motion:reduce){
+  .hx-sweep,body.map .radar .sweep{display:none}
+  .hx-map .halo,.hx-map .pin .dot,body.map .pin circle.halo{animation:none}
+}
+body.map .map-join{margin-top:34px;max-width:860px;background:var(--green);color:var(--cream);border-radius:6px;padding:clamp(22px,3vw,36px)}
+body.map .map-join h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#fff}
+body.map .map-join p{margin-top:10px;font-size:17px;line-height:1.5;max-width:56ch;color:#e6e0cc}
+body.map .map-join-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
+body.map .map-join-form label{position:absolute;left:-9999px}
+body.map .map-join-form input{flex:1 1 240px;min-width:0;font:inherit;font-size:17px;padding:14px 16px;border:1px solid rgba(240,234,216,.5);border-radius:2px;background:#fff;color:#26261f}
+body.map .map-join-form .btn{background:var(--gold);color:#152a21;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:16px;padding:15px 24px}
+body.map .map-join p.map-join-note{font-size:14px;color:#b9c4bb}

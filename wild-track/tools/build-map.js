@@ -7,12 +7,15 @@
  *   node wild-track/tools/build-map.js                 check + rebuild
  *   node wild-track/tools/build-map.js --check         check only, write nothing
  *   node wild-track/tools/build-map.js --log "text"    rebuild and record what changed
+ *   node wild-track/tools/build-map.js --log-quiet "text"   rebuild and record a check that changed nothing
  *
  * It writes:
  *   wild-track/map.html      the static list, summary, quick answers and JSON-LD
  *                            (between the <!--gen:X--> markers), so search engines
  *                            and readers without scripts get the whole map as text
  *   wild-track/map-log.json  what changed and when, newest first
+ *   wild-track/radar.xml     the same as a feed (weeks with a change only): the
+ *                            weekly Radar email is sent from it
  *   index.html               the count and date in the home page's map section
  *   sitemap.xml              lastmod for /whats-shooting
  *
@@ -26,7 +29,8 @@ const { DATA, UPDATED, COLORS, LABELS } = M;
 
 const args = process.argv.slice(2);
 const CHECK_ONLY = args.includes('--check');
-const logIdx = args.indexOf('--log');
+const QUIET = args.includes('--log-quiet');
+const logIdx = QUIET ? args.indexOf('--log-quiet') : args.indexOf('--log');
 const LOG_TEXT = logIdx >= 0 ? (args[logIdx + 1] || '').trim() : '';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -152,13 +156,26 @@ let log = [];
 try { log = JSON.parse(fs.readFileSync(logFile, 'utf8')); } catch (e) {}
 if (LOG_TEXT) {
   log = log.filter((x) => x.date !== UPDATED_ISO);
-  log.unshift({ date: UPDATED_ISO, text: LOG_TEXT, productions: n, shooting: shooting.length, prep: prep.length });
+  log.unshift({ date: UPDATED_ISO, text: LOG_TEXT, changed: !QUIET, productions: n, shooting: shooting.length, prep: prep.length });
   log = log.slice(0, 26);
 }
 const latest = log[0];
 page = fill(page, 'log', latest ? '<p class="map-log">Latest change, ' + esc(latest.date) + ': ' + esc(latest.text) + '</p>' : '');
 fs.writeFileSync(mapFile, page);
 fs.writeFileSync(logFile, JSON.stringify(log, null, 1) + '\n');
+
+/* the feed: one item per week in which the map changed */
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const rfc822 = (iso) => { const t = new Date(iso + 'T05:00:00+08:00'); const u = new Date(t.getTime() + 8 * 3600 * 1000);
+  return DAYS[u.getUTCDay()] + ', ' + String(u.getUTCDate()).padStart(2, '0') + ' ' + MONTHS[u.getUTCMonth()].slice(0, 3) + ' ' + u.getUTCFullYear() + ' 05:00:00 +0800'; };
+const longOf = (iso) => { const [y, m, dd] = iso.split('-'); return Number(dd) + ' ' + MONTHS[Number(m) - 1] + ' ' + y; };
+const items = log.filter((x) => x.changed !== false).map((x) => '<item><title>' + esc('The Radar, ' + longOf(x.date)) + '</title>'
+  + '<link>https://schurrsound.com/whats-shooting?week=' + x.date + '</link><guid isPermaLink="false">radar-' + x.date + '</guid>'
+  + '<pubDate>' + rfc822(x.date) + '</pubDate><description>' + esc(x.text + ' On the map now: ' + plural(x.productions, 'production') + ', ' + x.shooting + ' shooting and ' + x.prep + ' in pre-production.') + '</description></item>').join('\n');
+fs.writeFileSync(path.join(ROOT, 'wild-track', 'radar.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n'
+  + '<title>The Radar: what is shooting in Australia, New Zealand and Southeast Asia</title>\n<link>https://schurrsound.com/whats-shooting</link>\n'
+  + '<description>Changes to the production map, checked every week. Two public sources on every pin.</description>\n<language>en</language>\n'
+  + (log[0] ? '<lastBuildDate>' + rfc822(log[0].date) + '</lastBuildDate>\n' : '') + items + '\n</channel></rss>\n');
 
 const homeFile = path.join(ROOT, 'index.html');
 let home = fs.readFileSync(homeFile, 'utf8');
