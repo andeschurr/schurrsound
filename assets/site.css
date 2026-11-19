@@ -1195,3 +1195,7 @@ body.map .map-join p.map-join-note{font-size:14px;color:#b9c4bb}
 .hx-faq details p{margin-top:10px;font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:#3d3b34;max-width:66ch}
 .hx-faq details a{color:var(--green)}
 .hx-sec .hx-say{margin-top:clamp(28px,4vw,52px)}
+
+/* links inside the green and plain cards */
+.hx-card p a{color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:4px}
+@media(min-width:900px){.hx-how .hx-card p a{color:var(--green)}}

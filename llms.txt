@@ -38,6 +38,7 @@
 ## Services
 
 - Documentary and factual location sound, including small-crew and single-camera days
+- Live broadcast sound in Singapore: live crosses, presenter links, IFB
 - Corporate video, interview and talking-head sound in Singapore
 - Production sound mixing for feature film and television drama
 - Location sound recording for documentary
@@ -71,6 +72,7 @@ package is airline-checkable and travels as luggage.
 - [About](https://schurrsound.com/about): how he works, the sound department, why he is based in Singapore
 - [Drama and feature film](https://schurrsound.com/drama-sound-mixer): head of department work, the Lord of the Flies case study, working with actors and with post
 - [Documentary](https://schurrsound.com/documentary-sound-mixer): small crews, real locations
+- [Live broadcast sound and live crosses, Singapore](https://schurrsound.com/live-broadcast-sound-singapore): presenter mics, IFB and audio to the feed for broadcasters flying in; the Singapore Marathon live crosses with Brad Dillon of Most Wanted Pictures
 - [Corporate video and interviews, Singapore](https://schurrsound.com/corporate-video-sound-singapore): one-day shoots, what the client gets
 - [Production sound mixer, Singapore](https://schurrsound.com/production-sound-mixer-singapore): local wireless rules (IMDA), common questions, coverage for shoots based in Singapore
 - [Australia and New Zealand](https://schurrsound.com/production-sound-mixer-australia): New Zealand citizen with full working rights in both countries, no visa needed
