@@ -780,14 +780,16 @@ header.phero .about-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;
    The Wild Track and The Stages (19 Nov 2026, Ande: "more obvious... can say
    series?" and "highlight of the map is a bit too boring").
    Laptop: ... About · Series (drop-down) · Production map (gold pill, live dot).
-   Phone: Production map as a green card, then a SERIES label and the two series. */
+   Phone: Production map as a light gold card (Ande 13:52: not dark green, it read as a
+   section; no hover on phones, so the resting state is the highlight), then a SERIES
+   label and the two series. */
 nav .nav-links li.series{order:1;position:relative}
 nav .nav-links li.hl{order:2}
 nav .nav-links li.hl a{display:flex;align-items:center;gap:8px;border:1px solid var(--gold);border-radius:999px;padding:5px 14px 5px 11px;color:var(--green);font-weight:600;background:#f7f1de;line-height:1.2}
-nav .nav-links li.hl a:hover,nav .nav-links li.hl a[aria-current="page"]{background:var(--green);border-color:var(--green);color:var(--cream)}
+nav .nav-links li.hl a:hover,nav .nav-links li.hl a[aria-current="page"]{background:#efe3bf;border-color:#a6852f;color:var(--green)}
 nav .nav-links li.hl small{display:none}
-nav .nav-links .live{position:relative;flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#c9a64a}
-nav .nav-links .live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #c9a64a;opacity:0;animation:livepulse 2s ease-out infinite}
+nav .nav-links .live{position:relative;flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#a6852f}
+nav .nav-links .live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #a6852f;opacity:0;animation:livepulse 2s ease-out infinite}
 @keyframes livepulse{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.6);opacity:0}}
 @media (prefers-reduced-motion: reduce){nav .nav-links .live::after{animation:none}}
 nav .series-btn{background:none;border:0;padding:6px 0;margin:0;font:inherit;font-size:var(--fs-nav);color:var(--ink);letter-spacing:.03em;cursor:pointer;border-bottom:2px solid transparent}
@@ -803,10 +805,10 @@ nav .series-list small{display:block;font-weight:400;font-size:12.5px;color:var(
 @media(max-width:960px){
   nav .nav-links li.hl{order:0;border-bottom:0;margin:8px 0 4px}
   nav .nav-links li.series{order:0;border-bottom:0}
-  nav .nav-links li.hl a{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;border:0;border-radius:6px;padding:13px 16px;margin:0;background:var(--green);color:var(--cream);font-size:var(--fs-body)}
-  nav .nav-links li.hl a:hover,nav .nav-links li.hl a[aria-current="page"]{background:var(--green-deep);color:#fff}
+  nav .nav-links li.hl a{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;border:1px solid #d6c493;border-radius:8px;padding:13px 16px;margin:0;background:#f6eed8;color:var(--green);font-size:var(--fs-body)}
+  nav .nav-links li.hl a:hover,nav .nav-links li.hl a[aria-current="page"]{background:#efe3bf;border-color:#b8a15c;color:var(--green)}
   nav .nav-links li.hl .live{grid-row:1 / span 2}
-  nav .nav-links li.hl small{display:block;grid-column:2;font-weight:400;font-size:13px;color:#d6c493;letter-spacing:.02em;margin-top:1px}
+  nav .nav-links li.hl small{display:block;grid-column:2;font-weight:400;font-size:13px;color:#7a6629;letter-spacing:.02em;margin-top:1px}
   nav .series-btn{display:block;width:100%;text-align:left;padding:16px 2px 6px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7a6629;cursor:default;border-bottom:1px solid var(--line)}
   nav .series-btn::after{display:none}
   nav .series-list{display:block;position:static;min-width:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none}
@@ -827,11 +829,11 @@ nav .nav-links a,nav .series-btn{white-space:nowrap}
   nav .nav-links li.hl a{padding:5px 11px 5px 9px;gap:7px}
 }
 body.map nav .nav-links li.hl a{color:var(--green)}
-body.map nav .nav-links li.hl a[aria-current="page"],body.map nav .nav-links li.hl a:hover{color:var(--cream)}
+body.map nav .nav-links li.hl a[aria-current="page"],body.map nav .nav-links li.hl a:hover{color:var(--green)}
 body.map nav .series-list a{color:var(--map-ink)}
 @media(max-width:960px){
   body.map nav .nav-links li.hl,body.map nav .nav-links li.series{border-bottom:0}
   body.map nav .nav-links li.hl{margin:8px 0 4px}
-  body.map nav .nav-links li.hl a{color:var(--cream)}
+  body.map nav .nav-links li.hl a{color:var(--green)}
   body.map nav .series-list li{border-bottom:1px solid var(--map-line)}
 }
