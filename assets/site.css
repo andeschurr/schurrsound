@@ -1186,3 +1186,12 @@ body.map .map-join-form label{position:absolute;left:-9999px}
 body.map .map-join-form input{flex:1 1 240px;min-width:0;font:inherit;font-size:17px;padding:14px 16px;border:1px solid rgba(240,234,216,.5);border-radius:2px;background:#fff;color:#26261f}
 body.map .map-join-form .btn{background:var(--gold);color:#152a21;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:16px;padding:15px 24px}
 body.map .map-join p.map-join-note{font-size:14px;color:#b9c4bb}
+
+/* questions on the landing pages, kept word for word */
+.hx-faq{margin-top:clamp(18px,3vw,32px)}
+.hx-faq details{border-top:1px solid var(--line);padding:16px 0}
+.hx-faq details:last-child{border-bottom:1px solid var(--line)}
+.hx-faq summary{cursor:pointer;font-weight:600;font-size:clamp(18px,1.5vw,21px);color:var(--green)}
+.hx-faq details p{margin-top:10px;font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:#3d3b34;max-width:66ch}
+.hx-faq details a{color:var(--green)}
+.hx-sec .hx-say{margin-top:clamp(28px,4vw,52px)}
