@@ -1225,3 +1225,23 @@ body.map .map-join p.map-join-note{font-size:14px;color:#b9c4bb}
 @media(prefers-reduced-motion:reduce){.hx-ticker-track{animation:none;width:auto;flex-wrap:wrap}.hx-ticker-set{flex-wrap:wrap}.hx-ticker-set[aria-hidden]{display:none}.hx-ticker-set span{white-space:normal;padding:6px var(--hx-pad)}.hx-ticker-set span::after{display:none}}
 .hx-tc{font-variant-numeric:tabular-nums;font-weight:600;color:var(--green);letter-spacing:.02em}
 .hx-strip-sub{margin:calc(-1 * clamp(10px,2vw,26px)) 0 clamp(22px,3vw,42px);font-size:clamp(18px,1.6vw,22px);color:#5d5a50}
+
+/* Pictures open full screen, one after another (assets/lightbox.js) */
+img[data-full]{cursor:zoom-in}
+img[data-full]:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+html.lb-on{overflow:hidden}
+.lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;display:flex;flex-direction:column;background:#0e1c16;color:var(--cream)}
+.lb[hidden]{display:none}
+.lb-top{flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 6px 6px var(--hx-pad);font-size:15px}
+.lb-n{color:rgba(240,234,216,.72);font-variant-numeric:tabular-nums}
+.lb button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.lb-x{padding:12px 16px;font-weight:600}
+.lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+.lb-stage img{display:block;max-width:100%;max-height:100%;object-fit:contain;cursor:default}
+.lb-prev,.lb-next{position:absolute;top:50%;margin-top:-34px;width:52px;height:68px;display:flex;align-items:center;justify-content:center;background:rgba(14,28,22,.62);border-radius:2px}
+.lb-prev{left:0}.lb-prev svg{transform:scaleX(-1)}
+.lb-next{right:0}
+.lb-cap{flex:none;margin:0;padding:12px var(--hx-pad) max(16px,env(safe-area-inset-bottom));min-height:54px;font-size:16px;line-height:1.45;text-align:center}
+.lb button:hover{color:var(--gold-soft,#d6c493)}
+.lb button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+@media(max-width:700px){.lb-prev,.lb-next{width:42px;height:58px;margin-top:-29px}.lb-cap{font-size:15px}}
