@@ -1199,3 +1199,17 @@ body.map .map-join p.map-join-note{font-size:14px;color:#b9c4bb}
 /* links inside the green and plain cards */
 .hx-card p a{color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:4px}
 @media(min-width:900px){.hx-how .hx-card p a{color:var(--green)}}
+
+/* A story in a series opens with its own picture, then the title (19 Nov 2026) */
+.hx-phero .hx-meta{margin:0 0 clamp(12px,1.6vw,20px);font-size:14px;line-height:1.5;color:rgba(240,234,216,.76)}
+.hx-phero-story .hx-phero-fig{height:min(72vw,60vh)}
+.hx-phero-story h1{font-size:clamp(40px,6vw,92px);max-width:17em}
+.hx-phero-story .hx-lead{max-width:46ch}
+.hx-phero-story .hx-phero-text{padding-top:clamp(30px,4.4vw,64px);padding-bottom:clamp(34px,4.6vw,68px)}
+/* the same story in a list, with its picture */
+.prose a.hx-story,.hx-story{display:grid;gap:16px;margin:10px 0 30px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
+.hx-story img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:2px}
+.hx-story .t{display:block;font-family:var(--hx-serif);font-weight:600;font-size:clamp(24px,2.6vw,32px);line-height:1.15;color:var(--green)}
+.hx-story .d{display:block;margin-top:8px;font-size:16px;line-height:1.55;color:#4a4a44}
+.hx-story:hover .t{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+@media(min-width:700px){.prose a.hx-story,.hx-story{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:26px;align-items:center}}
