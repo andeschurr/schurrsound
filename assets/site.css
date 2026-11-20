@@ -1351,3 +1351,12 @@ body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;
 .prose .cr-others{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line);font-weight:600}
 .prose .cr-others a{margin-right:1.3em;white-space:nowrap}
 span.t a{color:inherit;text-decoration:none;border-bottom:1px solid var(--gold)}
+
+/* Photos behind the titles (20 Nov 2026) */
+.cr-hero.has-bg{position:relative;overflow:hidden;min-height:min(74vh,680px);display:flex;align-items:flex-end;background:#152a21}
+.cr-hero .cr-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cr-hero.has-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,42,33,.12) 0%,rgba(21,42,33,.3) 45%,rgba(21,42,33,.92) 100%)}
+.cr-hero.has-bg .cr-in{position:relative;z-index:1;width:100%;padding-top:140px}
+.prose .cr-grid{max-width:none;padding:0;margin:8px 0 0}
+.prose .cr-grid figure{margin:0 0 10px}
+.loc .prose{padding-top:38px}

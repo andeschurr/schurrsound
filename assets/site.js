@@ -118,3 +118,10 @@
     io.observe(box);
   } else { add(); }
 })();
+
+/* One sound at a time: starting one player pauses any other on the page. */
+document.addEventListener('play', function (e) {
+  var t = e.target;
+  if (!t || t.tagName !== 'AUDIO') { return; }
+  [].forEach.call(document.querySelectorAll('audio'), function (a) { if (a !== t) { a.pause(); } });
+}, true);
