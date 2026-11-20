@@ -1271,3 +1271,17 @@ body.map .pin.one circle:not(.halo){stroke:#f0ead8;stroke-width:1.9;stroke-dasha
 body.map .pin.one:hover circle:not(.halo),body.map .pin.one.on circle:not(.halo),body.map .pin.one:focus circle:not(.halo){stroke:#fff}
 body.map .tag.one{background:none;color:var(--grey);border:1px dashed currentColor;padding:1px 6px}
 body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;height:8px}
+
+/* Words under the slogan (preview, 20 Nov 2026): where the dialogue was recorded. Each word opens its proof. */
+.where{display:block;text-wrap:balance;margin:0;padding:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(20px,1.55vw,25px);line-height:1.25;color:var(--gold-soft)}
+.where a{display:inline-block;margin:0 .8em 8px 0;color:inherit;text-decoration:none;border-bottom:1px solid rgba(220,189,94,.4);padding-bottom:1px;transition:color .15s,border-color .15s}
+.where a:last-child{margin-right:0}
+.where a:hover,.where a:focus-visible{color:#fff;border-bottom-color:#fff}
+.hx-hero .where{margin-bottom:8px}
+@media(min-width:900px){.hx-hero .where{margin:26px 0 0}}
+.foot-brand .where{text-align:center;margin-top:16px;font-size:18px;max-width:22em}
+.foot-brand .where a{margin:0 .45em 8px}
+.foot-brand .where a:last-child{margin-right:.45em}
+.loc h2{scroll-margin-top:90px}
+.loc .needs{border-left:3px solid #b9783a;background:#fbf3e6;color:#5b4020;padding:10px 14px;font-size:15px;line-height:1.5;margin:14px 0 0}
+.loc .draftbar{background:#b9783a;color:#fff;font-size:14px;padding:8px 14px;border-radius:4px;display:inline-block}
