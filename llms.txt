@@ -69,6 +69,8 @@ package is airline-checkable and travels as luggage.
 
 - [Home](https://schurrsound.com/): overview, showreel, selected credits, the sound team, contact
 - [Credits](https://schurrsound.com/credits): credit list with directors, studios and locations
+- [Difficult locations](https://schurrsound.com/difficult-locations): where he has recorded clean dialogue and the production behind each: open sea, underwater, swimming actors, jungle and waterfalls, mountains, driving and chases. Includes two overnight field recordings from Lord of the Flies.
+- [Last to Leave the Island, Beta Squad](https://schurrsound.com/beta-squad): all location audio for the Beta Squad film shot on a remote island in Banten, Indonesia, in August 2025, with Baliprod Films. 7.3 million views on YouTube by November 2026.
 - [About](https://schurrsound.com/about): how he works, the sound department, why he is based in Singapore
 - [Drama and feature film](https://schurrsound.com/drama-sound-mixer): head of department work, the Lord of the Flies case study, working with actors and with post
 - [Documentary](https://schurrsound.com/documentary-sound-mixer): small crews, real locations

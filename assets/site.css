@@ -1279,7 +1279,7 @@ body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;
 .where a:hover,.where a:focus-visible{color:#fff;border-bottom-color:#fff}
 .hx-hero .where{margin-bottom:8px}
 @media(min-width:900px){.hx-hero .where{margin:26px 0 0}}
-.foot-brand .where{text-align:center;margin-top:16px;font-size:18px;max-width:22em}
+.foot-brand .where{text-align:center;margin-top:16px;font-size:18px;max-width:34em}
 .foot-brand .where a{margin:0 .45em 8px}
 .foot-brand .where a:last-child{margin-right:.45em}
 .loc h2{scroll-margin-top:90px}
@@ -1331,3 +1331,8 @@ body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;
 .bsq-grid figcaption{font-size:13px;line-height:1.4;color:var(--grey);margin:6px 2px 6px;font-style:italic}
 .bsq-more{margin:34px 0 0;font-weight:600}
 @media(min-width:800px){.bsq-grid{columns:3;column-gap:14px;padding:0 24px}.bsq-grid figure{margin-bottom:14px}}
+
+/* Field recordings on the difficult-locations page */
+.prose figure.listen{margin:22px 0;padding:16px 18px;background:#f1ecdc;border-left:3px solid var(--gold)}
+.prose figure.listen figcaption{font-style:normal;font-size:var(--fs-nav);letter-spacing:0;color:var(--ink);line-height:1.5;margin:0 0 12px}
+.prose figure.listen audio{display:block;width:100%}
