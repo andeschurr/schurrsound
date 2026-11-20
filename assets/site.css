@@ -1265,3 +1265,9 @@ html.lb-on{overflow:hidden}
 
 /* The smallest phones (320 px wide): the two home page buttons stay inside the screen. */
 @media(max-width:340px){.hx-hero .hx-actions{gap:8px}.hx-hero .hx-actions .btn{font-size:13.5px;padding:15px 4px}}
+
+/* Production map, one-source pins (20 Nov 2026): a dashed outline on the map and a dashed tag in the list */
+body.map .pin.one circle:not(.halo){stroke:#f0ead8;stroke-width:1.9;stroke-dasharray:3.4 2.6}
+body.map .pin.one:hover circle:not(.halo),body.map .pin.one.on circle:not(.halo),body.map .pin.one:focus circle:not(.halo){stroke:#fff}
+body.map .tag.one{background:none;color:var(--grey);border:1px dashed currentColor;padding:1px 6px}
+body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;height:8px}

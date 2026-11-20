@@ -7,9 +7,14 @@
    issue is being prepared (cd wild-track/tools && node generate-map-assets.js);
    it rewrites ep1-email.html, which is the archived first issue.
 
-   sources: two or three public links per pin, [{name, url}], strongest first.
-            A pin with fewer than two independent public sources stays off
-            the map.
+   sources: one to three public links per pin, [{name, url}], strongest first.
+            Two or three from different publishers is the standard.
+            A pin with ONE source is allowed since 20 November 2026. The code
+            marks it "one source" on the map and in the list, so never write
+            that in a note. The one source must be first-hand or trade press
+            (screen agency, film commission, guild, studio, streamer,
+            broadcaster, newspaper). A directory such as Production List,
+            IMDb or Wikipedia is a lead to follow up, never the only source.
 
    service: local service / line production company, if publicly known.
             Company names only. NEVER an individual's name.
@@ -27,7 +32,7 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 (function(){
-var UPDATED = "19 November 2026";
+var UPDATED = "20 November 2026";
 
 var DATA = [
   {
@@ -73,6 +78,18 @@ var DATA = [
     checked:"2026-11-19"
   },
   {
+    title:"McLeod's Daughters", kind:"Series · Stan",
+    city:"Regional Victoria", country:"Australia", region:"ANZ",
+    service:"",
+    status:"prep",
+    note:"A new chapter of the Australian drama as a Stan Original, from Werner Film Productions, part of BBC Studios. Announced on 29 October 2026 to film in regional Victoria. No town or start date published yet.",
+    lat:-36.90, lng:144.60,
+    sources:[
+      {name:"VicScreen", url:"https://vicscreen.vic.gov.au/news/giddy-up-mcleods-daughters-to-film-in-regional-victoria/"}
+    ],
+    checked:"2026-11-20"
+  },
+  {
     title:"Spaceship Earth", kind:"Pilot · Disney+ / 20th Television",
     city:"Kumeu, Auckland", country:"New Zealand", region:"ANZ",
     service:"",
@@ -101,6 +118,44 @@ var DATA = [
     checked:"2026-11-19"
   },
   {
+    title:"Queenstown", kind:"Series · Netflix",
+    city:"Queenstown", country:"New Zealand", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Eight-part drama set in Queenstown's luxury ski scene, with Rufus Sewell and Frances O'Connor, made by Silent Firework and Runaway Unicorn. Netflix's first series commissioned and shot in New Zealand. Production began in July 2026 for about six months in the resort town. No wrap date published.",
+    lat:-45.03, lng:168.66,
+    sources:[
+      {name:"Netflix Tudum", url:"https://www.netflix.com/tudum/articles/queenstown-series-plot-news"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/production-begins-on-new-netflix-series-queenstown-38644/"},
+      {name:"Otago Daily Times", url:"https://www.odt.co.nz/regions/queenstown/resort-town-set-theme-netflix-drama"}
+    ],
+    checked:"2026-11-20"
+  },
+  {
+    title:"Chan", kind:"Drama series",
+    city:"Auckland", country:"New Zealand", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Drama series from Kevin & Co. The Screen Guild's Auckland wrap of 23 September 2026 has it shooting in Auckland during November and December.",
+    lat:-36.85, lng:174.76,
+    sources:[
+      {name:"NZ Screen Guild", url:"https://www.screenguild.co.nz/news/articles/regional-wrap-auckland-ik2mq"}
+    ],
+    checked:"2026-11-20"
+  },
+  {
+    title:"You've Changed", kind:"Feature",
+    city:"Auckland", country:"New Zealand", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Feature film from Bougie Baby Productions. The Screen Guild's Auckland wrap of 23 September 2026 has it shooting in Auckland during October and November.",
+    lat:-36.90, lng:174.80,
+    sources:[
+      {name:"NZ Screen Guild", url:"https://www.screenguild.co.nz/news/articles/regional-wrap-auckland-ik2mq"}
+    ],
+    checked:"2026-11-20"
+  },
+  {
     title:"Pendekar (Warrior)", kind:"Feature · Asia Media Alliance Group / Nation Pictures",
     city:"Iskandar Puteri, Johor", country:"Malaysia", region:"ASEAN",
     service:"",
@@ -127,6 +182,18 @@ var DATA = [
       {name:"Production List", url:"https://www.productionlist.com/hbo-s-crazy-rich-asians-series-from-adele-lim-sets-eight-episode-order-filming-new-york-singapore-and-malaysia-in-2027"}
     ],
     checked:"2026-11-19"
+  },
+  {
+    title:"Untitled FX pilot (Hiro Murai)", kind:"Pilot · FX",
+    city:"Bangkok", country:"Thailand", region:"ASEAN",
+    service:"",
+    status:"prep",
+    note:"Untitled pilot for FX, directed by Hiro Murai from a story by Wong Kar-wai, written by Julia Cho and Charles Yu, with Havana Rose Liu as the planned lead. Reported on 9 October 2026 as set to shoot in Bangkok before the end of 2026. No dates published.",
+    lat:13.75, lng:100.52,
+    sources:[
+      {name:"The A.V. Club", url:"https://www.avclub.com/wong-kar-wai-hiro-murai-teaming-up-fx-pilot-havana-rose-liu"}
+    ],
+    checked:"2026-11-20"
   }
 ];
 
@@ -265,7 +332,7 @@ function buildMapInner(rows, opts){
     var p=POS[d.title] || { x:X(d.lng), y:Y(d.lat) };
     var x=p.x, y=p.y, n=ns.get(d.title);
     var ang=(Math.atan2(x-sx,-(y-sy))*180/Math.PI+360)%360;
-    s+='<g class="pin" data-t="'+d.title+'" data-st="'+d.status+'" style="--d:'+(ang/360*9).toFixed(2)+'s" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'">'+(d.status==='shooting'?'<circle class="halo" cx="'+x+'" cy="'+y+'" r="16" fill="none"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
+    s+='<g class="pin'+((d.sources&&d.sources.length===1)?' one':'')+'" data-t="'+d.title+'" data-st="'+d.status+'" style="--d:'+(ang/360*9).toFixed(2)+'s" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'">'+(d.status==='shooting'?'<circle class="halo" cx="'+x+'" cy="'+y+'" r="16" fill="none"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
 

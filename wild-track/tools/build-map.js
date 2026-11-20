@@ -57,10 +57,11 @@ DATA.forEach((d, i) => {
   if (!['shooting', 'prep'].includes(d.status)) errors.push(at + 'status must be shooting or prep (nothing wrapped, in post, released or unsourced)');
   if (typeof d.lat !== 'number' || typeof d.lng !== 'number' || d.lat < -50 || d.lat > 29 || d.lng < 90 || d.lng > 182) errors.push(at + 'lat/lng outside Australia, New Zealand and Southeast Asia');
   const src = d.sources || [];
-  if (src.length < 2) errors.push(at + 'needs at least two public sources');
+  if (src.length < 1) errors.push(at + 'needs at least one public source');
   if (src.length > 3) errors.push(at + 'three sources at most');
   src.forEach((x) => { if (!x.name || !/^https:\/\//.test(x.url || '')) errors.push(at + 'each source needs a name and an https link'); });
-  if (new Set(src.map((x) => host(x.url))).size < Math.min(2, src.length || 2)) errors.push(at + 'sources must come from at least two different sites');
+  if (src.length >= 2 && new Set(src.map((x) => host(x.url))).size < 2) errors.push(at + 'two or more sources must come from at least two different sites');
+  if (src.length === 1 && /(^|\.)(productionlist\.com|imdb\.com|wikipedia\.org)$/.test(host(src[0].url))) errors.push(at + 'a directory, IMDb or Wikipedia page cannot be the only source');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(d.checked || '')) errors.push(at + 'checked must be a date like 2026-11-19');
   const text = [d.title, d.kind, d.city, d.service, d.note].join(' ');
   if (/[–—]/.test(text)) errors.push(at + 'no em or en dashes');
@@ -75,6 +76,9 @@ if (errors.length) {
 const n = DATA.length;
 const shooting = DATA.filter((d) => d.status === 'shooting');
 const prep = DATA.filter((d) => d.status === 'prep');
+/* a pin with one public source is allowed (since 20 November 2026) and always says so */
+const single = (d) => (d.sources || []).length === 1;
+const singles = DATA.filter(single);
 const countries = [];
 DATA.forEach((d) => { if (!countries.includes(d.country)) countries.push(d.country); });
 const byCountry = (c) => DATA.filter((d) => d.country === c);
@@ -83,32 +87,35 @@ const place = (d) => (d.city.indexOf(d.country) >= 0 ? d.city : d.city + ', ' + 
 const one = (d) => d.title + ' (' + d.kind.replace(/\s*·\s*/g, ', ') + ', ' + d.city + ')';
 const sentenceFor = (rows) => {
   const s = rows.filter((d) => d.status === 'shooting'), p = rows.filter((d) => d.status === 'prep');
-  if (!rows.length) return 'Nothing on the map right now. That means nothing has two public sources yet, not that nothing is happening.';
+  if (!rows.length) return 'Nothing on the map right now. That means nothing has a public source yet, not that nothing is happening.';
   let out = '';
   if (s.length) out += 'Shooting: ' + s.map(one).join('; ') + '.';
   if (p.length) out += (out ? ' ' : '') + 'In pre-production: ' + p.map(one).join('; ') + '.';
   return out;
 };
 const summary = '<strong>' + plural(n, 'production') + '</strong>: ' + shooting.length + ' shooting, ' + prep.length + ' in pre-production. '
-  + countries.map((c) => c + ' ' + byCountry(c).length).join(', ') + '. Checked ' + UPDATED + '.';
+  + countries.map((c) => c + ' ' + byCountry(c).length).join(', ') + '. Checked ' + UPDATED + '.'
+  + (singles.length ? ' ' + (singles.length === 1 ? 'One has' : singles.length + ' have') + ' one public source so far and ' + (singles.length === 1 ? 'is' : 'are') + ' marked.' : '');
 
 const ASEAN = ['Brunei','Cambodia','Indonesia','Laos','Malaysia','Myanmar','Philippines','Singapore','Thailand','Timor-Leste','Vietnam'];
 const faq = [
   ['What is shooting in Australia right now?', 'As of ' + UPDATED + '. ' + sentenceFor(byCountry('Australia'))],
   ['What is shooting in New Zealand right now?', 'As of ' + UPDATED + '. ' + sentenceFor(byCountry('New Zealand'))],
   ['What is shooting in Southeast Asia right now?', 'As of ' + UPDATED + '. ' + sentenceFor(DATA.filter((d) => ASEAN.includes(d.country)))],
-  ['How is the map checked?', 'Every production needs at least two public sources from different publishers, such as a trade paper and a screen agency release, and each pin links to them. The list is rechecked every week. Only productions in pre-production or shooting are listed, and wrapped titles come off.'],
+  ['How is the map checked?', 'Every production links to its public sources, such as a trade paper or a screen agency release. Two or three from different publishers is the standard. Where only one publisher has reported a production so far, the pin is marked "one source" until a second confirms it. The list is rechecked every week. Only productions in pre-production or shooting are listed, and wrapped titles come off.'],
   ['Does it list crew or contact details?', 'No. It shows what is shooting, where, and the production or service company when that is public. For contacts, go through the production company or the local screen agency.'],
-  ['Can I add a production?', 'Yes. Email the title and the start month to ande@schurrsound.com. It goes on once two public sources confirm it.'],
+  ['Can I add a production?', 'Yes. Email the title and the start month to ande@schurrsound.com. It goes on once a public source confirms it.'],
 ];
 
 /* ── generated HTML ────────────────────────────────────────────────────── */
-const srcHTML = (d) => '<div class="note srcs"><strong>Sources:</strong> '
+const srcHTML = (d) => '<div class="note srcs"><strong>' + (single(d) ? 'Source:' : 'Sources:') + '</strong> '
   + d.sources.map((x) => '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.name) + '</a>').join(' &nbsp;·&nbsp; ')
+  + (single(d) ? ' &nbsp;·&nbsp; the only public source so far' : '')
   + ' &nbsp;·&nbsp; checked ' + esc(d.checked) + '</div>';
-const listHTML = DATA.map((d, i) => '<li data-status="' + d.status + '" data-t="' + esc(d.title) + '">'
+const listHTML = DATA.map((d, i) => '<li data-status="' + d.status + '"' + (single(d) ? ' data-one="1"' : '') + ' data-t="' + esc(d.title) + '">'
   + '<div class="rowhead"><span class="n">' + (i + 1) + '</span><span class="t">' + esc(d.title) + '</span>'
-  + '<span class="tag" style="background:' + COLORS[d.status] + '">' + LABELS[d.status] + '</span></div>'
+  + '<span class="tag" style="background:' + COLORS[d.status] + '">' + LABELS[d.status] + '</span>'
+  + (single(d) ? '<span class="tag one">One source</span>' : '') + '</div>'
   + '<div class="meta">' + esc(d.kind) + ' &nbsp;·&nbsp; ' + esc(place(d)) + '</div>'
   + (d.service ? '<div class="note"><strong>Serviced by</strong> ' + esc(d.service) + '</div>' : '')
   + '<div class="note">' + esc(d.note) + '</div>' + srcHTML(d) + '</li>').join('\n');
@@ -120,12 +127,12 @@ const ld = {
   '@graph': [
     { '@type': 'WebPage', '@id': 'https://schurrsound.com/whats-shooting', url: 'https://schurrsound.com/whats-shooting',
       name: "What's shooting in Australia, New Zealand and Southeast Asia",
-      description: plural(n, 'film and television production') + ' shooting or in pre-production, each with two or three public sources.',
+      description: plural(n, 'film and television production') + ' shooting or in pre-production, each linked to its public sources.' + (singles.length ? ' ' + singles.length + ' of them rest on one source so far and say so.' : ''),
       dateModified: UPDATED_ISO, inLanguage: 'en',
       author: { '@type': 'Person', name: 'Ande Schurr', jobTitle: 'Production sound mixer', url: 'https://schurrsound.com/about' } },
     { '@type': 'ItemList', name: 'Productions shooting or in pre-production', numberOfItems: n,
       itemListElement: DATA.map((d, i) => ({ '@type': 'ListItem', position: i + 1, item: {
-        '@type': typeOf(d), name: d.title, description: d.note,
+        '@type': typeOf(d), name: d.title, description: d.note + (single(d) ? ' One public source so far.' : ''),
         locationCreated: { '@type': 'Place', name: place(d) },
         creativeWorkStatus: LABELS[d.status], citation: d.sources.map((x) => x.url) } })) },
     { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
@@ -148,7 +155,7 @@ page = fill(page, 'ld', ldHTML);
 page = fill(page, 'sum', '<p class="map-sum">' + summary + '</p>');
 page = fill(page, 'list', listHTML);
 page = fill(page, 'faq', faqHTML);
-const desc = plural(n, 'production') + ' shooting or in pre-production across Australia, New Zealand and Southeast Asia, each with public sources. Checked ' + UPDATED + '.';
+const desc = plural(n, 'production') + ' shooting or in pre-production across Australia, New Zealand and Southeast Asia, each linked to a public source. Checked ' + UPDATED + '.';
 page = page.replace(/(<meta name="description" content=")[^"]*(">)/, (m, a, b) => a + esc(desc) + b);
 
 const logFile = path.join(ROOT, 'wild-track', 'map-log.json');
@@ -174,7 +181,7 @@ const items = log.filter((x) => x.changed !== false).map((x) => '<item><title>' 
   + '<pubDate>' + rfc822(x.date) + '</pubDate><description>' + esc(x.text + ' On the map now: ' + plural(x.productions, 'production') + ', ' + x.shooting + ' shooting and ' + x.prep + ' in pre-production.') + '</description></item>').join('\n');
 fs.writeFileSync(path.join(ROOT, 'wild-track', 'radar.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n'
   + '<title>The Radar: what is shooting in Australia, New Zealand and Southeast Asia</title>\n<link>https://schurrsound.com/whats-shooting</link>\n'
-  + '<description>Changes to the production map, checked every week. Two public sources on every pin.</description>\n<language>en</language>\n'
+  + '<description>Changes to the production map, checked every week. Every pin links to its public sources.</description>\n<language>en</language>\n'
   + (log[0] ? '<lastBuildDate>' + rfc822(log[0].date) + '</lastBuildDate>\n' : '') + items + '\n</channel></rss>\n');
 
 const homeFile = path.join(ROOT, 'index.html');

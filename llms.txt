@@ -61,7 +61,7 @@ package is airline-checkable and travels as luggage.
 
 ## Production map ("the radar")
 
-- [What's shooting in Australia, New Zealand and Southeast Asia](https://schurrsound.com/whats-shooting): film and television in pre-production or shooting, on one map. Every entry has two or three public sources. Rechecked every week. No contact details are published.
+- [What's shooting in Australia, New Zealand and Southeast Asia](https://schurrsound.com/whats-shooting): film and television in pre-production or shooting, on one map. Every entry links to its public sources, and an entry with only one so far says so. Rechecked every week. No contact details are published.
 - [Feed of changes](https://schurrsound.com/wild-track/radar.xml): one item for each week in which the map changed
 - [Change log (JSON)](https://schurrsound.com/wild-track/map-log.json)
 
