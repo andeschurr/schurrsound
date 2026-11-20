@@ -1360,3 +1360,12 @@ span.t a{color:inherit;text-decoration:none;border-bottom:1px solid var(--gold)}
 .prose .cr-grid{max-width:none;padding:0;margin:8px 0 0}
 .prose .cr-grid figure{margin:0 0 10px}
 .loc .prose{padding-top:38px}
+
+/* Singapore page: small crews, local stories (20 Nov 2026) */
+.sg-local{display:grid;gap:28px}
+.sg-local figure{margin:0}
+.sg-local figure img{display:block;width:100%;max-width:360px;height:auto;border-radius:3px}
+.sg-local figcaption{font-size:var(--fs-label);color:var(--grey);font-style:italic;margin-top:9px}
+.sg-local .sg-quote{margin:26px 0 0}
+.sg-local .sg-quote blockquote{font-size:clamp(20px,2.2vw,26px)}
+@media(min-width:800px){.sg-local{grid-template-columns:minmax(240px,360px) 1fr;align-items:center;gap:56px}}
