@@ -1435,6 +1435,5 @@ img[data-lb]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
   .hx-phero-split.hx-phero-land{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(calc(100vh - 64px),660px,62vw)}
   .hx-phero-split.hx-phero-land .hx-phero-fig{min-height:0}
 }
-/* A panorama under a section. On a phone it is cut to the part with the figure in it; the
-   whole picture opens full screen. */
-@media(max-width:640px){.hx-pan img{aspect-ratio:4/3;object-fit:cover;object-position:6% 50%}}
+/* A photograph in the text column of a two column section (Documentary page). */
+.hx-two .hx-fig{margin-top:clamp(24px,3vw,40px)}
