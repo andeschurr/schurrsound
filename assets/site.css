@@ -1420,3 +1420,21 @@ img[data-lb]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .prose .cr-trailer .reel-start:focus-visible{outline:2px solid var(--gold);outline-offset:-6px}
 @media(max-width:520px){.prose .cr-trailer .reel-start{gap:10px;font-size:15px}.prose .cr-trailer .reel-start::before{width:54px;height:54px;background-size:24px 24px}}
 @media(prefers-reduced-motion:reduce){.prose .cr-trailer .reel-start::before{transition:none}}
+
+/* Film pages: one lead photograph, then a row of two that share a height. Each figure in the row
+   carries its own shape (--r, width over height), so nothing is cut (20 Nov 2026). */
+.prose .cr-lead{margin:8px 0 12px}
+.prose .cr-lead img,.prose .cr-row img{display:block;width:100%;height:auto;border-radius:3px;background:#152a21}
+.prose .cr-row{display:flex;gap:12px;align-items:flex-start;margin:0 0 34px}
+.prose .cr-row figure{margin:0;flex:var(--r,1) 1 0;min-width:0}
+.prose .cr-lead figcaption,.prose .cr-row figcaption{font-size:13px;line-height:1.4;letter-spacing:0;margin:6px 2px 0}
+@media(max-width:520px){.prose .cr-row{flex-direction:column;gap:18px}.prose .cr-row figure{flex:none;width:100%}}
+/* A landscape photograph in the split opening (Singapore page): equal halves, and never so tall
+   that the picture is cut down to a strip. */
+@media(min-width:900px){
+  .hx-phero-split.hx-phero-land{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(calc(100vh - 64px),660px,62vw)}
+  .hx-phero-split.hx-phero-land .hx-phero-fig{min-height:0}
+}
+/* A panorama under a section. On a phone it is cut to the part with the figure in it; the
+   whole picture opens full screen. */
+@media(max-width:640px){.hx-pan img{aspect-ratio:4/3;object-fit:cover;object-position:6% 50%}}
