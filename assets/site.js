@@ -71,7 +71,10 @@
 
 /* Home hero: the showreel starts silently when it comes into view, looping; Wistia's
    own button turns the sound on. Visitors who prefer reduced motion or save data get
-   the player without autoplay. Without JavaScript the link opens the reel. */
+   the player without autoplay. Without JavaScript the link opens the reel.
+   data-reel-start (seconds) skips the reel's opening title card: the reel starts there,
+   loops back to there, and cannot be scrubbed to before it. Remove the attribute once
+   the card has been trimmed off the video itself in Wistia. */
 (function () {
   var box = document.querySelector('.hero-reel[data-reel]');
   if (!box) { return; }
@@ -82,14 +85,31 @@
   function add() {
     if (done) { return; }
     done = true;
+    var id = box.getAttribute('data-reel');
+    var start = parseFloat(box.getAttribute('data-reel-start')) || 0;
     var f = document.createElement('iframe');
-    f.src = 'https://fast.wistia.net/embed/iframe/' + box.getAttribute('data-reel') + '?videoFoam=true' +
+    f.src = 'https://fast.wistia.net/embed/iframe/' + id + '?videoFoam=true' +
+      (start ? '&time=' + start : '') +
       (quiet ? '' : '&autoPlay=true&muted=true&silentAutoPlay=allow&endVideoBehavior=loop');
     f.title = 'Ande Schurr · Showreel';
     f.setAttribute('allow', 'autoplay; fullscreen');
     f.setAttribute('allowfullscreen', '');
+    if (start) { f.className = 'wistia_embed'; f.name = 'wistia_embed'; }
     frame.innerHTML = '';
     frame.appendChild(f);
+    if (start) {
+      /* Wistia's player API for iframes: keep the playhead at or after the start point. */
+      window._wq = window._wq || [];
+      window._wq.push({ id: id, onReady: function (v) {
+        var skip = function (t) { if (t < start - 0.4) { v.time(start); } };
+        skip(v.time());
+        v.bind('timechange', skip);
+      } });
+      var sc = document.createElement('script');
+      sc.src = 'https://fast.wistia.net/assets/external/E-v1.js';
+      sc.async = true;
+      document.head.appendChild(sc);
+    }
   }
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
