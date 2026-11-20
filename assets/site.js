@@ -2,6 +2,42 @@
    Publishes the real measured nav height as --nav-h so scroll-margin-top can
    keep in-page anchors clear of the sticky bar at every viewport width.
    When the bar is not sticky (phones, the map page) the offset drops to zero. */
+/* Own devices: Ande's own views should not count as visitors. Opening any page once with
+   ?count=off marks this browser (kept in localStorage); ?count=on unmarks it. Cloudflare adds
+   its visitor counter to the page at the edge, so the page cannot leave it out. On a marked
+   browser this stops the counter's report (/cdn-cgi/rum) from being sent instead. This file is
+   loaded in <head> with defer, so it runs before the counter, which sits at the end of <body>. */
+(function () {
+  var KEY = 'sx-own-device', m = /[?&]count=(off|on)\b/.exec(location.search), own = false;
+  try {
+    if (m) { if (m[1] === 'off') { localStorage.setItem(KEY, '1'); } else { localStorage.removeItem(KEY); } }
+    own = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (m) {
+    var note = document.createElement('p');
+    note.setAttribute('role', 'status');
+    note.textContent = own ? 'Marked as your own device: its visits are no longer counted.' : 'Unmarked: visits from this device are counted again.';
+    note.style.cssText = 'position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:9999;margin:0;padding:10px 16px;' +
+      'background:#152a21;color:#f3ead2;border:1px solid #b8a15c;font:600 14px/1.4 system-ui,sans-serif;width:max-content;max-width:92vw;text-align:center';
+    document.body.appendChild(note);
+    setTimeout(function () { if (note.parentNode) { note.parentNode.removeChild(note); } }, 9000);
+    if (history.replaceState) { history.replaceState(null, '', location.pathname + location.hash); }
+  }
+  if (!own) { return; }
+  var rum = function (u) { return String((u && u.url) || u || '').indexOf('/cdn-cgi/rum') !== -1; };
+  if (navigator.sendBeacon) {
+    var sb = navigator.sendBeacon.bind(navigator);
+    navigator.sendBeacon = function (u, d) { return rum(u) ? true : sb(u, d); };
+  }
+  var xo = XMLHttpRequest.prototype.open, xs = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.open = function (method, u) { this.__own = rum(u); return xo.apply(this, arguments); };
+  XMLHttpRequest.prototype.send = function () { if (this.__own) { return; } return xs.apply(this, arguments); };
+  if (window.fetch && window.Response) {
+    var f = window.fetch;
+    window.fetch = function (u) { return rum(u) ? Promise.resolve(new Response(null, { status: 204 })) : f.apply(this, arguments); };
+  }
+})();
+
 (function () {
   var nav = document.querySelector('nav');
   var root = document.documentElement;
@@ -125,3 +161,22 @@ document.addEventListener('play', function (e) {
   if (!t || t.tagName !== 'AUDIO') { return; }
   [].forEach.call(document.querySelectorAll('audio'), function (a) { if (a !== t) { a.pause(); } });
 }, true);
+
+/* Official trailers ([data-yt]): nothing loads from YouTube until the visitor presses play.
+   Without JavaScript the link opens the trailer on YouTube. */
+(function () {
+  [].forEach.call(document.querySelectorAll('[data-yt]'), function (box) {
+    var a = box.querySelector('.reel-start'), frame = box.querySelector('.reel');
+    if (!a || !frame) { return; }
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      f.title = box.getAttribute('data-yt-title') || 'Official trailer';
+      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      frame.innerHTML = '';
+      frame.appendChild(f);
+    });
+  });
+})();
