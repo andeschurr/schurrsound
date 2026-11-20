@@ -1336,3 +1336,18 @@ body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;
 .prose figure.listen{margin:22px 0;padding:16px 18px;background:#f1ecdc;border-left:3px solid var(--gold)}
 .prose figure.listen figcaption{font-style:normal;font-size:var(--fs-nav);letter-spacing:0;color:var(--ink);line-height:1.5;margin:0 0 12px}
 .prose figure.listen audio{display:block;width:100%}
+
+/* Credit pages: one page per film (20 Nov 2026) */
+.cr-hero{background:#1e3a2f;color:#fff}
+.cr-in{max-width:1100px;margin:0 auto;padding:clamp(48px,9vw,96px) 24px clamp(36px,6vw,64px)}
+.cr-meta{font-size:15px;color:#c9c3ae;margin:0 0 14px}
+.cr-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(46px,10.5vw,112px);line-height:.96;letter-spacing:-.015em;margin:0;color:#fff;text-wrap:balance}
+.cr-role{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:#e6e0cc;margin:20px 0 0;max-width:36em}
+.cr-role strong{color:#dcbd5e;font-weight:600}
+.cr-body{padding-top:38px;padding-bottom:70px}
+.prose .cr-quick{list-style:none;margin:0 0 30px;padding:0;border-top:1px solid var(--line)}
+.prose .cr-quick li{padding:13px 0;border-bottom:1px solid var(--line);font-size:var(--fs-body);line-height:1.45;color:var(--ink)}
+.prose .cr-quote{margin:44px 0 26px}
+.prose .cr-others{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line);font-weight:600}
+.prose .cr-others a{margin-right:1.3em;white-space:nowrap}
+span.t a{color:inherit;text-decoration:none;border-bottom:1px solid var(--gold)}
