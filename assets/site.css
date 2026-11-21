@@ -1468,7 +1468,9 @@ img[data-lb]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* Underwater (difficult locations): the signal path as three steps, and a clip that wears its
    own cover picture. The cover comes from YouTube (it is the clip's poster, not a file here);
-   the player still loads only on press (21 Nov 2026). */
+   the player still loads only on press. The picture is set taller than the frame so the
+   subtitle burned into its foot falls outside; play sits bottom left, clear of the shark
+   (21 Nov 2026). */
 .prose .cr-chain{list-style:none;margin:4px 0 28px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .prose .cr-chain li{position:relative;margin:0;padding:14px 14px 14px 24px;font-size:15px;line-height:1.38;color:var(--ink)}
 .prose .cr-chain li:first-child{padding-left:0}
@@ -1478,11 +1480,17 @@ img[data-lb]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
   .prose .cr-chain li,.prose .cr-chain li:first-child{padding:11px 0 11px 24px}
   .prose .cr-chain li+li{border-top:1px solid var(--line)}
   .prose .cr-chain li::before,.prose .cr-chain li+li::before{content:"";position:absolute;left:4px;top:50%;width:8px;height:8px;border:0;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:translateY(-75%) rotate(45deg)}
+  .prose .cr-chain li:first-child::before{left:5px;width:6px;height:6px;border:0;border-radius:50%;background:var(--gold);transform:translateY(-50%)}
 }
 .prose .cr-dive .reel{overflow:hidden;border-color:#12343d}
-.prose .cr-dive .reel-start{background:#0b2a33}
-.prose .cr-dive .reel-start img{position:absolute;left:0;top:0;width:100%;height:118%;max-width:none;object-fit:cover;object-position:50% 0;z-index:0;color:transparent;font-size:0}
-.prose .cr-dive .reel-start::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;background:linear-gradient(to top,rgba(5,20,26,.8) 0%,rgba(5,20,26,.2) 55%,rgba(5,20,26,.06) 100%)}
-.prose .cr-dive .reel-start::before{position:relative;z-index:2;background-color:rgba(8,28,34,.55)}
-.prose .cr-dive .reel-start span{position:relative;z-index:2;text-shadow:0 1px 10px rgba(0,0,0,.65)}
+.prose .cr-dive .reel-start{background:#0b2a33;flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:16px;padding:0 24px 22px}
+.prose .cr-dive .reel-start img{position:absolute;left:0;top:0;width:100%;height:130%;max-width:none;object-fit:cover;object-position:50% 0;z-index:0;color:transparent;font-size:0}
+.prose .cr-dive .reel-start::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;background:linear-gradient(to top,rgba(4,18,24,.86) 0%,rgba(4,18,24,.38) 34%,rgba(4,18,24,0) 62%)}
+.prose .cr-dive .reel-start::before{position:relative;z-index:2;flex:none;width:60px;height:60px;background-color:rgba(8,28,34,.5)}
+.prose .cr-dive .reel-start span{position:relative;z-index:2;line-height:60px;font-size:17px;text-shadow:0 1px 10px rgba(0,0,0,.65)}
 .prose .cr-dive .reel-start:hover::before,.prose .cr-dive .reel-start:focus-visible::before{background-color:rgba(184,161,92,.4)}
+@media(max-width:520px){
+  .prose .cr-dive .reel-start{gap:12px;padding:0 16px 14px}
+  .prose .cr-dive .reel-start::before{width:48px;height:48px;background-size:22px 22px}
+  .prose .cr-dive .reel-start span{line-height:48px;font-size:15px}
+}
