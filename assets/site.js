@@ -200,14 +200,18 @@ document.addEventListener('play', function (e) {
     });
   }
 
-  function build(v, s) {
+  function secs(a, name) { return parseInt(a.getAttribute(name), 10) || 0; }
+
+  function build(v, s, e) {
     var holder = document.createElement('div');
     frame.innerHTML = '';
     frame.appendChild(holder);
+    var vars = { autoplay: 1, rel: 0, playsinline: 1, start: s, mute: quiet ? 1 : 0 };
+    if (e) { vars.end = e; }
     player = new window.YT.Player(holder, {
       host: 'https://www.youtube-nocookie.com',
       videoId: v, width: '100%', height: '100%',
-      playerVars: { autoplay: 1, rel: 0, playsinline: 1, start: s, mute: quiet ? 1 : 0 },
+      playerVars: vars,
       events: {
         onReady: function (e) {
           ready = true;
@@ -225,17 +229,22 @@ document.addEventListener('play', function (e) {
   function play(i) {
     idx = i;
     mark(i);
-    var a = links[i], v = a.getAttribute('data-v'), s = parseInt(a.getAttribute('data-s'), 10) || 0;
-    if (player && ready) { player.loadVideoById({ videoId: v, startSeconds: s }); return; }
+    var a = links[i], v = a.getAttribute('data-v'), s = secs(a, 'data-s'), e = secs(a, 'data-e');
+    if (player && ready) {
+      var o = { videoId: v, startSeconds: s };
+      if (e) { o.endSeconds = e; }
+      player.loadVideoById(o);
+      return;
+    }
     if (player || box.getAttribute('data-dr') === 'loading') { pending = i; return; }
     box.setAttribute('data-dr', 'loading');
-    if (window.YT && window.YT.Player) { build(v, s); return; }
+    if (window.YT && window.YT.Player) { build(v, s, e); return; }
     var prev = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = function () {
       if (typeof prev === 'function') { prev(); }
       var cur = links[pending !== null ? pending : idx];
       pending = null;
-      build(cur.getAttribute('data-v'), parseInt(cur.getAttribute('data-s'), 10) || 0);
+      build(cur.getAttribute('data-v'), secs(cur, 'data-s'), secs(cur, 'data-e'));
     };
     var sc = document.createElement('script');
     sc.src = 'https://www.youtube.com/iframe_api';
