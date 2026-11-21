@@ -163,7 +163,8 @@ document.addEventListener('play', function (e) {
 }, true);
 
 /* Official trailers ([data-yt]): nothing loads from YouTube until the visitor presses play.
-   Without JavaScript the link opens the trailer on YouTube. */
+   Without JavaScript the link opens the trailer on YouTube. Adding ?quiet to the address
+   starts it muted. */
 (function () {
   [].forEach.call(document.querySelectorAll('[data-yt]'), function (box) {
     var a = box.querySelector('.reel-start'), frame = box.querySelector('.reel');
@@ -171,7 +172,8 @@ document.addEventListener('play', function (e) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0' +
+        (/[?&]quiet\b/.test(location.search) ? '&mute=1' : '');
       f.title = box.getAttribute('data-yt-title') || 'Official trailer';
       f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
       f.setAttribute('allowfullscreen', '');
@@ -221,6 +223,10 @@ document.addEventListener('play', function (e) {
         },
         onStateChange: function (e) {
           if (e.data === 0 && idx + 1 < links.length) { play(idx + 1); }
+        },
+        /* A clip that has been taken down or cannot play here: move on to the next one. */
+        onError: function () {
+          if (idx + 1 < links.length) { play(idx + 1); }
         }
       }
     });
