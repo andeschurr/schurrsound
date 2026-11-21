@@ -1524,3 +1524,29 @@ body.press .facade .play{z-index:1;background:rgba(18,36,29,.52);border-color:va
 body.press .facade .play:after{border-left-color:#d6c493}
 body.press .facade:hover .play,body.press .facade:focus-visible .play{background:rgba(184,161,92,.4)}
 @media(prefers-reduced-motion:reduce){.reel-start.has-cover::after,body.press .facade::after{transition:none}}
+
+/* Credits: each title's trailer or clip as a small cover under the brand green, with the gold ring.
+   It plays in a window over the page ([data-yt-pop] in site.js) (21 Nov 2026). */
+.hx-credlist .cr-vid{position:relative;display:flex;align-items:flex-end;width:min(100%,208px);aspect-ratio:16/9;margin-top:10px;padding:0 0 9px 12px;overflow:hidden;isolation:isolate;color:#f6f0dc;text-decoration:none;font-size:13px;letter-spacing:.05em;line-height:1;text-shadow:0 1px 8px rgba(0,0,0,.65)}
+.hx-credlist .cr-vid img{position:absolute;top:0;left:0;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;z-index:-2;color:transparent;font-size:0}
+.hx-credlist .cr-vid::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:radial-gradient(circle at 50% 44%,rgba(21,42,33,.36) 0%,rgba(21,42,33,.5) 55%,rgba(21,42,33,.68) 100%);transition:opacity .2s ease}
+.hx-credlist .cr-vid::before{content:"";position:absolute;left:50%;top:44%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:2px solid var(--gold);background:rgba(18,36,29,.52) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d6c493' d='M9 5.5v13l10.5-6.5z'/%3E%3C/svg%3E") no-repeat 56% 50%/18px 18px;transition:background-color .2s ease,transform .2s ease}
+.hx-credlist .cr-vid:hover::after,.hx-credlist .cr-vid:focus-visible::after{opacity:.8}
+.hx-credlist .cr-vid:hover::before,.hx-credlist .cr-vid:focus-visible::before{background-color:rgba(184,161,92,.4);transform:scale(1.06)}
+.hx-credlist .cr-vid:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(min-width:900px){
+  .hx-credlist li.has-vid .r{grid-column:1;align-self:start}
+  .hx-credlist li.has-vid .cr-vid{grid-column:2;grid-row:2;justify-self:end;align-self:start;width:208px;margin-top:4px}
+}
+@media(prefers-reduced-motion:reduce){.hx-credlist .cr-vid::before,.hx-credlist .cr-vid::after{transition:none}.hx-credlist .cr-vid:hover::before{transform:none}}
+/* The window the video plays in */
+.ytpop{border:0;padding:0;margin:auto;background:transparent;width:min(1100px,94vw);max-width:none;max-height:none;overflow:visible;color:#efe8cf}
+.ytpop::backdrop{background:rgba(12,24,19,.9)}
+.ytpop-frame{position:relative;aspect-ratio:16/9;background:#152a21;box-shadow:0 18px 60px rgba(0,0,0,.45)}
+.ytpop-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.ytpop-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:12px}
+.ytpop-cap{margin:0;font-size:15px;line-height:1.4;letter-spacing:.01em}
+.ytpop-x{flex:none;font:inherit;font-size:15px;color:#152a21;background:var(--gold);border:0;border-radius:999px;padding:9px 20px;cursor:pointer}
+.ytpop-x:hover{background:#d6c493}
+.ytpop-x:focus-visible{outline:2px solid #f6f0dc;outline-offset:3px}
+@media (orientation:landscape) and (max-height:560px){.ytpop{width:min(94vw,calc((100vh - 64px) * 16 / 9))}}

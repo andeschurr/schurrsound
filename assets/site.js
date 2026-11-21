@@ -286,3 +286,49 @@ document.addEventListener('play', function (e) {
     });
   });
 })();
+
+/* Credits ([data-yt-pop]): a cover or a title opens its video in a window over the page.
+   Nothing loads from YouTube until it is pressed. Escape, Close or a press outside the picture
+   closes the window and stops the video. Without JavaScript, or with a new-tab click, the link
+   opens the video on YouTube. Adding ?quiet to the address starts it muted. */
+(function () {
+  var links = document.querySelectorAll('[data-yt-pop]');
+  if (!links.length || typeof HTMLDialogElement !== 'function') { return; }
+  var dlg = null, frame = null, cap = null, opener = null;
+  function build() {
+    dlg = document.createElement('dialog');
+    dlg.className = 'ytpop';
+    dlg.innerHTML = '<div class="ytpop-in"><div class="ytpop-frame"></div>' +
+      '<div class="ytpop-bar"><p class="ytpop-cap"></p><button type="button" class="ytpop-x">Close</button></div></div>';
+    document.body.appendChild(dlg);
+    frame = dlg.querySelector('.ytpop-frame');
+    cap = dlg.querySelector('.ytpop-cap');
+    dlg.querySelector('.ytpop-x').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) { dlg.close(); } });
+    dlg.addEventListener('close', function () {
+      frame.innerHTML = '';
+      if (opener) { opener.focus(); }
+    });
+  }
+  [].forEach.call(links, function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) { return; }
+      e.preventDefault();
+      if (!dlg) { build(); }
+      opener = a;
+      var q = '?autoplay=1&rel=0&playsinline=1';
+      if (a.getAttribute('data-start')) { q += '&start=' + a.getAttribute('data-start'); }
+      if (a.getAttribute('data-end')) { q += '&end=' + a.getAttribute('data-end'); }
+      if (/[?&]quiet\b/.test(location.search)) { q += '&mute=1'; }
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.getAttribute('data-yt-pop') + q;
+      f.title = a.getAttribute('data-yt-title') || 'Video';
+      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      frame.innerHTML = '';
+      frame.appendChild(f);
+      cap.textContent = a.getAttribute('data-cap') || '';
+      dlg.showModal();
+    });
+  });
+})();
