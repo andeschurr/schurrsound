@@ -183,7 +183,7 @@ document.addEventListener('play', function (e) {
   });
 })();
 
-/* Documentary reel ([data-dr]): official clips played one after another in one frame.
+/* Documentary reel ([data-dr]): clips from YouTube played one after another in one frame.
    Nothing loads from YouTube until the visitor presses play; the first press also fetches
    YouTube's player script, which is what tells the page a clip has ended. Without JavaScript
    each line opens its clip on YouTube. Adding ?quiet to the address starts it muted. */
@@ -193,7 +193,7 @@ document.addEventListener('play', function (e) {
   var frame = box.querySelector('.reel'), start = box.querySelector('.reel-start');
   var links = [].slice.call(box.querySelectorAll('.dr-list a[data-v]'));
   if (!frame || !links.length) { return; }
-  var player = null, ready = false, idx = 0, pending = null;
+  var player = null, ready = false, idx = 0, pending = null, tick = null;
   var quiet = /[?&]quiet\b/.test(location.search);
 
   function mark(i) {
@@ -202,18 +202,36 @@ document.addEventListener('play', function (e) {
     });
   }
 
-  function secs(a, name) { return parseInt(a.getAttribute(name), 10) || 0; }
+  function secs(a, name) { return parseFloat(a.getAttribute(name)) || 0; }
 
-  function build(v, s, e) {
+  /* A clip with data-e stops at that second and hands over to the next. The time is watched
+     here and not given to YouTube as an end point: its own end point made the next clip
+     report "ended" the moment it loaded, which skipped a clip in testing (21 Nov 2026).
+     The cut waits until this clip has been seen before its end point, so a reading left
+     over from the clip before cannot set it off. */
+  function watch(v, e) {
+    if (tick) { clearInterval(tick); tick = null; }
+    if (!e) { return; }
+    var armed = false;
+    tick = setInterval(function () {
+      if (!player || !ready || typeof player.getCurrentTime !== 'function') { return; }
+      var d = typeof player.getVideoData === 'function' ? player.getVideoData() : null;
+      if (d && d.video_id && d.video_id !== v) { return; }
+      if (player.getCurrentTime() < e) { armed = true; return; }
+      if (!armed) { return; }
+      clearInterval(tick); tick = null;
+      if (idx + 1 < links.length) { play(idx + 1); } else if (player.pauseVideo) { player.pauseVideo(); }
+    }, 200);
+  }
+
+  function build(v, s) {
     var holder = document.createElement('div');
     frame.innerHTML = '';
     frame.appendChild(holder);
-    var vars = { autoplay: 1, rel: 0, playsinline: 1, start: s, mute: quiet ? 1 : 0 };
-    if (e) { vars.end = e; }
     player = new window.YT.Player(holder, {
       host: 'https://www.youtube-nocookie.com',
       videoId: v, width: '100%', height: '100%',
-      playerVars: vars,
+      playerVars: { autoplay: 1, rel: 0, playsinline: 1, start: Math.floor(s), mute: quiet ? 1 : 0 },
       events: {
         onReady: function (e) {
           ready = true;
@@ -235,22 +253,18 @@ document.addEventListener('play', function (e) {
   function play(i) {
     idx = i;
     mark(i);
-    var a = links[i], v = a.getAttribute('data-v'), s = secs(a, 'data-s'), e = secs(a, 'data-e');
-    if (player && ready) {
-      var o = { videoId: v, startSeconds: s };
-      if (e) { o.endSeconds = e; }
-      player.loadVideoById(o);
-      return;
-    }
+    var a = links[i], v = a.getAttribute('data-v'), s = secs(a, 'data-s');
+    watch(v, secs(a, 'data-e'));
+    if (player && ready) { player.loadVideoById({ videoId: v, startSeconds: s }); return; }
     if (player || box.getAttribute('data-dr') === 'loading') { pending = i; return; }
     box.setAttribute('data-dr', 'loading');
-    if (window.YT && window.YT.Player) { build(v, s, e); return; }
+    if (window.YT && window.YT.Player) { build(v, s); return; }
     var prev = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = function () {
       if (typeof prev === 'function') { prev(); }
       var cur = links[pending !== null ? pending : idx];
       pending = null;
-      build(cur.getAttribute('data-v'), secs(cur, 'data-s'), secs(cur, 'data-e'));
+      build(cur.getAttribute('data-v'), secs(cur, 'data-s'));
     };
     var sc = document.createElement('script');
     sc.src = 'https://www.youtube.com/iframe_api';
