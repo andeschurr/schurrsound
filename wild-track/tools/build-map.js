@@ -94,8 +94,7 @@ const sentenceFor = (rows) => {
   return out;
 };
 const summary = '<strong>' + plural(n, 'production') + '</strong>: ' + shooting.length + ' shooting, ' + prep.length + ' in pre-production. '
-  + countries.map((c) => c + ' ' + byCountry(c).length).join(', ') + '. Checked ' + UPDATED + '.'
-  + (singles.length ? ' ' + (singles.length === 1 ? 'One has' : singles.length + ' have') + ' one public source so far and ' + (singles.length === 1 ? 'is' : 'are') + ' marked.' : '');
+  + countries.map((c) => c + ' ' + byCountry(c).length).join(', ') + '. Checked ' + UPDATED + '.';
 
 const ASEAN = ['Brunei','Cambodia','Indonesia','Laos','Malaysia','Myanmar','Philippines','Singapore','Thailand','Timor-Leste','Vietnam'];
 const faq = [
@@ -127,7 +126,7 @@ const ld = {
   '@graph': [
     { '@type': 'WebPage', '@id': 'https://schurrsound.com/whats-shooting', url: 'https://schurrsound.com/whats-shooting',
       name: "What's shooting in Australia, New Zealand and Southeast Asia",
-      description: plural(n, 'film and television production') + ' shooting or in pre-production, each linked to its public sources.' + (singles.length ? ' ' + singles.length + ' of them rest on one source so far and say so.' : ''),
+      description: plural(n, 'film and television production') + ' shooting or in pre-production, each linked to its public sources.',
       dateModified: UPDATED_ISO, inLanguage: 'en',
       author: { '@type': 'Person', name: 'Ande Schurr', jobTitle: 'Production sound mixer', url: 'https://schurrsound.com/about' } },
     { '@type': 'ItemList', name: 'Productions shooting or in pre-production', numberOfItems: n,
