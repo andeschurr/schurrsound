@@ -126,7 +126,10 @@
     var f = document.createElement('iframe');
     f.src = 'https://fast.wistia.net/embed/iframe/' + id + '?videoFoam=true' +
       (start ? '&time=' + start : '') +
-      (quiet ? '' : '&autoPlay=true&muted=true&silentAutoPlay=allow&endVideoBehavior=loop');
+      /* silentAutoPlay=true: plays muted with Wistia's "Click for sound" button, and a tap
+         anywhere turns the sound on. Never add muted=true: it hides that button, so on a
+         phone a tap only pauses (23 Nov 2026). */
+      (quiet ? '' : '&autoPlay=true&silentAutoPlay=true&endVideoBehavior=loop');
     f.title = 'Ande Schurr · Showreel';
     f.setAttribute('allow', 'autoplay; fullscreen');
     f.setAttribute('allowfullscreen', '');
