@@ -109,7 +109,6 @@ const faq = [
 /* ── generated HTML ────────────────────────────────────────────────────── */
 const srcHTML = (d) => '<div class="note srcs"><strong>' + (single(d) ? 'Source:' : 'Sources:') + '</strong> '
   + d.sources.map((x) => '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.name) + '</a>').join(' &nbsp;·&nbsp; ')
-  + (single(d) ? ' &nbsp;·&nbsp; the only public source so far' : '')
   + ' &nbsp;·&nbsp; checked ' + esc(d.checked) + '</div>';
 const listHTML = DATA.map((d, i) => '<li data-status="' + d.status + '"' + (single(d) ? ' data-one="1"' : '') + ' data-t="' + esc(d.title) + '">'
   + '<div class="rowhead"><span class="n">' + (i + 1) + '</span><span class="t">' + esc(d.title) + '</span>'

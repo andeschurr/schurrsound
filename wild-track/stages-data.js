@@ -81,7 +81,10 @@ var STAGES = [
     crewDepth:"Most Malaysian sound crews are based in Kuala Lumpur rather than Johor.",
 
     visit:{ visited:true, date:"2026-08-10", hosted:true },
-    article:{ slug:"johor", status:"published", published:"2026-11-19" },
+    /* The tour block on the map card (Ande 23 Nov 2026: the write-up must stand out from the official site). His words only. */
+    article:{ slug:"johor", status:"published", published:"2026-11-19", title:"Shooting in Johor: Iskandar Malaysia Studios",
+              thumb:"/img/notes/johor-post-sq-240.jpg", thumbAlt:"Ande Schurr in the Dolby Atmos mix stage at Iskandar Malaysia Studios",
+              quote:"Inside, the stages were really quiet. I didn’t hear a thing." },
     sources:[
       "Author site visit, 10 August 2026",
       "iskandarmalaysiastudios.com",
@@ -120,7 +123,7 @@ var STAGES = [
     crewDepth:null,
 
     visit:{ visited:true, date:"pre-2020", stale:true },
-    article:{ slug:null, status:"planned", expected:"2026-10" },
+    article:{ slug:null, status:"planned" },   /* no date: "when a job takes me back there" (The Stages page) */
     sources:[
       "infinitestudios.com.sg/batam",
       "Author familiarity, several years old"
