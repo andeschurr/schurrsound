@@ -1267,10 +1267,6 @@ html.lb-on{overflow:hidden}
 @media(max-width:340px){.hx-hero .hx-actions{gap:8px}.hx-hero .hx-actions .btn{font-size:13.5px;padding:15px 4px}}
 
 /* Production map, one-source pins (20 Nov 2026): a dashed outline on the map and a dashed tag in the list */
-body.map .pin.one circle:not(.halo){stroke:#f0ead8;stroke-width:1.9;stroke-dasharray:3.4 2.6}
-body.map .pin.one:hover circle:not(.halo),body.map .pin.one.on circle:not(.halo),body.map .pin.one:focus circle:not(.halo){stroke:#fff}
-body.map .tag.one{background:none;color:var(--grey);border:1px dashed currentColor;padding:1px 6px}
-body.map .legend .dot-one{background:none;border:1.5px dashed #f0ead8;width:8px;height:8px}
 
 /* Words under the slogan (preview, 20 Nov 2026): where the dialogue was recorded. Each word opens its proof. */
 .where{display:block;text-wrap:balance;margin:0;padding:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(20px,1.55vw,25px);line-height:1.25;color:var(--gold-soft)}
@@ -1677,3 +1673,26 @@ body.map .nav-links li.nav-loc a{color:var(--green)}
 /* LIV Golf: the series on the live broadcast page */
 .lv-media{margin-top:clamp(26px,4vw,48px);max-width:860px}
 .lv-media .cr-reel{margin-bottom:8px}
+
+/* Production map (23 Nov 2026): the map straight under the title, layers and filters on one tidy
+   line above it, titles that light up as the sweep passes. Pins with one source are no longer marked. */
+body.map .map-tools{display:flex;align-items:center;gap:6px;margin:0 0 10px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:1px 0 3px}
+body.map .map-tools::-webkit-scrollbar{display:none}
+body.map .map-tools .layers,body.map .map-tools .filters{display:flex;flex-wrap:nowrap;gap:6px;margin:0;padding:0;flex:0 0 auto}
+body.map .map-tools .filters[hidden]{display:none}
+body.map .map-tools .layers .lab,body.map .map-tools .layers button .state{display:none}
+body.map .map-tools .layers button{padding:6px 12px 6px 9px;gap:7px;font-size:13px;border-width:1.5px;border-radius:18px;white-space:nowrap}
+body.map .map-tools .layers button .swatch{width:13px;height:13px;border-width:1.5px}
+body.map .map-tools .layers button[aria-pressed="true"] .swatch::after{left:2.6px;top:-.5px;width:4px;height:8px;border-width:0 2px 2px 0}
+body.map .map-tools .filters button{padding:6px 11px;font-size:11.5px;letter-spacing:.06em;white-space:nowrap}
+body.map .map-tools .sep{flex:0 0 auto;width:1px;height:22px;background:var(--map-line);margin:0 3px}
+@media(min-width:701px){body.map .map-tools{flex-wrap:wrap;overflow:visible;row-gap:8px}}
+@media(max-width:1279px){body.map .map-tools .sep{display:none}body.map .map-tools .layers{margin-right:8px}}
+@media(max-width:700px){body.map .map-tools{margin-right:-22px}body.map .map-tools::after{content:"";flex:0 0 16px}}
+body.map .page-intro{margin-top:30px}
+body.map .sweep-lab{opacity:0;pointer-events:none}
+body.map .sweep-lab rect{fill:rgba(21,42,33,.88);stroke:rgba(220,189,94,.7);stroke-width:1}
+body.map .sweep-lab text{fill:#f6f1e2;font-family:Inter,system-ui,sans-serif;font-weight:600}
+@media(prefers-reduced-motion:reduce){body.map .sweep-lab{display:none}}
+body.map .cols>*{min-width:0}
+body.map .sweep-lab line{stroke:rgba(220,189,94,.75)}

@@ -9,9 +9,9 @@
 
    sources: one to three public links per pin, [{name, url}], strongest first.
             Two or three from different publishers is the standard.
-            A pin with ONE source is allowed since 20 November 2026. The code
-            marks it "one source" on the map and in the list, so never write
-            that in a note. The one source must be first-hand or trade press
+            A pin with ONE source is allowed since 20 November 2026. Since
+            23 November 2026 nothing on the map or in the list marks it (Ande
+            asked). The one source must be first-hand or trade press
             (screen agency, film commission, guild, studio, streamer,
             broadcaster, newspaper). A directory such as Production List,
             IMDb or Wikipedia is a lead to follow up, never the only source.
@@ -332,7 +332,7 @@ function buildMapInner(rows, opts){
     var p=POS[d.title] || { x:X(d.lng), y:Y(d.lat) };
     var x=p.x, y=p.y, n=ns.get(d.title);
     var ang=(Math.atan2(x-sx,-(y-sy))*180/Math.PI+360)%360;
-    s+='<g class="pin'+((d.sources&&d.sources.length===1)?' one':'')+'" data-t="'+d.title+'" data-st="'+d.status+'" style="--d:'+(ang/360*9).toFixed(2)+'s" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'">'+(d.status==='shooting'?'<circle class="halo" cx="'+x+'" cy="'+y+'" r="16" fill="none"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
+    s+='<g class="pin" data-t="'+d.title+'" data-st="'+d.status+'" style="--d:'+(ang/360*9).toFixed(2)+'s" tabindex="0" role="button" aria-label="'+(d.title+', '+d.city+', '+LABELS[d.status])+'">'+(d.status==='shooting'?'<circle class="halo" cx="'+x+'" cy="'+y+'" r="16" fill="none"/>':'')+'<circle cx="'+x+'" cy="'+y+'" r="16" fill="'+COLORS[d.status]+'"/>';
     s+='<text class="pinnum" x="'+x+'" y="'+(y+3.6)+'">'+n+'</text></g>';
   });
 

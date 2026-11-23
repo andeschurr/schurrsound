@@ -101,7 +101,7 @@ const faq = [
   ['What is shooting in Australia right now?', 'As of ' + UPDATED + '. ' + sentenceFor(byCountry('Australia'))],
   ['What is shooting in New Zealand right now?', 'As of ' + UPDATED + '. ' + sentenceFor(byCountry('New Zealand'))],
   ['What is shooting in Southeast Asia right now?', 'As of ' + UPDATED + '. ' + sentenceFor(DATA.filter((d) => ASEAN.includes(d.country)))],
-  ['How is the map checked?', 'Every production links to its public sources, such as a trade paper or a screen agency release. Two or three from different publishers is the standard. Where only one publisher has reported a production so far, the pin is marked "one source" until a second confirms it. The list is rechecked every week. Only productions in pre-production or shooting are listed, and wrapped titles come off.'],
+  ['How is the map checked?', 'Every production links to its public sources, such as a trade paper or a screen agency release. Two or three from different publishers is the standard. The list is rechecked every week. Only productions in pre-production or shooting are listed, and wrapped titles come off.'],
   ['Does it list crew or contact details?', 'No. It shows what is shooting, where, and the production or service company when that is public. For contacts, go through the production company or the local screen agency.'],
   ['Can I add a production?', 'Yes. Email the title and the start month to ande@schurrsound.com. It goes on once a public source confirms it.'],
 ];
@@ -114,7 +114,7 @@ const srcHTML = (d) => '<div class="note srcs"><strong>' + (single(d) ? 'Source:
 const listHTML = DATA.map((d, i) => '<li data-status="' + d.status + '"' + (single(d) ? ' data-one="1"' : '') + ' data-t="' + esc(d.title) + '">'
   + '<div class="rowhead"><span class="n">' + (i + 1) + '</span><span class="t">' + esc(d.title) + '</span>'
   + '<span class="tag" style="background:' + COLORS[d.status] + '">' + LABELS[d.status] + '</span>'
-  + (single(d) ? '<span class="tag one">One source</span>' : '') + '</div>'
+  + '</div>'
   + '<div class="meta">' + esc(d.kind) + ' &nbsp;·&nbsp; ' + esc(place(d)) + '</div>'
   + (d.service ? '<div class="note"><strong>Serviced by</strong> ' + esc(d.service) + '</div>' : '')
   + '<div class="note">' + esc(d.note) + '</div>' + srcHTML(d) + '</li>').join('\n');
