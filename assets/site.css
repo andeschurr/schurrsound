@@ -1581,3 +1581,78 @@ body.press .facade:hover .play,body.press .facade:focus-visible .play{background
 .secret p{margin:0}
 @media(prefers-reduced-motion:reduce){.hx-links a::after,.hx-rows a::after{transition:none}}
 .hx-card p.hx-links a{text-decoration:none}
+
+/* Terrains and kinds of day (23 Nov 2026). Brush icons from /img/terrain.svg, one colour;
+   a kind-of-day label is a small pill with its own coloured dot. */
+html{scroll-padding-top:84px}
+.ti{display:inline-block;width:1em;height:1em;fill:currentColor;flex:0 0 auto}
+.tx{background:var(--paper);border-bottom:1px solid var(--line);padding:22px 0 28px}
+.tx-in{max-width:1180px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:700px){.tx-in{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1100px){.tx-in{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.tx a{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:11px;align-items:center;padding:12px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;text-decoration:none;color:var(--green);transition:border-color .2s}
+.tx a:hover,.tx a:focus-visible{border-color:var(--gold)}
+.tx .ti{grid-row:1 / 3;width:42px;height:42px}
+.tx-n{font-family:var(--hx-serif);font-size:20px;font-weight:600;line-height:1.08}
+.tx-j{font-size:12.5px;line-height:1.35;color:#6a675c;margin-top:2px}
+.loc h2 .ti{width:1.2em;height:1.2em;vertical-align:-.22em;margin-right:.32em}
+.job{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:28px 0 8px;font-weight:600;color:var(--green)}
+.job a{color:inherit}
+.job-m{font-weight:400;font-size:14px;color:#6a675c}
+.kd{display:inline-flex;align-items:center;gap:6px;padding:1px 10px 1px 8px;border:1px solid #d9cfb4;border-radius:999px;font-size:12.5px;font-weight:600;font-style:normal;letter-spacing:.01em;line-height:1.6;color:var(--green);background:#fffdf7;white-space:nowrap}
+.kd::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--kd,#1e3a2f)}
+.kd-drama{--kd:#1e3a2f}.kd-doc{--kd:#6b8a3a}.kd-corp{--kd:#35607a}.kd-live{--kd:#8a3f5f}.kd-hire{--kd:#a6852f}
+.loc mark{background:linear-gradient(transparent 58%,rgba(214,196,147,.6) 58%);color:inherit;padding:0 .04em}
+.tx-up{margin:24px 0 0;font-size:14px}
+.tx-up a{color:#6a675c;text-decoration:none;border-bottom:1px solid #d9cfb4}
+.tx-up a:hover{color:var(--green);border-bottom-color:var(--gold)}
+/* the five kinds of day carry their dot wherever they are listed */
+.hx-rows a[class*="kd-"] .t::before{content:"";display:inline-block;width:.3em;height:.3em;border-radius:50%;background:var(--kd);margin-right:.3em;vertical-align:.16em}
+/* the menu: Difficult locations first, with its wave, quieter than the map's pill */
+.nav-links li.nav-loc a{display:flex;align-items:center;gap:7px;font-weight:600;color:var(--green)}
+.nav-links li.nav-loc .ti{width:20px;height:20px}
+.nav-links li.nav-loc small{display:none}
+@media(min-width:961px) and (max-width:1199px){.nav-links li.nav-loc .nl-d{display:none}}
+@media(max-width:960px){
+  nav .nav-links li.nav-loc{order:0;grid-column:1 / -1}
+  nav .nav-links li.nav-loc a{display:grid;grid-template-columns:auto 1fr;gap:1px 12px;align-items:center;padding:10px 2px}
+  nav .nav-links li.nav-loc .ti{grid-row:1 / span 2;width:30px;height:30px}
+  nav .nav-links li.nav-loc small{display:block;grid-column:2;font-weight:400;font-size:13px;color:#6a675c;letter-spacing:.01em}
+}
+body.map .nav-links li.nav-loc a{color:var(--green)}
+/* the terrain lists (home hero, footer) carry their brush icons */
+.where .ti{width:1.15em;height:1.15em;margin-right:.35em;vertical-align:-.22em}
+/* Singapore time as timecode, GMT+8, leading to About (Ande 23 Nov: "quite a cool look") */
+.hx-now{display:inline-grid;gap:3px;margin-top:24px;padding:12px 18px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;text-decoration:none;color:var(--green);transition:border-color .2s}
+.hx-now[hidden]{display:none}
+.hx-now:hover,.hx-now:focus-visible{border-color:var(--gold)}
+.hx-now-l{font-size:13px;line-height:1.3;color:#6a675c;letter-spacing:.02em}
+.hx-now .hx-tc{font-size:clamp(30px,4.2vw,44px);line-height:1.05;font-weight:600;letter-spacing:.03em}
+.hx-now-s{font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:4px}
+.hx-now-hero{display:inline-flex;align-items:baseline;gap:10px;margin-top:18px;padding:7px 14px}
+.hx-now-hero[hidden]{display:none}
+.hx-now-hero .hx-tc{font-size:20px}
+.tx a{padding:10px 11px;column-gap:10px}
+.tx .ti{width:36px;height:36px}
+.tx-n{font-size:19px}
+@media(min-width:700px){.tx a{padding:12px}.tx .ti{width:42px;height:42px}.tx-n{font-size:20px}}
+@media(min-width:961px) and (max-width:1199px){
+  nav .nav-links{gap:11px}
+  .nav-links li.nav-loc .nl-l{text-transform:capitalize}
+  .nav-links li.nav-loc .ti{width:18px;height:18px}
+}
+@media(min-width:961px) and (max-width:1080px){
+  nav .wordmark{letter-spacing:.16em}
+  nav .nav-links a,nav .series-btn{font-size:12.5px}
+  nav .nav-links li.hl a{padding:5px 9px 5px 8px;gap:6px}
+  nav .nav-cta{padding:9px 11px}
+}
+@media(min-width:1200px) and (max-width:1279px){
+  .nav-links li.nav-loc .nl-d{display:none}
+  .nav-links li.nav-loc .nl-l{text-transform:capitalize}
+}
+@media(min-width:961px) and (max-width:1000px){
+  nav .nav-links{gap:8px}
+  nav .wordmark{letter-spacing:.12em}
+}
+@media(min-width:961px) and (max-width:980px){nav .nav-cta{padding:9px 9px}nav .nav-links li.hl a{padding:5px 8px 5px 7px}nav .wordmark{letter-spacing:.1em}}
