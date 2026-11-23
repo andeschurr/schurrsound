@@ -123,6 +123,7 @@
     done = true;
     var id = box.getAttribute('data-reel');
     var start = parseFloat(box.getAttribute('data-reel-start')) || 0;
+    var end = parseFloat(box.getAttribute('data-reel-end')) || 0;
     var f = document.createElement('iframe');
     f.src = 'https://fast.wistia.net/embed/iframe/' + id + '?videoFoam=true' +
       (start ? '&time=' + start : '') +
@@ -133,14 +134,15 @@
     f.title = 'Ande Schurr · Showreel';
     f.setAttribute('allow', 'autoplay; fullscreen');
     f.setAttribute('allowfullscreen', '');
-    if (start) { f.className = 'wistia_embed'; f.name = 'wistia_embed'; }
+    if (start || end) { f.className = 'wistia_embed'; f.name = 'wistia_embed'; }
     frame.innerHTML = '';
     frame.appendChild(f);
-    if (start) {
-      /* Wistia's player API for iframes: keep the playhead at or after the start point. */
+    if (start || end) {
+      /* Wistia's player API for iframes: keep the playhead between the start and end points
+         (data-reel-end, 23 Nov 2026: one moment of the reel plays on a loop, e.g. Piggy). */
       window._wq = window._wq || [];
       window._wq.push({ id: id, onReady: function (v) {
-        var skip = function (t) { if (t < start - 0.4) { v.time(start); } };
+        var skip = function (t) { if (t < start - 0.4 || (end && t >= end)) { v.time(start); } };
         skip(v.time());
         v.bind('timechange', skip);
       } });
