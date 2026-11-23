@@ -1717,3 +1717,20 @@ body.map .stage-off:hover{color:var(--green)}
 .hx-story.hx-tour:hover .t{text-decoration:none}
 .hx-story.hx-tour:hover .go,.hx-story.hx-tour:focus-visible .go{border-bottom-color:var(--green)}
 @media(min-width:700px){.prose a.hx-story.hx-tour,.hx-story.hx-tour{grid-template-columns:minmax(0,280px) minmax(0,1fr);padding:20px 22px 20px 18px;align-items:start}.hx-story.hx-tour img{aspect-ratio:4/5}}
+/* Terrain icons sit in fine circles, apart from their words (Ande 23 Nov 2026: "too much noise as they are
+   together with the titles"). The icon is the content box; padding and a hairline make the circle. */
+.ti{box-sizing:content-box;border:1px solid currentColor;border-radius:50%}
+@supports (border-color:color-mix(in srgb,red 50%,transparent)){.ti{border-color:color-mix(in srgb,currentColor 42%,transparent)}}
+.where a{display:inline-flex;align-items:center;gap:.42em;border-bottom:0;padding-bottom:0;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(220,189,94,.42);text-underline-offset:.22em}
+.where a:hover,.where a:focus-visible{text-decoration-color:#fff}
+.where .ti{width:.78em;height:.78em;padding:.2em;margin:0;vertical-align:middle}
+.loc h2 .ti{width:.72em;height:.72em;padding:.15em;vertical-align:-.1em;margin-right:.34em}
+.tx .ti{width:24px;height:24px;padding:7px}
+@media(min-width:700px){.tx .ti{width:28px;height:28px;padding:8px}}
+.nav-links li.nav-loc .ti{width:12px;height:12px;padding:4px}
+@media(max-width:960px){nav .nav-links li.nav-loc .ti{width:18px;height:18px;padding:6px}}
+@media(min-width:961px) and (max-width:1199px){.nav-links li.nav-loc .ti{width:11px;height:11px;padding:3.5px}}
+/* Key words on Difficult locations: a yellow highlighter, nothing like a link (Ande 23 Nov 2026). */
+.loc mark{color:inherit;padding:.02em .2em;margin:0 -.05em;border-radius:.42em .2em .48em .26em;
+  background:linear-gradient(97deg,rgba(255,219,56,.14) 0,rgba(255,219,56,.64) .42em,rgba(255,219,56,.52) 1.3em,rgba(255,219,56,.52) calc(100% - 1.3em),rgba(255,219,56,.66) calc(100% - .42em),rgba(255,219,56,.16) 100%) 0 60%/100% 88% no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}

@@ -105,9 +105,11 @@
   });
 })();
 
-/* Home hero: the showreel starts silently when it comes into view, looping; Wistia's
-   own button turns the sound on. Visitors who prefer reduced motion or save data get
-   the player without autoplay. Without JavaScript the link opens the reel.
+/* The showreel: one press on play and it plays with the sound on (Ande, 23 Nov 2026:
+   muted autoplay meant play, then unmute, "two points of friction"). No autoplay and
+   never muted: the press lands on Wistia's own play button, inside the player, so every
+   browser lets the sound play. The player loads as it nears the screen. Without
+   JavaScript the link opens the reel.
    data-reel-start (seconds) skips the reel's opening title card: the reel starts there,
    loops back to there, and cannot be scrubbed to before it. Remove the attribute once
    the card has been trimmed off the video itself in Wistia. */
@@ -115,8 +117,6 @@
   var box = document.querySelector('.hero-reel[data-reel]');
   if (!box) { return; }
   var frame = box.querySelector('.reel');
-  var quiet = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
-    (navigator.connection && navigator.connection.saveData);
   var done = false;
   function add() {
     if (done) { return; }
@@ -126,11 +126,8 @@
     var end = parseFloat(box.getAttribute('data-reel-end')) || 0;
     var f = document.createElement('iframe');
     f.src = 'https://fast.wistia.net/embed/iframe/' + id + '?videoFoam=true' +
-      (start ? '&time=' + start : '') +
-      /* silentAutoPlay=true: plays muted with Wistia's "Click for sound" button, and a tap
-         anywhere turns the sound on. Never add muted=true: it hides that button, so on a
-         phone a tap only pauses (23 Nov 2026). */
-      (quiet ? '' : '&autoPlay=true&silentAutoPlay=true&endVideoBehavior=loop');
+      (start ? '&time=' + start : '');
+      /* Never add autoPlay, silentAutoPlay or muted here (23 Nov 2026, above). */
     f.title = 'Ande Schurr · Showreel';
     f.setAttribute('allow', 'autoplay; fullscreen');
     f.setAttribute('allowfullscreen', '');
@@ -139,10 +136,14 @@
     frame.appendChild(f);
     if (start || end) {
       /* Wistia's player API for iframes: keep the playhead between the start and end points
-         (data-reel-end, 23 Nov 2026: one moment of the reel plays on a loop, e.g. Piggy). */
+         (data-reel-end, 23 Nov 2026: one moment of the reel, e.g. Piggy). */
       window._wq = window._wq || [];
       window._wq.push({ id: id, onReady: function (v) {
-        var skip = function (t) { if (t < start - 0.4 || (end && t >= end)) { v.time(start); } };
+        /* a moment with an end point plays once, then waits at its start for the next press */
+        var skip = function (t) {
+          if (end && t >= end) { v.pause(); v.time(start); }
+          else if (t < start - 0.4) { v.time(start); }
+        };
         skip(v.time());
         v.bind('timechange', skip);
       } });
