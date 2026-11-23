@@ -1674,3 +1674,6 @@ body.map .nav-links li.nav-loc a{color:var(--green)}
   .locmap .lab{font-size:22px}.locmap .lab.big{font-size:32px}.locmap .lab.small{font-size:19px}.locmap .cty{font-size:26px}.locmap .sea-l{font-size:22px}.locmap .rise-l{font-size:24px}
   .shipmap .lab{font-size:19px}.shipmap .cap{font-size:24px}.shipmap .note{font-size:15px}
 }
+/* LIV Golf: the series on the live broadcast page */
+.lv-media{margin-top:clamp(26px,4vw,48px);max-width:860px}
+.lv-media .cr-reel{margin-bottom:8px}
