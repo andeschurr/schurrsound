@@ -338,3 +338,55 @@ document.addEventListener('play', function (e) {
     });
   });
 })();
+
+/* Driven to Greatness on the Singapore page (25 Nov 2026).
+   Ande's own clip ([data-clip]): nothing loads until the visitor presses play, and that one press
+   starts it with the sound on. Adding ?quiet to the address starts it muted. Starting a YouTube
+   video on the page stops it.
+   The coming-soon button ([data-lights]): five start lights come on one by one, then go out. */
+(function () {
+  var box = document.querySelector('[data-clip]');
+  var v = box && box.querySelector('video'), b = box && box.querySelector('.dtg-play');
+  if (v && b) {
+    b.addEventListener('click', function () {
+      v.muted = /[?&]quiet\b/.test(location.search);
+      v.controls = true;
+      box.classList.add('playing');
+      var p = v.play();
+      if (p && p.catch) { p.catch(function () { v.controls = false; box.classList.remove('playing'); }); }
+    });
+    v.addEventListener('ended', function () {
+      v.controls = false;
+      box.classList.remove('playing');
+      var s = b.querySelector('span');
+      if (s) { s.textContent = 'Play again'; }
+      v.load();
+    });
+    document.addEventListener('click', function (e) {
+      if (!v.paused && e.target.closest && e.target.closest('.reel-start, [data-yt-pop]')) { v.pause(); }
+    });
+  }
+  var btn = document.querySelector('[data-lights]');
+  if (!btn) { return; }
+  var bulbs = [].slice.call(btn.querySelectorAll('.dtg-bulbs i'));
+  var lab = btn.querySelector('.dtg-lab'), say = btn.parentNode.querySelector('.dtg-say');
+  var label = lab ? lab.textContent : '', busy = false;
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function out() {
+    bulbs.forEach(function (i) { i.classList.remove('on'); });
+    if (lab) { lab.textContent = 'Still on the grid!'; }
+    if (say) { say.textContent = 'Not out yet. The link goes here as soon as the episode is public.'; }
+    setTimeout(function () {
+      if (lab) { lab.textContent = label; }
+      if (say) { say.textContent = ''; }
+      busy = false;
+    }, 2600);
+  }
+  btn.addEventListener('click', function () {
+    if (busy) { return; }
+    busy = true;
+    if (calm) { out(); return; }
+    bulbs.forEach(function (i, k) { setTimeout(function () { i.classList.add('on'); }, 360 * (k + 1)); });
+    setTimeout(out, 360 * bulbs.length + 800);
+  });
+})();
