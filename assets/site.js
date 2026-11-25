@@ -343,7 +343,7 @@ document.addEventListener('play', function (e) {
    Ande's own clip ([data-clip]): nothing loads until the visitor presses play, and that one press
    starts it with the sound on. Adding ?quiet to the address starts it muted. Starting a YouTube
    video on the page stops it.
-   The coming-soon button ([data-lights]): five start lights come on one by one, then go out. */
+   The coming-soon card ([data-soon]): its button runs the five start lights, one by one, then out. */
 (function () {
   var box = document.querySelector('[data-clip]');
   var v = box && box.querySelector('video'), b = box && box.querySelector('.dtg-play');
@@ -368,8 +368,9 @@ document.addEventListener('play', function (e) {
   }
   var btn = document.querySelector('[data-lights]');
   if (!btn) { return; }
-  var bulbs = [].slice.call(btn.querySelectorAll('.dtg-bulbs i'));
-  var lab = btn.querySelector('.dtg-lab'), say = btn.parentNode.querySelector('.dtg-say');
+  var card = btn.closest('[data-soon]') || btn.parentNode;
+  var bulbs = [].slice.call(card.querySelectorAll('.dtg-bulbs i'));
+  var lab = btn.querySelector('.dtg-lab'), say = card.querySelector('.dtg-say');
   var label = lab ? lab.textContent : '', busy = false;
   var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function out() {
