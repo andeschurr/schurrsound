@@ -32,116 +32,208 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 (function(){
-var UPDATED = "20 November 2026";
+var UPDATED = "25 November 2026";
 
 var DATA = [
   {
     title:"Feral", kind:"Series · Netflix",
     city:"Gold Coast + Whitsundays", country:"Australia", region:"ANZ",
-    service:"Hera Pictures",
+    service:"",
     status:"shooting",
-    note:"Seven-part survival drama from Shirley Conran's novel Savages, with Michelle Dockery, Jessica Gunning and Philippa Northeast. Emma Freeman directing. Filming across the Gold Coast, its hinterland and the Whitsunday Islands, October 2026 to February 2027.",
+    note:"Seven-part survival drama from Shirley Conran's novel Savages, with Michelle Dockery, Jessica Gunning and Philippa Northeast, directed by Emma Freeman for Hera Pictures in association with Warner Bros. International Television Production. Screen Queensland said on 23 October 2026 that filming was underway, using the Gold Coast rainforest and the Whitsunday Islands. No wrap date published.",
     lat:-28.00, lng:153.30,
     sources:[
+      {name:"Screen Queensland", url:"https://screenqueensland.com.au/sq-news/media-centre/netflix-series-feral-filming-in-queensland/"},
       {name:"TV Blackbox", url:"https://tvblackbox.com.au/page/2026/10/23/netflix-takes-feral-to-queensland-with-international-star-cast/"},
-      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/netflixs-feral-queensland-michelle-dockery-jessica-gunning-philippa-northeast-41802/"},
-      {name:"What's on Netflix", url:"https://www.whats-on-netflix.com/news/netflix-movies-filming-fall-2026/"}
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/netflixs-feral-queensland-michelle-dockery-jessica-gunning-philippa-northeast-41802/"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
   },
   {
     title:"Deadlocked", kind:"Feature · Amazon MGM Studios",
     city:"Melbourne", country:"Australia", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Jamie Foxx hostage thriller with Sasha Calle, KiKi Layne and Luke Hemsworth. Cameras rolled in early October across the CBD, Docklands, Port Melbourne and Docklands Studios, with Melbourne doubling for New York. No wrap date published.",
+    note:"Jamie Foxx hostage thriller with Sasha Calle, KiKi Layne and Luke Hemsworth, directed by Nikhil Bhat. Cameras rolled in early October across the CBD, Docklands, Port Melbourne and Docklands Studios, with Melbourne doubling for New York. VicScreen said on 22 October 2026 that filming was underway. No wrap date published.",
     lat:-37.815, lng:144.94,
     sources:[
-      {name:"Premier of Victoria", url:"https://www.premier.vic.gov.au/labor-locks-jamie-foxxs-new-action-film"},
+      {name:"VicScreen", url:"https://vicscreen.vic.gov.au/news/new-jamie-foxx-action-film-locks-in-victoria/"},
       {name:"Variety Australia", url:"https://au.variety.com/2026/film/news/jamie-foxx-deadlocked-victoria-40945/"},
       {name:"AAP", url:"https://www.illawarramercury.com.au/story/9373058/jamie-foxx-brings-hollywood-action-to-australia/"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
   },
   {
-    title:"The Girl Who Was Plugged In", kind:"Feature · Range Media Partners",
-    city:"Australia, city not announced", country:"Australia", region:"ANZ",
+    title:"Lenni", kind:"Series · Apple TV",
+    city:"Sydney", country:"Australia", region:"ANZ",
     service:"",
-    status:"prep",
-    note:"Jennifer Kent's sci-fi feature from the James Tiptree Jr. story, Sophie Thatcher in dual lead roles. Announced in May for a mid-November 2026 start in Australia. No public update on the city or the start since.",
-    lat:-25.00, lng:134.00,
+    status:"shooting",
+    note:"Comedy drama adapted from the Norwegian series Pernille, starring Toni Collette with Ciarán Hinds, Dan Wyllie and Celeste Barber, directed by Dearbhla Walsh for Made Up Stories and Keshet International. Announced on 4 November 2026 with filming already underway in Sydney. No wrap date published.",
+    lat:-33.87, lng:151.21,
     sources:[
-      {name:"Dread Central", url:"https://www.dreadcentral.com/news/571420/the-girl-who-was-plugged-in-sophia-thatcher-joins-jennifer-kents-sci-fi-thriller/"},
-      {name:"World of Reel", url:"https://www.worldofreel.com/blog/2026/5/6/jennifer-kent-sets-sci-fi-the-girl-who-was-plugged-in-with-sophie-thatcher-eyes-november-2026-shoot"},
-      {name:"Production List", url:"https://www.productionlist.com/production/the-girl-who-was-plugged-in"}
+      {name:"IF Magazine", url:"https://if.com.au/apple-tv-orders-toni-collette-comedy-drama-lenni-now-filming-in-sydney/"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/toni-collette-apple-tv-lenni-norwegian-format-42266/"},
+      {name:"TheWrap", url:"https://www.thewrap.com/creative-content/tv-shows/toni-collette-apple-tv-dark-comedy-lenni/"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
+  },
+  {
+    title:"The Artful Dodger (Season 3)", kind:"Series · Disney+",
+    city:"Sydney", country:"Australia", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Third and final season of the period drama, with Thomas Brodie-Sangster, David Thewlis and Maia Mitchell, joined by Ewen Leslie, Stephen Curry and Broden Kelly, co-produced with Sony Pictures Television's Curio Pictures. Disney+ said on 6 October 2026 that principal photography was underway in Sydney. No wrap date published.",
+    lat:-33.90, lng:151.18,
+    sources:[
+      {name:"Disney+", url:"https://www.disneyplus.com/en-au/explore/articles/the-artful-dodger-season-3-cast"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/artful-dodger-season-three-stephen-curry-broden-kelly-ewen-leslie-41015/"},
+      {name:"IF Magazine", url:"https://if.com.au/ewen-leslie-stephen-curry-broden-kelly-join-the-artful-dodger/"}
+    ],
+    checked:"2026-11-25"
+  },
+  {
+    title:"Bluefly", kind:"Feature · Highland Film Group",
+    city:"Gold Coast", country:"Australia", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Sci-fi action thriller directed by Nimród Antal, with Russell Crowe, Priyanka Chopra Jonas and Michael Chiklis. Screen Queensland said on 11 November 2026 that filming was underway on the Gold Coast, at Village Roadshow Studios and on location. No wrap date published.",
+    lat:-27.91, lng:153.31,
+    sources:[
+      {name:"Screen Queensland", url:"https://screenqueensland.com.au/sq-news/media-centre/bluefly-brings-russell-crowe-and-priyanka-chopra-jonas-back-to-queensland/"},
+      {name:"IF Magazine", url:"https://if.com.au/nimrod-antals-bluefly-sets-course-for-the-gold-coast-with-russell-crowe-priyanka-chopra-jonas/"}
+    ],
+    checked:"2026-11-25"
+  },
+  {
+    title:"Slander", kind:"Series · Stan",
+    city:"Melbourne", country:"Australia", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Legal drama created by Rachel Griffiths and Marieke Hardy, from Blackfella Films, with Griffiths, Jessica De Gouw and Roxie Mohebbi. IF Magazine reported on 18 September 2026 that production would begin in Melbourne soon, and VicScreen listed it as currently filming on 22 October. No wrap date published.",
+    lat:-37.80, lng:144.97,
+    sources:[
+      {name:"VicScreen", url:"https://vicscreen.vic.gov.au/news/new-jamie-foxx-action-film-locks-in-victoria/"},
+      {name:"IF Magazine", url:"https://if.com.au/stan-reboots-mcleods-daughters-orders-slander-stuck-up-stupid/"},
+      {name:"Premier of Victoria", url:"https://www.premier.vic.gov.au/labor-locks-jamie-foxxs-new-action-film"}
+    ],
+    checked:"2026-11-25"
+  },
+  {
+    title:"2 Moons", kind:"Feature · Co-Curious",
+    city:"Parramatta, Sydney", country:"Australia", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Western Sydney sci-fi feature from Co-Curious, the first feature directed by Neil Sharma, with Fayssal Bazzi, Nicoletta Dimas and Nicole Nabout. IF Magazine reported on 19 November 2026 that production had begun in Parramatta. No wrap date published.",
+    lat:-33.815, lng:151.00,
+    sources:[
+      {name:"IF Magazine", url:"https://if.com.au/fayssal-bazzi-nicoletta-dimas-nicole-nabout-bask-under-the-glow-of-neil-sharmas-2-moons-in-parramatta/"}
+    ],
+    checked:"2026-11-25"
+  },
+  {
+    title:"Plague", kind:"Feature · Dingo Pictures",
+    city:"Dandenong Ranges, Victoria", country:"Australia", region:"ANZ",
+    service:"",
+    status:"shooting",
+    note:"Self-funded apocalyptic thriller directed and co-written by Ronnie Minder for his company Dingo Pictures. IF Magazine reported on 3 November 2026 that it was filming in Victoria, with scenes shot in the Dandenong Ranges, and that it would wrap in December at the earliest.",
+    lat:-37.87, lng:145.35,
+    sources:[
+      {name:"IF Magazine", url:"https://if.com.au/ronnie-minder-rolls-camera-on-apocalyptic-thriller-plague/"}
+    ],
+    checked:"2026-11-25"
   },
   {
     title:"McLeod's Daughters", kind:"Series · Stan",
     city:"Regional Victoria", country:"Australia", region:"ANZ",
     service:"",
     status:"prep",
-    note:"A new chapter of the Australian drama as a Stan Original, from Werner Film Productions, part of BBC Studios. Announced on 29 October 2026 to film in regional Victoria. No town or start date published yet.",
+    note:"A new chapter of the Australian drama as a Stan Original, from Werner Film Productions, part of BBC Studios. Announced on 29 October 2026 to film almost entirely in regional Victoria. No town, cast or start date published yet.",
     lat:-36.90, lng:144.60,
     sources:[
-      {name:"VicScreen", url:"https://vicscreen.vic.gov.au/news/giddy-up-mcleods-daughters-to-film-in-regional-victoria/"}
+      {name:"VicScreen", url:"https://vicscreen.vic.gov.au/news/giddy-up-mcleods-daughters-to-film-in-regional-victoria/"},
+      {name:"Mediaweek", url:"https://www.mediaweek.com.au/stan-s-mcleod-s-daughters-revival-heads-to-victoria"},
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/mcleods-daughters-revival-to-film-in-regional-victoria-42108/"}
     ],
-    checked:"2026-11-20"
+    checked:"2026-11-25"
+  },
+  {
+    title:"Pilli Sisters PI", kind:"Series · ABC",
+    city:"Perth", country:"Australia", region:"ANZ",
+    service:"",
+    status:"prep",
+    note:"Six-part crime drama set in Fremantle, created and written by Tasma Walton, who also stars, a co-production between Lingo Pictures, Third Act Stories and Meeniyan Stories. Screenwest crew attachment notices for Pilli Sisters Productions give Perth as the location, with a six-week grip attachment from 7 January to 17 February 2027. No shoot dates published.",
+    lat:-31.95, lng:115.86,
+    sources:[
+      {name:"Screenwest", url:"https://www.screenwest.com.au/news/abc-backs-new-western-australian-crime-drama-from-tasma-walton/"},
+      {name:"Screenwest crew notice", url:"https://www.screenwest.com.au/news/grip-assistant-attachment/"},
+      {name:"IF Magazine", url:"https://if.com.au/abc-announces-new-wa-set-crime-series-pilli-sisters-pi-from-tasma-walton/"}
+    ],
+    checked:"2026-11-25"
+  },
+  {
+    title:"Don't Look", kind:"Feature · Pathline Pictures / Bronte Studios",
+    city:"NSW Outback", country:"Australia", region:"ANZ",
+    service:"",
+    status:"prep",
+    note:"Outback creature horror, formerly titled From Below, directed by Kiah Roache-Turner, with Alyla Browne, George Pullar and Stephen Peacocke. IF Magazine reported on 12 November 2026 that production will now take place in the NSW Outback across February and March 2027. No town or start date published.",
+    lat:-31.50, lng:143.50,
+    sources:[
+      {name:"IF Magazine", url:"https://if.com.au/from-below-becomes-dont-look-with-kiah-roache-turner-set-to-direct/"}
+    ],
+    checked:"2026-11-25"
   },
   {
     title:"Spaceship Earth", kind:"Pilot · Disney+ / 20th Television",
     city:"Kumeu, Auckland", country:"New Zealand", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Disney+ pilot inspired by the EPCOT ride, with Catherine Laga'aia and Deacon Phillippe, Jason Fuchs showrunning. The Screen Guild reported it filming at Kumeu Film Studios in November and December 2026.",
+    note:"Disney+ pilot inspired by the EPCOT ride, with Catherine Laga'aia and Deacon Phillippe, Jason Fuchs showrunning. The Screen Guild's Auckland wrap of 23 September 2026 had it booking crew and due to film at KFS (Kumeu Film Studios) in Auckland during November and December 2026. No start or wrap confirmed since.",
     lat:-36.78, lng:174.56,
     sources:[
       {name:"NZ Screen Guild", url:"https://www.screenguild.co.nz/news/articles/regional-wrap-auckland-ik2mq"},
-      {name:"Laughing Place", url:"https://www.laughingplace.com/disney-parks/disney-plus-spaceship-earth-catherine-lagaaia-deacon-phillippe/"},
       {name:"TheWrap", url:"https://www.thewrap.com/creative-content/tv-shows/catherine-lagaaia-deacon-phillippe-cast-spaceship-earth-pilot-disney/"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
   },
   {
     title:"Māui & Elvis", kind:"Series · Whakaata Māori / APTN",
     city:"Canterbury (Christchurch)", country:"New Zealand", region:"ANZ",
-    service:"Whitebait Media",
+    service:"",
     status:"shooting",
-    note:"Sci-fi adventure comedy series for children, a Māori and Métis/Cree co-production with at least 30 percent of the dialogue in te reo Māori. Principal photography from 2 November 2026, based in Canterbury, with more scenes in Vancouver.",
+    note:"Sci-fi adventure comedy series for children and families, a Māori and Métis/Cree co-production from Whitebait Media and Canada's Mosaic Entertainment, with at least 30 percent of the dialogue in te reo Māori. Production was scheduled to begin in November 2026, and Screen CanterburyNZ, whose production grant backs it, has it filming in November and December. Set mainly in the South Island, with scenes in Vancouver.",
     lat:-43.53, lng:172.64,
     sources:[
       {name:"Whakaata Māori", url:"https://www.whakaatamaori.co.nz/media-releases/maui-elvis-brings-maori-and-metis-cree-indigenous-storytellers-together-in-new-international-co-production"},
-      {name:"Production List", url:"https://www.productionlist.com/indigenous-and-m-ori-co-production-maui-elvis-sets-alien-adventure-series-for-new-zealand-and-bc-shoot-in-late-2026"},
-      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/sci-fi-comedy-maui-elvis-whakaata-maori-aptn-39927/"}
+      {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/sci-fi-comedy-maui-elvis-whakaata-maori-aptn-39927/"},
+      {name:"Screen CanterburyNZ", url:"https://www.screenguild.co.nz/news/articles/boost-for-canterburys-screen-industry"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
   },
   {
     title:"Queenstown", kind:"Series · Netflix",
     city:"Queenstown", country:"New Zealand", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Eight-part drama set in Queenstown's luxury ski scene, with Rufus Sewell and Frances O'Connor, made by Silent Firework and Runaway Unicorn. Netflix's first series commissioned and shot in New Zealand. Production began in July 2026 for about six months in the resort town. No wrap date published.",
+    note:"Eight-part drama set in Queenstown's luxury ski scene, with Rufus Sewell and Frances O'Connor, made by Silent Firework and Runaway Unicorn. Netflix's first series commissioned and shot in New Zealand. Production began in July 2026, when the Otago Daily Times reported it would film in the resort over six months, with about 450 cast and crew jobs to Christmas. No wrap date published.",
     lat:-45.03, lng:168.66,
     sources:[
       {name:"Netflix Tudum", url:"https://www.netflix.com/tudum/articles/queenstown-series-plot-news"},
       {name:"Variety Australia", url:"https://au.variety.com/2026/tv/news/production-begins-on-new-netflix-series-queenstown-38644/"},
-      {name:"Otago Daily Times", url:"https://www.odt.co.nz/regions/queenstown/resort-town-set-theme-netflix-drama"}
+      {name:"Otago Daily Times", url:"https://www.odt.co.nz/regions/queenstown/netflix-shoot-new-drama-queenstown-resort"}
     ],
-    checked:"2026-11-20"
+    checked:"2026-11-25"
   },
   {
     title:"Chan", kind:"Drama series",
     city:"Auckland", country:"New Zealand", region:"ANZ",
     service:"",
     status:"shooting",
-    note:"Drama series from Kevin & Co. The Screen Guild's Auckland wrap of 23 September 2026 has it shooting in Auckland during November and December.",
+    note:"Drama series from Kevin & Co. The Screen Guild's Auckland wrap of 23 September 2026 has it due to shoot in Auckland during November and December.",
     lat:-36.85, lng:174.76,
     sources:[
       {name:"NZ Screen Guild", url:"https://www.screenguild.co.nz/news/articles/regional-wrap-auckland-ik2mq"}
     ],
-    checked:"2026-11-20"
+    checked:"2026-11-25"
   },
   {
     title:"You've Changed", kind:"Feature",
@@ -153,47 +245,70 @@ var DATA = [
     sources:[
       {name:"NZ Screen Guild", url:"https://www.screenguild.co.nz/news/articles/regional-wrap-auckland-ik2mq"}
     ],
-    checked:"2026-11-20"
+    checked:"2026-11-25"
   },
   {
     title:"Pendekar (Warrior)", kind:"Feature · Asia Media Alliance Group / Nation Pictures",
     city:"Iskandar Puteri, Johor", country:"Malaysia", region:"ASEAN",
     service:"",
     status:"shooting",
-    note:"Iko Uwais Silat action feature, John Radel directing, with Tak Sakaguchi and Alicia Amin. Filming began in early November at Iskandar Malaysia Studios and is due to wrap in late December. Earlier reports had the shoot in Indonesia.",
+    note:"Iko Uwais Silat action feature, John Radel directing, with Tak Sakaguchi and Alicia Amin. Screen Daily reports that filming began in early November at Iskandar Studios in Malaysia and is expected to wrap in late December. Earlier reports had the shoot in Indonesia.",
     lat:1.4084, lng:103.6370,
     sources:[
       {name:"Screen Daily", url:"https://www.screendaily.com/news/pendekar-warrior-starring-the-raids-iko-uwais-begins-malaysia-shoot/5222243.article"},
-      {name:"M.A.A.C.", url:"https://maactioncinema.com/archives/28305"},
-      {name:"ComingSoon", url:"https://www.comingsoon.net/movies/news/2098214-raid-iko-uwais-star-warrior-silat-action-thriller"}
+      {name:"M.A.A.C.", url:"https://maactioncinema.com/archives/28305"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
   },
   {
-    title:"Crazy Rich Asians (Series)", kind:"Series · HBO / Warner Bros. Television",
-    city:"Singapore + Malaysia", country:"Singapore", region:"ASEAN",
+    title:"The Day We Start Again", kind:"Feature · Lomo Pictures",
+    city:"Kuala Lumpur + Kluang", country:"Malaysia", region:"ASEAN",
     service:"",
-    status:"prep",
-    note:"HBO ordered eight episodes in October, with Constance Wu and Henry Golding back and Michelle Yeoh returning. Adele Lim showrunning. Production starts in 2027; Production List puts the shoot at April to October 2027 across New York, Singapore and Malaysia.",
-    lat:1.35, lng:103.82,
+    status:"shooting",
+    note:"China and Malaysia production from Lomo Pictures, co-produced by Xingyu Group and VYBE, with Bruce Chiu and Charlene An Yu Chin. Filming began on 6 October 2026, about 90 percent of it in Malaysia, in Kuala Lumpur and Kluang, with more planned in Luang Prabang, Laos. The Star reported on 15 November that it remained in production with filming still ahead, and gave no wrap date.",
+    lat:3.14, lng:101.69,
     sources:[
-      {name:"Business Today Malaysia", url:"https://www.businesstoday.com.my/2026/10/09/surprise-crazy-rich-asians-finally-gets-a-tv-adaptation/"},
-      {name:"The Star", url:"https://www.thestar.com.my/lifestyle/entertainment/2026/10/09/crazy-rich-asians-to-return-as-tv-series-with-michelle-yeoh-constance-wu-henry-golding-reprising-roles"},
-      {name:"Production List", url:"https://www.productionlist.com/hbo-s-crazy-rich-asians-series-from-adele-lim-sets-eight-episode-order-filming-new-york-singapore-and-malaysia-in-2027"}
+      {name:"The Star", url:"https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/15/film-icons-including-from-hong-kong-and-digital-creators-gather-to-open-a-new-chapter-for-039film--platform039"}
     ],
-    checked:"2026-11-19"
+    checked:"2026-11-25"
+  },
+  {
+    title:"Goreng!", kind:"Feature · Clover Films / GSC Movies",
+    city:"Kuala Lumpur", country:"Malaysia", region:"ASEAN",
+    service:"",
+    status:"shooting",
+    note:"Action comedy about a banana fritter stall used as cover for a bank heist, directed by M. Raihan Halim, with Sky Iskandar, Nadhir Nasar and Amelia Henderson. Malay Mail reported on 2 October 2026 that filming was underway, almost entirely in Kuala Lumpur. No shoot length or wrap date published.",
+    lat:3.16, lng:101.71,
+    sources:[
+      {name:"Malay Mail", url:"https://www.malaymail.com/news/showbiz/2026/10/02/pisang-goreng-by-day-bank-heist-by-night-m-raihan-halim-plots-2027-release-for-malaysian-action-comedy-goreng/237440"}
+    ],
+    checked:"2026-11-25"
   },
   {
     title:"Untitled FX pilot (Hiro Murai)", kind:"Pilot · FX",
     city:"Bangkok", country:"Thailand", region:"ASEAN",
     service:"",
     status:"prep",
-    note:"Untitled pilot for FX, directed by Hiro Murai from a story by Wong Kar-wai, written by Julia Cho and Charles Yu, with Havana Rose Liu as the planned lead. Reported on 9 October 2026 as set to shoot in Bangkok before the end of 2026. No dates published.",
+    note:"Untitled pilot for FX, directed by Hiro Murai from a story by Wong Kar-wai, written by Julia Cho and Charles Yu, with Havana Rose Liu as the planned lead. Reported on 9 October 2026, citing Deadline, as set to film in Bangkok before the end of 2026. No dates published and no start confirmed since.",
     lat:13.75, lng:100.52,
     sources:[
       {name:"The A.V. Club", url:"https://www.avclub.com/wong-kar-wai-hiro-murai-teaming-up-fx-pilot-havana-rose-liu"}
     ],
-    checked:"2026-11-20"
+    checked:"2026-11-25"
+  },
+  {
+    title:"We Could Be in Love", kind:"Feature · Tiger & Dog Productions",
+    city:"Manila", country:"Philippines", region:"ASEAN",
+    service:"",
+    status:"prep",
+    note:"Indie romantic comedy directed by Marie Jamora, with Jasmine Curtis-Smith, yao, Jamie Chung and Lou Diamond Phillips. Announced in early October 2026 with principal photography to begin in November in New York and Manila. No Manila dates published and no start confirmed yet.",
+    lat:14.60, lng:120.98,
+    sources:[
+      {name:"BroadwayWorld", url:"https://www.broadwayworld.com/bwwtv/article/Photos-WE-COULD-BE-IN-LOVE-to-Launch-with-Curtis-Smith-Chung-Phillips-20261005"},
+      {name:"GMA News", url:"https://www.gmanetwork.com/news/showbiz/chikaminute/1004882/jasmine-curtis-smith-to-star-in-international-indie-film-we-could-be-in-love/story/"},
+      {name:"MEGA", url:"https://mega-asia.com/women/jasmine-curtis-smith-we-could-be-in-love-movie/"}
+    ],
+    checked:"2026-11-25"
   }
 ];
 
