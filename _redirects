@@ -1,9 +1,12 @@
 # Credits is now a real HTML page at /credits (credits.html).
 # The PDFs keep clean permanent URLs of their own.
-/credits.pdf  /assets/Ande_Schurr_Credits.pdf  302
+# 28 Nov 2026: Google saw the credits PDF at two addresses (Search Console: "Duplicate without user-selected
+# canonical"). /credits.pdf now serves the file itself (200), and both addresses name /credits.pdf as the one
+# to show (Link header in _headers).
+/credits.pdf  /assets/Ande_Schurr_Credits.pdf  200
 
 # The old one-pager filename, kept alive so printed and emailed links survive.
-/Ande_Schurr_SoundMixer_EmmyNominee.pdf  /assets/Ande_Schurr_Credits.pdf  301
+/Ande_Schurr_SoundMixer_EmmyNominee.pdf  /credits.pdf  301
 
 # Regional credits, for pasting into email. /singapore is already the landing
 # page alias, so the PDF gets its own spoken-friendly path.
@@ -23,3 +26,19 @@
 # single address for search engines and shared links.
 /wild-track/map  /whats-shooting  301
 /whats-shooting  /wild-track/map  200
+
+# 28 Nov 2026: posts from the old WordPress site (2008 to 2019) still get crawled and returned "not found"
+# (Search Console: /2010/08/the-art-of-sound-design-with-tim-prebble/, /2013/12/sound-devices-633-and-the-new-sound-workflow/).
+# They land on Field Notes, where the writing lives now.
+/2008/*  /notes/  301
+/2009/*  /notes/  301
+/2010/*  /notes/  301
+/2011/*  /notes/  301
+/2012/*  /notes/  301
+/2013/*  /notes/  301
+/2014/*  /notes/  301
+/2015/*  /notes/  301
+/2016/*  /notes/  301
+/2017/*  /notes/  301
+/2018/*  /notes/  301
+/2019/*  /notes/  301

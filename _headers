@@ -15,3 +15,16 @@
 # Browsers that have seen the site once always come back over HTTPS.
 /*
   Strict-Transport-Security: max-age=15552000
+
+# One address for each PDF in search results (28 Nov 2026). PDFs have no <head>, so the canonical goes in a header.
+/credits.pdf
+  Link: <https://schurrsound.com/credits.pdf>; rel="canonical"
+
+/assets/Ande_Schurr_Credits.pdf
+  Link: <https://schurrsound.com/credits.pdf>; rel="canonical"
+
+/assets/Ande_Schurr_Singapore_SEAsia.pdf
+  Link: <https://schurrsound.com/assets/Ande_Schurr_Singapore_SEAsia.pdf>; rel="canonical"
+
+/assets/Ande_Schurr_Press_Kit.pdf
+  Link: <https://schurrsound.com/assets/Ande_Schurr_Press_Kit.pdf>; rel="canonical"
